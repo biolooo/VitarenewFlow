@@ -1,0 +1,10 @@
+launcher/build/
+launcher/*.elf
+launcher/*.map
+launcher/*.3dsx
+launcher/*.smdh
+launcher/*.cia
+desktop/SD-Karte/
+.test-build/
+*.tmp
+*.log
