@@ -5,7 +5,7 @@ This milestone is not the final 1.0 release. Use the existing project test SD.
 1. Keep a backup of the SD. Do not change boot.firm or boot.3dsx for this test.
 2. Copy the test package's `3ds/3ds-library/3ds-library.3dsx` and `.smdh` to the same SD folder. Preserve other files.
 3. Optionally copy the desktop executable to the SD root.
-4. Put `VitarenewFlow-0.11.0.cia` in `/cias` and install through FBI. Title ID: `000400000F104200`; product code: `CTR-H-VRFL`; title version: 176.
+4. Put `VitarenewFlow-0.11.0.cia` in `/cias` and install through FBI. Title ID: `000400000F104200`; product code: `CTR-H-VRFL`; title version: 0 (development package).
 5. Open the new HOME-menu icon and complete [the milestone test](acceptance/TEST-0.11.0.md).
 
 The CIA build requires Luma3DS/CFW. Emulator handoffs need the Rosalina takeover title configured in `/luma/config.ini` to be installed. The launcher validates this title and does not modify Luma settings.
