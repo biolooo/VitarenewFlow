@@ -1,0 +1,5 @@
+N64 Library — Basis unveraendert, Korrekturadapter 0.6.1
+Start direkt aus 3DS Library. L+R+Y: normal beenden und zur Library.
+Diagnose bei Startfehler: /3ds/n64-library/last-run.log
+Geaenderte Quellen: n64-library-source.tar.gz im Projektpaket.
+Details: FIX-0.6.1.txt. Hardwaretest: TEST-6.1.txt.
