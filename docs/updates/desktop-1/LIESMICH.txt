@@ -1,2 +1,22 @@
 VitarenewFlow Desktop 0.4.1
-Portable Windows game and cover manager, GPL-3.0-only. No games included.
+
+Windows-App für die SD-Karte; kein Programm für den 3DS selbst.
+Windows 10/11 mit .NET Framework 4.8. Keine separate Installation nötig.
+
+1. Download in Flow abschließen. Konsole ausschalten und SD am PC einstecken.
+2. Im Hauptverzeichnis der SD VitarenewFlow Desktop.exe öffnen.
+3. Spiele hinzufügen oder hineinziehen; Cover hinzufügen/ändern oder
+   Fehlende Cover laden wählen. Bilder werden passend verkleinert und komprimiert.
+4. Desktop-App schließen, SD sicher entfernen. Auf dem 3DS Spiele neu einlesen.
+
+CIAs werden nur bereitgestellt. Installieren findet anschließend auf dem 3DS statt.
+Spielstände werden angezeigt, nicht mit PC-Emulatoren synchronisiert.
+PC-Weiterspielen und 3DS-Banner-Konvertierung sind nicht enthalten.
+Die Cover-Suche benötigt Internet und kann unbekannte Spiele nicht immer zuordnen.
+Kein Download von Spielen, BIOS oder Schlüsseln. Vorhandene ROMs werden nicht ersetzt.
+Cover können bewusst ersetzt werden; die bisherige Datei wird dabei gesichert.
+
+Launcher- und Emulator-Updates erfolgen direkt in Flow auf dem 3DS.
+Source: Library-PC/VitarenewFlow-Desktop-source.zip auf dieser SD.
+Lizenz: GPL-3.0-only. Originale Lizenztexte sind beigefügt.
+Projekt: https://biolooo.github.io/VitarenewFlow/
