@@ -1,0 +1,5 @@
+VFUPDATE1
+version=0.12.18
+size=1558984
+sha256=52a33f3fe89719759390f04aebe9a68c08cc9ce62936a621f9980d87e71273fd
+url=https://biolooo.github.io/VitarenewFlow/updates/0.12.18/VitarenewFlow.3dsx
