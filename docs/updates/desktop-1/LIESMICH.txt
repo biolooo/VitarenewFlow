@@ -1,0 +1,2 @@
+VitarenewFlow Desktop 0.4.1
+Portable Windows game and cover manager, GPL-3.0-only. No games included.
