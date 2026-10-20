@@ -1,12 +1,12 @@
 {
   "title": "VitarenewFlow (Test)",
   "author": "VitaRenew",
-  "description": "Test store. In-app GB/GBA, N64 and DS setup available.",
+  "description": "Test store. In-app emulator setup and Windows Desktop download.",
   "file": "VitarenewFlow.unistore",
   "url": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.unistore",
   "infoURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow-info.json",
   "sheet": "VitarenewFlow.t3x",
   "sheetURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.t3x",
   "version": 3,
-  "revision": 2
+  "revision": 3
 }
