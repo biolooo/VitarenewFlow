@@ -1,0 +1,120 @@
+{
+  "storeInfo": {
+    "title": "VitarenewFlow (Test)",
+    "author": "VitaRenew",
+    "description": "Development test store. Emulator setup is not included yet.",
+    "file": "VitarenewFlow.unistore",
+    "url": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.unistore",
+    "infoURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow-info.json",
+    "sheet": "VitarenewFlow.t3x",
+    "sheetURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.t3x",
+    "version": 3,
+    "revision": 1
+  },
+  "storeContent": [
+    {
+      "info": {
+        "title": "VitarenewFlow (Test)",
+        "author": "VitaRenew",
+        "version": "0.12.19",
+        "description": "HOME shortcut + launcher with in-app updates. Emulators follow in a later setup step.",
+        "category": [
+          "utility"
+        ],
+        "console": [
+          "3DS"
+        ],
+        "icon_index": 0,
+        "sheet_index": 0,
+        "title_ids": [
+          987202
+        ],
+        "installed_files": [
+          "/3ds/3ds-library/3ds-library.3dsx"
+        ],
+        "last_updated": "2026-10-20T00:00:00Z",
+        "llm_generation": "yes",
+        "preinstall_message": "TESTVERSION: HOME-Symbol und Flow werden installiert. Emulatoren noch nicht enthalten. / TEST BUILD: installs HOME shortcut and Flow. Emulators are not included yet."
+      },
+      "Installieren / Install": {
+        "type": "CIA",
+        "size": "1857676 B",
+        "script": [
+          {
+            "type": "mkdir",
+            "directory": "/3ds/"
+          },
+          {
+            "type": "mkdir",
+            "directory": "/3ds/3ds-library/"
+          },
+          {
+            "type": "mkdir",
+            "directory": "/3ds/3ds-library/updates/"
+          },
+          {
+            "type": "mkdir",
+            "directory": "/3ds/3ds-library/updates/universal-updater/"
+          },
+          {
+            "type": "mkdir",
+            "directory": "/gm9/"
+          },
+          {
+            "type": "mkdir",
+            "directory": "/gm9/scripts/"
+          },
+          {
+            "type": "downloadFile",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.19/VitarenewFlow.3dsx",
+            "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.3dsx"
+          },
+          {
+            "type": "downloadFile",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.19/VitarenewFlow.smdh",
+            "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.smdh"
+          },
+          {
+            "type": "downloadFile",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.19/VitarenewFlow-Shortcut.cia",
+            "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Shortcut.cia"
+          },
+          {
+            "type": "downloadFile",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.19/VitarenewFlow-Boot.3dsx",
+            "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Boot.3dsx"
+          },
+          {
+            "type": "downloadFile",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.19/VitarenewFlow-Copy.gm9",
+            "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Copy.gm9"
+          },
+          {
+            "type": "move",
+            "old": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.3dsx",
+            "new": "/3ds/3ds-library/3ds-library.3dsx"
+          },
+          {
+            "type": "move",
+            "old": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.smdh",
+            "new": "/3ds/3ds-library/3ds-library.smdh"
+          },
+          {
+            "type": "move",
+            "old": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Boot.3dsx",
+            "new": "/3ds/3ds-library/boot-dispatcher.3dsx"
+          },
+          {
+            "type": "move",
+            "old": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Copy.gm9",
+            "new": "/gm9/scripts/VitarenewFlow-Copy.gm9"
+          },
+          {
+            "type": "installCia",
+            "file": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Shortcut.cia"
+          }
+        ]
+      }
+    }
+  ]
+}

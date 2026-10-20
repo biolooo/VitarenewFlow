@@ -1,0 +1,12 @@
+{
+  "title": "VitarenewFlow (Test)",
+  "author": "VitaRenew",
+  "description": "Development test store. Emulator setup is not included yet.",
+  "file": "VitarenewFlow.unistore",
+  "url": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.unistore",
+  "infoURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow-info.json",
+  "sheet": "VitarenewFlow.t3x",
+  "sheetURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.t3x",
+  "version": 3,
+  "revision": 1
+}
