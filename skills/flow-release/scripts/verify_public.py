@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -33,6 +34,15 @@ def verify(root, version):
     for name, digest in manifest.items():
         if hashlib.sha256((updates / version / name).read_bytes()).hexdigest() != digest:
             raise ValueError("Local manifest mismatch: " + name)
+    if tuple(map(int, version.split('.'))) >= (0, 12, 38):
+        if "notes.txt" not in manifest:
+            raise ValueError("Missing version-bound update highlights")
+        spec = importlib.util.spec_from_file_location("release_notes", Path(root) / "scripts/generate-release-notes.py")
+        generator = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(generator)
+        notes = generator.load_notes(Path(root) / "release-notes" / (version + ".json"), version)
+        if (updates / version / "notes.txt").read_bytes() != generator.sidecar(notes):
+            raise ValueError("Packaged notes differ from versioned DE/EN source")
     names = [version + "/" + name for name in manifest]
     names += [version + "/SHA256.json", "latest.txt", "VitarenewFlow.unistore", "VitarenewFlow-info.json", "install.html"]
     evidence = {"version": version, "checked_at": datetime.now(timezone.utc).isoformat(), "files": {}}

@@ -49,6 +49,14 @@ jobs:
           for name, digest in json.loads((root / version / 'SHA256.json').read_text()).items():
               assert Path(name).name == name
               assert hashlib.sha256((root / version / name).read_bytes()).hexdigest() == digest, name
+          if tuple(map(int, version.split('.'))) >= (0, 12, 38):
+              import importlib.util
+              spec = importlib.util.spec_from_file_location('release_notes', 'scripts/generate-release-notes.py')
+              notes_module = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(notes_module)
+              notes = notes_module.generate(Path('.'), version, check=True)
+              assert (root / version / 'notes.txt').read_bytes() == notes_module.sidecar(notes)
+              assert 'notes.txt' in json.loads((root / version / 'SHA256.json').read_text())
           print(f'PASS: verified release {version}')
           PY
       - uses: actions/configure-pages@v5

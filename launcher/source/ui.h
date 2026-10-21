@@ -22,7 +22,7 @@ typedef struct {
     unsigned homeLoading; /* 0 none, 1 prepare, 2 system handoff, 3 reboot to HOME */
     bool coverMenu; const char *coverTarget; const char **imports; unsigned importCount; unsigned importSelected;
     bool setupDs;
-    bool updatePage,updateNotes;UpdateStatus update;
+    bool updatePage,updateNotes;unsigned updateNotesPage;UpdateStatus update;
     bool componentPage,componentRechecked;unsigned componentSelected;ComponentStatus component;
     float carousel; unsigned systemIndex; bool settings,systemPicker; unsigned menuSelected;
     int brightness; bool brightnessAvailable; const char *themeSource; bool launching;
@@ -49,3 +49,5 @@ const char *ui_reload_theme(void);
 unsigned ui_info_scroll_limit(void);
 
 const char *ui_theme_source(void);
+
+unsigned ui_update_notes_pages(const UpdateNotes *notes,bool english);

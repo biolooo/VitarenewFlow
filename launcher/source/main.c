@@ -5,6 +5,7 @@
 #include "report_transport.h"
 #include "report_controls.h"
 #include "report_history.h"
+#include "update_details.h"
 // SPDX-License-Identifier: GPL-3.0-only
 // Copyright (C) 2026 VitarenewFlow contributors
 #include "l10n.h"
@@ -95,6 +96,7 @@ static CoverFlow flow;
 static unsigned remembered[VIEW_COUNT],menuSelected;
 static unsigned settingsPage;
 static bool updatePage,updateNotes;
+static unsigned updateNotesPage;
 static bool componentPage;
 static unsigned componentSelected;
 static u64 componentCheckedUntil;
@@ -134,7 +136,7 @@ static bool reportFallback(void){
 static void openReport(void){
     if(!reportAvailable())return;
     report_transport_reset();reportConfirmed=false;reportDetails=false;reportDescription[0]=0;
-    report=(ErrorReport){.version="0.12.37",.description=reportDescription,
+    report=(ErrorReport){.version="0.12.38",.description=reportDescription,
         .context=envIsHomebrew()?ERROR_REPORT_HOMEBREW:ERROR_REPORT_NATIVE};
     int boot=autoboot_status();report.autoboot=boot==1?ERROR_REPORT_AUTOBOOT_ON:boot==0?ERROR_REPORT_AUTOBOOT_OFF:ERROR_REPORT_AUTOBOOT_UNKNOWN;
     if(R_SUCCEEDED(cfguInit())){
@@ -226,12 +228,12 @@ static void draw(bool loading,float progress,const char *stage){
     if(updatePage&&app_update_status().state==UPDATE_ERROR)rememberReport(ERROR_REPORT_UPDATE,app_update_error_code(),ERROR_REPORT_CHECKING_UPDATE);
     if(twlPage&&R_FAILED(twlError))rememberReport(ERROR_REPORT_DS,twlError,ERROR_REPORT_CHECKING_DS);
     const char *target=visibleCount?games[visible[selected]].cover:"";
-    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.37",
+    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.38",
         .reportAvailable=reportAvailable(),.reportFallback=reportFallback(),.reportDetails=reportDetails,.reportHistorical=reportHistorical,.reportDiagnostics=&reportDiagnostics,.reportOpen=reportOpen,.reportConfirmed=reportConfirmed,.reportConfigured=report_transport_configured(),.reportState=report_transport_state(),.reportDescription=reportDescription,.reportArea=report.area,.reportCode=report.code,.reportModel=report.model,.reportRegion=report.region,.reportAutoboot=report.autoboot,.reportContext=report.context,
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
         .loading=loading,.progress=progress,.stage=stage,.homeLoading=homeLoading,.coverMenu=coverMenu,.coverTarget=target,
-        .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.updateNotes=updateNotes,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.component=components_status(),
+        .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.updateNotes=updateNotes,.updateNotesPage=updateNotesPage,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.component=components_status(),
         .carousel=flow.position,.systemIndex=visibleCount?(unsigned)games[visible[selected]].system:library_view_system(systemView),.settings=settings,.settingsPage=settingsPage,.autobootPrompt=autobootPrompt,.autobootState=autobootState,.powerPrompt=powerPrompt,.copyPrompt=copyPrompt,.twlAdvice=twl_recommendation(&twlReport),.twlPage=twlPage,.twlError=(int32_t)twlError,.twlNeedsReboot=twlNeedsReboot,.twlKnown=twlReport.known,.twlSupported=twlReport.supported,.twlMissing=twlReport.missing,.twlLoader=twlReport.loader,.twlFiles=twlReport.files,.support=supportOpen,.systemPicker=systemPicker,.menuSelected=menuSelected,
         .componentRechecked=osGetTime()<componentCheckedUntil,.powerCancelFailed=powerCancelFailed,.themeSource=themeSource,.launching=preparingGame,.controls=controlsPage,.info=infoOpen?&gameInfo:NULL,.infoScroll=infoScroll,
         .installPrompt=installPrompt,.installing=installing,.installSize=installSize,.installSpace=installSpace,.installEta=installEta,.installError=(installFailed||launchFailed)?message:NULL,.launchError=launchFailed,.launchRepair=launchFailed&&launchRepairComponent>=0,.errorTitle=errorTitle,.prefetch=neighborCards,.prefetchCount=neighborCount};
@@ -1022,16 +1024,23 @@ int main(int argc,char **argv){
             }
         }else if(updatePage){
             UpdateStatus update=app_update_status();
-            if(update.state==UPDATE_READY){
+            bool busy=update.state==UPDATE_CHECKING||update.state==UPDATE_DOWNLOADING;
+            unsigned input=((keys&KEY_B)?UPDATE_DETAILS_KEY_BACK:0)|((keys&KEY_A)?UPDATE_DETAILS_KEY_PRIMARY:0)|
+                ((keys&KEY_X)?UPDATE_DETAILS_KEY_TOGGLE:0)|((keys&(KEY_LEFT|KEY_UP|KEY_L))?UPDATE_DETAILS_KEY_PREVIOUS:0)|
+                ((keys&(KEY_RIGHT|KEY_DOWN|KEY_R))?UPDATE_DETAILS_KEY_NEXT:0)|((keys&KEY_TOUCH)?UPDATE_DETAILS_TOUCH:0);
+            UpdateDetailsAction action=update_details_action(busy,updateNotes,input,pos.px,pos.py);
+            if(updateNotes){
+                const UpdateNotes *notes=update_details_notes(&update,"0.12.38");
+                unsigned count=ui_update_notes_pages(notes,l10n_english());
+                if(action==UPDATE_DETAILS_BACK||action==UPDATE_DETAILS_TOGGLE)updateNotes=false;
+                else if(action==UPDATE_DETAILS_PREVIOUS&&updateNotesPage)updateNotesPage--;
+                else if(action==UPDATE_DETAILS_NEXT&&count&&updateNotesPage+1<count)updateNotesPage++;
+            }else if(update.state==UPDATE_READY){
                 draw(true,0,tr("Update wird installiert"));app_update_install();
             }else{
-                bool busy=update.state==UPDATE_CHECKING||update.state==UPDATE_DOWNLOADING;
-                bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px<151)||((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px>=276);
-                bool primary=(keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px>=169);
-                bool notes=!busy&&settings_release_note_count("0.12.37")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
-                if(back){updateNotes=false;if(busy)app_update_cancel();else updatePage=false;}
-                else if(notes)updateNotes=!updateNotes;
-                else if(primary&&!busy){
+                if(action==UPDATE_DETAILS_BACK){updateNotes=false;if(busy)app_update_cancel();else updatePage=false;}
+                else if(action==UPDATE_DETAILS_TOGGLE){updateNotes=true;updateNotesPage=0;}
+                else if(action==UPDATE_DETAILS_PRIMARY){
                     updateNotes=false;
                     if(update.state==UPDATE_AVAILABLE){recordActivity(ERROR_REPORT_DOWNLOADING);app_update_download();}
                     else if(update.state==UPDATE_INSTALLED){

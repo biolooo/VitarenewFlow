@@ -10,7 +10,3 @@ const char *settings_menu_title(unsigned page);
 const MenuItem *settings_menu_item(unsigned page,unsigned row);
 int settings_menu_hit(int x,int y,unsigned page);
 unsigned settings_menu_parent_row(unsigned page);
-/* Local release highlights; never infer notes for an unknown remote version. */
-unsigned settings_release_note_count(const char *version);
-const char *settings_release_note(const char *version,unsigned row);
-bool settings_update_notes_hit(int x,int y);

@@ -1,4 +1,4 @@
-"""Prepare immutable local 0.12.37 layout test assets and four channels; never deploy.
+"""Prepare immutable local 0.12.38 layout test assets and four channels; never deploy.
 
 Run only after configuring the approved public HTTPS endpoint and completing
 scripts/verify-local.sh: python scripts/prepare-report-release.py --verification PATH
@@ -6,6 +6,7 @@ All validation and archive assembly happen before any release/channel mutation.
 """
 import argparse
 import hashlib
+import importlib.util
 import io
 import json
 import os
@@ -16,77 +17,39 @@ from datetime import datetime, timezone
 from urllib.parse import urlsplit
 import zipfile
 
-VERSION = "0.12.37"
-PREVIOUS = "0.12.36"
+VERSION = "0.12.38"
+PREVIOUS = "0.12.37"
 PUBLIC_BASE = "https://biolooo.github.io/VitarenewFlow/updates"
 COMPANIONS = ("VitarenewFlow-Boot.3dsx", "VitarenewFlow-Shortcut.cia", "VitarenewFlow-Copy.gm9")
 DOWNLOADS = ("VitarenewFlow.3dsx", "VitarenewFlow.smdh", *COMPANIONS)
 CHANNELS = ("latest.txt", "VitarenewFlow.unistore", "VitarenewFlow-info.json", "install.html")
 FONT_INPUTS = ("launcher/tools/make-font.py", "launcher/tools/fonts/InterVariable.ttf", "launcher/tools/fonts/Inter-LICENSE.txt")
 
-NOTES = '''# VitarenewFlow 0.12.37 — Unterstützungslayout als Testversion
+def notes_module():
+    spec = importlib.util.spec_from_file_location("flow_release_notes", Path(__file__).with_name("generate-release-notes.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
-- „Über & Unterstützung“ gliedert Titel, Version, Kurztext und Website übersichtlich.
-- „Problem melden“ besitzt eine eigene klar abgegrenzte Schaltfläche.
-- Der Rückweg bleibt als separate Schaltfläche sichtbar; X/Touch öffnet die Meldung.
 
-Die vorhandene Meldefunktion und ihre begrenzte technische Diagnose bleiben erhalten:
-- Technische Angaben prüfen und optional selbst beschreiben, was zuvor geschah.
-- Erst die ausdrückliche Zustimmung und „Senden“ übertragen einen Bericht per HTTPS.
-- Übertragen werden nur Appversion, Fehlerbereich/-code, Modell, Region, Autoboot,
-  Startkontext, die begrenzte Diagnosemomentaufnahme und die freiwillige Beschreibung.
-- Keine automatischen Rohlogs, Spieltitel/-pfade, Seriennummern, ROMs, Saves oder
-  Schlüssel. Bitte auch in den freiwilligen Text keine privaten Daten eingeben.
-- Kein automatisches Nachsenden. Ein Sendeversuch kann abgebrochen werden.
-- Empfangsdienst: geprüfte JSON-Felder, begrenzte Anfragen, SQLite-Speicherung;
-  reguläre Aufbewahrung 30 Tage, keine dauerhaften IP-/Header-/Anfrageprotokolle.
+def release_document(notes):
+    de = "\n".join("- " + row["de"] for row in notes["highlights"])
+    en = "\n".join("- " + row["en"] for row in notes["highlights"])
+    return ("# VitarenewFlow " + notes["version"] + "\n\n## Neuerungen\n\n" + de
+            + "\n\n## What's new\n\n" + en
+            + "\n\nUpdate: Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen.\n"
+            + "X öffnet die Infos zur angebotenen Version. Links/rechts blättert, B/X kehrt zurück.\n"
+            + "Fehlende Infos verhindern kein Update. Ältere Apps benötigen zuerst dieses Update,\n"
+            + "um künftig die mitgelieferten Hinweise neuer Versionen anzeigen zu können.\n\n"
+            + "Frischer nativer Build und Hostprüfungen sowie exakte Quellpaketreproduktion erforderlich.\n"
+            + "Keine Konsolenabnahme vorweggenommen. Modell, Region, Startweg und Autoboot festhalten.\n"
+            + "X/Touch, DE/EN, Blättern, B/X-Rückkehr sowie fehlende Hinweise auf Konsole prüfen.\n"
+            + "3DSX/SMDH, unveränderte Boot-/Shortcut-/GM9-Begleiter, Quellen und Manifest enthalten.\n"
+            + "Keine Spiele, Saves, Schlüssel, SDKs oder privaten Berichte enthalten. Desktop .4.1 unverändert.\n"
+            + "Die vorherige 3DSX bleibt beim Update als manueller Rückweg erhalten.\n")
 
-## Auf echter Konsole prüfen
 
-Nach Veröffentlichung: Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen.
-Die installierte Version muss 0.12.37 anzeigen. Kein Konsolenpass ist vorweggenommen.
-Pro Fall Modell, Version, Startkontext, Region und Autoboot an/aus festhalten.
-
-1. Deutsch/Englisch: „Über & Unterstützung“ öffnen. Titel, Version, Kurztext und
-   Website müssen getrennt lesbar bleiben. „Problem melden“ und „A / B Zurück“
-   besitzen getrennte Flächen. X/Touch öffnet die Meldung; A/B führt zurück.
-   Diagnosewerte und eingefrorene Aktivitätsspur unverändert prüfen.
-   Auf gesunder Konsole keine NAND-Beschädigung oder TWL-Reparatur provozieren.
-2. Vor dem Senden technische Vorschau prüfen, optionalen Text eingeben/ändern.
-   Zurück vor der Zustimmung sendet nichts. Ein Abbruch kann bereits gespeicherte Berichte nicht zurücknehmen. Ohne Zustimmung ist kein Versand möglich.
-3. Mit WLAN genau einen eigenen Testbericht senden, Erfolgsanzeige und tatsächlichen
-   Empfang im Betreiberzugriff abgleichen. Erfolg erst nach gespeicherter Annahme.
-4. WLAN aus, falsches Datum/HTTPS, Serverfehler und begrenzte Anfragen prüfen:
-   verständlicher Fehler, kein falscher Erfolg und kein automatischer Wiederholversand.
-5. Während des Sendens abbrechen und erneut öffnen; Bedienung bleibt reaktionsfähig.
-   Nach einem Netzabbruch kann der Server den Bericht bereits gespeichert haben.
-6. HOME/POWER, Suspend/Resume, Spielstart und bestehende Reparatur-/Updateaktionen
-   mit Autoboot an/aus prüfen. Ein Bericht darf keine gefährliche Aktion bestätigen.
-7. Eingabegrenze und Umlaute prüfen. Keine echten privaten Daten für Tests verwenden.
-
-Die .36-Verbesserungen bleiben erhalten. Originale HOME-Standardmusik, N64 und
-Save-Sync werden mit dieser Version nicht neu implementiert. Keine Stable-1.0-Freigabe.
-Das 3DSX-Update verändert keine Spiele, Saves oder Bootkonfiguration. Nicht während
-der Installation ausschalten oder SD entfernen; vorherige 3DSX als manuellen Rückweg
-unter /3ds/3ds-library/3ds-library.3dsx.previous.3dsx erhalten.
-
-## Quellen und Begleiter
-
-Nativer Build und Hostprüfungen müssen vor dem Packen bestanden sein. Dazu gehören
-Berichtformat/UTF-8/Puffergrenzen, Zustimmung/Touch, HTTPS-Transport und bestehende
-Komponenten-/TWL-/HOME-/POWER-/Suche-/Banner-/Menü-Fixtures. Hostmocks ersetzen keine
-echte OS-/WLAN-/Konsolenabnahme. Receiver-Unittests separat ausführen.
-
-Boot-3DSX, Shortcut-CIA und GM9-Skript stammen unverändert aus .36. Es gibt keine
-neue Boot-/NAND-Funktion. Das Quellpaket enthält aktuelle Launcherquellen, Scripts,
-Tests, Lizenzen, Projektdokumentation und den getrennten Empfangsdienst samt Compose.
-Empfangsdienst nicht ungeprüft öffentlich starten. SDK/Emulator-SDKs separat;
-RELEASE-BUILD.md und docs/PC2-SETUP.md beschreiben den Quellpaket-Build.
-GPL-3.0-only für eigenen Code; Fremdkomponenten behalten ihre Bedingungen.
-Keine Spiele, Saves, Schlüssel, Datenbanken, private Musik oder lokalen Nutzerdaten.
-'''
-
-BUILD_NOTES = '''# Build this exact 0.12.37 source package
+BUILD_NOTES = '''# Build this exact 0.12.38 source package
 
 Use the pinned devkitARM linux/amd64 chroot in docs/PC2-SETUP.md with host GCC,
 UBSan, Python and zlib1g-dev. Extract into a NEW directory inside that chroot,
@@ -194,6 +157,8 @@ def include_source(name):
         return True
     if name.startswith("receiver/error-reports/"):
         return len(path.parts) == 3 and path.name in ("server.py", "test_server.py", "Dockerfile", "compose.yaml", "start-local.sh")
+    if name.startswith("release-notes/"):
+        return len(path.parts) == 2 and path.suffix == ".json"
     if name.startswith("licenses/"):
         return True
     if name.startswith("docs/"):
@@ -213,6 +178,8 @@ def source_archive(root, updates):
     names = subprocess.check_output(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard"], cwd=root).decode("utf-8").split("\0")
     selected = {name: read_regular(root / name) for name in sorted(set(names)) if name and include_source(name)}
     required = {"launcher/Makefile", "launcher/source/report_transport.h", "launcher/source/error_report.c", "launcher/source/report_transport.c",
+                "launcher/source/release_notes_generated.h", "scripts/generate-release-notes.py",
+                "release-notes/" + VERSION + ".json", "tests/update-notes/test.sh",
                 "scripts/verify-stage.sh", "tests/error-report/test.sh", "tests/report-transport/test.sh",
                 "receiver/error-reports/server.py", "receiver/error-reports/test_server.py",
                 "receiver/error-reports/Dockerfile", "receiver/error-reports/compose.yaml", "receiver/error-reports/start-local.sh"}
@@ -240,6 +207,10 @@ def prepare(root, verification):
     for marker in ("PASS: native build and existing component", "PASS: independent Python JSON decode and 200 exact escaping roundtrips",
                    "PASS: actual HTTPS transport consent", "PASS: actual modal consent/review/edit/back priorities"):
         require(marker in log, "Missing required verification: " + marker)
+    generator = notes_module()
+    release_notes = generator.generate(root, VERSION, check=True)
+    notes_bytes = generator.sidecar(release_notes)
+    require(len(notes_bytes) <= 1024, "Release notes exceed client bound")
     hashes = verify_sources(root, verification)
     check_versions(root)
     binary = read_regular(verification / "3ds-library.3dsx")
@@ -248,22 +219,23 @@ def prepare(root, verification):
     require(len(smdh) == 14016 and smdh[:4] == b"SMDH" and VERSION.encode("utf-16le") in smdh, "Invalid SMDH/version")
     before = {name: read_regular(updates / name) for name in CHANNELS}
     latest = dict(line.split("=", 1) for line in before["latest.txt"].decode("ascii").splitlines()[1:] if "=" in line)
-    require(before["latest.txt"].startswith(b"VFUPDATE1") and latest.get("version") == PREVIOUS, "Expected .36 updater channel")
+    require(before["latest.txt"].startswith(b"VFUPDATE1") and latest.get("version") == PREVIOUS, "Expected previous updater channel")
     store = json.loads(before["VitarenewFlow.unistore"].decode("utf-8-sig"))
     require(json.loads(before["VitarenewFlow-info.json"].decode("utf-8-sig")) == store["storeInfo"], "Info/UniStore channels disagree")
     require(len(store["storeContent"]) == 1, "Unexpected store entries")
     entry = store["storeContent"][0]
-    require(entry["info"]["version"] == PREVIOUS, "Expected .36 store entry")
+    require(entry["info"]["version"] == PREVIOUS, "Expected previous store entry")
     revision = store["storeInfo"]["revision"]
     require(type(revision) is int and revision >= 0, "Invalid UniStore revision")
     old_release = updates / PREVIOUS
     old_manifest = json.loads(read_regular(old_release / "SHA256.json"))
     expected_artifacts = set(DOWNLOADS) | {"FEATURES-DE.md", "README.md", "VitarenewFlow-source.zip"}
-    require(set(old_manifest) == expected_artifacts, "Invalid .36 manifest")
+    require(set(old_manifest) in (expected_artifacts, expected_artifacts | {"notes.txt"}), "Invalid previous manifest")
     for name, sha in old_manifest.items():
-        require(digest(read_regular(old_release / name)) == sha, "Existing .36 artifact hash mismatch: " + name)
+        require(digest(read_regular(old_release / name)) == sha, "Existing previous artifact hash mismatch: " + name)
     assets = {"VitarenewFlow.3dsx": binary, "VitarenewFlow.smdh": smdh,
-              "README.md": NOTES.encode("utf-8"), "FEATURES-DE.md": NOTES.encode("utf-8")}
+              "README.md": release_document(release_notes).encode("utf-8"), "FEATURES-DE.md": release_document(release_notes).encode("utf-8"),
+              "notes.txt": notes_bytes}
     for name in COMPANIONS:
         assets[name] = read_regular(old_release / name)
     assets["VitarenewFlow-source.zip"] = source_archive(root, updates)
@@ -271,7 +243,7 @@ def prepare(root, verification):
     assets["SHA256.json"] = (json.dumps(manifest, indent=2) + "\n").encode("ascii")
     store["storeInfo"]["revision"] = revision + 1
     entry["info"]["version"] = VERSION
-    entry["info"]["description"] = "Clear About and support layout with a separate report button and back action (DE/EN)."
+    entry["info"]["description"] = "Version-bound update highlights with reliable X/touch controls and DE/EN notes."
     entry["info"]["last_updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     install = entry["Installieren / Install"]
     downloads = [action for action in install["script"] if action.get("type") == "downloadFile"]
@@ -287,7 +259,7 @@ def prepare(root, verification):
     require(seen == set(DOWNLOADS), "Incomplete installation downloads")
     install["size"] = str(sum(len(assets[name]) for name in DOWNLOADS)) + " B"
     html = before["install.html"]
-    require(PREVIOUS.encode() in html, "Installation page does not reference .36")
+    require(PREVIOUS.encode() in html, "Installation page does not reference previous")
     channels = {
         "latest.txt": ("VFUPDATE1\nversion=" + VERSION + "\nsize=" + str(len(binary)) + "\nsha256=" + digest(binary)
                        + "\nurl=" + PUBLIC_BASE + "/" + VERSION + "/VitarenewFlow.3dsx\n").encode("ascii"),
@@ -312,7 +284,7 @@ def prepare(root, verification):
             output.write(data)
         os.replace(staged, updates / name)
     print("PREPARED locally:", release)
-    print("Nine assets and four .37 channels; no push, publication or hardware acceptance performed.")
+    print("Ten assets including version-bound notes and four .38 channels; no push, publication or hardware acceptance performed.")
 
 
 def main():

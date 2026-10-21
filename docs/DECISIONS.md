@@ -1,5 +1,15 @@
 # Entscheidungen und Quellen
 
+## X-Updateinfos — lokaler Entwicklungsstand 0.12.38
+
+Nutzer meldete unzuverlässige X-Infos. Ursache: fest eingebaute Hinweise der installierten Version und deren Versionsliste bestimmten Darstellung/Zugänglichkeit. Ersetzt durch eigene X-/Touch-Infoseite mit Version, DE/EN-Hinweisen, Blättern und B/X-Rückkehr; keine Installationsaktion aus dieser Ansicht. Lange gültige Hinweise erhalten weitere Seiten anhand tatsächlicher Schriftmetriken. Kein Text einer anderen Version wird als Zielupdatehinweis ausgegeben; fehlende Hinweise werden klar angezeigt und verhindern OTA nicht.
+
+Remote: unveränderliches `<Version>/notes.txt` (VFNOTES1), fester HTTPS-Pfad, exakte Versionsbindung, 1–3 DE/EN-Paare mit maximal120UTF8Bytes, Größen-/UTF8-/Steuerzeichenprüfung. Status/Version/Hinweise unter gemeinsamer Sperre, alte Daten beim Neucheck gelöscht. Bisheriges fünfzeiliges VFUPDATE1 bleibt für Altclients unverändert. .37 muss einmal aktualisiert werden, bevor es diese Remoteinfos künftiger Versionen lesen kann.
+
+Gemeinsame Changelogquelle: `release-notes/<Version>.json`. Generator erstellt installierte Hinweise, Paketierung daraus README/FEATURES-DE und notes.txt; Build, Paketierung und Pages verweigern fehlende, veraltete oder falsche Versionshinweise. Alte manuelle Runtime-Versionslisten entfernt. Inhaltliche Stichpunkte werden weiterhin bewusst verfasst; automatische Erzeugung der Ausgabedateien ist umgesetzt. Release-Skill in Repository und persönlicher Installation angepasst.
+
+Stand lokal, keine .38-Veröffentlichung, keine Konsolenabnahme. Öffentliche .37-Dateien/Kanäle bleiben unverändert. Basis84f7ae7, vor Beginn Remoteabgleich identisch. PC2-Arbeit nach letztem Push muss vor Integration erneut abgeglichen werden.
+
 ## Freigegebener Layoutrelease 0.12.37
 
 Nutzer hat die Veröffentlichung der About-Layoutkorrektur ausdrücklich beauftragt. Änderungen: zentrierte übersichtliche Infokarte, Website und VitaRenew-Zeile untereinander, dezente eigene Reportzeile mit X-Tastenmarkierung. Touchflächen bleiben unverändert. Version 0.12.37, Desktop 0.4.1 unverändert. Native Prüfung und exaktes Quellpaket werden vor Veröffentlichung frisch geprüft; öffentliche Bytes danach separat bestätigt. Keine .37-Konsolenabnahme.

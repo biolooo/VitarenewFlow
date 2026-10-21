@@ -7,6 +7,7 @@
 #include "l10n.h"
 
 #include "ui.h"
+#include "update_details.h"
 #include "game_search.h"
 
 #include "brand_ui.h"
@@ -237,6 +238,35 @@ static void title(float x,float y,unsigned size,unsigned width,unsigned maxLines
 
  }
 
+}
+
+/* Long but valid release bullets may span more than one information page. */
+unsigned ui_update_notes_pages(const UpdateNotes *notes,bool english){
+ unsigned pages=0;if(!notes)return 0;
+ for(unsigned i=0;i<notes->count&&i<UPDATE_NOTES_MAX_LINES;i++){
+  const char *text=english?notes->en[i]:notes->de[i];unsigned lines=0;char line[160];
+  while(wrap_next(&text,11,276,line))lines++;
+  pages+=(lines+5)/6;
+ }
+ return pages;
+}
+static const char *update_notes_page_text(const UpdateNotes *notes,bool english,unsigned page){
+ for(unsigned i=0;i<notes->count&&i<UPDATE_NOTES_MAX_LINES;i++){
+  const char *text=english?notes->en[i]:notes->de[i],*start=text;unsigned lines=0;char line[160];
+  while(wrap_next(&text,11,276,line))lines++;
+  unsigned pages=(lines+5)/6;
+  if(page<pages){for(unsigned j=0;j<page*6;j++)wrap_next(&start,11,276,line);return start;}
+  page-=pages;
+ }
+ return "";
+}
+
+static void update_notes_page_draw(const char *body){
+ /* Page boundaries already preserve the following text: never ellipsize. */
+ for(unsigned i=0;i<6;i++){
+  char line[160];if(!wrap_next(&body,11,276,line))break;
+  text(22,88+i*14,11,ink,line);
+ }
 }
 
 static void chevron(float x,float y,bool right,u32 color){
@@ -1208,15 +1238,10 @@ void ui_draw(const UiState *s){
 
   const char *message=u->state==UPDATE_CHECKING?tr("Updates werden geprüft..."):u->state==UPDATE_DOWNLOADING?tr("Update wird geladen..."):tr(u->message);
 
-  unsigned noteCount=settings_release_note_count(s->version);
-  if(s->updateNotes&&!busy&&noteCount){
-   text(20,110,11,muted,tr("Installierte Version: Neuerungen"));
-   for(unsigned i=0;i<noteCount;i++)text(20,127+i*15,11,ink,tr(settings_release_note(s->version,i)));
-  }else title(20,113,12,280,busy?3:2,message,false);
-
-  if(!busy&&noteCount){
-   rounded(20,172,280,14,4,raised);
-   centered(160,173,10,accent,tr(s->updateNotes?"X Neuerungen einklappen":"X Neuerungen dieser Version"));
+  title(20,113,12,280,busy?3:2,message,false);
+  if(!busy){
+   rounded(20,164,280,24,6,raised);
+   centered(160,169,11,accent,tr("X Update-Infos"));
   }
 
   if(u->state==UPDATE_DOWNLOADING){float p=u->total?(float)u->received/u->total:0;
@@ -1229,6 +1254,26 @@ void ui_draw(const UiState *s){
 
    rounded(169,192,139,38,9,accent);centered(238,203,14,RGB(12,35,36),action);}
 
+ }
+
+ if(s->updatePage&&s->updateNotes){
+  const UpdateStatus *u=&s->update;
+  const UpdateNotes *notes=update_details_notes(u,s->version);
+  const char *version=update_details_version(u,s->version);
+  unsigned pages=ui_update_notes_pages(notes,l10n_english());
+  unsigned page=pages&&s->updateNotesPage<pages?s->updateNotesPage:0;
+  rect(0,0,320,240,RGB(9,19,29));rounded(8,8,304,36,10,panel);
+  reportHeading(s,tr("Update-Infos"));rounded(280,12,28,28,8,raised);text(289,17,16,ink,"x");
+  char label[80];snprintf(label,sizeof(label),"%s %s",tr("Version"),version?version:"?");
+  text(20,55,14,accent,label);
+  if(notes){
+   snprintf(label,sizeof(label),"%u / %u",page+1,pages);text(270,58,11,muted,label);
+   rounded(12,80,296,92,9,panel);
+   update_notes_page_draw(update_notes_page_text(notes,l10n_english(),page));
+  }else title(20,88,12,280,6,tr("Für diese Version sind keine Update-Infos verfügbar. Das Update bleibt nutzbar."),false);
+  text(20,177,10,muted,tr("B / X Zurück zu Updates"));
+  rounded(12,192,139,38,9,raised);centered(81,203,12,page?ink:muted,tr("Vorherige"));
+  rounded(169,192,139,38,9,raised);centered(238,203,12,notes&&page+1<pages?ink:muted,tr("Nächste"));
  }
 
  if(s->autobootPrompt){

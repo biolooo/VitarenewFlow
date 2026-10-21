@@ -23,12 +23,3 @@ const char *settings_menu_title(unsigned p){return p==MENU_PERSONAL?"Anpassen":p
 const MenuItem *settings_menu_item(unsigned p,unsigned r){if(r>=settings_menu_count(p))return 0;return &(p==MENU_PERSONAL?personal:p==MENU_GAMES?games:p==MENU_SYSTEM?system:root)[r];}
 int settings_menu_hit(int x,int y,unsigned p){if(x<12||x>=308||y<54)return -1;unsigned r=(unsigned)(y-54)/46;if(r>=settings_menu_count(p)||(y-54)%46>=40)return -1;return (int)r;}
 unsigned settings_menu_parent_row(unsigned p){return p==MENU_PERSONAL?0:p==MENU_GAMES?1:p==MENU_SYSTEM?2:0;}
-
-static const char *releaseNotes33[]={"- Desktop erkennen und reparieren","- DS-Laufzeit erneut prüfen","- Suche mit Wortvorschlägen"};
-static const char *releaseNotes34[]={"- Spielstart ohne Startanimation","- Über & Unterstützung erneuert","- Neuerungen ausklappbar"};
-static const char *releaseNotes35[]={"- Probleme bewusst an VitaRenew melden","- Diagnose ohne Spiele oder Rohlogs","- Beschreibung vor dem Senden prüfen"};
-static const char *releaseNotes36[]={"- Problem melden im Unterstützungsmenü","- Direkte Meldung bei unerwarteten Fehlern","- Automatische technische Fehlerdiagnose"};
-static const char *releaseNotes37[]={"- Über & Unterstützung klar gegliedert","- Meldebutton als eigene Schaltfläche","- Version und Rückweg bleiben sichtbar"};
-unsigned settings_release_note_count(const char *version){return version&&(!strcmp(version,"0.12.33")||!strcmp(version,"0.12.34")||!strcmp(version,"0.12.35")||!strcmp(version,"0.12.36")||!strcmp(version,"0.12.37"))?3:0;}
-const char *settings_release_note(const char *version,unsigned row){return row<settings_release_note_count(version)?(!strcmp(version,"0.12.37")?releaseNotes37:!strcmp(version,"0.12.36")?releaseNotes36:!strcmp(version,"0.12.35")?releaseNotes35:!strcmp(version,"0.12.34")?releaseNotes34:releaseNotes33)[row]:NULL;}
-bool settings_update_notes_hit(int x,int y){return x>=20&&x<300&&y>=172&&y<187;}

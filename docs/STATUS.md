@@ -1,5 +1,17 @@
 # Projektstatus und Abnahme
 
+## X-Updateinfos — lokaler Entwicklungsstand 0.12.38
+
+Frischer nativer Build und vollständige lokale Suite bestanden: `.test-build/verification-20261021-214042`. Einschließlich generiertem Sidecar im tatsächlichen C-Parser, optionalem HTTPS-Transport/Abbruch/Parallel-Snapshots, X-/Touch-Eingaben sowie tatsächlichen Font-/Wrap-Funktionen für lange Hinweise ohne Textverlust. 10 Python-Pipeline-/Bestandstests bestanden. Echte Paketierung zusätzlich im isolierten Testrepository geprüft: zehn Assets/neun Manifesthashes, JSON/README/Sidecar konsistent, benötigte Quellen im ZIP, Überschreiben bestehender Version verweigert; reale Kanäle unverändert. Nachweis `.test-build/notes-package-smoke.json`. Bestehende öffentliche .37-Dateien nochmals bytegleich verifiziert.
+
+Nutzer meldete unzuverlässige X-Infos. Ursache: fest eingebaute Hinweise der installierten Version und deren Versionsliste bestimmten Darstellung/Zugänglichkeit. Ersetzt durch eigene X-/Touch-Infoseite mit Version, DE/EN-Hinweisen, Blättern und B/X-Rückkehr; keine Installationsaktion aus dieser Ansicht. Lange gültige Hinweise erhalten weitere Seiten anhand tatsächlicher Schriftmetriken. Kein Text einer anderen Version wird als Zielupdatehinweis ausgegeben; fehlende Hinweise werden klar angezeigt und verhindern OTA nicht.
+
+Remote: unveränderliches `<Version>/notes.txt` (VFNOTES1), fester HTTPS-Pfad, exakte Versionsbindung, 1–3 DE/EN-Paare mit maximal120UTF8Bytes, Größen-/UTF8-/Steuerzeichenprüfung. Status/Version/Hinweise unter gemeinsamer Sperre, alte Daten beim Neucheck gelöscht. Bisheriges fünfzeiliges VFUPDATE1 bleibt für Altclients unverändert. .37 muss einmal aktualisiert werden, bevor es diese Remoteinfos künftiger Versionen lesen kann.
+
+Gemeinsame Changelogquelle: `release-notes/<Version>.json`. Generator erstellt installierte Hinweise, Paketierung daraus README/FEATURES-DE und notes.txt; Build, Paketierung und Pages verweigern fehlende, veraltete oder falsche Versionshinweise. Alte manuelle Runtime-Versionslisten entfernt. Inhaltliche Stichpunkte werden weiterhin bewusst verfasst; automatische Erzeugung der Ausgabedateien ist umgesetzt. Release-Skill in Repository und persönlicher Installation angepasst.
+
+Stand lokal, keine .38-Veröffentlichung, keine Konsolenabnahme. Öffentliche .37-Dateien/Kanäle bleiben unverändert. Basis84f7ae7, vor Beginn Remoteabgleich identisch. PC2-Arbeit nach letztem Push muss vor Integration erneut abgeglichen werden.
+
 Veröffentlichung .37 bestätigt: Releasecommit6443406, Pages-Lauf39661260033 erfolgreich. Alle neun Paketdateien und vier Kanäle öffentlich bytegleich geprüft mit dem neuen Release-Skill. Nachweis: [0.12.37](release-evidence/0.12.37.json). Keine .37-Hardwareabnahme. Persönlicher Skill `flow-release` auf PC1 installiert und validiert; Repositoryvorlage für PC2 unter skills/flow-release, in AGENTS verankert. Die folgenden Vorbereitungsangaben sind datierter Verlauf.
 
 ## Freigegebener Layoutrelease 0.12.37
@@ -74,7 +86,7 @@ Releasecommit 2ada1cd, Pages-Lauf 39651893937 erfolgreich. Alle neun .35-Paketda
 - **TODO HOME-Starticon prüfen/abnehmen (Nutzer 21.10.2026):** installierter HOME-Shortcut soll den aktuellen Homebrew-Launcher von der SD laden, damit OTA ohne Neuinstallation des Icons greift. Bestehenden Boot-/CIA-Pfad und aktuelle Installation prüfen; Konsolenabnahme nach Update offen.
 
 
-- **TODO Changelog/Update-Neuerungen (Nutzerauftrag 21.10.2026):** Changelog bei jeder nutzerrelevanten Änderung aktualisieren. Daraus für jede Updateversion automatisch ein bis drei kurze, zutreffende Stichpunkte erzeugen und im Updatebildschirm zur angebotenen Zielversion anzeigen (DE/EN). Eine gemeinsame versionierte Quelle für Appanzeige und Releasehinweise verwenden; keine veralteten fest eingebauten Texte oder erfundenen Änderungen. Paketierung soll bei fehlenden bzw. nicht zur Zielversion passenden Hinweisen abbrechen. Bisherige .35-Stichpunkte sind noch manuell hinterlegt; Automatisierung ist als nächster Featurepunkt vorgemerkt, hier noch nicht implementiert.
+- **Changelog/Update-Neuerungen lokal umgesetzt (.38):** gemeinsame versionierte DE/EN-JSON-Quelle erzeugt installierte Hinweise, Releasehinweise und Notes-Sidecar; Build/Paket/Pages prüfen Versionsbindung und Vollständigkeit. X zeigt das Zielupdate statt einer festen lokalen Versionsliste. Öffentliche .38-Bereitstellung und Konsolentest stehen aus.
 
 1. **Migration lokal durchgeführt:** verbindliche Basis Launcher .33/Desktop .4.1, Sicherung und neue isolierte Prüfbefehle vorhanden; keine Featurearbeit automatisch gestartet. Nachweise in MIGRATION und LOCAL-VERIFICATION.
 2. **P1 Hardwarefeedback .27–.33:** ausdrücklich ausstehend. Primärmodell New 3DS XL; Zweitkonsole unbekannt. Keine weitere Featurekette als Ersatz für Abnahme.

@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #include "update_format.h"
 typedef enum {UPDATE_IDLE,UPDATE_CHECKING,UPDATE_CURRENT,UPDATE_AVAILABLE,UPDATE_DOWNLOADING,UPDATE_READY,UPDATE_INSTALLED,UPDATE_ERROR,UPDATE_CANCELLED} UpdateState;
-typedef struct {UpdateState state;unsigned received,total;char available[24],message[128];} UpdateStatus;
+typedef enum {UPDATE_NOTES_MISSING,UPDATE_NOTES_AVAILABLE} UpdateNotesState;
+typedef struct {UpdateState state;unsigned received,total;char available[24],message[128];UpdateNotesState notes_state;UpdateNotes notes;} UpdateStatus;
 void app_update_check(void);
 void app_update_download(void);
 void app_update_cancel(void);
