@@ -9,14 +9,14 @@
     "sheet": "VitarenewFlow.t3x",
     "sheetURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.t3x",
     "version": 3,
-    "revision": 6
+    "revision": 7
   },
   "storeContent": [
     {
       "info": {
         "title": "VitarenewFlow (Test)",
         "author": "VitaRenew",
-        "version": "0.12.24",
+        "version": "0.12.25",
         "description": "Live game search with typo tolerance, emulator and Desktop setup, theme audio and updates.",
         "category": [
           "utility"
@@ -38,7 +38,7 @@
       },
       "Installieren / Install": {
         "type": "CIA",
-        "size": "1879320 B",
+        "size": "1881572 B",
         "script": [
           {
             "type": "mkdir",
@@ -66,27 +66,27 @@
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.24/VitarenewFlow.3dsx",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.25/VitarenewFlow.3dsx",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.3dsx"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.24/VitarenewFlow.smdh",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.25/VitarenewFlow.smdh",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.smdh"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.24/VitarenewFlow-Shortcut.cia",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.25/VitarenewFlow-Shortcut.cia",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Shortcut.cia"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.24/VitarenewFlow-Boot.3dsx",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.25/VitarenewFlow-Boot.3dsx",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Boot.3dsx"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.24/VitarenewFlow-Copy.gm9",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.25/VitarenewFlow-Copy.gm9",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Copy.gm9"
           },
           {
