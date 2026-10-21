@@ -24,6 +24,7 @@ MAX_BODY = 4095
 RETENTION_SECONDS = 30 * 24 * 60 * 60
 FIELDS = frozenset(("schema", "version", "area", "code", "model", "region",
                     "autoboot", "context", "activity", "description"))
+DIAGNOSTIC_FIELDS = frozenset(("validity", "uptime_seconds", "sd_free_mib", "linear_free_kib", "trace"))
 CATEGORIES = {
     "area": frozenset(("general", "launch", "install", "update", "component", "ds",
                        "home", "power", "audio", "cover", "storage", "desktop")),
@@ -41,10 +42,14 @@ CATEGORIES = {
 
 def validate_report(report):
     """No implicit device information or free-form technical fields."""
-    if type(report) is not dict or set(report) != FIELDS:
+    if type(report) is not dict:
         raise ValueError("invalid fields")
-    if type(report["schema"]) is not int or report["schema"] != 1:
+    schema = report.get("schema")
+    if type(schema) is not int or schema not in (1, 2):
         raise ValueError("invalid schema")
+    expected = FIELDS if schema == 1 else FIELDS | {"diagnostics"}
+    if set(report) != expected:
+        raise ValueError("invalid fields")
     if type(report["code"]) is not int or not -(2**31) <= report["code"] < 2**31:
         raise ValueError("invalid code")
     version = report["version"]
@@ -62,7 +67,26 @@ def validate_report(report):
         raise ValueError("invalid description") from None
     if len(encoded) > 512 or "\0" in description:
         raise ValueError("invalid description")
+    if schema == 2:
+        validate_diagnostics(report["diagnostics"])
     return report
+
+
+def validate_diagnostics(diagnostics):
+    if type(diagnostics) is not dict or set(diagnostics) != DIAGNOSTIC_FIELDS:
+        raise ValueError("invalid diagnostic fields")
+    validity = diagnostics["validity"]
+    if type(validity) is not int or not 0 <= validity <= 7:
+        raise ValueError("invalid diagnostic validity")
+    for name, flag, maximum in (("uptime_seconds", 1, 604800), ("sd_free_mib", 2, 4194304), ("linear_free_kib", 4, 1048576)):
+        value = diagnostics[name]
+        if type(value) is not int or not 0 <= value <= maximum:
+            raise ValueError("invalid diagnostic counter")
+        if not validity & flag and value != 0:
+            raise ValueError("unknown diagnostic counter must be zero")
+    trace = diagnostics["trace"]
+    if type(trace) is not list or len(trace) > 8 or any(type(item) is not str or item not in CATEGORIES["activity"] for item in trace):
+        raise ValueError("invalid diagnostic trace")
 
 
 def _unique_object(pairs):

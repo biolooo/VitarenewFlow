@@ -43,6 +43,25 @@ typedef enum {
 #define ERROR_REPORT_DESCRIPTION_MAX 512u /* UTF-8 bytes, excluding NUL. */
 #define ERROR_REPORT_VERSION_MAX 31u
 #define ERROR_REPORT_JSON_CAPACITY 4096u /* Including final NUL. */
+#define ERROR_REPORT_TRACE_MAX 8u
+#define ERROR_REPORT_UPTIME_MAX 604800u
+#define ERROR_REPORT_SD_FREE_MAX 4194304u
+#define ERROR_REPORT_LINEAR_FREE_MAX 1048576u
+#define ERROR_REPORT_VALID_UPTIME 1u
+#define ERROR_REPORT_VALID_SD 2u
+#define ERROR_REPORT_VALID_LINEAR 4u
+
+/* Schema 2: bounded counters plus closed activity categories, never raw logs.
+   Values whose validity bit is clear must be zero. The caller takes one
+   snapshot before showing consent; this formatter performs no collection. */
+typedef struct {
+    uint32_t uptime_seconds;
+    uint32_t sd_free_mib;
+    uint32_t linear_free_kib;
+    uint8_t validity;
+    ErrorReportActivity trace[ERROR_REPORT_TRACE_MAX];
+    uint8_t trace_count;
+} ErrorReportDiagnostics;
 typedef struct {
     const char *version; /* Required numeric major.minor.patch. */
     ErrorReportArea area;
@@ -53,6 +72,7 @@ typedef struct {
     ErrorReportContext context;
     ErrorReportActivity activity;
     const char *description; /* Optional, explicitly entered by the user. */
+    const ErrorReportDiagnostics *diagnostics; /* NULL preserves schema 1. */
 } ErrorReport;
 
 /* No IO, implicit metadata, network or persistent identifier. The caller must

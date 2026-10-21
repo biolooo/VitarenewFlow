@@ -58,6 +58,29 @@ static void quoted(Writer *w,const char *text){
     literal(w,"\"");
 }
 static void field(Writer *w,const char *name,const char *value){literal(w,",");quoted(w,name);literal(w,":");quoted(w,value);}
+static void number_field(Writer *w,const char *name,uint32_t value){
+    char number[16];snprintf(number,sizeof(number),"%" PRIu32,value);
+    literal(w,",");quoted(w,name);literal(w,":");literal(w,number);
+}
+static bool diagnostics_valid(const ErrorReportDiagnostics *d){
+    if(!d)return true;
+    if((d->validity&~7u)||d->uptime_seconds>ERROR_REPORT_UPTIME_MAX||
+       d->sd_free_mib>ERROR_REPORT_SD_FREE_MAX||d->linear_free_kib>ERROR_REPORT_LINEAR_FREE_MAX||
+       d->trace_count>ERROR_REPORT_TRACE_MAX)return false;
+    if((!(d->validity&ERROR_REPORT_VALID_UPTIME)&&d->uptime_seconds)||
+       (!(d->validity&ERROR_REPORT_VALID_SD)&&d->sd_free_mib)||
+       (!(d->validity&ERROR_REPORT_VALID_LINEAR)&&d->linear_free_kib))return false;
+    for(unsigned i=0;i<d->trace_count;i++)if((unsigned)d->trace[i]>=ERROR_REPORT_ACTIVITY_COUNT)return false;
+    return true;
+}
+static void diagnostics_json(Writer *w,const ErrorReportDiagnostics *d){
+    literal(w,",\"diagnostics\":{\"validity\":");char validity[4];
+    snprintf(validity,sizeof(validity),"%u",(unsigned)d->validity);literal(w,validity);
+    number_field(w,"uptime_seconds",d->uptime_seconds);number_field(w,"sd_free_mib",d->sd_free_mib);
+    number_field(w,"linear_free_kib",d->linear_free_kib);literal(w,",\"trace\":[");
+    for(unsigned i=0;i<d->trace_count;i++){if(i)literal(w,",");quoted(w,activities[d->trace[i]]);}
+    literal(w,"]}");
+}
 
 bool error_report_json(const ErrorReport *r,char *out,size_t capacity,size_t *written){
     if(written)*written=0;
@@ -66,15 +89,17 @@ bool error_report_json(const ErrorReport *r,char *out,size_t capacity,size_t *wr
     if(!r||!version_valid(r->version)||(unsigned)r->area>=ERROR_REPORT_AREA_COUNT||
        (unsigned)r->model>=ERROR_REPORT_MODEL_COUNT||(unsigned)r->region>=ERROR_REPORT_REGION_COUNT||
        (unsigned)r->autoboot>=ERROR_REPORT_AUTOBOOT_COUNT||(unsigned)r->context>=ERROR_REPORT_CONTEXT_COUNT||
-       (unsigned)r->activity>=ERROR_REPORT_ACTIVITY_COUNT)return false;
+       (unsigned)r->activity>=ERROR_REPORT_ACTIVITY_COUNT||!diagnostics_valid(r->diagnostics))return false;
     const char *description=r->description?r->description:"";
     size_t n;if(!bounded_length(description,ERROR_REPORT_DESCRIPTION_MAX,&n)||!utf8_valid(description,n))return false;
     Writer w={out,capacity<ERROR_REPORT_JSON_CAPACITY?capacity:ERROR_REPORT_JSON_CAPACITY,0,true};
-    literal(&w,"{\"schema\":1");field(&w,"version",r->version);field(&w,"area",areas[r->area]);
+    literal(&w,r->diagnostics?"{\"schema\":2":"{\"schema\":1");field(&w,"version",r->version);field(&w,"area",areas[r->area]);
     char code[16];snprintf(code,sizeof(code),"%" PRId32,r->code);literal(&w,",\"code\":");literal(&w,code);
     field(&w,"model",models[r->model]);field(&w,"region",regions[r->region]);
     field(&w,"autoboot",autoboots[r->autoboot]);field(&w,"context",contexts[r->context]);
-    field(&w,"activity",activities[r->activity]);field(&w,"description",description);literal(&w,"}");
+    field(&w,"activity",activities[r->activity]);field(&w,"description",description);
+    if(r->diagnostics)diagnostics_json(&w,r->diagnostics);
+    literal(&w,"}");
     if(!w.ok){out[0]=0;return false;}
     if(written)*written=w.used;
     return true;

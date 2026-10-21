@@ -578,8 +578,8 @@ static void chromeTop(void){
 }
 
 static void reportHeading(const UiState *s,const char *heading){
- if(s->reportAvailable)title(48,16,13,132,1,heading,false);
- else centered(160,15,18,ink,heading);
+    (void)s;
+ centered(160,15,18,ink,heading);
 }
 
 static void header(const UiState *s){
@@ -598,8 +598,7 @@ static void header(const UiState *s){
 
  key(249,17,"R");
 
- if(s->reportAvailable)title(78,17,12,100,1,s->system,true);
- else centered(160,17,14,ink,s->system);
+ centered(160,17,14,ink,s->system);
 
  C2D_DrawCircleSolid(23,23,0,7,ink);
  C2D_DrawCircleSolid(23,23,0,5,panel);
@@ -1299,10 +1298,11 @@ void ui_draw(const UiState *s){
   char version[64];snprintf(version,sizeof(version),"%s %s",tr("Version"),s->version);
   text(24,91,12,accent,version);
   text(178,92,11,muted,tr("Entwicklungsstand"));
-  rounded(12,127,296,68,10,panel);
-  text(24,137,11,muted,tr("Von VitaRenew für deine Sammlung."));
-  text(24,157,18,accent,"vitarenew.de");
-  text(24,180,10,muted,tr("Aufbereitete Konsolen & Zubehör."));
+  rounded(12,127,296,36,10,panel);
+  text(24,136,13,accent,"vitarenew.de");
+  text(140,138,10,muted,tr("Von VitaRenew für deine Sammlung."));
+  rounded(12,170,296,30,9,accent);
+  centered(160,178,12,RGB(12,35,36),tr("X Problem melden"));
   rounded(12,205,296,30,9,raised);
   centered(160,213,12,ink,tr("A / B Zurück"));
  }
@@ -1373,8 +1373,10 @@ void ui_draw(const UiState *s){
  }else centered(160,108,12,muted,s->stage);}
 
  /* Last overlay: cannot be hidden by another error panel. */
- if(s->reportAvailable&&!s->loading&&!s->reportOpen){
-  rounded(184,12,56,28,7,raised);centered(212,18,10,accent,tr("Melden"));
+ if(s->reportFallback&&!s->loading&&!s->reportOpen){
+  /* Failure banner replaces navigation only while the error is active. */
+  rounded(8,8,266,36,10,panel);text(20,18,13,ink,tr("Problem aufgetreten"));
+  rounded(190,12,80,28,7,raised);centered(230,18,11,accent,tr("Melden"));
  }
  if(s->reportOpen&&!s->loading){
   rect(0,0,320,240,RGB(9,19,29));
@@ -1388,11 +1390,33 @@ void ui_draw(const UiState *s){
   text(16,62,11,ink,detail);
   snprintf(detail,sizeof(detail),"%s / Autoboot: %s",tr(areas[s->reportArea<ERROR_REPORT_AREA_COUNT?s->reportArea:0]),tr(s->reportAutoboot==ERROR_REPORT_AUTOBOOT_ON?"An":s->reportAutoboot==ERROR_REPORT_AUTOBOOT_OFF?"Aus":"Unklar"));
   text(16,78,11,ink,detail);
-  title(16,95,10,288,2,tr("Nur diese Diagnose und dein Text. Keine Spiele, Pfade oder Logs. Empfang: VitaRenew."),false);
+  title(16,95,10,288,2,tr("Automatische Diagnose auch ohne Kommentar. Y zeigt die Daten. Empfang: VitaRenew."),false);
   title(16,121,10,288,1,s->reportDescription&&s->reportDescription[0]?s->reportDescription:tr("Beschreibe kurz, was vor dem Fehler passiert ist."),false);
   rounded(12,138,296,30,8,raised);centered(160,146,12,ink,tr("X Beschreibung bearbeiten"));
   const char *note=s->reportState==REPORT_SENDING?"Wird gesendet...":s->reportState==REPORT_SENT?"Bericht empfangen. Danke!":s->reportState==REPORT_FAILED?"Nicht bestätigt. WLAN prüfen; erneutes Senden kann doppelt ankommen.":s->reportState==REPORT_CANCELLED?"Abgebrochen; Empfang möglicherweise bereits erfolgt.":!s->reportConfigured?"Versand noch nicht eingerichtet. Nichts gesendet.":s->reportConfirmed?"Mit A ausdrücklich an VitaRenew senden.":"Nur senden, wenn du diesen Angaben zustimmst.";
   title(16,174,11,288,2,tr(note),false);
+  if(s->reportDetails&&s->reportDiagnostics){
+   const ErrorReportDiagnostics *d=s->reportDiagnostics;
+   rect(8,55,304,146,RGB(9,19,29));
+   text(16,62,12,accent,tr(s->reportHistorical?"Diagnose vom letzten Fehler":"Diagnose beim Melden"));
+   if(d->validity&ERROR_REPORT_VALID_UPTIME)snprintf(detail,sizeof(detail),tr("Laufzeit: %lu Sekunden"),(unsigned long)d->uptime_seconds);
+   else snprintf(detail,sizeof(detail),"%s",tr("Laufzeit: unbekannt"));
+   text(16,82,11,ink,detail);
+   if(d->validity&ERROR_REPORT_VALID_SD)snprintf(detail,sizeof(detail),tr("SD frei: %lu MiB"),(unsigned long)d->sd_free_mib);
+   else snprintf(detail,sizeof(detail),"%s",tr("SD frei: unbekannt"));
+   text(16,98,11,ink,detail);
+   if(d->validity&ERROR_REPORT_VALID_LINEAR)snprintf(detail,sizeof(detail),tr("Grafikspeicher frei: %lu KiB"),(unsigned long)d->linear_free_kib);
+   else snprintf(detail,sizeof(detail),"%s",tr("Grafikspeicher frei: unbekannt"));
+   text(16,114,11,ink,detail);
+   const char *steps[]={"Unklar","Bibliothek","Spielstart","Installation","Updates prüfen","Download","Komponenten prüfen","DS prüfen","HOME öffnen","POWER-Menü","Theme laden","Cover laden","Import"};
+   char trace[320]={0};size_t used=0;
+   for(unsigned i=0;i<d->trace_count&&i<ERROR_REPORT_TRACE_MAX;i++){
+    unsigned step=(unsigned)d->trace[i];if(step>=ERROR_REPORT_ACTIVITY_COUNT)step=0;
+    int n=snprintf(trace+used,sizeof(trace)-used,"%s%s",i?" > ":"",tr(steps[step]));if(n<0||(size_t)n>=sizeof(trace)-used)break;used+=(size_t)n;
+   }
+   title(16,137,10,288,3,trace,false);
+   title(16,182,10,288,1,tr("Y Zurück zur Beschreibung"),false);
+  }
   rounded(12,205,92,30,8,raised);centered(58,213,11,ink,tr(s->reportState==REPORT_SENDING?"B Abbrechen":"B Zurück"));
   if(s->reportConfigured&&s->reportState!=REPORT_SENDING&&s->reportState!=REPORT_SENT){rounded(112,205,196,30,8,accent);centered(210,213,12,RGB(12,35,36),tr(s->reportConfirmed?"A Jetzt senden":"A Bericht prüfen"));}
  }

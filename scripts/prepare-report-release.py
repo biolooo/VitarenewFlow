@@ -1,4 +1,4 @@
-"""Prepare immutable local 0.12.35 report test assets and four channels; never deploy.
+"""Prepare immutable local 0.12.36 report test assets and four channels; never deploy.
 
 Run only after configuring the approved public HTTPS endpoint and completing
 scripts/verify-local.sh: python scripts/prepare-report-release.py --verification PATH
@@ -16,21 +16,24 @@ from datetime import datetime, timezone
 from urllib.parse import urlsplit
 import zipfile
 
-VERSION = "0.12.35"
-PREVIOUS = "0.12.34"
+VERSION = "0.12.36"
+PREVIOUS = "0.12.35"
 PUBLIC_BASE = "https://biolooo.github.io/VitarenewFlow/updates"
 COMPANIONS = ("VitarenewFlow-Boot.3dsx", "VitarenewFlow-Shortcut.cia", "VitarenewFlow-Copy.gm9")
 DOWNLOADS = ("VitarenewFlow.3dsx", "VitarenewFlow.smdh", *COMPANIONS)
 CHANNELS = ("latest.txt", "VitarenewFlow.unistore", "VitarenewFlow-info.json", "install.html")
 FONT_INPUTS = ("launcher/tools/make-font.py", "launcher/tools/fonts/InterVariable.ttf", "launcher/tools/fonts/Inter-LICENSE.txt")
 
-NOTES = '''# VitarenewFlow 0.12.35 — Fehlerberichte als Testversion
+NOTES = '''# VitarenewFlow 0.12.36 — Fehlerberichte als Testversion
 
-- Fehlerbericht per sichtbarem „Melden“-Button bzw. über Unterstützung öffnen.
+- „Fehler melden“ steht jetzt im Menü; kein zusätzlicher Button neben R.
+- Unerwartete Fehler lassen sich auch ohne vorgegebenen Fehlerdialog über das Menü melden.
+- Technische Momentaufnahme mit begrenzter Laufzeit, freiem SD-/Linear-Speicher und
+  höchstens acht groben Aktivitätsschritten hilft auch ohne Kommentar bei der Diagnose.
 - Technische Angaben prüfen und optional selbst beschreiben, was zuvor geschah.
 - Erst die ausdrückliche Zustimmung und „Senden“ übertragen einen Bericht per HTTPS.
 - Übertragen werden nur Appversion, Fehlerbereich/-code, Modell, Region, Autoboot,
-  Startkontext, eine grobe Aktivitätskategorie und die freiwillige Beschreibung.
+  Startkontext, die begrenzte Diagnosemomentaufnahme und die freiwillige Beschreibung.
 - Keine automatischen Rohlogs, Spieltitel/-pfade, Seriennummern, ROMs, Saves oder
   Schlüssel. Bitte auch in den freiwilligen Text keine privaten Daten eingeben.
 - Kein automatisches Nachsenden. Ein Sendeversuch kann abgebrochen werden.
@@ -40,11 +43,12 @@ NOTES = '''# VitarenewFlow 0.12.35 — Fehlerberichte als Testversion
 ## Auf echter Konsole prüfen
 
 Nach Veröffentlichung: Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen.
-Die installierte Version muss 0.12.35 anzeigen. Kein Konsolenpass ist vorweggenommen.
+Die installierte Version muss 0.12.36 anzeigen. Kein Konsolenpass ist vorweggenommen.
 Pro Fall Modell, Version, Startkontext, Region und Autoboot an/aus festhalten.
 
-1. Deutsch/Englisch: Fehler melden bei Spielstart-, Update-/Komponenten- und
-   SD-/DS-Fehlern sowie über Unterstützung erreichbar; Text und Touchflächen prüfen.
+1. Deutsch/Englisch: „Fehler melden“ im Menü bei Spielstart-, Update-/Komponenten-
+   und SD-/DS-Fehlern sowie ohne speziellen Fehlerdialog erreichbar; Text und Touch prüfen.
+   Der Bereich neben R bleibt frei. Diagnosewerte und eingefrorene Aktivitätsspur prüfen.
    Auf gesunder Konsole keine NAND-Beschädigung oder TWL-Reparatur provozieren.
 2. Vor dem Senden technische Vorschau prüfen, optionalen Text eingeben/ändern.
    Zurück vor der Zustimmung sendet nichts. Ein Abbruch kann bereits gespeicherte Berichte nicht zurücknehmen. Ohne Zustimmung ist kein Versand möglich.
@@ -58,7 +62,7 @@ Pro Fall Modell, Version, Startkontext, Region und Autoboot an/aus festhalten.
    mit Autoboot an/aus prüfen. Ein Bericht darf keine gefährliche Aktion bestätigen.
 7. Eingabegrenze und Umlaute prüfen. Keine echten privaten Daten für Tests verwenden.
 
-Die .34-Verbesserungen bleiben erhalten. Originale HOME-Standardmusik, N64 und
+Die .35-Verbesserungen bleiben erhalten. Originale HOME-Standardmusik, N64 und
 Save-Sync werden mit dieser Version nicht neu implementiert. Keine Stable-1.0-Freigabe.
 Das 3DSX-Update verändert keine Spiele, Saves oder Bootkonfiguration. Nicht während
 der Installation ausschalten oder SD entfernen; vorherige 3DSX als manuellen Rückweg
@@ -71,7 +75,7 @@ Berichtformat/UTF-8/Puffergrenzen, Zustimmung/Touch, HTTPS-Transport und bestehe
 Komponenten-/TWL-/HOME-/POWER-/Suche-/Banner-/Menü-Fixtures. Hostmocks ersetzen keine
 echte OS-/WLAN-/Konsolenabnahme. Receiver-Unittests separat ausführen.
 
-Boot-3DSX, Shortcut-CIA und GM9-Skript stammen unverändert aus .34. Es gibt keine
+Boot-3DSX, Shortcut-CIA und GM9-Skript stammen unverändert aus .35. Es gibt keine
 neue Boot-/NAND-Funktion. Das Quellpaket enthält aktuelle Launcherquellen, Scripts,
 Tests, Lizenzen, Projektdokumentation und den getrennten Empfangsdienst samt Compose.
 Empfangsdienst nicht ungeprüft öffentlich starten. SDK/Emulator-SDKs separat;
@@ -80,7 +84,7 @@ GPL-3.0-only für eigenen Code; Fremdkomponenten behalten ihre Bedingungen.
 Keine Spiele, Saves, Schlüssel, Datenbanken, private Musik oder lokalen Nutzerdaten.
 '''
 
-BUILD_NOTES = '''# Build this exact 0.12.35 source package
+BUILD_NOTES = '''# Build this exact 0.12.36 source package
 
 Use the pinned devkitARM linux/amd64 chroot in docs/PC2-SETUP.md with host GCC,
 UBSan, Python and zlib1g-dev. Extract into a NEW directory inside that chroot,
@@ -160,7 +164,7 @@ def check_versions(root):
     for name, pattern in checks.items():
         text = read_regular(root / name).decode("utf-8")
         require(re.search(pattern, text), "Runtime version mismatch: " + name)
-        require(not re.search(r'(?:RUNNING_VERSION|\.version)\s*=?\s*"0\.12\.(?:33|34)"', text), "Stale runtime version: " + name)
+        require(not re.search(r'(?:RUNNING_VERSION|\.version)\s*=?\s*"0\.12\.(?:33|34|35)"', text), "Stale runtime version: " + name)
     log = read_regular(root / "launcher/source/app_log.c").decode("utf-8")
     require("Session VitarenewFlow " + VERSION in log, "Handoff log version mismatch")
     header = read_regular(root / "launcher/source/report_transport.h").decode("utf-8")
@@ -242,20 +246,20 @@ def prepare(root, verification):
     require(len(smdh) == 14016 and smdh[:4] == b"SMDH" and VERSION.encode("utf-16le") in smdh, "Invalid SMDH/version")
     before = {name: read_regular(updates / name) for name in CHANNELS}
     latest = dict(line.split("=", 1) for line in before["latest.txt"].decode("ascii").splitlines()[1:] if "=" in line)
-    require(before["latest.txt"].startswith(b"VFUPDATE1") and latest.get("version") == PREVIOUS, "Expected .34 updater channel")
+    require(before["latest.txt"].startswith(b"VFUPDATE1") and latest.get("version") == PREVIOUS, "Expected .35 updater channel")
     store = json.loads(before["VitarenewFlow.unistore"].decode("utf-8-sig"))
     require(json.loads(before["VitarenewFlow-info.json"].decode("utf-8-sig")) == store["storeInfo"], "Info/UniStore channels disagree")
     require(len(store["storeContent"]) == 1, "Unexpected store entries")
     entry = store["storeContent"][0]
-    require(entry["info"]["version"] == PREVIOUS, "Expected .34 store entry")
+    require(entry["info"]["version"] == PREVIOUS, "Expected .35 store entry")
     revision = store["storeInfo"]["revision"]
     require(type(revision) is int and revision >= 0, "Invalid UniStore revision")
     old_release = updates / PREVIOUS
     old_manifest = json.loads(read_regular(old_release / "SHA256.json"))
     expected_artifacts = set(DOWNLOADS) | {"FEATURES-DE.md", "README.md", "VitarenewFlow-source.zip"}
-    require(set(old_manifest) == expected_artifacts, "Invalid .34 manifest")
+    require(set(old_manifest) == expected_artifacts, "Invalid .35 manifest")
     for name, sha in old_manifest.items():
-        require(digest(read_regular(old_release / name)) == sha, "Existing .34 artifact hash mismatch: " + name)
+        require(digest(read_regular(old_release / name)) == sha, "Existing .35 artifact hash mismatch: " + name)
     assets = {"VitarenewFlow.3dsx": binary, "VitarenewFlow.smdh": smdh,
               "README.md": NOTES.encode("utf-8"), "FEATURES-DE.md": NOTES.encode("utf-8")}
     for name in COMPANIONS:
@@ -265,7 +269,7 @@ def prepare(root, verification):
     assets["SHA256.json"] = (json.dumps(manifest, indent=2) + "\n").encode("ascii")
     store["storeInfo"]["revision"] = revision + 1
     entry["info"]["version"] = VERSION
-    entry["info"]["description"] = "Opt-in error reports with technical preview, optional description and verified HTTPS delivery (DE/EN)."
+    entry["info"]["description"] = "Menu-based opt-in error reports, fallback reporting and frozen bounded technical diagnostics (DE/EN)."
     entry["info"]["last_updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     install = entry["Installieren / Install"]
     downloads = [action for action in install["script"] if action.get("type") == "downloadFile"]
@@ -281,7 +285,7 @@ def prepare(root, verification):
     require(seen == set(DOWNLOADS), "Incomplete installation downloads")
     install["size"] = str(sum(len(assets[name]) for name in DOWNLOADS)) + " B"
     html = before["install.html"]
-    require(PREVIOUS.encode() in html, "Installation page does not reference .34")
+    require(PREVIOUS.encode() in html, "Installation page does not reference .35")
     channels = {
         "latest.txt": ("VFUPDATE1\nversion=" + VERSION + "\nsize=" + str(len(binary)) + "\nsha256=" + digest(binary)
                        + "\nurl=" + PUBLIC_BASE + "/" + VERSION + "/VitarenewFlow.3dsx\n").encode("ascii"),
@@ -306,7 +310,7 @@ def prepare(root, verification):
             output.write(data)
         os.replace(staged, updates / name)
     print("PREPARED locally:", release)
-    print("Nine assets and four .35 channels; no push, publication or hardware acceptance performed.")
+    print("Nine assets and four .36 channels; no push, publication or hardware acceptance performed.")
 
 
 def main():

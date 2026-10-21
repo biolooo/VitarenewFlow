@@ -1,5 +1,19 @@
 # Nutzerinitiierte Fehlerberichte
 
+## Freigegebene Bereitstellung .36 — 21.10.2026
+
+Nutzer hat aktuellen Download einschließlich Veröffentlichung ausdrücklich genehmigt. Schema-2-Receiver 0.2.0 läuft gesund am bestehenden Endpunkt; Schema 1 und Schema 2 mit leerem Kommentar öffentlich per HTTPS/App-CA angenommen (201) und SQLite-Speicherung geprüft. Vorherige Konfiguration und Image 0.1.0 bleiben als Rückweg erhalten. Paket .36 wird aus verification-20261021-205317 veröffentlicht; abschließender öffentlicher Bytenachweis folgt separat. Keine .36-Hardwareabnahme.
+
+HOME-Shortcut und Boothelfer laden `/3ds/3ds-library/3ds-library.3dsx`; OTA ersetzt genau diese Datei. Der korrekte Shortcut startet daher neue Versionen ohne neue CIA-Installation. Installation über den aktuellen UniStore, nicht über historische vollständige native CIA-Builds. Spieleinstallation DS/3DS und HOME-Icon-Hardwareprüfung sind im TODO erfasst; keine neue Spielequelle umgesetzt.
+
+## .36: aktueller lokaler Entwicklungsstand
+
+Der normale Zugang liegt nun im Menü Über & Unterstützung → Problem melden, per Touch oder X. Der bisherige dauerhafte Headerbutton neben R entfällt. Bei erkannten unerwarteten Fehlern wird zusätzlich ein Meldebutton angezeigt; während kritischer Übergaben bleibt er gesperrt. Ein kompletter Absturz kann keinen Dialog mehr anzeigen.
+
+Schema 2 erweitert die bestehenden strukturierten Daten um Laufzeit in Sekunden, freien SD-Speicher in MiB, freien linearen RAM in KiB und höchstens acht Aktionskategorien. Verfügbarkeitsbits unterscheiden unbekannte Messungen von null. Bei Fehlern werden Werte und Fehlerbereich/-code gemeinsam eingefroren, bei manuellen Meldungen ohne vorherigen Fehler aktuell gemessen. Es werden keine Dateipfade, Spieltitel, Rohlogs oder Gerätekennungen erfasst. Ein optionaler Kommentar ist dafür nicht erforderlich. Y zeigt die technischen Daten vor dem zweistufig bestätigten Versand; automatische Sammlung bedeutet keinen automatischen Versand.
+
+C-Formatter und neuer Receiver unterstützen Schema 2; der Receiver akzeptiert weiterhin Schema 1. 239 C-JSON-Vektoren und 26 Receiver-Tests lokal geprüft. Nicht aktiviert: der laufende öffentliche Receiver entspricht .35 und muss vor .36-Testversand aktualisiert werden. Keine .36-Veröffentlichung und keine .36-Konsolenabnahme. Die nachstehenden Header-/Schema-1-Angaben dokumentieren .35.
+
 Auftrag 21.10.2026. Entwicklungsbasis ist GitHub-main `815da5a` mit den Änderungen von PC 2 und Launcher 0.12.34. Der ältere PC-1-main wurde nicht überschrieben. Entwicklung isoliert im angehängten Worktree `error-reports`; Launcherstand 0.12.35 und OTA-Testveröffentlichung vom Nutzer freigegeben. Noch kein Konsolentest.
 
 ## Bedienung und Daten

@@ -1,7 +1,7 @@
 services:
   receiver:
     build: .
-    image: vitarenew-flow-reports:0.1.0
+    image: vitarenew-flow-reports:0.2.0
     user: "${FLOW_REPORT_UID:-65532}:${FLOW_REPORT_GID:-65532}"
     restart: unless-stopped
     ports:

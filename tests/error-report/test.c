@@ -64,6 +64,53 @@ int main(void){
         description[length]=0;r=valid_report();r.description=description;
         assert(error_report_json(&r,out,sizeof(out),&n));puts(out);
     }
+    /* NULL is still exactly schema 1; an explicit empty snapshot is schema 2. */
+    ErrorReportDiagnostics d={0};r=valid_report();r.diagnostics=&d;
+    assert(error_report_json(&r,out,sizeof(out),&n));assert(strstr(out,"\"schema\":2"));puts(out);
+    d=(ErrorReportDiagnostics){.uptime_seconds=ERROR_REPORT_UPTIME_MAX,.sd_free_mib=ERROR_REPORT_SD_FREE_MAX,
+        .linear_free_kib=ERROR_REPORT_LINEAR_FREE_MAX,.validity=7,.trace_count=ERROR_REPORT_TRACE_MAX,
+        .trace={ERROR_REPORT_BROWSING,ERROR_REPORT_CHECKING_UPDATE,ERROR_REPORT_DOWNLOADING,
+                ERROR_REPORT_CHECKING_COMPONENTS,ERROR_REPORT_CHECKING_DS,ERROR_REPORT_OPENING_HOME,
+                ERROR_REPORT_LOADING_THEME,ERROR_REPORT_STARTING_GAME}};
+    memset(description,1,ERROR_REPORT_DESCRIPTION_MAX);description[ERROR_REPORT_DESCRIPTION_MAX]=0;r.description=description;
+    assert(error_report_json(&r,out,sizeof(out),&n));assert(n<ERROR_REPORT_JSON_CAPACITY);puts(out);
+    required=n+1;
+    for(size_t capacity=1;capacity<=required;capacity++){
+        unsigned char guarded[ERROR_REPORT_JSON_CAPACITY+2];memset(guarded,0xa5,sizeof(guarded));size_t written=99;
+        bool ok=error_report_json(&r,(char*)guarded+1,capacity,&written);
+        assert(guarded[0]==0xa5&&guarded[capacity+1]==0xa5);
+        if(capacity<required)assert(!ok&&!guarded[1]&&!written);
+        else assert(ok&&written==required-1&&!memcmp(guarded+1,out,required));
+    }
+    /* Every validity combination is explicit; unknown counters cannot leak. */
+    r.description=NULL;
+    for(unsigned flags=0;flags<8;flags++){
+        d.validity=(uint8_t)flags;d.uptime_seconds=(flags&1)?ERROR_REPORT_UPTIME_MAX:0;
+        d.sd_free_mib=(flags&2)?ERROR_REPORT_SD_FREE_MAX:0;d.linear_free_kib=(flags&4)?ERROR_REPORT_LINEAR_FREE_MAX:0;
+        assert(error_report_json(&r,out,sizeof(out),&n));puts(out);
+    }
+    for(unsigned activity=0;activity<ERROR_REPORT_ACTIVITY_COUNT;activity++){
+        d=(ErrorReportDiagnostics){.trace_count=1,.trace={(ErrorReportActivity)activity}};
+        assert(error_report_json(&r,out,sizeof(out),&n));puts(out);
+    }
+    d=(ErrorReportDiagnostics){.validity=8};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=255};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=1,.uptime_seconds=ERROR_REPORT_UPTIME_MAX+1};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=2,.sd_free_mib=ERROR_REPORT_SD_FREE_MAX+1};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=4,.linear_free_kib=ERROR_REPORT_LINEAR_FREE_MAX+1};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=7,.uptime_seconds=UINT32_MAX};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=7,.sd_free_mib=UINT32_MAX};rejected(&r);
+    d=(ErrorReportDiagnostics){.validity=7,.linear_free_kib=UINT32_MAX};rejected(&r);
+    d=(ErrorReportDiagnostics){.uptime_seconds=1};rejected(&r);
+    d=(ErrorReportDiagnostics){.sd_free_mib=1};rejected(&r);
+    d=(ErrorReportDiagnostics){.linear_free_kib=1};rejected(&r);
+    d=(ErrorReportDiagnostics){.trace_count=ERROR_REPORT_TRACE_MAX+1};rejected(&r);
+    d=(ErrorReportDiagnostics){.trace_count=255};rejected(&r);
+    d=(ErrorReportDiagnostics){.trace_count=1,.trace={(ErrorReportActivity)-1}};rejected(&r);
+    d=(ErrorReportDiagnostics){.trace_count=1,.trace={ERROR_REPORT_ACTIVITY_COUNT}};rejected(&r);
+    d=(ErrorReportDiagnostics){.trace_count=0,.trace={(ErrorReportActivity)-1}};
+    assert(error_report_json(&r,out,sizeof(out),&n)); /* Unused trace slots are never serialized. */
     fputs("PASS: bounded JSON, UTF-8, consent-only data shape, enums, failure clearing and buffer canaries\n",stderr);
+    fputs("PASS: schema 2 bounded snapshots, eight validity combinations, trace allowlist, schema 1 compatibility\n",stderr);
     return 0;
 }

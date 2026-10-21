@@ -1,5 +1,9 @@
 # Entscheidungen und Quellen
 
+## Reportverbesserung .36 — 21.10.2026
+
+Nutzerauftrag: Reportzugang im passenden Menü, zusätzlicher Fallback bei unerwarteten Fehlern und Diagnose unabhängig vom Kommentar. Umsetzung verwendet begrenzte strukturierte RAM-Snapshots statt Rohlogs, um den Fehlerzeitpunkt zu erhalten und private Titel/Pfade auszuschließen. Regelmäßiger Zugang im Unterstützungsmenü; kritische Übergaben bleiben geschützt. Schema 2 ist im Receiver abwärtskompatibel, benötigt vor Clientfreigabe ein eigenes Deployment mit Nachweis. Lokale Implementierung ist keine Veröffentlichung oder Hardwareabnahme.
+
 Backlogauftrag 21.10.2026: Startanimation einschließlich Toggle/Mindestwartezeit entfernt; die ausschließlich dafür verwendete alte appearance.txt wird erhalten und ignoriert. Fortschritts-/Seed-/HOME-Anzeigen und Originalbanner sind davon unabhängig. Updatehinweise stammen aus bekannten lokalen versionsgebundenen Daten, da VFUPDATE1 keine Release-Notes überträgt; keine spekulativen Hinweise zu neuen Remoteversionen. Nutzer vertagte N64 bis zu späteren Logs und beließ Save-/PC-Sync/Konvertierung/Modul-Saves offen. Hardwareabnahme und originale HOME-Musik bleiben offen. Nachweise: BACKLOG-WORK.md.
 
 PC-2-Einrichtung 21.10.2026: SDK-Version aus der Übergabe beibehalten und per Digest geprüft als separaten Chroot in WSL2 eingerichtet. Ubuntu/SDK liegen auf E: wegen begrenztem Platz auf C:. Keine SDK-Aktualisierung und keine Übernahme privater PC-1-Daten. Nativer Build und Hostfixtures bestätigen lokale Entwicklungsfähigkeit, nicht Konsolenfunktion. Befehle/Nachweise: [PC2-SETUP.md](PC2-SETUP.md).

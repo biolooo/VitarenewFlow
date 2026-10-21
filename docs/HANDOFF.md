@@ -1,5 +1,19 @@
 # Flow — Einstieg für den Orchestrator
 
+## Freigegebene Bereitstellung .36 — 21.10.2026
+
+Nutzer hat aktuellen Download einschließlich Veröffentlichung ausdrücklich genehmigt. Schema-2-Receiver 0.2.0 läuft gesund am bestehenden Endpunkt; Schema 1 und Schema 2 mit leerem Kommentar öffentlich per HTTPS/App-CA angenommen (201) und SQLite-Speicherung geprüft. Vorherige Konfiguration und Image 0.1.0 bleiben als Rückweg erhalten. Paket .36 wird aus verification-20261021-205317 veröffentlicht; abschließender öffentlicher Bytenachweis folgt separat. Keine .36-Hardwareabnahme.
+
+HOME-Shortcut und Boothelfer laden `/3ds/3ds-library/3ds-library.3dsx`; OTA ersetzt genau diese Datei. Der korrekte Shortcut startet daher neue Versionen ohne neue CIA-Installation. Installation über den aktuellen UniStore, nicht über historische vollständige native CIA-Builds. Spieleinstallation DS/3DS und HOME-Icon-Hardwareprüfung sind im TODO erfasst; keine neue Spielequelle umgesetzt.
+
+## Aktuell: lokale Weiterentwicklung 0.12.36
+
+Der Nutzer hat einen Testbericht auf .35 abgeschickt; dessen Empfang wurde bestätigt (New 3DS XL, EUR, Homebrew, Autoboot an). Das ist keine vollständige Konsolenabnahme.
+
+.36 verschiebt den regulären Zugang nach Menü → Über & Unterstützung → Problem melden (Touch oder X). Unerwartete Fehler erhalten einen direkten Fallbackbutton. Technische Diagnose wird unabhängig vom optionalen Kommentar erfasst und mit Y vor dem bewussten Versand angezeigt. Fehlerbereich/-code und Diagnose bleiben gemeinsam am Fehlerzeitpunkt eingefroren.
+
+Stand: lokal implementiert, noch nicht veröffentlicht oder auf echter Konsole getestet. Der neue abwärtskompatible Schema-2-Receiver muss vor .36-Gerätetest/Veröffentlichung aktualisiert und öffentlich geprüft werden; der laufende .35-Receiver akzeptiert nur Schema 1. Desktop .4.1 und öffentliche .35-Pakete bleiben unverändert. Die folgenden .35-Angaben sind historischer Veröffentlichungsstand.
+
 Aktueller Stand 21.10.2026: verbindliche Integrationswurzel ist C:/Users/subje/Documents/Code/vitarenew-flow. Launcher 0.12.35 als öffentlich bytegeprüfter OTA-Teststand, Desktop 0.4.1. Keine Hardwareabnahme vorweggenommen.
 
 ## Aktiver Auftrag: Fehlerberichte (21.10.2026)

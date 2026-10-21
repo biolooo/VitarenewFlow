@@ -1,5 +1,17 @@
 # Projektstatus und Abnahme
 
+## Freigegebene Bereitstellung .36 — 21.10.2026
+
+Nutzer hat aktuellen Download einschließlich Veröffentlichung ausdrücklich genehmigt. Schema-2-Receiver 0.2.0 läuft gesund am bestehenden Endpunkt; Schema 1 und Schema 2 mit leerem Kommentar öffentlich per HTTPS/App-CA angenommen (201) und SQLite-Speicherung geprüft. Vorherige Konfiguration und Image 0.1.0 bleiben als Rückweg erhalten. Paket .36 wird aus verification-20261021-205317 veröffentlicht; abschließender öffentlicher Bytenachweis folgt separat. Keine .36-Hardwareabnahme.
+
+HOME-Shortcut und Boothelfer laden `/3ds/3ds-library/3ds-library.3dsx`; OTA ersetzt genau diese Datei. Der korrekte Shortcut startet daher neue Versionen ohne neue CIA-Installation. Installation über den aktuellen UniStore, nicht über historische vollständige native CIA-Builds. Spieleinstallation DS/3DS und HOME-Icon-Hardwareprüfung sind im TODO erfasst; keine neue Spielequelle umgesetzt.
+
+## Aktueller Auftrag: Reportbedienung und Diagnose .36
+
+Lokal umgesetzt: regulärer Report im Unterstützungsmenü statt neben R; direkter Fallback bei unerwarteten Fehlern; automatische begrenzte Diagnose auch ohne Kommentar. Diagnose enthält Laufzeit, freien SD-Speicher, freien linearen RAM und die letzten acht erlaubten Aktionskategorien. Keine Namen, Pfade, Titel, Rohlogs oder eindeutigen Gerätekennungen. Fehlerdaten bleiben am Ereignis eingefroren; Y zeigt die Vorschau. Versand erfordert weiterhin bewusste Zustimmung.
+
+Nutzer hat .35-Testversand bestätigt; realer Eingang verifiziert. Keine vollständige Hardwareabnahme. .36 ist nicht veröffentlicht; Schema-2-Receiverupgrade und öffentliche Ende-zu-Ende-Prüfung stehen vor dem Gerätetest aus. Frischer nativer .36-Build und alle vorgesehenen Hostprüfungen bestanden: `.test-build/verification-20261021-205317`. Receiver-Suite unter Linux: 26 Tests bestanden. Lesender Abschlussreview ohne Blockade; präzise gespeicherte Fehlerdaten werden beim Öffnen beibehalten. Windows-Python zeigte bei der absichtlich ungültigen Chunked-Anfrage einen Verbindungsabbruch statt auslesbarer HTTP400; die Linux-Zielumgebung besteht diesen Test. Changeloghinweise .36 DE/EN manuell aktualisiert; automatische Generierung bleibt der vorgemerkte TODO.
+
 Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist dieses Repository. Launcher 0.12.33 und Desktop 0.4.1; alte Kopien unverändert. Lokale Migrationsprüfungen stehen in LOCAL-VERIFICATION.md, Quelle/Sicherung in MIGRATION.md. Hardwareabnahmen bleiben wie unten dokumentiert offen.
 
 ## Fehlerberichte — aktiver Entwicklungsstand
@@ -36,6 +48,12 @@ Releasecommit 2ada1cd, Pages-Lauf 39651893937 erfolgreich. Alle neun .35-Paketda
 - Modulerkennung und geführte GodMode9-Kopie mit geprüftem Beleg. Desktop-Import und älterer optionaler Windows-Paketinstaller. Modul-Saves und PC-Sync sind nicht implementierter Scope.
 
 ## Offene Punkte und Prioritäten (Vorschlag, kein Auftrag)
+
+- **TODO Spieleinstallation (Nutzer 21.10.2026):** DS- und 3DS-Spiele direkt aus dem Flow-Menü auf der Konsole einrichten/installieren. Bestehende lokale CIA-Installation berücksichtigen; DS-Dateistart und echte 3DS-Installation getrennt spezifizieren. Quelle, Dateiformate und Speicherorte vor Umsetzung klären. Dieser Eintrag beauftragt noch keine neue Downloadquelle oder Spieleverteilung.
+- **TODO HOME-Starticon prüfen/abnehmen (Nutzer 21.10.2026):** installierter HOME-Shortcut soll den aktuellen Homebrew-Launcher von der SD laden, damit OTA ohne Neuinstallation des Icons greift. Bestehenden Boot-/CIA-Pfad und aktuelle Installation prüfen; Konsolenabnahme nach Update offen.
+
+
+- **TODO Changelog/Update-Neuerungen (Nutzerauftrag 21.10.2026):** Changelog bei jeder nutzerrelevanten Änderung aktualisieren. Daraus für jede Updateversion automatisch ein bis drei kurze, zutreffende Stichpunkte erzeugen und im Updatebildschirm zur angebotenen Zielversion anzeigen (DE/EN). Eine gemeinsame versionierte Quelle für Appanzeige und Releasehinweise verwenden; keine veralteten fest eingebauten Texte oder erfundenen Änderungen. Paketierung soll bei fehlenden bzw. nicht zur Zielversion passenden Hinweisen abbrechen. Bisherige .35-Stichpunkte sind noch manuell hinterlegt; Automatisierung ist als nächster Featurepunkt vorgemerkt, hier noch nicht implementiert.
 
 1. **Migration lokal durchgeführt:** verbindliche Basis Launcher .33/Desktop .4.1, Sicherung und neue isolierte Prüfbefehle vorhanden; keine Featurearbeit automatisch gestartet. Nachweise in MIGRATION und LOCAL-VERIFICATION.
 2. **P1 Hardwarefeedback .27–.33:** ausdrücklich ausstehend. Primärmodell New 3DS XL; Zweitkonsole unbekannt. Keine weitere Featurekette als Ersatz für Abnahme.

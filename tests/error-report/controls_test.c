@@ -2,9 +2,13 @@
 #include <assert.h>
 #include <stdio.h>
 int main(void){
- assert(report_controls_hit(184,12)&&report_controls_hit(239,39));
- assert(!report_controls_hit(183,12)&&!report_controls_hit(240,39)&&!report_controls_hit(184,40));
- for(int x=244;x<274;x++)assert(!report_controls_hit(x,20)); /* Existing R remains reachable. */
+ assert(report_controls_hit(190,12)&&report_controls_hit(269,39));
+ assert(!report_controls_hit(189,12)&&!report_controls_hit(270,39)&&!report_controls_hit(190,40));
+ assert(report_controls_support_hit(12,170)&&report_controls_support_hit(307,199));
+ assert(!report_controls_support_hit(12,205)&&!report_controls_support_hit(308,180));
+ assert(!report_controls_fallback(true,false,false)); /* Ordinary R/header never intercepted. */
+ assert(report_controls_fallback(true,true,false)&&report_controls_fallback(true,false,true));
+ assert(!report_controls_fallback(false,true,true)); /* Critical system/installation state wins. */
  for(int x=278;x<312;x++)assert(!report_controls_hit(x,20)); /* Settings/close untouched. */
  assert(report_controls_action(REPORT_IDLE,true,false,false,true,false)==REPORT_ACTION_REVIEW);
  assert(report_controls_action(REPORT_IDLE,true,true,false,true,false)==REPORT_ACTION_SEND);

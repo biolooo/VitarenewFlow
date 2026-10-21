@@ -27,6 +27,7 @@ unsigned settings_menu_parent_row(unsigned p){return p==MENU_PERSONAL?0:p==MENU_
 static const char *releaseNotes33[]={"- Desktop erkennen und reparieren","- DS-Laufzeit erneut prüfen","- Suche mit Wortvorschlägen"};
 static const char *releaseNotes34[]={"- Spielstart ohne Startanimation","- Über & Unterstützung erneuert","- Neuerungen ausklappbar"};
 static const char *releaseNotes35[]={"- Probleme bewusst an VitaRenew melden","- Diagnose ohne Spiele oder Rohlogs","- Beschreibung vor dem Senden prüfen"};
-unsigned settings_release_note_count(const char *version){return version&&(!strcmp(version,"0.12.33")||!strcmp(version,"0.12.34")||!strcmp(version,"0.12.35"))?3:0;}
-const char *settings_release_note(const char *version,unsigned row){return row<settings_release_note_count(version)?(!strcmp(version,"0.12.35")?releaseNotes35:!strcmp(version,"0.12.34")?releaseNotes34:releaseNotes33)[row]:NULL;}
+static const char *releaseNotes36[]={"- Problem melden im Unterstützungsmenü","- Direkte Meldung bei unerwarteten Fehlern","- Automatische technische Fehlerdiagnose"};
+unsigned settings_release_note_count(const char *version){return version&&(!strcmp(version,"0.12.33")||!strcmp(version,"0.12.34")||!strcmp(version,"0.12.35")||!strcmp(version,"0.12.36"))?3:0;}
+const char *settings_release_note(const char *version,unsigned row){return row<settings_release_note_count(version)?(!strcmp(version,"0.12.36")?releaseNotes36:!strcmp(version,"0.12.35")?releaseNotes35:!strcmp(version,"0.12.34")?releaseNotes34:releaseNotes33)[row]:NULL;}
 bool settings_update_notes_hit(int x,int y){return x>=20&&x<300&&y>=172&&y<187;}

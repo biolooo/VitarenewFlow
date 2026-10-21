@@ -11,7 +11,8 @@
 #include "report_transport.h"
 typedef struct { const char *name; const char *cover; const char *backend; bool native; const uint16_t *icon; const char *banner; bool pending; } UiCard;
 typedef struct {
-    bool reportAvailable,reportOpen,reportConfirmed,reportConfigured;
+    bool reportAvailable,reportOpen,reportConfirmed,reportConfigured,reportFallback,reportDetails,reportHistorical;
+    const ErrorReportDiagnostics *reportDiagnostics;
     ReportSendState reportState;const char *reportDescription;ErrorReportArea reportArea;int32_t reportCode;
     ErrorReportModel reportModel;ErrorReportRegion reportRegion;ErrorReportAutoboot reportAutoboot;ErrorReportContext reportContext;
     const char *system; const char *status; const char *version;

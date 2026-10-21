@@ -19,12 +19,13 @@ int main(void){
     assert(settings_menu_hit(311,100,MENU_PERSONAL)==-1);
     assert(settings_menu_parent_row(MENU_PERSONAL)==0);
     assert(settings_release_note_count(NULL)==0);
-    assert(settings_release_note_count("0.12.36")==0);
-    assert(settings_release_note("0.12.36",0)==NULL);
+    assert(settings_release_note_count("0.12.37")==0);
+    assert(settings_release_note("0.12.37",0)==NULL);
     assert(settings_release_note_count("0.12.33")==3);
     assert(settings_release_note("0.12.33",3)==NULL);
     assert(settings_release_note_count("0.12.34")==3);
     assert(settings_release_note_count("0.12.35")==3);
+    assert(settings_release_note_count("0.12.36")==3);
     assert(settings_release_note("0.12.35",3)==NULL);
     assert(settings_release_note("0.12.34",3)==NULL);
     assert(strcmp(settings_release_note("0.12.33",0),settings_release_note("0.12.34",0)));
@@ -54,6 +55,7 @@ int main(void){
     l10n_load(true);
     for(unsigned i=0;i<sizeof(de)/sizeof(de[0]);i++)assert(strcmp(tr(de[i]),de[i]));
     for(unsigned i=0;i<settings_release_note_count("0.12.33");i++)assert(strcmp(tr(settings_release_note("0.12.33",i)),settings_release_note("0.12.33",i)));
+    for(unsigned i=0;i<settings_release_note_count("0.12.36");i++)assert(strcmp(tr(settings_release_note("0.12.36",i)),settings_release_note("0.12.36",i)));
     for(unsigned i=0;i<settings_release_note_count("0.12.35");i++)assert(strcmp(tr(settings_release_note("0.12.35",i)),settings_release_note("0.12.35",i)));
     for(unsigned i=0;i<settings_release_note_count("0.12.34");i++)assert(strcmp(tr(settings_release_note("0.12.34",i)),settings_release_note("0.12.34",i)));
     l10n_load(false);
