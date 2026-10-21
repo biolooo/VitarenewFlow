@@ -1,0 +1,63 @@
+{
+  "version": "0.12.37",
+  "checked_at": "2026-10-21T19:24:43.270731+00:00",
+  "files": {
+    "0.12.37/FEATURES-DE.md": {
+      "size": 4194,
+      "sha256": "36e1271d41ae277893f3ee2cfeb1922c8d65555232a1de664dbc6cb9aba400da"
+    },
+    "0.12.37/README.md": {
+      "size": 4194,
+      "sha256": "36e1271d41ae277893f3ee2cfeb1922c8d65555232a1de664dbc6cb9aba400da"
+    },
+    "0.12.37/VitarenewFlow-Boot.3dsx": {
+      "size": 116260,
+      "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+    },
+    "0.12.37/VitarenewFlow-Copy.gm9": {
+      "size": 3092,
+      "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+    },
+    "0.12.37/VitarenewFlow-Shortcut.cia": {
+      "size": 164800,
+      "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+    },
+    "0.12.37/VitarenewFlow-source.zip": {
+      "size": 1955807,
+      "sha256": "d5ea0c0e4ab10d26793c6283e786c7cbb1f677c8dd9731ea3175914494cb2fe2"
+    },
+    "0.12.37/VitarenewFlow.3dsx": {
+      "size": 1618772,
+      "sha256": "aa3ae6cca5f87973d4f52bd57cfc839565e40e293f170ad146c705e35b1768a3"
+    },
+    "0.12.37/VitarenewFlow.smdh": {
+      "size": 14016,
+      "sha256": "5362984e5d338898eb815107ad50b09240f48de2ddbb2c2c0b95b7bcbc382d8a"
+    },
+    "0.12.37/SHA256.json": {
+      "size": 749,
+      "sha256": "03f568221365b714f31c78fc7048082c165f37b802a431948b0188ee0ecd77fc"
+    },
+    "latest.txt": {
+      "size": 190,
+      "sha256": "f930348179aef16e899c9eedd42be602061e0ed69c6197ecb62eab798b635513"
+    },
+    "VitarenewFlow.unistore": {
+      "size": 4317,
+      "sha256": "f49b5cfbc1ba02039e81a6ca3a6a3736c12393711111073b5b4a9c54e140c325"
+    },
+    "VitarenewFlow-info.json": {
+      "size": 516,
+      "sha256": "37e65e05b67ec38f746c62825d7743ee1a714796d45ed1a27ea2671f98f3d3a0"
+    },
+    "install.html": {
+      "size": 1779,
+      "sha256": "87975a84802659a21bd8051d8a0b9369742fc1acb1f7beeeb8ca1612f76ac638"
+    }
+  },
+  "release_commit": "6443406",
+  "pages_run": 39661260033,
+  "conclusion": "success",
+  "hardware_acceptance": false,
+  "exact_source_rebuild": "3DSX and SMDH byte-identical"
+}

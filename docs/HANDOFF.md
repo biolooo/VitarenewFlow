@@ -1,5 +1,7 @@
 # Flow — Einstieg für den Orchestrator
 
+Veröffentlichung .37 bestätigt: Releasecommit6443406, Pages-Lauf39661260033 erfolgreich. Alle neun Paketdateien und vier Kanäle öffentlich bytegleich geprüft mit dem neuen Release-Skill. Nachweis: [0.12.37](release-evidence/0.12.37.json). Keine .37-Hardwareabnahme. Persönlicher Skill `flow-release` auf PC1 installiert und validiert; Repositoryvorlage für PC2 unter skills/flow-release, in AGENTS verankert. Die folgenden Vorbereitungsangaben sind datierter Verlauf.
+
 ## Freigegebener Layoutrelease 0.12.37
 
 Nutzer hat die Veröffentlichung der About-Layoutkorrektur ausdrücklich beauftragt. Änderungen: zentrierte übersichtliche Infokarte, Website und VitaRenew-Zeile untereinander, dezente eigene Reportzeile mit X-Tastenmarkierung. Touchflächen bleiben unverändert. Version 0.12.37, Desktop 0.4.1 unverändert. Native Prüfung und exaktes Quellpaket werden vor Veröffentlichung frisch geprüft; öffentliche Bytes danach separat bestätigt. Keine .37-Konsolenabnahme.

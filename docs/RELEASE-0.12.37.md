@@ -1,5 +1,7 @@
 # VitarenewFlow 0.12.37
 
+Veröffentlichung .37 bestätigt: Releasecommit6443406, Pages-Lauf39661260033 erfolgreich. Alle neun Paketdateien und vier Kanäle öffentlich bytegleich geprüft mit dem neuen Release-Skill. Nachweis: [0.12.37](release-evidence/0.12.37.json). Keine .37-Hardwareabnahme. Persönlicher Skill `flow-release` auf PC1 installiert und validiert; Repositoryvorlage für PC2 unter skills/flow-release, in AGENTS verankert. Die folgenden Vorbereitungsangaben sind datierter Verlauf.
+
 - Übersichtlichere About-Seite mit klar getrennten Textzeilen.
 - Dezenter Meldebutton mit eigener X-Tastenmarkierung.
 
