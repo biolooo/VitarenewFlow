@@ -1,5 +1,7 @@
 # Flow — Einstieg für den Orchestrator
 
+Reportauswertung eingerichtet (21.10.2026): aktive sechsstündliche Chat-Automation, lesender datensparsamer Gruppierer und lokale Fix-/Diagnosevorbereitung nach Evidenz. Details: [REPORT-TRIAGE](REPORT-TRIAGE.md). Kein automatisches Release/Push. Gesamttest auf neuer Konsole im STATUS-TODO, ausdrücklich noch nicht abgenommen.
+
 Veröffentlichung .36 bestätigt: Releasecommit e417163, Pages-Lauf 39658148277 erfolgreich. Alle neun Paketdateien und vier Updatekanäle öffentlich bytegleich geprüft. Nachweis: [0.12.36](release-evidence/0.12.36.json). Receiver 0.2.0 gesund; keine .36-Konsolenabnahme. PC 2 kann den veröffentlichten main nach Prüfung eigener Änderungen abrufen. Die folgenden Vorbereitungsangaben sind datierter Verlauf.
 
 ## Freigegebene Bereitstellung .36 — 21.10.2026

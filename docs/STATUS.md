@@ -51,6 +51,9 @@ Releasecommit 2ada1cd, Pages-Lauf 39651893937 erfolgreich. Alle neun .35-Paketda
 
 ## Offene Punkte und Prioritäten (Vorschlag, kein Auftrag)
 
+- **TODO Gesamttest auf neuer Konsole (Nutzer 21.10.2026):** Nutzer testet die komplette Einrichtung auf einer frisch eingerichteten, kompatiblen Konsole. Modell/Region, installierte Flowversion, Startweg und Autoboot festhalten. Installation per UniStore, HOME-Shortcut, OTA mit weiterhin aktuellem Icon, Komponenten, vorhandene eigene Spiele je System, Speichern/Rückkehr, DE/EN, Reports mit/ohne Kommentar, WLAN-aus/Abbruch und HOME/POWER durchgehen. DS-/3DS-Direktinstallation erst nach Implementierung abnehmen. Keine CFW-/NAND-Änderung oder gesunde Konsole künstlich beschädigen; Ergebnisse ausdrücklich einzeln notieren.
+
+
 - **TODO Spieleinstallation (Nutzer 21.10.2026):** DS- und 3DS-Spiele direkt aus dem Flow-Menü auf der Konsole einrichten/installieren. Bestehende lokale CIA-Installation berücksichtigen; DS-Dateistart und echte 3DS-Installation getrennt spezifizieren. Quelle, Dateiformate und Speicherorte vor Umsetzung klären. Dieser Eintrag beauftragt noch keine neue Downloadquelle oder Spieleverteilung.
 - **TODO HOME-Starticon prüfen/abnehmen (Nutzer 21.10.2026):** installierter HOME-Shortcut soll den aktuellen Homebrew-Launcher von der SD laden, damit OTA ohne Neuinstallation des Icons greift. Bestehenden Boot-/CIA-Pfad und aktuelle Installation prüfen; Konsolenabnahme nach Update offen.
 

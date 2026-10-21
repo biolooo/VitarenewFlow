@@ -1,5 +1,7 @@
 # Entscheidungen und Quellen
 
+Reportauswertung eingerichtet (21.10.2026): aktive sechsstündliche Chat-Automation, lesender datensparsamer Gruppierer und lokale Fix-/Diagnosevorbereitung nach Evidenz. Details: [REPORT-TRIAGE](REPORT-TRIAGE.md). Kein automatisches Release/Push. Gesamttest auf neuer Konsole im STATUS-TODO, ausdrücklich noch nicht abgenommen.
+
 ## Reportverbesserung .36 — 21.10.2026
 
 Nutzerauftrag: Reportzugang im passenden Menü, zusätzlicher Fallback bei unerwarteten Fehlern und Diagnose unabhängig vom Kommentar. Umsetzung verwendet begrenzte strukturierte RAM-Snapshots statt Rohlogs, um den Fehlerzeitpunkt zu erhalten und private Titel/Pfade auszuschließen. Regelmäßiger Zugang im Unterstützungsmenü; kritische Übergaben bleiben geschützt. Schema 2 ist im Receiver abwärtskompatibel, benötigt vor Clientfreigabe ein eigenes Deployment mit Nachweis. Lokale Implementierung ist keine Veröffentlichung oder Hardwareabnahme.
