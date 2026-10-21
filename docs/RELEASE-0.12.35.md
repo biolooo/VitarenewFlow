@@ -19,3 +19,7 @@ Veröffentlichung erst nach unabhängigem lesenden Review. Nach Push muss der pa
 Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen. Danach Version 0.12.35 prüfen. Melden öffnen, mit X eine kurze Testbeschreibung ohne private Angaben schreiben, Vorschau ansehen, A zum Prüfen und nochmals A zum Senden. Empfang als separaten Bericht prüfen. Danach Zurück/erneut Öffnen, DE/EN, Suchvorschläge, L/R, Spielstart, WLAN aus und HOME/POWER beim Versand testen. Modell und Autoboot an/aus mitmelden. Auf gesunder Konsole keine TWL-Reparatur ausführen.
 
 Bei unklarer Empfangsbestätigung kann erneutes Senden einen doppelten Bericht erzeugen; Abbrechen nimmt bereits gespeicherte Berichte nicht zurück. Keine automatische Übermittlung. Der App-Updater erhält die vorherige 3DSX für den manuellen Rückweg. Kein Stable-Release und keine neue Boot-/NAND-Funktion.
+
+## Bestätigter öffentlicher Abschluss
+
+Releasecommit 2ada1cd und Pages-Lauf 39651893937 erfolgreich. Alle 13 kanonischen öffentlichen Paket-/Kanaldateien wurden am 21.10.2026 bytegleich verglichen, einschließlich aller 8 Hashmanifest-Einträge. Das exakte source.zip reproduziert 3DSX und SMDH bytegleich; native Hostsuite und 18 Receiverprüfungen bestanden. Nachweis: release-evidence/0.12.35.json. Noch keine echte Konsolenabnahme.

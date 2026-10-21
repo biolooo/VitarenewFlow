@@ -1,6 +1,6 @@
 # Flow — Einstieg für den Orchestrator
 
-Aktueller Stand 21.10.2026: verbindliche Integrationswurzel ist C:/Users/subje/Documents/Code/vitarenew-flow. Launcher 0.12.35 als freigegebener OTA-Teststand, Desktop 0.4.1. Keine Hardwareabnahme vorweggenommen.
+Aktueller Stand 21.10.2026: verbindliche Integrationswurzel ist C:/Users/subje/Documents/Code/vitarenew-flow. Launcher 0.12.35 als öffentlich bytegeprüfter OTA-Teststand, Desktop 0.4.1. Keine Hardwareabnahme vorweggenommen.
 
 ## Aktiver Auftrag: Fehlerberichte (21.10.2026)
 
@@ -32,15 +32,11 @@ Startauftrag für Codex auf PC 2: „Richte VitarenewFlow hier als lokalen Entwi
 
 ## Nächster Auftrag
 
-OTA-Testversion 0.12.34 ist lokal fertig paketiert und aus dem exakten Quell-ZIP reproduziert. Aktueller Freigabepunkt: [RELEASE-0.12.34.md](RELEASE-0.12.34.md). Pages erlaubt nur main; ohne ausdrückliche main-Merge-Freigabe nicht veröffentlichen. Gerätetest erst nach grünem Pages-Lauf und öffentlichem Bytevergleich melden.
+OTA-Testversion 0.12.35 ist veröffentlicht: Releasecommit 2ada1cd, Pages-Lauf 39651893937 erfolgreich, alle neun Paketdateien und vier Kanäle öffentlich bytegleich geprüft. Empfangsdienst aktiv; synthetischer HTTPS-Bericht gespeichert und bestätigt. [RELEASE-0.12.35](RELEASE-0.12.35.md), [ERROR-REPORTS](ERROR-REPORTS.md) und [öffentlicher Nachweis](release-evidence/0.12.35.json).
 
-Backlogauftrag 21.10.2026 lokal auf `codex/backlog-improvements` bearbeitet: Animation entfernt, About/Support und lokale Neuerungen erneuert; zusätzliche Banner-/Menü-/Paketprüfungen in den Hostrunner integriert. Maßgeblicher Arbeitsbericht: [BACKLOG-WORK.md](BACKLOG-WORK.md), Hardwarematrix: [acceptance/BACKLOG-PC2.md](acceptance/BACKLOG-PC2.md). Originale HOME-Standardmusik ist weiterhin ein offenes Feature mit fehlendem Archiv-/Sequenzplayer und Gerätevalidierung. N64 und Save-/Sync-Themen hat der Nutzer ausdrücklich zurückgestellt. Kein automatischer Push/Release/main-Merge.
+Nächster Haltpunkt ist die ausdrückliche Konsolenabnahme: Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen; Version .35 prüfen. Melden, Beschreibung, zweimal A und tatsächlichen Berichtempfang sowie WLAN-aus/Abbruch/HOME/POWER/DE-EN/Rückkehr prüfen. Modell/Region/Startweg/Autoboot notieren. Gesunde Konsole nicht per TWL-Reparatur verändern. Keine Hardwarezustimmung aus dem Build oder fehlendem Feedback ableiten.
 
-PC 2 ist inzwischen lokal eingerichtet und geprüft: WSL2/Ubuntu auf E:, gepinnter devkitARM-Chroot, nativer 3DSX-Build und vorgesehene Hosttests erfolgreich. Desktop .4.1 besteht 108 Selbsttests. Reproduzierbare Befehle und genaue Grenzen: [PC2-SETUP.md](PC2-SETUP.md). Keine neue Hardwareabnahme oder Veröffentlichung. GitHub-Schreibzugriff bleibt separat zu klären.
-
-Erst den aktuellen Git-Zustand und Migrationsbericht lesen. Hardwarefeedback .27–.33 und des lokalen Backlogdiffs ist noch offen; insbesondere POWER wiederholt, HOME/Spielstart, Theme-Musik, DS/Komponentenprüfung und Desktop-Reparatur. N64-Rücksprung bleibt ohne konkrete Logs ungeklärt und vertagt. Startanimation wurde im lokalen Backlogdiff entfernt. Originale Standardmusik ist nicht fertig.
-
-Bei einem konkreten Entwicklungsauftrag: begrenzten Implementierer und unabhängigen lesenden Prüfer einsetzen, Dateieigentum und Commitbasis benennen, Schreibaufgaben bei Parallelität in getrennten Worktrees isolieren. Hauptchat hält Entscheidungen und kurze Ergebnisse. Nach Abschluss STATUS/DECISIONS/HANDOFF aktualisieren. Kein automatischer Release/Push/SD-Transfer und keine NAND-Reparatur.
+PC 2 und PC 1 müssen vor Weiterarbeit den aktuellen Remote-main abrufen und eigene Änderungen erhalten. Das historische codex/pc2-handoff ist kein heutiger Einstieg mehr; aktuelle Basis ist der veröffentlichte main. Noch nicht gepushte Arbeit eines anderen PCs bleibt separat abzuklären. N64-/Save-Sync-Themen bleiben vertagt, originale HOME-Standardmusik offen. Kein weiterer Backlogauftrag automatisch gestartet.
 
 ## Grenzen
 

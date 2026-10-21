@@ -6,6 +6,10 @@ Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist 
 
 Am 21.10.2026 auf Basis Remote-main `815da5a` mit PC-2-Stand 0.12.34 begonnen. Launcher 0.12.35 ist der lokale neue Entwicklungsstand im isolierten Worktree `error-reports`. Strukturierter Berichtsdialog, bewusste Zustimmung, HTTPS-Versandmodul und eigener SQLite-Empfangsdienst sind implementiert. Öffentlicher Empfang im freigegebenen Server-Benutzerverzeichnis läuft; synthetischer HTTPS-Bericht gespeichert und 201 bestätigt. Endpunkt in .35 konfiguriert, OTA-Testveröffentlichung ausdrücklich freigegeben. Native Builds und Hosttests ersetzen weder öffentliche Ende-zu-Ende-Prüfung noch Konsolenabnahme. Desktop .4.1 unverändert. Details: [ERROR-REPORTS](ERROR-REPORTS.md).
 
+## Veröffentlichung .35 bestätigt
+
+Releasecommit 2ada1cd, Pages-Lauf 39651893937 erfolgreich. Alle neun .35-Paketdateien plus vier öffentliche Kanaldateien bytegleich mit dem lokalen geprüften Commit; alle acht Manifesthashes bestätigt. Der eigene Empfangsdienst ist aktiv und ein synthetischer HTTPS-Bericht gespeichert. Konsolenabnahme von .35 ist ausdrücklich noch offen. Neuester Einstieg ist Remote-main; ältere .34-/Migrationsangaben unten sind datierter Verlauf. [Nachweis](release-evidence/0.12.35.json).
+
 ## Aktuelle Basis
 
 - Testreleasevorbereitung 0.12.34 auf `codex/test-release-0.12.34`: Versionen, OTA-/UniStore-Kanäle und Paket lokal konsistent, exaktes Quell-ZIP baut identische 3DSX/SMDH. Noch nicht veröffentlicht; main-Merge-Freigabe und öffentliche Prüfung ausstehend. Details: [RELEASE-0.12.34.md](RELEASE-0.12.34.md).

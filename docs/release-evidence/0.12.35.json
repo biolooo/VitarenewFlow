@@ -1,0 +1,104 @@
+{
+  "commit": "2ada1cd0226eaac87858a78eb0288312f1b218c2",
+  "workflow_run": 39651893937,
+  "workflow_conclusion": "success",
+  "public_files": [
+    {
+      "path": "0.12.35/FEATURES-DE.md",
+      "size": 3761,
+      "sha256": "3222b7d59a8815332b82824e3d3f6e645861bbe0c5b45c96d9b4a388e3635516",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/README.md",
+      "size": 3761,
+      "sha256": "3222b7d59a8815332b82824e3d3f6e645861bbe0c5b45c96d9b4a388e3635516",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/SHA256.json",
+      "size": 749,
+      "sha256": "94a0e52276524e62776a2b7ebea9dc14496d01c0dc95c8b90286d31d9a23d30c",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/VitarenewFlow-Boot.3dsx",
+      "size": 116260,
+      "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/VitarenewFlow-Copy.gm9",
+      "size": 3092,
+      "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/VitarenewFlow-Shortcut.cia",
+      "size": 164800,
+      "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/VitarenewFlow-source.zip",
+      "size": 1938590,
+      "sha256": "a4e10fb66683441f93db09b90f3a7fde7204b117b23ac0e6783b16fc23383a52",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/VitarenewFlow.3dsx",
+      "size": 1613256,
+      "sha256": "610a904fc4c7cfd7a858c74aa1f3b5dbe7c18b5aa890291589dab93c9be016f6",
+      "equal": true
+    },
+    {
+      "path": "0.12.35/VitarenewFlow.smdh",
+      "size": 14016,
+      "sha256": "b76df98df13df7549492e3d31543809d4b1a99dc01541e133ce76daf904635e2",
+      "equal": true
+    },
+    {
+      "path": "latest.txt",
+      "size": 190,
+      "sha256": "42fd0c02a4210912a3ed436092f92cbb6ee29c1ba3a8d7b1f48bacaf88ce1a6b",
+      "equal": true
+    },
+    {
+      "path": "VitarenewFlow.unistore",
+      "size": 4334,
+      "sha256": "cd36208f4e109670854b470ed46aad5cb3bec2e765e41a6215067f109ea53b6a",
+      "equal": true
+    },
+    {
+      "path": "VitarenewFlow-info.json",
+      "size": 516,
+      "sha256": "3357c73c04d7df12bdf95a77b56a34f23c82f2d5af7fb7c76cc32abc8eb0ef0b",
+      "equal": true
+    },
+    {
+      "path": "install.html",
+      "size": 1779,
+      "sha256": "0fc3ad76158e3fa212a5c207cfe7c842e510917877b158c0033af7aee8abe4f7",
+      "equal": true
+    }
+  ],
+  "manifest_entries": 8,
+  "hardware_acceptance": false,
+  "source_reproduction": {
+    "source_zip_build": "PASS",
+    "receiver_tests": 18,
+    "reproduced_artifacts": {
+      "3ds-library.3dsx": "610a904fc4c7cfd7a858c74aa1f3b5dbe7c18b5aa890291589dab93c9be016f6",
+      "3ds-library.smdh": "b76df98df13df7549492e3d31543809d4b1a99dc01541e133ce76daf904635e2"
+    },
+    "manifest_entries_verified": 8,
+    "hardware_acceptance": false
+  },
+  "receiver": {
+    "public_https_test": "201 confirmed and persisted",
+    "tls12_with_app_ca_bundle": true,
+    "source_sha256": "79a3e74c6df57469795db6af54062f7adb2ae1534d7c3c3775ee45a742862feb",
+    "health": "healthy",
+    "retention_days": 30
+  }
+}

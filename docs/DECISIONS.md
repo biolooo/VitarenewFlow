@@ -37,3 +37,5 @@ Der Nutzer beauftragte Start und Fortsetzung des Umstiegs. Nach unabhängiger Pr
 ## Fehlerberichte und Gerätewechsel — 21.10.2026
 
 Der Nutzer beauftragt einen Meldebutton für Fehlerfälle und wählt einen eigenen Empfangsdienst auf dem Server. Keine automatische Telemetrie: Diagnose-Allowlist statt Rohlogs, optionale bewusste Beschreibung, konkrete Zustimmung vor Versand, feste Größen-/HTTPS-Grenzen. Empfang ist nur nach bestätigter Speicherung erfolgreich. Desktop und externe Abstürze sind gesonderte Integrationsgrenzen. Verwendete Quelle ist Remote-main `815da5a` mit PC-2-Arbeit, nicht der ältere lokale main. Vor allen neuen Aufträgen lokale/Remote-Stände prüfen; ungesendete PC-2-Änderungen lassen sich nicht aus Git ableiten. Öffentliche Serverroute, Benutzerverzeichnis und OTA-Testveröffentlichung .35 hat der Nutzer anschließend ausdrücklich freigegeben.
+
+Abschluss .35: eigener Serverempfang aktiviert, Quell-ZIP reproduziert 3DSX und SMDH bytegleich, unabhängiger Review positiv. Releasecommit 2ada1cd auf main veröffentlicht; Pages39651893937 und13öffentliche Dateien geprüft. Dies ist eine Testveröffentlichung, keine Konsolen-/Stable-Abnahme.
