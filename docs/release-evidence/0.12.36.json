@@ -1,0 +1,68 @@
+{
+  "release_commit": "e417163d8a796f3a22b0d15d6a2c7f50cae36ce4",
+  "pages_run": 39658148277,
+  "conclusion": "success",
+  "public_files": {
+    "0.12.36/FEATURES-DE.md": {
+      "size": 4133,
+      "sha256": "34ffb71176a3719533243294d4415d487ee0adb690a1c186ea2e3b9bc816692c"
+    },
+    "0.12.36/README.md": {
+      "size": 4133,
+      "sha256": "34ffb71176a3719533243294d4415d487ee0adb690a1c186ea2e3b9bc816692c"
+    },
+    "0.12.36/VitarenewFlow-Boot.3dsx": {
+      "size": 116260,
+      "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+    },
+    "0.12.36/VitarenewFlow-Copy.gm9": {
+      "size": 3092,
+      "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+    },
+    "0.12.36/VitarenewFlow-Shortcut.cia": {
+      "size": 164800,
+      "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+    },
+    "0.12.36/VitarenewFlow-source.zip": {
+      "size": 1948425,
+      "sha256": "5b6a92b6ec581df8aab3414c1ff8a9fe56bb677ab29da8cd2fb7af95513fd075"
+    },
+    "0.12.36/VitarenewFlow.3dsx": {
+      "size": 1618416,
+      "sha256": "db1d03983ddeaad621d84c148e905fba0def89c3c4acdf83e4e6739da5770359"
+    },
+    "0.12.36/VitarenewFlow.smdh": {
+      "size": 14016,
+      "sha256": "f156b5ac3a2a6999a3376f76893953f46a3dc0ffd96781d66544dba5f29b5bcb"
+    },
+    "0.12.36/SHA256.json": {
+      "size": 749,
+      "sha256": "4db3e77d2465dfc6b36ec72671bbbf83ed1941a702df2f39d07d433402c83b72"
+    },
+    "latest.txt": {
+      "size": 190,
+      "sha256": "3124545a4b4e315912ab810c4462493d0f01f056a3e9fc63d0659d806f321f68"
+    },
+    "VitarenewFlow.unistore": {
+      "size": 4333,
+      "sha256": "0e7c16158cff9470feefbe8a0c55108330ca6e16050dd1da9ad4dfa8aabbabb1"
+    },
+    "VitarenewFlow-info.json": {
+      "size": 516,
+      "sha256": "b331123d4c37a075a665ffb67e00e8bba768ab64c75871119ad8d1f4fa43bd4d"
+    },
+    "install.html": {
+      "size": 1779,
+      "sha256": "59abad9e0904f773d9c633c1c824c07609b3b47728f919bd50c52e59641c1b7f"
+    }
+  },
+  "receiver": {
+    "health": 200,
+    "schema1": 201,
+    "schema2": 201,
+    "description": "empty",
+    "tls": "actual app CA certificates",
+    "endpoint": "https://vitarenew-lager.tail6ccd16.ts.net:10000/flow-reports"
+  },
+  "hardware_acceptance": false
+}

@@ -1,5 +1,7 @@
 # VitarenewFlow 0.12.36
 
+Veröffentlichung .36 bestätigt: Releasecommit e417163, Pages-Lauf 39658148277 erfolgreich. Alle neun Paketdateien und vier Updatekanäle öffentlich bytegleich geprüft. Nachweis: [0.12.36](release-evidence/0.12.36.json). Receiver 0.2.0 gesund; keine .36-Konsolenabnahme. PC 2 kann den veröffentlichten main nach Prüfung eigener Änderungen abrufen. Die folgenden Vorbereitungsangaben sind datierter Verlauf.
+
 - Problem melden im Unterstützungsmenü statt neben R.
 - Direkter Meldezugang bei unerwarteten Fehlern.
 - Automatische begrenzte Diagnose unabhängig vom Kommentar, mit Vorschau.
