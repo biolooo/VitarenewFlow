@@ -1,6 +1,6 @@
 ICON := branding/icon.png
 APP_TITLE := VitarenewFlow
-APP_DESCRIPTION := Game Launcher - Version 0.12.36
+APP_DESCRIPTION := Game Launcher - Version 0.12.37
 APP_AUTHOR := VitaRenew
 #---------------------------------------------------------------------------------
 .SUFFIXES:

@@ -1,5 +1,11 @@
 # Flow — Einstieg für den Orchestrator
 
+## Freigegebener Layoutrelease 0.12.37
+
+Nutzer hat die Veröffentlichung der About-Layoutkorrektur ausdrücklich beauftragt. Änderungen: zentrierte übersichtliche Infokarte, Website und VitaRenew-Zeile untereinander, dezente eigene Reportzeile mit X-Tastenmarkierung. Touchflächen bleiben unverändert. Version 0.12.37, Desktop 0.4.1 unverändert. Native Prüfung und exaktes Quellpaket werden vor Veröffentlichung frisch geprüft; öffentliche Bytes danach separat bestätigt. Keine .37-Konsolenabnahme.
+
+Wiederverwendbarer Release-Skill: `skills/flow-release/SKILL.md`, inklusive generischer öffentlicher Byteprüfung. Repositorykopie für PC 2; auf PC 1 zusätzlich unter dem persönlichen Codex-Skillpfad installiert. Der Skill ersetzt keine Nutzerfreigabe; die aktuelle Aufforderung autorisiert diesen Release ohne weitere Bestätigungsrunde. Changeloghinweise .37 werden weiterhin manuell DE/EN gepflegt; automatische Generierung bleibt offen.
+
 ## About-Layoutkorrektur nach .36 — lokal
 
 Nutzer meldete gedrängte About-Seite nach Hinzufügen des Reportbuttons. Identität, Version, VitaRenew-Zeile und Website stehen nun zentriert untereinander in einer gemeinsamen Karte. Der Meldebutton verwendet eine dezente eigene Zeile mit X-Tastenmarkierung statt einer vollflächigen Akzentfläche. Keine gedrängte horizontale Website-/Textzeile mehr. Report-/Zurück-Touchflächen unverändert. DE/EN-Layoutvorschau mit Inter-Schrift und den nativen Glyphenvorschüben visuell geprüft; kein Konsolenscreenshot oder Hardwarepass. Öffentliche .36-Pakete unverändert, noch nicht veröffentlicht.

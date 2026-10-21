@@ -134,7 +134,7 @@ static bool reportFallback(void){
 static void openReport(void){
     if(!reportAvailable())return;
     report_transport_reset();reportConfirmed=false;reportDetails=false;reportDescription[0]=0;
-    report=(ErrorReport){.version="0.12.36",.description=reportDescription,
+    report=(ErrorReport){.version="0.12.37",.description=reportDescription,
         .context=envIsHomebrew()?ERROR_REPORT_HOMEBREW:ERROR_REPORT_NATIVE};
     int boot=autoboot_status();report.autoboot=boot==1?ERROR_REPORT_AUTOBOOT_ON:boot==0?ERROR_REPORT_AUTOBOOT_OFF:ERROR_REPORT_AUTOBOOT_UNKNOWN;
     if(R_SUCCEEDED(cfguInit())){
@@ -226,7 +226,7 @@ static void draw(bool loading,float progress,const char *stage){
     if(updatePage&&app_update_status().state==UPDATE_ERROR)rememberReport(ERROR_REPORT_UPDATE,app_update_error_code(),ERROR_REPORT_CHECKING_UPDATE);
     if(twlPage&&R_FAILED(twlError))rememberReport(ERROR_REPORT_DS,twlError,ERROR_REPORT_CHECKING_DS);
     const char *target=visibleCount?games[visible[selected]].cover:"";
-    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.36",
+    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.37",
         .reportAvailable=reportAvailable(),.reportFallback=reportFallback(),.reportDetails=reportDetails,.reportHistorical=reportHistorical,.reportDiagnostics=&reportDiagnostics,.reportOpen=reportOpen,.reportConfirmed=reportConfirmed,.reportConfigured=report_transport_configured(),.reportState=report_transport_state(),.reportDescription=reportDescription,.reportArea=report.area,.reportCode=report.code,.reportModel=report.model,.reportRegion=report.region,.reportAutoboot=report.autoboot,.reportContext=report.context,
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
@@ -1028,7 +1028,7 @@ int main(int argc,char **argv){
                 bool busy=update.state==UPDATE_CHECKING||update.state==UPDATE_DOWNLOADING;
                 bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px<151)||((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px>=276);
                 bool primary=(keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px>=169);
-                bool notes=!busy&&settings_release_note_count("0.12.36")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
+                bool notes=!busy&&settings_release_note_count("0.12.37")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
                 if(back){updateNotes=false;if(busy)app_update_cancel();else updatePage=false;}
                 else if(notes)updateNotes=!updateNotes;
                 else if(primary&&!busy){

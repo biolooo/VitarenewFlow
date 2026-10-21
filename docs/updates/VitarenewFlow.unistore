@@ -9,15 +9,15 @@
     "sheet": "VitarenewFlow.t3x",
     "sheetURL": "https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.t3x",
     "version": 3,
-    "revision": 18
+    "revision": 19
   },
   "storeContent": [
     {
       "info": {
         "title": "VitarenewFlow (Test)",
         "author": "VitaRenew",
-        "version": "0.12.36",
-        "description": "Menu-based opt-in error reports, fallback reporting and frozen bounded technical diagnostics (DE/EN).",
+        "version": "0.12.37",
+        "description": "Clear About and support layout with a separate report button and back action (DE/EN).",
         "category": [
           "utility"
         ],
@@ -32,13 +32,13 @@
         "installed_files": [
           "/3ds/3ds-library/3ds-library.3dsx"
         ],
-        "last_updated": "2026-10-21T19:00:36Z",
+        "last_updated": "2026-10-21T19:21:34Z",
         "llm_generation": "yes",
         "preinstall_message": "TESTVERSION: HOME-Symbol und Flow werden installiert. Emulatoren noch nicht enthalten. / TEST BUILD: installs HOME shortcut and Flow. Emulators are not included yet."
       },
       "Installieren / Install": {
         "type": "CIA",
-        "size": "1916584 B",
+        "size": "1916940 B",
         "script": [
           {
             "type": "mkdir",
@@ -66,27 +66,27 @@
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.36/VitarenewFlow.3dsx",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.37/VitarenewFlow.3dsx",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.3dsx"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.36/VitarenewFlow.smdh",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.37/VitarenewFlow.smdh",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow.smdh"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.36/VitarenewFlow-Shortcut.cia",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.37/VitarenewFlow-Shortcut.cia",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Shortcut.cia"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.36/VitarenewFlow-Boot.3dsx",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.37/VitarenewFlow-Boot.3dsx",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Boot.3dsx"
           },
           {
             "type": "downloadFile",
-            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.36/VitarenewFlow-Copy.gm9",
+            "file": "https://biolooo.github.io/VitarenewFlow/updates/0.12.37/VitarenewFlow-Copy.gm9",
             "output": "/3ds/3ds-library/updates/universal-updater/VitarenewFlow-Copy.gm9"
           },
           {
