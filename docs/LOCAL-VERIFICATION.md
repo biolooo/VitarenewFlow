@@ -22,3 +22,7 @@ Die Release-Testquellen sind unverändert archiviert. Manche Fixtures enthalten 
 ## Unabhängiger Review
 
 Lesender Prüfer ohne Änderungen: 100 Launcher-C/H gleich Legacy .33, Desktopquellen gleich Sicherung, alle 1.205 erfassten Snapshotdateien unverändert; 19 Übernahmedateien hashgleich, Makefilekorrektur dokumentiert. Quellhashes passen zum Prüfbericht, keine fehlenden lokalen Markdownlinks oder Unicode-Ersatzzeichen. Zwei veraltete STATUS-Aussagen korrigiert. Keine weiteren belegten Migrationsmängel. Finaler Git-Stand wird separat geprüft.
+
+## Gesicherte Git-Basis
+
+Die vollständige lokale Entwicklungsbasis wurde als a7a1f84 gesichert. Git-Status danach sauber. Ein frisches git-archive dieses Commits wurde separat entpackt; daraus bestanden nativer Build und die gleiche Hostfixture-Suite erneut. Anweisungen, aktuelle Quellen und Tests sind im Commit enthalten; Shellskripte bleiben durch .gitattributes auch unter Windows LF. Der Nachweis steht in migration-evidence/commit-verification-2026-10-21.json. Dieser Abschluss ergänzt nur Dokumentation, kein neuer Release.
