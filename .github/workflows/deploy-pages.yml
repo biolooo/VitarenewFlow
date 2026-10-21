@@ -44,6 +44,8 @@ jobs:
           assert len(data) == int(meta['size'])
           assert hashlib.sha256(data).hexdigest() == meta['sha256']
           assert meta['url'] == f'https://biolooo.github.io/VitarenewFlow/updates/{version}/VitarenewFlow.3dsx'
+          store = json.loads((root / 'VitarenewFlow.unistore').read_text())
+          assert store['storeContent'][0]['info']['version'] == version
           for name, digest in json.loads((root / version / 'SHA256.json').read_text()).items():
               assert Path(name).name == name
               assert hashlib.sha256((root / version / name).read_bytes()).hexdigest() == digest, name
