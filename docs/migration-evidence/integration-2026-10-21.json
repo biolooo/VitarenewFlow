@@ -1,0 +1,177 @@
+{
+  "completed_local": "2026-10-21T17:07:23.376594",
+  "backup": "C:\\Users\\subje\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an-2\\work\\flow-before-migration-20261021-170712",
+  "backup_verified_files": 1020,
+  "copied": [
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source\\app_log.c",
+      "target": "launcher/source/app_log.c",
+      "before": "82a7ef15a10ab891d64340c71cacb25112b702d890a209b1ede821adc059f7c5",
+      "after": "1b54118b0869e8eefd421c52b9966e608fdeb94f0c2cba357185ab5accfa3df5"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source\\app_update.c",
+      "target": "launcher/source/app_update.c",
+      "before": "1cdcb226c4a82a664f1575d007d83cb6e4a989e1f382869c5fe36890826f1da3",
+      "after": "7dd1eb939f1e96d8fa66cb6fff90601dd932754edd853a113c20593c9114a42f"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source\\components.c",
+      "target": "launcher/source/components.c",
+      "before": "b4d44dfec4488946d5ecfb4ca29d3f9da6df3a0178af638e5d3ab1b34b8bc53b",
+      "after": "32386da74361509eb5d18b5ddb8e9dba28d8b5f3dabe9deba3a87051cd8007ff"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source\\l10n.c",
+      "target": "launcher/source/l10n.c",
+      "before": "bf3ffe8e693a82a989559f5cc754302c4f2bbc5454be084c3eae5067fd9a5768",
+      "after": "2579d201acaf06f4e490350e04073dac6bf50265a2682249a40d39b6661146a1"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source\\main.c",
+      "target": "launcher/source/main.c",
+      "before": "f5f33e16959c50a303b19f6c551504a31bbcee2ba5e0f2b027835b0305651aab",
+      "after": "dc53055aaa80aabcde4a4591aa5b722a656b5ae01ebcdb392b3ecb851604b0eb"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source\\ui.c",
+      "target": "launcher/source/ui.c",
+      "before": "c0f5303520d8980459c717591cb778c30646e8b06366689fb2b36c51e69e8a9d",
+      "after": "aabd3e936787ee33e8ae3fbd69a01458f99bc607209737acd9d8dcf0301eed32"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\Makefile",
+      "target": "launcher/Makefile",
+      "before": "364e9c034be9271b600790691cd70e9ff1f46bc1f73c380a26ef9b1636a89ce4",
+      "after": "73cd80bb6aa53ec2ede027f96ef5c152b68fb0b4ef2745ec561d86a15bf27c24"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\VitarenewFlow-info.json",
+      "target": "docs/updates/VitarenewFlow-info.json",
+      "before": "d4c4609d4aa7912e6295d1db8d8d4d54a591fd0b40dccba160d3b6852212b5b5",
+      "after": "11106311038ceed2eaa933db7c6bd8b79a7fa1a9ab77f6e92658612c40ada089"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\VitarenewFlow.unistore",
+      "target": "docs/updates/VitarenewFlow.unistore",
+      "before": "1cd735eabc418911928e912d7b1c114a7608e7dd76e5244789719c090ad2e4e7",
+      "after": "cca6b385d5596da05872e8d4912323e12e1e4b69eff442c13ff597ab804de151"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\install.html",
+      "target": "docs/updates/install.html",
+      "before": "f47210c13f3a71f21748586589197ae3152c01884c8020106c6ea0ac8a763900",
+      "after": "05adb755d6a725d4f6e8d7614850f6a1d917250d4e37896789b4d1335d1d005e"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\latest.txt",
+      "target": "docs/updates/latest.txt",
+      "before": "d6d94c3fb0c4212c0d3420cc877a8f386ef0d99aecfe42cc6e3bdc653b775d9b",
+      "after": "5e4ce8b132da7de311c4dcf29d36fd2767c2c38b393cb55174ca2047a9db1231"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\FEATURES-DE.md",
+      "target": "docs/updates/0.12.33/FEATURES-DE.md",
+      "before": null,
+      "after": "5c81fe373c97a93791e2f62c44a76e144e448c791cc7d7dc2efa9f9f7bda829e"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\README.md",
+      "target": "docs/updates/0.12.33/README.md",
+      "before": null,
+      "after": "77b8ab4abe23e9ad832e830a6eaefe60a9b6ed835c0c9e36957fdfa51e6dd8e1"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\SHA256.json",
+      "target": "docs/updates/0.12.33/SHA256.json",
+      "before": null,
+      "after": "eafcf0d0bc9ebdf6a30b5558c3ef2bcbf3a6d2d19ba40571352226a79d7a501c"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\VitarenewFlow-Boot.3dsx",
+      "target": "docs/updates/0.12.33/VitarenewFlow-Boot.3dsx",
+      "before": null,
+      "after": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\VitarenewFlow-Copy.gm9",
+      "target": "docs/updates/0.12.33/VitarenewFlow-Copy.gm9",
+      "before": null,
+      "after": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\VitarenewFlow-Shortcut.cia",
+      "target": "docs/updates/0.12.33/VitarenewFlow-Shortcut.cia",
+      "before": null,
+      "after": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\VitarenewFlow-source.zip",
+      "target": "docs/updates/0.12.33/VitarenewFlow-source.zip",
+      "before": null,
+      "after": "2965b10cd3f6640f1fb2a01a4d7b7eaf82eaabd30a0c3877ba18de0e61f25d24"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\VitarenewFlow.3dsx",
+      "target": "docs/updates/0.12.33/VitarenewFlow.3dsx",
+      "before": null,
+      "after": "94441451857dee3ed4d40c092ab46167cbbc9b10ef21389b0c500891441e7173"
+    },
+    {
+      "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\0.12.33\\VitarenewFlow.smdh",
+      "target": "docs/updates/0.12.33/VitarenewFlow.smdh",
+      "before": null,
+      "after": "022b8abab706fdbc3ffd434c2017eba2ea6b948e2a1ed19b006a6bd0d82f4b0d"
+    }
+  ],
+  "test_files": [
+    "tests/release-0.12.33/audio/format_test.c",
+    "tests/release-0.12.33/audio/music_test.c",
+    "tests/release-0.12.33/audio/theme_io_test.c",
+    "tests/release-0.12.33/audio/catalog_test.c",
+    "tests/release-0.12.33/audio/transaction-test.c",
+    "tests/release-0.12.33/audio/platform_bridge.c",
+    "tests/release-0.12.33/audio/mock/3ds.h",
+    "tests/release-0.12.33/audio/theme-mock/3ds.h",
+    "tests/release-0.12.33/audio/platform-mock/3ds.h",
+    "tests/release-0.12.33/audio/platform-mock/mbedtls/sha256.h",
+    "tests/release-0.12.33/audio/README.txt",
+    "tests/release-0.12.33/launch/test.c",
+    "tests/release-0.12.33/launch/test.py",
+    "tests/release-0.12.33/launch/test.sh",
+    "tests/release-0.12.33/search/test.c",
+    "tests/release-0.12.33/search/test.sh",
+    "tests/release-0.12.33/search/integration.c",
+    "tests/release-0.12.33/search/integration.py",
+    "tests/release-0.12.33/search/integration.sh",
+    "tests/release-0.12.33/power/test.c",
+    "tests/release-0.12.33/power/test.sh",
+    "tests/release-0.12.33/home-loading/test.c",
+    "tests/release-0.12.33/home-loading/test.sh",
+    "tests/release-0.12.33/home-loading/runtime_test.c",
+    "tests/release-0.12.33/home-loading/runtime-mock/3ds.h",
+    "tests/release-0.12.33/home-loading/runtime-mock/citro3d.h",
+    "tests/release-0.12.33/audio/bgm_test.c",
+    "tests/release-0.12.33/twl/test.c",
+    "tests/release-0.12.33/twl/input_test.c",
+    "tests/release-0.12.33/twl/test.sh",
+    "tests/release-0.12.33/twl/mock/3ds.h",
+    "tests/release-0.12.33/component-runtime/test.c",
+    "tests/release-0.12.33/component-runtime/input_test.c",
+    "tests/release-0.12.33/component-runtime/test.sh",
+    "tests/release-0.12.33/component-runtime/mock/3ds.h"
+  ],
+  "source_archive_sha256": "2965b10cd3f6640f1fb2a01a4d7b7eaf82eaabd30a0c3877ba18de0e61f25d24",
+  "legacy_modified": false,
+  "snapshot_modified": false,
+  "desktop_modified": false,
+  "publication": false,
+  "post_copy_adjustments": [
+    {
+      "path": "launcher/Makefile",
+      "copied_sha256": "73cd80bb6aa53ec2ede027f96ef5c152b68fb0b4ef2745ec561d86a15bf27c24",
+      "current_sha256": "770af3d053890195a42427c7c6f454ae0fdde444d8c0b120f2e16244596ce8bd",
+      "reason": "Build data filter *.bin: README.md is not an embeddable binary"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #pragma once
 #include <3ds.h>
 #define FLOW_TITLE_ID 0x000400000F104200ULL

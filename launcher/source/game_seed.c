@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 /* Independent implementation of the seed workflow documented by FBI's
    source/core/http.c: local 16-byte seed, Nintendo ext_key endpoint, FS IPC. */
 #include "game_seed.h"

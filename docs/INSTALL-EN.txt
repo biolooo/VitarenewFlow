@@ -1,0 +1,35 @@
+VitarenewFlow — installation / test package 0.12.11
+
+Requires a 3DS already running Luma CFW, FAT32 SD, and Windows 10/11 with
+.NET Framework 4.8. Primary test device: New 3DS XL / Luma 13.4.
+This setup does not install CFW and never formats a card.
+
+1. Insert the SD and run VitarenewFlow Setup.exe from the download.
+2. Select the correct drive and choose Install / Repair.
+3. Wait for completion and SHA256 verification; do not remove the SD.
+4. On the console, install /cias/VitarenewFlow.cia with FBI.
+5. Launch the HOME-menu icon, or use the 3DSX in Homebrew Launcher.
+
+Open 3DS Library PC.exe directly on SD to add games and manage covers.
+The missing-cover button downloads matching art and compresses it.
+CIAs still need installation on the console after copying.
+
+Retro systems require the tested modified VitarenewFlow adapters. The base
+package contains no emulators, games, saves, cover database, BIOS or keys.
+Setup reports missing adapters/GodMode9 explicitly. It does not claim that
+the retro setup is complete. 3DS titles do not require a retro adapter.
+The optional adapter pack still requires license/release review.
+
+Previous app files remain under Library-PC/install-backups/<transaction>.
+Boot files, language, settings, games, saves and covers are preserved.
+On failure, setup attempts rollback. If the SD was removed, retain the backups
+and read the error. A changed boot helper requires disabling autoboot first.
+Setup never replaces boot.firm or Luma configuration.
+
+Autoboot: Settings > More settings > Autoboot. Hold B at startup for the old
+Homebrew Launcher; hold SELECT at power-on for Luma recovery.
+Cartridges: X for info, then X again for the GodMode9 copy assistant.
+Cartridge saves are not migrated automatically; use Checkpoint separately.
+
+Not final 1.0. Reboot/POWER/cartridge changes in 0.12.11 still require console
+acceptance. Universal-Updater distribution follows the approved release.

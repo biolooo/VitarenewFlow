@@ -54,6 +54,7 @@
       <Border BorderBrush="#253441" BorderThickness="0,1,0,0" Padding="10,17,8,17"><StackPanel><TextBlock Text="PC weiterspielen" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="Emulatoren und Save-Austausch planen wir im nächsten Schritt." Style="{StaticResource Muted}" FontSize="11" Margin="0,5,0,0"/></StackPanel></Border>
       <Button x:Name="OpenCard" Content="SD im Explorer öffnen" FontSize="11" Padding="8,11"/>
       <Button x:Name="OpenBackups" Content="Cover-Backups öffnen" FontSize="11" Padding="8,10" Margin="0,8,0,0"/>
+      <Button x:Name="SetupLauncher" Content="Einrichtung auf dem 3DS" FontSize="11" Padding="8,10" Margin="0,8,0,0" ToolTip="Updates und Downloads direkt in VitarenewFlow"/>
      </StackPanel>
     </Grid>
    </Border>

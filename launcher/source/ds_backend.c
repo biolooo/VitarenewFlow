@@ -1,23 +1,45 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "ds_backend.h"
 #include "ds_path.h"
+#include "ds_profile.h"
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdlib.h>
+DsRuntimeState ds_runtime_check(void){
+    u64 id=DS_BOOTSTRAP_ID;AM_TitleInfo title={0};
+    Result r=AM_GetTitleInfo(MEDIATYPE_NAND,1,&id,&title);
+    if(R_FAILED(r)||title.titleID!=id){
+        /* An AM service error must not be reported as an absent title. Only
+           a complete, successful title-list query proves that it is missing. */
+        u32 count=0,read=0;
+        if(R_FAILED(AM_GetTitleCount(MEDIATYPE_NAND,&count))||count>8192)return DS_RUNTIME_UNAVAILABLE;
+        if(!count)return DS_RUNTIME_NO_TITLE;
+        u64 *ids=malloc((size_t)count*sizeof(*ids));if(!ids)return DS_RUNTIME_UNAVAILABLE;
+        r=AM_GetTitleList(&read,MEDIATYPE_NAND,count,ids);bool found=false;
+        if(R_SUCCEEDED(r)&&read==count)for(u32 i=0;i<read;i++)if(ids[i]==id)found=true;
+        free(ids);
+        if(R_FAILED(r)||read!=count||found)return DS_RUNTIME_UNAVAILABLE;
+        return DS_RUNTIME_NO_TITLE;
+    }
+    struct stat file;
+    if(stat("sdmc:/_nds/ntr-forwarder/sdcard.nds",&file)||!S_ISREG(file.st_mode)||file.st_size<=0)return DS_RUNTIME_NO_FORWARDER;
+    if(stat("sdmc:/_nds/nds-bootstrap-release.nds",&file)||!S_ISREG(file.st_mode)||file.st_size<=0)return DS_RUNTIME_NO_BOOTSTRAP;
+    return DS_RUNTIME_READY;
+}
 Result ds_prepare_launch(const char *rom) {
-    const u64 bootstrapId=0x0004800546574452ULL;
-    u64 id=bootstrapId;
-    AM_TitleInfo title;
-    Result result=AM_GetTitleInfo(MEDIATYPE_NAND,1,&id,&title);
-    if (R_FAILED(result) || title.titleID!=id) return (Result)-30;
+    DsRuntimeState runtime=ds_runtime_check();
+    if(runtime==DS_RUNTIME_NO_TITLE||runtime==DS_RUNTIME_UNAVAILABLE)return (Result)-30;
+    if(runtime!=DS_RUNTIME_READY)return (Result)-32;
     struct stat info;
     if (stat(rom,&info) || !S_ISREG(info.st_mode) || info.st_size<0x200) return (Result)-31;
-    const char *runtime[]={"sdmc:/_nds/ntr-forwarder/sdcard.nds","sdmc:/_nds/nds-bootstrap-release.nds"};
-    for (unsigned i=0;i<2;++i) if (stat(runtime[i],&info) || !S_ISREG(info.st_mode) || !info.st_size) return (Result)-32;
     char path[256];
     if (!ds_loader_path(path,sizeof(path),rom)) return (Result)-33;
-    /* Same handshake as YANBF's official 3DS-mode forwarder. No INI/save edits. */
+    Result result=ds_prepare_profile(rom);
+    if(R_FAILED(result))return result;
+    /* Same handshake as YANBF's official 3DS-mode forwarder. Saves are untouched. */
     const char *target="sdmc:/_nds/ntr-forwarder/path.txt";
     FILE *file=fopen(target,"wb");
     if (!file) return (Result)-34;
@@ -32,15 +54,7 @@ Result ds_prepare_launch(const char *rom) {
     if (read!=size || memcmp(path,verify,size)) return (Result)-34;
     return 0;
 }
-Result ds_commit_launch(void) {
-    /* Direct jump matches YANBF. A 3DSX return trampoline can bypass aptExit's deferred chainloader. */
-    Result result=APT_PrepareToDoApplicationJump(0,0x0004800546574452ULL,MEDIATYPE_NAND);
-    if(R_FAILED(result))return result;
-    u8 parameters[0x300]={0},hmac[0x20]={0};
-    return APT_DoApplicationJump(parameters,sizeof(parameters),hmac);
-}
-Result ds_install_bootstrap(void (*progress)(float)) {
-    const char *path="/cias/launcher-test-updates/bootstrap.cia";
+Result ds_install_bootstrap_file(const char *path,void (*progress)(float)) {
     FS_Path archive={PATH_EMPTY,1,""};Handle input;
     Result result=FSUSER_OpenFileDirectly(&input,ARCHIVE_SDMC,archive,fsMakePath(PATH_ASCII,path),FS_OPEN_READ,0);
     if(R_FAILED(result))return result;
@@ -68,3 +82,5 @@ Result ds_install_bootstrap(void (*progress)(float)) {
     if(R_FAILED(result))AM_CancelCIAInstall(install);
     return result;
 }
+
+Result ds_install_bootstrap(void (*progress)(float)){return ds_install_bootstrap_file("/cias/launcher-test-updates/bootstrap.cia",progress);}

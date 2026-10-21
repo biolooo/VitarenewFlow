@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #ifndef UI_TEXTURE_H
 #define UI_TEXTURE_H
 #include <stddef.h>

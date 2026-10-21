@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "catalog_format.h"
 #include <string.h>
 bool catalog_is_application(uint64_t id)

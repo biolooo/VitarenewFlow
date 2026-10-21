@@ -1,6 +1,6 @@
 ICON := branding/icon.png
 APP_TITLE := VitarenewFlow
-APP_DESCRIPTION := Game Launcher - Version 0.11.0
+APP_DESCRIPTION := Game Launcher - Version 0.12.34
 APP_AUTHOR := VitaRenew
 #---------------------------------------------------------------------------------
 .SUFFIXES:
@@ -61,7 +61,7 @@ CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS := -lcitro2d -lcitro3d -lpng -lz -lctru -lm
+LIBS := -lcitro2d -lcitro3d -lpng -lcurl -lmbedtls -lmbedx509 -lmbedcrypto -lz -lctru -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -92,7 +92,7 @@ SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 PICAFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.v.pica)))
 SHLISTFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.shlist)))
 GFXFILES	:=	$(foreach dir,$(GRAPHICS),$(notdir $(wildcard $(dir)/*.t3s)))
-BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
+BINFILES	:=	$(filter-out fallback_bgm.bin,$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.bin))))
 
 #---------------------------------------------------------------------------------
 # use CXX for linking C++ projects, CC for standard C

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 /* Generated from Inter Variable, SIL Open Font License 1.1. */
 #pragma once
 #include <stdint.h>

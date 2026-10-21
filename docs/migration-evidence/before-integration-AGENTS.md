@@ -1,0 +1,11 @@
+# VitarenewFlow — Arbeitsregeln
+
+1. Zuerst `PROJECT-COPY.md`, dann `docs/HANDOFF.md`, `docs/STATUS.md`, `docs/MIGRATION.md` lesen. Architektur und Entscheidungen stehen in `docs/ARCHITECTURE.md` und `docs/DECISIONS.md`.
+2. Dieses Verzeichnis bleibt eine unabhängige Momentaufnahme. Die Originalentwicklung im alten Ordner lief bis 0.12.33 weiter; dieser Launcher-Snapshot ist 0.12.32. Vor jeder Implementierung die verbindliche Quellbasis ausdrücklich klären. Kein automatischer Abgleich nach Datum.
+3. Fremde/uncommittete Änderungen erhalten. Keine automatischen Commits, Branchwechsel, Synchronisationen oder Veröffentlichungen. `local-development-snapshot/` nicht als aktuelle Quelle behandeln und nicht ungeprüft versionieren. Keine ROMs, Saves, Schlüssel, SD-Backups oder private Theme-Musik übernehmen.
+4. Bei ausdrücklich freigegebener Multi-Agent-Arbeit delegiert der Orchestrator nur klar unabhängige Aufgaben. Anfangs ein Implementierer und ein unabhängiger Prüfer; Review zunächst lesend. Dateizuständigkeit und Ausgangsstand vorab benennen, bevorzugt isolierte Worktrees aus einer gesicherten Basis. Kein ungeprüfter gemeinsamer Schreibzugriff auf `main.c`, `ui.c`, Release-Dateien oder Git-Zustand. Einzelauftrag ohne Agenten bleibt Einzelauftrag.
+5. `docs/ORCHESTRATION.md` regelt Auftrag, Review und Integration. `PLANS.md` ist eine optionale Plan-Konvention, keine Freigabe des Backlogs. Neue Feature-/Releasearbeit braucht einen konkreten Auftrag.
+6. Implementiert, lokal geprüft, öffentlich bereitgestellt und auf echter Konsole abgenommen sind getrennte Zustände. Modell, Version und Autoboot-Zustand nennen; keine Zustimmung aus fehlendem Feedback ableiten. Keine automatische Veröffentlichung oder SD-Übertragung nach erfolgreichem Build.
+7. Dokumentationsaufträge führen keine Anwendungstests/Builds mit Schreibeffekten aus. Sicherheitsrelevante DS-/Boot-/NAND-Wege benötigen eigenen Review und Hardwareplan. Runtime vorhanden bedeutet weder vollständiges Downloadpaket noch erwiesene Spielkompatibilität.
+
+`AGENTS.md` und `PROJECT-COPY.md` sind derzeit absichtlich ignoriert. Ihre gezielte Aufnahme in die Versionsverwaltung ist ein späterer, separat freizugebender Schritt; `.gitignore` nicht beiläufig ändern.

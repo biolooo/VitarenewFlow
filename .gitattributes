@@ -1,0 +1,7 @@
+# Portable verification scripts must retain LF on Windows worktrees.
+*.sh text eol=lf
+*.py text eol=lf
+Makefile text eol=lf
+
+# Delivered release and channel bytes are checksum contracts.
+/docs/updates/** -text

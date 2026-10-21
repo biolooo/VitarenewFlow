@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "rom_args.h"
 #include <stdint.h>
 #include <string.h>
