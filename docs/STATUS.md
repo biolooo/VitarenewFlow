@@ -4,6 +4,8 @@ Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist 
 
 ## Aktuelle Basis
 
+- PC 2 (21.10.2026): WSL2/Ubuntu und gepinnter devkitARM-Chroot eingerichtet; frischer 3DSX-/SMDH-Build, Quellankerprüfung und vorgesehene Hostfixtures bestanden. Desktop .4.1 mit 108 Selbsttests bestanden. Einzelheiten/Befehle in [PC2-SETUP.md](PC2-SETUP.md); keine zusätzliche Konsolenabnahme.
+
 - 100 C/H-Dateien identisch zum Legacy-.33-Stand und Releasequellarchiv. Makefile nur um den nachgewiesenen README-Buildfilter ergänzt.
 - Desktop .4.1 im Ziel erhalten; die separate .4.0-Kopie bleibt historisch.
 - Lokales .33-Paket und vier Kanaldateien übernommen und geprüft, kein neuer öffentlicher Release.
