@@ -11,7 +11,7 @@
 #include <string.h>
 #include <malloc.h>
 #include <sys/stat.h>
-#define RUNNING_VERSION "0.12.33"
+#define RUNNING_VERSION "0.12.34"
 static Thread worker;
 static unsigned state,received,total;
 static bool cancelled;

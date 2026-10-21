@@ -148,7 +148,7 @@ static void draw(bool loading,float progress,const char *stage){
     if(uiReleased)return;
     if(musicReady&&!loading)menu_music_start_if_needed();
     const char *target=visibleCount?games[visible[selected]].cover:"";
-    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.33",
+    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.34",
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
         .loading=loading,.progress=progress,.stage=stage,.homeLoading=homeLoading,.coverMenu=coverMenu,.coverTarget=target,
@@ -921,7 +921,7 @@ int main(int argc,char **argv){
                 bool busy=update.state==UPDATE_CHECKING||update.state==UPDATE_DOWNLOADING;
                 bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px<151)||((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px>=276);
                 bool primary=(keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px>=169);
-                bool notes=!busy&&settings_release_note_count("0.12.33")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
+                bool notes=!busy&&settings_release_note_count("0.12.34")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
                 if(back){updateNotes=false;if(busy)app_update_cancel();else updatePage=false;}
                 else if(notes)updateNotes=!updateNotes;
                 else if(primary&&!busy){

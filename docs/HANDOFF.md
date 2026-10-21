@@ -26,6 +26,8 @@ Startauftrag für Codex auf PC 2: „Richte VitarenewFlow hier als lokalen Entwi
 
 ## Nächster Auftrag
 
+OTA-Testversion 0.12.34 ist lokal fertig paketiert und aus dem exakten Quell-ZIP reproduziert. Aktueller Freigabepunkt: [RELEASE-0.12.34.md](RELEASE-0.12.34.md). Pages erlaubt nur main; ohne ausdrückliche main-Merge-Freigabe nicht veröffentlichen. Gerätetest erst nach grünem Pages-Lauf und öffentlichem Bytevergleich melden.
+
 Backlogauftrag 21.10.2026 lokal auf `codex/backlog-improvements` bearbeitet: Animation entfernt, About/Support und lokale Neuerungen erneuert; zusätzliche Banner-/Menü-/Paketprüfungen in den Hostrunner integriert. Maßgeblicher Arbeitsbericht: [BACKLOG-WORK.md](BACKLOG-WORK.md), Hardwarematrix: [acceptance/BACKLOG-PC2.md](acceptance/BACKLOG-PC2.md). Originale HOME-Standardmusik ist weiterhin ein offenes Feature mit fehlendem Archiv-/Sequenzplayer und Gerätevalidierung. N64 und Save-/Sync-Themen hat der Nutzer ausdrücklich zurückgestellt. Kein automatischer Push/Release/main-Merge.
 
 PC 2 ist inzwischen lokal eingerichtet und geprüft: WSL2/Ubuntu auf E:, gepinnter devkitARM-Chroot, nativer 3DSX-Build und vorgesehene Hosttests erfolgreich. Desktop .4.1 besteht 108 Selbsttests. Reproduzierbare Befehle und genaue Grenzen: [PC2-SETUP.md](PC2-SETUP.md). Keine neue Hardwareabnahme oder Veröffentlichung. GitHub-Schreibzugriff bleibt separat zu klären.

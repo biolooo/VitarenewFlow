@@ -4,6 +4,8 @@ Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist 
 
 ## Aktuelle Basis
 
+- Testreleasevorbereitung 0.12.34 auf `codex/test-release-0.12.34`: Versionen, OTA-/UniStore-Kanäle und Paket lokal konsistent, exaktes Quell-ZIP baut identische 3DSX/SMDH. Noch nicht veröffentlicht; main-Merge-Freigabe und öffentliche Prüfung ausstehend. Details: [RELEASE-0.12.34.md](RELEASE-0.12.34.md).
+
 - Lokaler Backlogdiff auf `codex/backlog-improvements` ab `eba8f03`: Spiel-Startanimation/Toggle und künstliche Mindestwartezeit entfernt, About/Support erneuert und lokale versionsgebundene Neuerungen ergänzt (DE/EN). Nativer Build und erweiterter Hostrunner bestanden; noch nicht veröffentlicht oder auf Konsole abgenommen. Details: [BACKLOG-WORK.md](BACKLOG-WORK.md).
 
 - PC 2 (21.10.2026): WSL2/Ubuntu und gepinnter devkitARM-Chroot eingerichtet; frischer 3DSX-/SMDH-Build, Quellankerprüfung und vorgesehene Hostfixtures bestanden. Desktop .4.1 mit 108 Selbsttests bestanden. Einzelheiten/Befehle in [PC2-SETUP.md](PC2-SETUP.md); keine zusätzliche Konsolenabnahme.
