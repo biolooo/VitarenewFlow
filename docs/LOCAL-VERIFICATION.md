@@ -26,3 +26,7 @@ Lesender Prüfer ohne Änderungen: 100 Launcher-C/H gleich Legacy .33, Desktopqu
 ## Gesicherte Git-Basis
 
 Die vollständige lokale Entwicklungsbasis wurde als a7a1f84 gesichert. Git-Status danach sauber. Ein frisches git-archive dieses Commits wurde separat entpackt; daraus bestanden nativer Build und die gleiche Hostfixture-Suite erneut. Anweisungen, aktuelle Quellen und Tests sind im Commit enthalten; Shellskripte bleiben durch .gitattributes auch unter Windows LF. Der Nachweis steht in migration-evidence/commit-verification-2026-10-21.json. Dieser Abschluss ergänzt nur Dokumentation, kein neuer Release.
+
+## Releasebytes in Git
+
+Der neue Orchestrator fand nach dem ersten Commit Git-Zeilennormalisierung in ausgelieferten Text-/Kanaldateien. Deshalb schützt .gitattributes jetzt docs/updates/** mit -text. Alle 186 Release-/Kanaldateien wurden gegen den Git-Index bytegenau geprüft, einschließlich aller acht .33-Manifesthashes. Unveränderte ausgelieferte Bytes sind maßgeblich, kein Neuberechnen des Release-Manifests. Die Korrektur ändert keine Anwendungsquellen; siehe migration-evidence/release-git-bytes-2026-10-21.json.
