@@ -1293,16 +1293,16 @@ void ui_draw(const UiState *s){
   rect(0,0,320,240,RGB(9,19,29));
   rounded(8,8,304,36,10,panel);
   reportHeading(s,tr("Über & Unterstützung"));
-  rounded(12,54,296,65,10,panel);
-  text(24,64,20,ink,"VitarenewFlow");
+  rounded(12,54,296,105,10,panel);
+  centered(160,64,18,ink,"VitarenewFlow");
   char version[64];snprintf(version,sizeof(version),"%s %s",tr("Version"),s->version);
-  text(24,91,12,accent,version);
-  text(178,92,11,muted,tr("Entwicklungsstand"));
-  rounded(12,127,296,36,10,panel);
-  text(24,136,13,accent,"vitarenew.de");
-  text(140,138,10,muted,tr("Von VitaRenew für deine Sammlung."));
-  rounded(12,170,296,30,9,accent);
-  centered(160,178,12,RGB(12,35,36),tr("X Problem melden"));
+  centered(160,92,12,muted,version);
+  centered(160,113,11,muted,tr("Von VitaRenew für deine Sammlung."));
+  centered(160,132,16,accent,"vitarenew.de");
+  rounded(12,170,296,30,9,raised);
+  rounded(24,176,18,18,5,panel);
+  centered(33,179,11,accent,"X");
+  centered(170,178,12,ink,tr("Problem melden"));
   rounded(12,205,296,30,9,raised);
   centered(160,213,12,ink,tr("A / B Zurück"));
  }

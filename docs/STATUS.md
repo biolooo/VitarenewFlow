@@ -1,5 +1,13 @@
 # Projektstatus und Abnahme
 
+## About-Layoutkorrektur nach .36 — lokal
+
+Frischer nativer Build und alle vorgesehenen Hostprüfungen bestanden: `.test-build/verification-20261021-211513`.
+
+Nutzer meldete gedrängte About-Seite nach Hinzufügen des Reportbuttons. Identität, Version, VitaRenew-Zeile und Website stehen nun zentriert untereinander in einer gemeinsamen Karte. Der Meldebutton verwendet eine dezente eigene Zeile mit X-Tastenmarkierung statt einer vollflächigen Akzentfläche. Keine gedrängte horizontale Website-/Textzeile mehr. Report-/Zurück-Touchflächen unverändert. DE/EN-Layoutvorschau mit Inter-Schrift und den nativen Glyphenvorschüben visuell geprüft; kein Konsolenscreenshot oder Hardwarepass. Öffentliche .36-Pakete unverändert, noch nicht veröffentlicht.
+
+Changelog für nächsten Release: Über & Unterstützung mit klarer Textanordnung und dezenterem Meldebutton überarbeitet (EN: Refined About & support layout and report button). Gitbasis 46e69ee, Remote-main vor Beginn 2f4356c; kein neuer PC-2-Remotecommit. Nicht gepushte PC-2-Arbeit bleibt hier unsichtbar.
+
 Veröffentlichung .36 bestätigt: Releasecommit e417163, Pages-Lauf 39658148277 erfolgreich. Alle neun Paketdateien und vier Updatekanäle öffentlich bytegleich geprüft. Nachweis: [0.12.36](release-evidence/0.12.36.json). Receiver 0.2.0 gesund; keine .36-Konsolenabnahme. PC 2 kann den veröffentlichten main nach Prüfung eigener Änderungen abrufen. Die folgenden Vorbereitungsangaben sind datierter Verlauf.
 
 ## Freigegebene Bereitstellung .36 — 21.10.2026
