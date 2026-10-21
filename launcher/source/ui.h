@@ -17,10 +17,10 @@ typedef struct {
     unsigned homeLoading; /* 0 none, 1 prepare, 2 system handoff, 3 reboot to HOME */
     bool coverMenu; const char *coverTarget; const char **imports; unsigned importCount; unsigned importSelected;
     bool setupDs;
-    bool updatePage;UpdateStatus update;
+    bool updatePage,updateNotes;UpdateStatus update;
     bool componentPage,componentRechecked;unsigned componentSelected;ComponentStatus component;
     float carousel; unsigned systemIndex; bool settings,systemPicker; unsigned menuSelected;
-    int brightness; bool brightnessAvailable; bool animation; const char *themeSource; unsigned launchFrame; bool launching;
+    int brightness; bool brightnessAvailable; const char *themeSource; bool launching;
     bool controls;
     int32_t twlError;unsigned twlPage,twlMissing;bool twlNeedsReboot,twlKnown,twlSupported,twlLoader,twlFiles;TwlAdvice twlAdvice;
     unsigned settingsPage;

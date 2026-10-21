@@ -802,22 +802,6 @@ static void information(const UiState *s){
 
 }
 
-static void logo(const UiState *s){
-
- float fade=s->launchFrame<12?s->launchFrame/12.f:1;
-
- centered(200,91,26,RGBA(245,249,251,(u8)(255*fade)),s->systemIndex<SYSTEM_COUNT?library_system_names[s->systemIndex]:s->system);
-
- rounded(145,133,110,3,1,RGB(27,42,54));
-
- rounded(145,133,110*fminf(1,s->launchFrame/24.f),3,1,accent);
-
- centered(200,157,12,muted,s->stage);
-
- for(unsigned i=0;i<3;++i)rounded(188+i*10,190,4,4,2,((frame/8)%3)==i?accent:raised);
-
-}
-
 /* HOME has no measurable percentage. The moving indicator is only a busy
    signal; the final frame remains visible during the OS-owned APT handshake. */
 
@@ -919,7 +903,10 @@ static void drawTop(const UiState *s,float eye){
 
  if(s->loading){rect(0,0,400,240,RGB(6,13,23));
 
- if(s->launching)logo(s);
+ if(s->launching){
+ centered(200,92,18,ink,tr("Spielstart"));
+ centered(200,130,12,muted,s->stage);
+ }
 
  else if(!s->installing&&brand_ui_draw()){
 
@@ -1159,8 +1146,6 @@ void ui_draw(const UiState *s){
 
    const char *value=item->action==MENU_LANGUAGE?(l10n_english()?"English":"Deutsch"):
 
-    item->action==MENU_ANIMATION?(s->animation?tr("An"):tr("Aus")):
-
     item->action==MENU_AUTOBOOT?(s->autobootState==1?tr("An"):s->autobootState==0?tr("Aus"):tr("Prüfen")):NULL;
 
    text(25,y+11,16,active?accent:ink,tr(item->label));
@@ -1218,7 +1203,16 @@ void ui_draw(const UiState *s){
 
   const char *message=u->state==UPDATE_CHECKING?tr("Updates werden geprüft..."):u->state==UPDATE_DOWNLOADING?tr("Update wird geladen..."):tr(u->message);
 
-  title(20,121,13,280,3,message,false);
+  unsigned noteCount=settings_release_note_count(s->version);
+  if(s->updateNotes&&!busy&&noteCount){
+   text(20,110,11,muted,tr("Installierte Version: Neuerungen"));
+   for(unsigned i=0;i<noteCount;i++)text(20,127+i*15,11,ink,tr(settings_release_note(s->version,i)));
+  }else title(20,113,12,280,busy?3:2,message,false);
+
+  if(!busy&&noteCount){
+   rounded(20,172,280,14,4,raised);
+   centered(160,173,10,accent,tr(s->updateNotes?"X Neuerungen einklappen":"X Neuerungen dieser Version"));
+  }
 
   if(u->state==UPDATE_DOWNLOADING){float p=u->total?(float)u->received/u->total:0;
 
@@ -1291,23 +1285,20 @@ void ui_draw(const UiState *s){
  }
 
  if(s->support){
-
-  popup(tr("Über VitarenewFlow"));
-
-  text(20,77,11,muted,s->version);
-
-  text(20,91,12,ink,tr("Schön, dass dir VitarenewFlow gefällt."));
-
-  text(20,115,12,muted,tr("Wenn du uns unterstützen möchtest,"));
-
-  text(20,134,12,muted,tr("schau auf vitarenew.de vorbei."));
-
-  centered(160,161,18,accent,"vitarenew.de");
-
-  centered(160,188,12,muted,tr("Aufbereitete Konsolen & Zubehör."));
-
-  text(20,214,12,muted,tr("A / B Zurück"));
-
+  rect(0,0,320,240,RGB(9,19,29));
+  rounded(8,8,304,36,10,panel);
+  centered(160,15,18,ink,tr("Über & Unterstützung"));
+  rounded(12,54,296,65,10,panel);
+  text(24,64,20,ink,"VitarenewFlow");
+  char version[64];snprintf(version,sizeof(version),"%s %s",tr("Version"),s->version);
+  text(24,91,12,accent,version);
+  text(178,92,11,muted,tr("Entwicklungsstand"));
+  rounded(12,127,296,68,10,panel);
+  text(24,137,11,muted,tr("Von VitaRenew für deine Sammlung."));
+  text(24,157,18,accent,"vitarenew.de");
+  text(24,180,10,muted,tr("Aufbereitete Konsolen & Zubehör."));
+  rounded(12,205,296,30,9,raised);
+  centered(160,213,12,ink,tr("A / B Zurück"));
  }
 
  if(s->systemPicker){popup(tr("Kategorien"));

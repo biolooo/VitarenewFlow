@@ -62,9 +62,9 @@ static u8 smdh[SMDH_SIZE];
 static unsigned language=1;
 static bool amReady,restored,confirm,coverMenu;
 static CoverFlow flow;
-static unsigned remembered[VIEW_COUNT],menuSelected,launchFrame;
+static unsigned remembered[VIEW_COUNT],menuSelected;
 static unsigned settingsPage;
-static bool updatePage;
+static bool updatePage,updateNotes;
 static bool componentPage;
 static unsigned componentSelected;
 static u64 componentCheckedUntil;
@@ -74,7 +74,7 @@ static bool powerPrompt,powerCancelFailed,copyPrompt;
 static unsigned twlPage;static TwlReport twlReport;static bool twlNeedsReboot;static Result twlError;
 static Cartridge lastCartridge;
 static u64 lastCardPoll;
-static bool settings,systemPicker,animation=true,preparingGame,controlsPage;
+static bool settings,systemPicker,preparingGame,controlsPage;
 static GameInfo gameInfo;
 static bool infoOpen;
 static unsigned infoScroll;
@@ -152,9 +152,9 @@ static void draw(bool loading,float progress,const char *stage){
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
         .loading=loading,.progress=progress,.stage=stage,.homeLoading=homeLoading,.coverMenu=coverMenu,.coverTarget=target,
-        .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.component=components_status(),
+        .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.updateNotes=updateNotes,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.component=components_status(),
         .carousel=flow.position,.systemIndex=visibleCount?(unsigned)games[visible[selected]].system:library_view_system(systemView),.settings=settings,.settingsPage=settingsPage,.autobootPrompt=autobootPrompt,.autobootState=autobootState,.powerPrompt=powerPrompt,.copyPrompt=copyPrompt,.twlAdvice=twl_recommendation(&twlReport),.twlPage=twlPage,.twlError=(int32_t)twlError,.twlNeedsReboot=twlNeedsReboot,.twlKnown=twlReport.known,.twlSupported=twlReport.supported,.twlMissing=twlReport.missing,.twlLoader=twlReport.loader,.twlFiles=twlReport.files,.support=supportOpen,.systemPicker=systemPicker,.menuSelected=menuSelected,
-        .componentRechecked=osGetTime()<componentCheckedUntil,.powerCancelFailed=powerCancelFailed,.animation=animation,.themeSource=themeSource,.launchFrame=launchFrame,.launching=preparingGame,.controls=controlsPage,.info=infoOpen?&gameInfo:NULL,.infoScroll=infoScroll,
+        .componentRechecked=osGetTime()<componentCheckedUntil,.powerCancelFailed=powerCancelFailed,.themeSource=themeSource,.launching=preparingGame,.controls=controlsPage,.info=infoOpen?&gameInfo:NULL,.infoScroll=infoScroll,
         .installPrompt=installPrompt,.installing=installing,.installSize=installSize,.installSpace=installSpace,.installEta=installEta,.installError=(installFailed||launchFailed)?message:NULL,.launchError=launchFailed,.launchRepair=launchFailed&&launchRepairComponent>=0,.errorTitle=errorTitle,.prefetch=neighborCards,.prefetchCount=neighborCount};
         ui_draw(&state);
 }
@@ -572,9 +572,6 @@ static void switchSystem(unsigned next){
     infoOpen=controlsPage=false;
     status=tr("Bereit");
 }
-static void saveSettings(void){FILE *f=fopen("sdmc:/3ds/3ds-library/appearance.txt","wb");
-if(f){fprintf(f,"%u\n",animation?1:0);
-fclose(f);}}
 typedef struct {Game *game;
 Result result;
 u32 seedPhase;
@@ -689,7 +686,6 @@ static bool startGame(void){
         installPrompt=true;flow_reset(&flow,selected);return false;}
     launchRepairComponent=-1;
     preparingGame=true;
-    launchFrame=0;
     Preflight p={.game=g};
     Thread worker=threadCreate(preflightWorker,&p,0x10000,0x30,-2,false);
     if(!worker){p.result=(Result)-3;p.done=true;}
@@ -697,8 +693,8 @@ static bool startGame(void){
     do {active=flowMainLoop();
     if(!active)break;
     draw(true,0,__atomic_load_n(&p.done,__ATOMIC_ACQUIRE)?tr("Start wird vorbereitet"):g->system==SYSTEM_3DS&&!g->homebrew&&!g->cartridge?(__atomic_load_n(&p.seedPhase,__ATOMIC_ACQUIRE)?tr("Spiel-Seed wird repariert..."):tr("Spiel-Seed wird geprueft...")):tr("Spiel und Emulator pruefen"));
-    ++launchFrame;}
-    while(!__atomic_load_n(&p.done,__ATOMIC_ACQUIRE) || (animation && launchFrame<36));
+    }
+    while(!__atomic_load_n(&p.done,__ATOMIC_ACQUIRE));
     if(worker){threadJoin(worker,U64_MAX);
     threadFree(worker);}lastError=p.result;
     if(active&&R_SUCCEEDED(lastError)){draw(true,1,tr("Uebergabe an Spiel / Emulator"));
@@ -829,10 +825,8 @@ int main(int argc,char **argv){
     amReady=R_SUCCEEDED(amInit());
     {bool registered=false;NS_APPID menu=aptGetMenuAppID();Result r=APT_IsRegistered(menu,&registered);char entry[100];snprintf(entry,sizeof(entry),"Session: homebrew=%u HOME=%u registered=%u result=%08lX",envIsHomebrew(),(unsigned)menu,registered,(unsigned long)(u32)r);app_handoff_log(entry);homeUnavailable=R_SUCCEEDED(r)&&!registered;if(homeUnavailable)aptSetHomeAllowed(false);}
     mkdir("sdmc:/3ds/3ds-library/import",0777);
-    FILE *prefs=fopen("sdmc:/3ds/3ds-library/appearance.txt","rb");
-    if(prefs){unsigned value=1;
-    if(fscanf(prefs,"%u",&value)==1)animation=value!=0;
-    fclose(prefs);}
+    /* appearance.txt only held the removed launch-animation toggle. Leave
+       legacy preferences untouched; language and view have separate files. */
     FILE *view=fopen("sdmc:/3ds/3ds-library/view-v2.txt","rb");
     bool legacyView=false;if(!view){view=fopen("sdmc:/3ds/3ds-library/view.txt","rb");legacyView=true;}
     unsigned restoreSys=0,restoreSelection=0;
@@ -927,8 +921,11 @@ int main(int argc,char **argv){
                 bool busy=update.state==UPDATE_CHECKING||update.state==UPDATE_DOWNLOADING;
                 bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px<151)||((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px>=276);
                 bool primary=(keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px>=169);
-                if(back){if(busy)app_update_cancel();else updatePage=false;}
+                bool notes=!busy&&settings_release_note_count("0.12.33")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
+                if(back){updateNotes=false;if(busy)app_update_cancel();else updatePage=false;}
+                else if(notes)updateNotes=!updateNotes;
                 else if(primary&&!busy){
+                    updateNotes=false;
                     if(update.state==UPDATE_AVAILABLE)app_update_download();
                     else if(update.state==UPDATE_INSTALLED){
                         Result r=homebrew_prepare_launch(UPDATE_APP);
@@ -1087,7 +1084,7 @@ int main(int argc,char **argv){
                     case MENU_DESKTOP:components_clear();components_recheck();componentCheckedUntil=0;componentPage=true;componentSelected=6;break;
                     case MENU_COMPONENTS:components_clear();components_recheck();componentCheckedUntil=0;componentPage=true;componentSelected=0;break;
                     case MENU_UPDATE:
-                        if(envIsHomebrew()){components_stop();updatePage=true;app_update_check();}
+                        if(envIsHomebrew()){components_stop();updateNotes=false;updatePage=true;app_update_check();}
                         else {status=tr("Updates bitte über den Homebrew Launcher öffnen.");}
                         break;
                     case MENU_HOME:openHomeMenu();if(uiReleased)leave=true;break;
@@ -1101,7 +1098,6 @@ int main(int argc,char **argv){
                         break;}
                     case MENU_DS:openTwl();break;
                     case MENU_AUTOBOOT:autobootState=autoboot_status();autobootPrompt=true;break;
-                    case MENU_ANIMATION:animation=!animation;saveSettings();status=tr("Einstellung gespeichert");break;
                     case MENU_SCAN:{
                         draw(true,0,tr("Spiele werden eingelesen"));unsigned old=selected;
                         scan();selected=old;rebuild();flow_reset(&flow,selected);status=tr("Spieleliste aktualisiert");break;}

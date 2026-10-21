@@ -11,6 +11,7 @@ Stand 21.10.2026, Basis `3b6ad02` (Übergabebranch `codex/pc2-handoff`), Launche
 - Unveränderte SDK-Basis: `devkitpro/devkitarm@sha256:15b79ce75822c289538d8153da5fa7aafe5e6adc32ad8a575a197beca0f0761b`, linux/amd64. Mit Skopeo unter Erhalt der Digests heruntergeladen und mit umoci entpackt. Image und Herkunft unter `/opt/vitarenew-sdk/image` und `image-inspect.json` erhalten.
 - Chroot: Debian 12, devkitARM GCC 16.1.0, Host-GCC 12.2.0, Python 3.11.2 und Make 4.3. Vorhandene 3DS-Bibliotheken verwendet, kein SDK-Upgrade. Hostcompiler mit UBSan separat erfolgreich geprüft.
 - In Ubuntu installiert: `skopeo`, `umoci`, `python3`, `ca-certificates` samt Paketabhängigkeiten. Docker ist nicht erforderlich.
+- Für die später ergänzten Banner-Hosttests wurde im Debian-Chroot zusätzlich `zlib1g-dev` (1:1.2.13.dfsg-1) installiert; die devkitARM-/3DS-Pakete blieben unverändert. Paketverwaltung benötigt ein funktionsfähiges `/dev/null` im Chroot; hierfür wurde es gezielt temporär gebunden und danach ausgehängt. Signierte Paketindizes wurden erfolgreich geprüft, keine Signaturprüfung deaktiviert.
 
 Buildbefehle laufen gezielt als Linux-root, weil der vorhandene Runner einen Chroot benötigt. Eine interaktive Ubuntu-Benutzereinrichtung mit Passwort war dafür nicht erforderlich. Windows-Administratorrechte sind für die laufenden Prüfungen nicht nötig.
 

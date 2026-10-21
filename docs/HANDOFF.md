@@ -26,9 +26,11 @@ Startauftrag für Codex auf PC 2: „Richte VitarenewFlow hier als lokalen Entwi
 
 ## Nächster Auftrag
 
+Backlogauftrag 21.10.2026 lokal auf `codex/backlog-improvements` bearbeitet: Animation entfernt, About/Support und lokale Neuerungen erneuert; zusätzliche Banner-/Menü-/Paketprüfungen in den Hostrunner integriert. Maßgeblicher Arbeitsbericht: [BACKLOG-WORK.md](BACKLOG-WORK.md), Hardwarematrix: [acceptance/BACKLOG-PC2.md](acceptance/BACKLOG-PC2.md). Originale HOME-Standardmusik ist weiterhin ein offenes Feature mit fehlendem Archiv-/Sequenzplayer und Gerätevalidierung. N64 und Save-/Sync-Themen hat der Nutzer ausdrücklich zurückgestellt. Kein automatischer Push/Release/main-Merge.
+
 PC 2 ist inzwischen lokal eingerichtet und geprüft: WSL2/Ubuntu auf E:, gepinnter devkitARM-Chroot, nativer 3DSX-Build und vorgesehene Hosttests erfolgreich. Desktop .4.1 besteht 108 Selbsttests. Reproduzierbare Befehle und genaue Grenzen: [PC2-SETUP.md](PC2-SETUP.md). Keine neue Hardwareabnahme oder Veröffentlichung. GitHub-Schreibzugriff bleibt separat zu klären.
 
-Erst den aktuellen Git-Zustand und Migrationsbericht lesen. Keinen offenen Featurepunkt automatisch starten. Hardwarefeedback .27–.33 ist noch offen; insbesondere POWER wiederholt, HOME/Spielstart, Theme-Musik, DS/Komponentenprüfung und Desktop-Reparatur. N64-Rücksprung bleibt ohne konkrete Logs ungeklärt. Startanimation ist trotz Entfernungswunsch noch vorhanden. Originale Standardmusik ist nicht fertig.
+Erst den aktuellen Git-Zustand und Migrationsbericht lesen. Hardwarefeedback .27–.33 und des lokalen Backlogdiffs ist noch offen; insbesondere POWER wiederholt, HOME/Spielstart, Theme-Musik, DS/Komponentenprüfung und Desktop-Reparatur. N64-Rücksprung bleibt ohne konkrete Logs ungeklärt und vertagt. Startanimation wurde im lokalen Backlogdiff entfernt. Originale Standardmusik ist nicht fertig.
 
 Bei einem konkreten Entwicklungsauftrag: begrenzten Implementierer und unabhängigen lesenden Prüfer einsetzen, Dateieigentum und Commitbasis benennen, Schreibaufgaben bei Parallelität in getrennten Worktrees isolieren. Hauptchat hält Entscheidungen und kurze Ergebnisse. Nach Abschluss STATUS/DECISIONS/HANDOFF aktualisieren. Kein automatischer Release/Push/SD-Transfer und keine NAND-Reparatur.
 

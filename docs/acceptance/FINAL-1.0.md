@@ -1,5 +1,7 @@
 # Finale Abnahme — VitarenewFlow 1.0.0
 
+Aktueller Einstieg für den PC-2-Backlogstand: [BACKLOG-PC2.md](BACKLOG-PC2.md). Die folgenden älteren versionsbezogenen Testgates bleiben historisch; aktuelle Reparaturgrenzen aus STATUS/DS-REPAIR beachten und keine NAND-Aktionen daraus automatisch ausführen. Kein Häkchen wurde ohne Nachweis ergänzt.
+
 Geplante Gesamtabnahme. Diese Liste behauptet nicht, dass alle Funktionen bereits fertig sind. Erst nach den bestandenen Pflichtpunkten wird 1.0 veröffentlicht. TEST-0.11.1 wurde vom Nutzer vollständig bestanden; als Nächstes TEST-0.12.3 inklusive der offenen Konsolentests aus 0.12.0 durchführen.
 
 ## Installation

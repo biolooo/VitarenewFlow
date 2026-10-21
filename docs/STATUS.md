@@ -4,9 +4,11 @@ Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist 
 
 ## Aktuelle Basis
 
+- Lokaler Backlogdiff auf `codex/backlog-improvements` ab `eba8f03`: Spiel-Startanimation/Toggle und künstliche Mindestwartezeit entfernt, About/Support erneuert und lokale versionsgebundene Neuerungen ergänzt (DE/EN). Nativer Build und erweiterter Hostrunner bestanden; noch nicht veröffentlicht oder auf Konsole abgenommen. Details: [BACKLOG-WORK.md](BACKLOG-WORK.md).
+
 - PC 2 (21.10.2026): WSL2/Ubuntu und gepinnter devkitARM-Chroot eingerichtet; frischer 3DSX-/SMDH-Build, Quellankerprüfung und vorgesehene Hostfixtures bestanden. Desktop .4.1 mit 108 Selbsttests bestanden. Einzelheiten/Befehle in [PC2-SETUP.md](PC2-SETUP.md); keine zusätzliche Konsolenabnahme.
 
-- 100 C/H-Dateien identisch zum Legacy-.33-Stand und Releasequellarchiv. Makefile nur um den nachgewiesenen README-Buildfilter ergänzt.
+- Gesicherte Migrationsbasis: 100 C/H-Dateien identisch zu Legacy .33 und Releasequellarchiv, Makefile mit README-Buildfilter. Der darüberliegende lokale Backlogdiff verändert UI-/Menüquellen; er ist nicht bytegleich zum unveränderten öffentlichen .33-Quellpaket.
 - Desktop .4.1 im Ziel erhalten; die separate .4.0-Kopie bleibt historisch.
 - Lokales .33-Paket und vier Kanaldateien übernommen und geprüft, kein neuer öffentlicher Release.
 - AGENTS/PROJECT-COPY werden versioniert. SDK, Sicherung, Snapshot und Prüfergebnisse bleiben extern/ignoriert.
@@ -27,13 +29,13 @@ Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist 
 
 1. **Migration lokal durchgeführt:** verbindliche Basis Launcher .33/Desktop .4.1, Sicherung und neue isolierte Prüfbefehle vorhanden; keine Featurearbeit automatisch gestartet. Nachweise in MIGRATION und LOCAL-VERIFICATION.
 2. **P1 Hardwarefeedback .27–.33:** ausdrücklich ausstehend. Primärmodell New 3DS XL; Zweitkonsole unbekannt. Keine weitere Featurekette als Ersatz für Abnahme.
-3. **P1 Startanimation entfernen:** ausdrücklich gewünscht, nicht erledigt. `settings_menu.c` MENU_ANIMATION, `main.c` Flag/Prefs und `launchFrame<36` bestehen. Echte Lade-/Seed-Anzeigen und animierte Originalbanner erhalten.
-4. **P1 N64-Zweitkonsole:** nach installiertem Emulator Blackscreen und Rückkehr zu Flow. Betroffene konkrete Logs fehlen. Modell, Adapterhash, Argumente und private ROM-Identität im gesonderten Diagnoseauftrag prüfen. Älterer Fehlender-Emulator-Fix löst dies nicht nachweislich.
+3. **P1 Startanimation entfernen:** lokal umgesetzt und gebaut/geprüft. Toggle, Logo und Mindestframe-Wait entfernt; alte appearance.txt bleibt unangetastet. Echte Lade-/Seed-Anzeigen und Originalbanner bleiben. Konsolenabnahme offen.
+4. **P1 N64-Zweitkonsole:** vom Nutzer am 21.10.2026 ausdrücklich bis zu erneutem Test/Logs zurückgestellt. Kein neuer Fix oder Pass behauptet; Diagnosepfade in acceptance/BACKLOG-PC2.md.
 5. **P1 Standardmusik:** originale HOME-Musik ohne PC gewünscht, nicht fertig. Synthetischer Fallback verworfen. Ohne gültiges Theme aktuell Klicks; .30 Theme-Decoder lokal verbessert, Hardwarefeedback fehlt.
 6. **P1 1.0-Vertrieb:** saubere Zweitkonsole komplett via UniStore einrichten und Emulator-/Shortcut-/OTA-Fehlerfälle abnehmen. Lizenz-/Quellpaketzuordnung der Adapter prüfen. Eigener UniStore ist keine Universal-DB-Aufnahme.
-7. **P2 UI:** About/Support modernisieren, ausklappbare kurze Update-Neuerungen. Einfacher Rückweg nach nativen Spielen teilweise via Shortcut vorhanden, Verhalten mit Autoboot/ohne Shortcut noch konkret prüfen.
-8. **P2 Banner/Performance:** neue Spiele ohne .lbn, Coverqualität und große Bibliotheken prüfen. Vollständige automatische Banner-Konvertierung/FPS-Ziele nicht fertig oder freigegeben.
-9. **Später entscheiden:** PC-Emulator-/Save-Sync, Save-Konvertierung und Modul-Saves. Kopie eines Moduls übernimmt nicht automatisch dessen Save.
+7. **P2 UI:** About/Support und ausklappbare lokale Neuerungen der installierten Version umgesetzt, DE/EN-/Menü-/Touchgrenzen lokal geprüft; Bildschirmabnahme offen. Das VFUPDATE1-Manifest liefert keine Remote-Release-Notes, unbekannte Versionen erhalten keine erfundenen Texte. HOME-/Shortcut-Rückwege weiterhin auf Hardware prüfen.
+8. **P2 Banner/Performance:** neue reale Parser-/Bibliotheksmodultests für gültige/defekte/trunkierte Banner und 1024 eindeutige Coverpfade bestanden. Keine GPU-/Fullscan-/FPS-Abnahme; Coverqualität, universelle Bannerkonvertierung und Geräteleistung bleiben offen.
+9. **Später entscheiden:** PC-Emulator-/Save-Sync, Save-Konvertierung und Modul-Saves bleiben auf ausdrücklichen Nutzerwunsch (21.10.2026) offen. Kopie eines Moduls übernimmt nicht automatisch dessen Save.
 10. **Schulden:** große main.c/ui.c; extrahierte Testkopien können driften; alte Generatoren patchen Quellen; stale SDK-Projektkopien; statische Adapterversionen sind kein Versprechen jeweils neuester Upstreams. Historische Installations-/Fallback-Dokumente nicht als Iststand lesen.
 
 ## Explizite Nutzerberichte

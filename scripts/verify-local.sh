@@ -6,11 +6,17 @@ SDK=${FLOW_TOOLCHAIN_ROOT:-/home/maxim/codex-3ds-work/toolchain}
 test -x "$SDK/bin/bash" || { echo "Missing existing SDK: set FLOW_TOOLCHAIN_ROOT" >&2; exit 1; }
 OUT="$PROJECT/.test-build/verification-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$OUT"
+(
+cd "$PROJECT"
+python3 scripts/check-component-packages.py
+python3 -m unittest discover -s tests/backlog -p 'test_*.py'
+) 2>&1 | tee "$OUT/package-verification.log"
 STAGE=$(mktemp -d "$SDK/flow-check-XXXXXX")
 mkdir -p "$STAGE/launcher" "$STAGE/tests"
 cp "$PROJECT/launcher/Makefile" "$STAGE/launcher/"
 cp -a "$PROJECT/launcher/source" "$PROJECT/launcher/branding" "$PROJECT/launcher/data" "$STAGE/launcher/"
 cp -a "$PROJECT/tests/release-0.12.33/." "$STAGE/tests/"
+cp -a "$PROJECT/tests/backlog" "$STAGE/tests/"
 cp -a "$PROJECT/launcher/tests" "$STAGE/launcher/"
 cp "$PROJECT/scripts/verify-stage.sh" "$STAGE/"
 cp "$PROJECT/scripts/check-fixture-source.py" "$STAGE/"
