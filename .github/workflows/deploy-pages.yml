@@ -1,0 +1,60 @@
+name: Publish Flow downloads
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: flow-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Verify the update before publishing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re
+          root = Path('docs/updates')
+          lines = (root / 'latest.txt').read_text().splitlines()
+          assert lines[0] == 'VFUPDATE1'
+          meta = dict(line.split('=', 1) for line in lines[1:] if '=' in line)
+          version = meta['version']
+          assert re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+', version)
+          binary = root / version / 'VitarenewFlow.3dsx'
+          data = binary.read_bytes()
+          assert len(data) == int(meta['size'])
+          assert hashlib.sha256(data).hexdigest() == meta['sha256']
+          assert meta['url'] == f'https://biolooo.github.io/VitarenewFlow/updates/{version}/VitarenewFlow.3dsx'
+          store = json.loads((root / 'VitarenewFlow.unistore').read_text())
+          assert store['storeContent'][0]['info']['version'] == version
+          for name, digest in json.loads((root / version / 'SHA256.json').read_text()).items():
+              assert Path(name).name == name
+              assert hashlib.sha256((root / version / name).read_bytes()).hexdigest() == digest, name
+          print(f'PASS: verified release {version}')
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Publish verified downloads
+        id: deployment
+        uses: actions/deploy-pages@v4

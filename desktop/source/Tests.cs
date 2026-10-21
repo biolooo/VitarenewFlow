@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -110,10 +112,10 @@ namespace LibraryDesktop {
                 foreach (string uiCheck in new Desktop(card).CheckUI()) Assert(true, uiCheck);
                 foreach (string autoCheck in AutoCoverTests.Run()) Assert(true,autoCheck);
                 Assert(true,new Desktop(card).CheckAutoCoverButton());
-                File.WriteAllText(report, new JavaScriptSerializer().Serialize(new { version = "0.3.1", passed = true, checks = Results.Count, scratch = scratch, results = Results }), System.Text.Encoding.UTF8);
+                File.WriteAllText(report, new JavaScriptSerializer().Serialize(new { version = "0.4.1", passed = true, checks = Results.Count, scratch = scratch, results = Results }), System.Text.Encoding.UTF8);
                 return 0;
             } catch (Exception e) {
-                File.WriteAllText(report, new JavaScriptSerializer().Serialize(new { version = "0.3.1", passed = false, error = e.ToString(), scratch = scratch, results = Results }), System.Text.Encoding.UTF8); return 1;
+                File.WriteAllText(report, new JavaScriptSerializer().Serialize(new { version = "0.4.1", passed = false, error = e.ToString(), scratch = scratch, results = Results }), System.Text.Encoding.UTF8); return 1;
             }
         }
     }

@@ -1,0 +1,39 @@
+VitarenewFlow — Installation / Testpaket 0.12.11
+
+Voraussetzungen: Nintendo 3DS mit Luma-CFW, vorzugsweise der getestete
+New Nintendo 3DS XL / Luma 13.4, FAT32-SD, Windows 10/11 mit .NET Framework 4.8.
+Dieses Setup installiert keine CFW und formatiert keine Karte.
+
+1. SD am PC einstecken. VitarenewFlow Setup.exe aus dem Download starten.
+2. Das richtige Laufwerk auswählen und Installieren / Reparieren wählen.
+3. Auf Abschluss und SHA256-Prüfung warten. SD währenddessen nicht entfernen.
+4. Auf dem 3DS /cias/VitarenewFlow.cia mit FBI installieren.
+5. VitarenewFlow im HOME-Menü starten. Die 3DSX steht auch im Homebrew Launcher.
+
+3DS Library PC.exe öffnet die Spiele-/Cover-Verwaltung direkt von der SD.
+Spiele hinzufügen oder hineinziehen. CIAs erscheinen erst als noch nicht
+installierte Spiele; die Installation findet auf der Konsole statt.
+Fehlende Cover laden sucht passende Bilder und komprimiert sie automatisch.
+
+Retro-Emulatoren benötigen die angepassten VitarenewFlow-Adapter, nicht nur
+eine beliebige gleichnamige Emulator-Datei. Das Grundpaket enthält keine
+Emulatoren, Spiele, Spielstände, Cover-Datenbanken, BIOS oder Schlüssel.
+Setup zeigt fehlende Adapter und GodMode9 als fehlend an; es meldet nicht
+fälschlich eine vollständige Retro-Einrichtung. 3DS-Spiele benötigen keinen
+Retro-Adapter. Der optionale Adapter-Pack ist noch in Lizenz-/Release-Prüfung.
+
+Originale bleiben unter Library-PC/install-backups/<Vorgang> erhalten.
+Boot-Dateien, Sprache, Einstellungen, Spiele, Saves und Cover werden nicht
+ersetzt. Bei einem Fehler versucht Setup, die vorherigen App-Dateien wieder
+herzustellen. Bei SD-Entnahme Sicherungen behalten und Fehlermeldung prüfen.
+Ändert sich der Starthelfer, verlangt Setup vorher die Deaktivierung von
+Autostart. boot.firm und Luma-Konfiguration werden nie durch Setup ersetzt.
+
+Autostart: Einstellungen > Weitere Einstellungen > Autostart. Erst bestätigen,
+wenn die Konsolentestliste abgeschlossen ist. B beim Start öffnet den bisherigen
+Homebrew Launcher. SELECT beim Einschalten öffnet Luma zur Wiederherstellung.
+Spielmodule: X in der Library, dann X beim Modul für den GodMode9-Assistenten.
+Modul-Spielstände werden nicht automatisch übernommen; Checkpoint separat nutzen.
+
+Dies ist noch keine finale 1.0. Neustart/POWER/Module aus 0.12.11 brauchen die
+Konsolenabnahme. Universal-Updater-Verteilung folgt dem freigegebenen Release.

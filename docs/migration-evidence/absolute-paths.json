@@ -1,0 +1,322 @@
+[
+  {
+    "path": "work/toolchain/build.sh",
+    "line": 3,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/toolchain/build.sh",
+    "line": 4,
+    "text": "SOURCE=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan/outputs/3ds-library"
+  },
+  {
+    "path": "work/toolchain/extract.py",
+    "line": 3,
+    "text": "p=Path('/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan/work/toolchain')"
+  },
+  {
+    "path": "work/toolchain/extract.py",
+    "line": 4,
+    "text": "target=Path('/home/maxim/codex-3ds-work/toolchain')"
+  },
+  {
+    "path": "work/desktop-v01233/prepare-tests.py",
+    "line": 155,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/desktop-v01233/prepare-tests.py",
+    "line": 156,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/desktop-v01233/preview-prepare.py",
+    "line": 26,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/desktop-v01233/preview-prepare.py",
+    "line": 27,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/desktop-v01233/preview.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/desktop-v01233/preview.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/desktop-v01233/run.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/desktop-v01233/run.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/desktop-v01233/source-build.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/desktop-v01233/source-build.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/desktop-v01233/source-tests.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/desktop-v01233/source-tests.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/twl-v01232/preview-prepare.py",
+    "line": 36,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/twl-v01232/preview-prepare.py",
+    "line": 37,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/twl-v01232/preview.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/twl-v01232/preview.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/twl-v01232/run.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/twl-v01232/run.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/twl-v01232/source-build.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/twl-v01232/source-build.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/twl-v01232/source-tests.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/twl-v01232/source-tests.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/twl-v01232/tests-prepare.py",
+    "line": 63,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/twl-v01232/tests-prepare.py",
+    "line": 64,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/runtime-v01231/prepare-tests.py",
+    "line": 133,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/runtime-v01231/prepare-tests.py",
+    "line": 134,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/runtime-v01231/preview-prepare.py",
+    "line": 12,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/runtime-v01231/preview-prepare.py",
+    "line": 13,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/runtime-v01231/preview.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/runtime-v01231/preview.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/runtime-v01231/run.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/runtime-v01231/run.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/runtime-v01231/source-build.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/runtime-v01231/source-build.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/runtime-v01231/source-tests.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/runtime-v01231/source-tests.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/prepare-tests.py",
+    "line": 85,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/prepare-tests.py",
+    "line": 86,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/preview-prepare.py",
+    "line": 9,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/preview-prepare.py",
+    "line": 10,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/preview.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/preview.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/run.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/run.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/runtime-prepare.py",
+    "line": 20,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/runtime-prepare.py",
+    "line": 21,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/runtime.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/runtime.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/home-loading-v01229/source-build.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/home-loading-v01229/source-build.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/power-v01227/source-build.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/power-v01227/source-build.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/power-v01227/test-prepare.py",
+    "line": 86,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/power-v01227/test-prepare.py",
+    "line": 87,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/power-v01227/test.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/power-v01227/test.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/music-v01230/reference-check.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/music-v01230/reference-check.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  },
+  {
+    "path": "work/music-v01230/source-build.sh",
+    "line": 2,
+    "text": "ROOT=/home/maxim/codex-3ds-work/toolchain"
+  },
+  {
+    "path": "work/music-v01230/source-build.sh",
+    "line": 3,
+    "text": "TASK=/mnt/c/Users/subje/Documents/Codex/2026-10-13/kan"
+  }
+]

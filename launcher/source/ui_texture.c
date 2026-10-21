@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "ui_texture.h"
 #include "catalog_format.h"
 #include <string.h>

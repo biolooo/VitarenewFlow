@@ -1,0 +1,26 @@
+mGBA Library — 0.10.5 + Library adapter 3 — 13.10.2026
+Basis: https://github.com/mgba-emu/mgba/tree/0.10.5
+
+Aenderungen in src/platform/3ds/main.c, library_path.h, library_return.h:
+- ROM-Start via argc=2/argv; sdmc:/ wird fuer mGBAs SD-VFS normalisiert.
+- Lesbarkeit wird vor der GPU-Initialisierung geprueft.
+- Separater Start ohne Argument zeigt das bestehende GBA-Testmenue.
+- L+R+Y beendet ueber mGBAs normalen Speicher-/Deinitialisierungspfad.
+- Rosalina hb:ldr wird auf /3ds/3ds-library/3ds-library.3dsx gesetzt.
+Der Emulationskern und das Save-Format werden nicht geaendert.
+Adapter 2: vom Benutzer bestaetigte GBA-Starts und Saves auf New 3DS XL.
+Adapter 3: gebaut und lokal geprueft; neuer Hardwaretest TEST-6.txt offen.
+
+Vollstaendige aktuelle Quellen: mgba-0.10.5-library3-source.tar.gz.
+Lizenz: Mozilla Public License 2.0, LICENSE und Drittanbieterhinweise.
+Dieser lokale Adapter ist kein offizielles mGBA-Release.
+
+Build: devkitPro/devkitarm wie BUILD.txt der Library.
+cmake -S . -B build-3ds
+  -DCMAKE_TOOLCHAIN_FILE=src/platform/3ds/CMakeToolchain.txt
+  -DCMAKE_BUILD_TYPE=Release -DBUILD_QT=OFF -DBUILD_SDL=OFF
+  -DBUILD_SHARED=OFF -DBUILD_STATIC=ON -DBUILD_TEST=OFF
+cmake --build build-3ds --target mgba.elf -j4
+smdhtool/3dsxtool erzeugen die separat benannte mgba-library.3dsx.
+Build erfolgreich; Warnungen im upstream-Quellcode bleiben dokumentiert.
+Startprotokoll: https://github.com/devkitPro/3ds-hbmenu/blob/master/source/loaders/rosalina.c

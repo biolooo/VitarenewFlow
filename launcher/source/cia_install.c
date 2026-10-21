@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "l10n.h"
 #include "cia_install.h"
 #include "catalog_format.h"

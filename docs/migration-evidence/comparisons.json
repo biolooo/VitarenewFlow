@@ -1,0 +1,361 @@
+{
+  "launcher_source_legacy_to_repo": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source",
+    "target": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\launcher\\source",
+    "source_count": 100,
+    "target_count": 100,
+    "same": 100,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "launcher_source_legacy_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\source",
+    "source_count": 100,
+    "target_count": 100,
+    "same": 94,
+    "source_only": [],
+    "target_only": [],
+    "changed": [
+      {
+        "path": "app_log.c",
+        "source_sha256": "1b54118b0869e8eefd421c52b9966e608fdeb94f0c2cba357185ab5accfa3df5",
+        "target_sha256": "82a7ef15a10ab891d64340c71cacb25112b702d890a209b1ede821adc059f7c5"
+      },
+      {
+        "path": "app_update.c",
+        "source_sha256": "7dd1eb939f1e96d8fa66cb6fff90601dd932754edd853a113c20593c9114a42f",
+        "target_sha256": "1cdcb226c4a82a664f1575d007d83cb6e4a989e1f382869c5fe36890826f1da3"
+      },
+      {
+        "path": "components.c",
+        "source_sha256": "32386da74361509eb5d18b5ddb8e9dba28d8b5f3dabe9deba3a87051cd8007ff",
+        "target_sha256": "b4d44dfec4488946d5ecfb4ca29d3f9da6df3a0178af638e5d3ab1b34b8bc53b"
+      },
+      {
+        "path": "l10n.c",
+        "source_sha256": "2579d201acaf06f4e490350e04073dac6bf50265a2682249a40d39b6661146a1",
+        "target_sha256": "bf3ffe8e693a82a989559f5cc754302c4f2bbc5454be084c3eae5067fd9a5768"
+      },
+      {
+        "path": "main.c",
+        "source_sha256": "dc53055aaa80aabcde4a4591aa5b722a656b5ae01ebcdb392b3ecb851604b0eb",
+        "target_sha256": "f5f33e16959c50a303b19f6c551504a31bbcee2ba5e0f2b027835b0305651aab"
+      },
+      {
+        "path": "ui.c",
+        "source_sha256": "aabd3e936787ee33e8ae3fbd69a01458f99bc607209737acd9d8dcf0301eed32",
+        "target_sha256": "c0f5303520d8980459c717591cb778c30646e8b06366689fb2b36c51e69e8a9d"
+      }
+    ]
+  },
+  "launcher_source_legacy_to_snapshot": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\source",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\local-development-snapshot\\3ds-library\\source",
+    "source_count": 100,
+    "target_count": 100,
+    "same": 94,
+    "source_only": [],
+    "target_only": [],
+    "changed": [
+      {
+        "path": "app_log.c",
+        "source_sha256": "1b54118b0869e8eefd421c52b9966e608fdeb94f0c2cba357185ab5accfa3df5",
+        "target_sha256": "82a7ef15a10ab891d64340c71cacb25112b702d890a209b1ede821adc059f7c5"
+      },
+      {
+        "path": "app_update.c",
+        "source_sha256": "7dd1eb939f1e96d8fa66cb6fff90601dd932754edd853a113c20593c9114a42f",
+        "target_sha256": "1cdcb226c4a82a664f1575d007d83cb6e4a989e1f382869c5fe36890826f1da3"
+      },
+      {
+        "path": "components.c",
+        "source_sha256": "32386da74361509eb5d18b5ddb8e9dba28d8b5f3dabe9deba3a87051cd8007ff",
+        "target_sha256": "b4d44dfec4488946d5ecfb4ca29d3f9da6df3a0178af638e5d3ab1b34b8bc53b"
+      },
+      {
+        "path": "l10n.c",
+        "source_sha256": "2579d201acaf06f4e490350e04073dac6bf50265a2682249a40d39b6661146a1",
+        "target_sha256": "bf3ffe8e693a82a989559f5cc754302c4f2bbc5454be084c3eae5067fd9a5768"
+      },
+      {
+        "path": "main.c",
+        "source_sha256": "dc53055aaa80aabcde4a4591aa5b722a656b5ae01ebcdb392b3ecb851604b0eb",
+        "target_sha256": "f5f33e16959c50a303b19f6c551504a31bbcee2ba5e0f2b027835b0305651aab"
+      },
+      {
+        "path": "ui.c",
+        "source_sha256": "aabd3e936787ee33e8ae3fbd69a01458f99bc607209737acd9d8dcf0301eed32",
+        "target_sha256": "c0f5303520d8980459c717591cb778c30646e8b06366689fb2b36c51e69e8a9d"
+      }
+    ]
+  },
+  "desktop_legacy_to_repo": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library-pc\\source",
+    "target": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\desktop\\source",
+    "source_count": 12,
+    "target_count": 12,
+    "same": 8,
+    "source_only": [],
+    "target_only": [],
+    "changed": [
+      {
+        "path": "AssemblyInfo.cs",
+        "source_sha256": "4ed9da0f04242b000b75c603cee48fa99d864625544a8fb7c1b30a0447055fde",
+        "target_sha256": "ec92578d1307b6e680a61cf97a3819c627b5e8860f1b553626968775a8c8ce5c"
+      },
+      {
+        "path": "MainWindow.xaml",
+        "source_sha256": "de4273ab5ab5f824f1115d2cdea3df77e5f008468cff29164561b5c6766941e7",
+        "target_sha256": "d6afc9c7c71f23a93cfc2c8d8d7e47f5d7656edf26bbbada164e2a513ef55d0c"
+      },
+      {
+        "path": "Program.cs",
+        "source_sha256": "02c09944697cd87c1f3c835bfc5d56c20b6c657c7ece4ac0a4316f7a69575372",
+        "target_sha256": "b146445089e837291d12b31b9da91a76012de706f5df062ed8ef5589607d7dbc"
+      },
+      {
+        "path": "Tests.cs",
+        "source_sha256": "674a0250253c9d660f636afc1b82308aeee4421172440778a63cf26c387028c3",
+        "target_sha256": "e0e998516bf77e40fb9434f645271860cb05de8b7d86277369a8432f1c9785b8"
+      }
+    ]
+  },
+  "desktop_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\desktop\\source",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\desktop\\source",
+    "source_count": 12,
+    "target_count": 12,
+    "same": 12,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "desktop_legacy_to_snapshot": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library-pc\\source",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\local-development-snapshot\\3ds-library-pc\\source",
+    "source_count": 12,
+    "target_count": 12,
+    "same": 12,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "desktop_legacy_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library-pc\\source",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\desktop\\source",
+    "source_count": 12,
+    "target_count": 12,
+    "same": 8,
+    "source_only": [],
+    "target_only": [],
+    "changed": [
+      {
+        "path": "AssemblyInfo.cs",
+        "source_sha256": "4ed9da0f04242b000b75c603cee48fa99d864625544a8fb7c1b30a0447055fde",
+        "target_sha256": "ec92578d1307b6e680a61cf97a3819c627b5e8860f1b553626968775a8c8ce5c"
+      },
+      {
+        "path": "MainWindow.xaml",
+        "source_sha256": "de4273ab5ab5f824f1115d2cdea3df77e5f008468cff29164561b5c6766941e7",
+        "target_sha256": "d6afc9c7c71f23a93cfc2c8d8d7e47f5d7656edf26bbbada164e2a513ef55d0c"
+      },
+      {
+        "path": "Program.cs",
+        "source_sha256": "02c09944697cd87c1f3c835bfc5d56c20b6c657c7ece4ac0a4316f7a69575372",
+        "target_sha256": "b146445089e837291d12b31b9da91a76012de706f5df062ed8ef5589607d7dbc"
+      },
+      {
+        "path": "Tests.cs",
+        "source_sha256": "674a0250253c9d660f636afc1b82308aeee4421172440778a63cf26c387028c3",
+        "target_sha256": "e0e998516bf77e40fb9434f645271860cb05de8b7d86277369a8432f1c9785b8"
+      }
+    ]
+  },
+  "setup_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\setup",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\setup",
+    "source_count": 5,
+    "target_count": 5,
+    "same": 5,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "public_updates_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\docs\\updates",
+    "source_count": 186,
+    "target_count": 177,
+    "same": 173,
+    "source_only": [
+      "0.12.33/FEATURES-DE.md",
+      "0.12.33/README.md",
+      "0.12.33/SHA256.json",
+      "0.12.33/VitarenewFlow-Boot.3dsx",
+      "0.12.33/VitarenewFlow-Copy.gm9",
+      "0.12.33/VitarenewFlow-Shortcut.cia",
+      "0.12.33/VitarenewFlow-source.zip",
+      "0.12.33/VitarenewFlow.3dsx",
+      "0.12.33/VitarenewFlow.smdh"
+    ],
+    "target_only": [],
+    "changed": [
+      {
+        "path": "VitarenewFlow-info.json",
+        "source_sha256": "11106311038ceed2eaa933db7c6bd8b79a7fa1a9ab77f6e92658612c40ada089",
+        "target_sha256": "d4c4609d4aa7912e6295d1db8d8d4d54a591fd0b40dccba160d3b6852212b5b5"
+      },
+      {
+        "path": "VitarenewFlow.unistore",
+        "source_sha256": "cca6b385d5596da05872e8d4912323e12e1e4b69eff442c13ff597ab804de151",
+        "target_sha256": "1cd735eabc418911928e912d7b1c114a7608e7dd76e5244789719c090ad2e4e7"
+      },
+      {
+        "path": "install.html",
+        "source_sha256": "05adb755d6a725d4f6e8d7614850f6a1d917250d4e37896789b4d1335d1d005e",
+        "target_sha256": "f47210c13f3a71f21748586589197ae3152c01884c8020106c6ea0ac8a763900"
+      },
+      {
+        "path": "latest.txt",
+        "source_sha256": "5e4ce8b132da7de311c4dcf29d36fd2767c2c38b393cb55174ca2047a9db1231",
+        "target_sha256": "d6d94c3fb0c4212c0d3420cc877a8f386ef0d99aecfe42cc6e3bdc653b775d9b"
+      }
+    ]
+  },
+  "scripts_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\scripts",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\scripts",
+    "source_count": 5,
+    "target_count": 5,
+    "same": 5,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "branding_legacy_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\branding",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\branding",
+    "source_count": 6,
+    "target_count": 6,
+    "same": 6,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "data_legacy_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\data",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\data",
+    "source_count": 2,
+    "target_count": 3,
+    "same": 2,
+    "source_only": [],
+    "target_only": [
+      "README.md"
+    ],
+    "changed": []
+  },
+  "launcher_tests_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\launcher\\tests",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\tests",
+    "source_count": 58,
+    "target_count": 58,
+    "same": 58,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "workflow_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\.github",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\.github",
+    "source_count": 1,
+    "target_count": 1,
+    "same": 1,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "launcher_forwarder_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\launcher\\forwarder",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\forwarder",
+    "source_count": 4,
+    "target_count": 4,
+    "same": 4,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "launcher_boot-dispatcher_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\launcher\\boot-dispatcher",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\boot-dispatcher",
+    "source_count": 2,
+    "target_count": 2,
+    "same": 2,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "launcher_gm9_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\launcher\\gm9",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\gm9",
+    "source_count": 1,
+    "target_count": 1,
+    "same": 1,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "licenses_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\licenses",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\licenses",
+    "source_count": 12,
+    "target_count": 12,
+    "same": 12,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "distribution_repo_to_target": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\distribution",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\distribution",
+    "source_count": 5,
+    "target_count": 4,
+    "same": 4,
+    "source_only": [
+      "universal-updater/__pycache__/prepare_store.cpython-312.pyc"
+    ],
+    "target_only": [],
+    "changed": []
+  },
+  "mgba_library_legacy_to_snapshot": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\mgba-library",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\local-development-snapshot\\mgba-library",
+    "source_count": 8,
+    "target_count": 8,
+    "same": 8,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "banner_tools_legacy_to_snapshot": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\banner-tools",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\local-development-snapshot\\banner-tools",
+    "source_count": 551,
+    "target_count": 551,
+    "same": 551,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  },
+  "home_start_test_legacy_to_snapshot": {
+    "source": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\home-start-test",
+    "target": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\local-development-snapshot\\home-start-test",
+    "source_count": 9,
+    "target_count": 9,
+    "same": 9,
+    "source_only": [],
+    "target_only": [],
+    "changed": []
+  }
+}

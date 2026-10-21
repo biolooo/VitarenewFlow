@@ -1,0 +1,1 @@
+Compile tests with host gcc -std=c11 -Wall -Wextra -Werror -fsanitize=undefined and launcher/source headers. Worker uses mock/, theme IO uses theme-mock/. Platform bridge mocks read-only HOME access and accepts a digest callback. No private console fixture is included.

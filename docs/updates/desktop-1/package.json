@@ -1,0 +1,33 @@
+{
+  "version": "0.4.1",
+  "files": [
+    {
+      "name": "VitarenewFlow-Desktop.exe",
+      "target": "sdmc:/VitarenewFlow Desktop.exe",
+      "bytes": 126976,
+      "sha256": "3881305b2372d5a96021959a64046be82b3a3778e4ebb063dfb7597470a949be",
+      "url": "https://biolooo.github.io/VitarenewFlow/updates/desktop-1/VitarenewFlow-Desktop.exe"
+    },
+    {
+      "name": "LIESMICH.txt",
+      "target": "sdmc:/Library-PC/LIESMICH.txt",
+      "bytes": 1297,
+      "sha256": "1fc507e3d6f3cd70317a9455638d6187f80a4a836bd0ae4e7d6d22dbf14fb0d4",
+      "url": "https://biolooo.github.io/VitarenewFlow/updates/desktop-1/LIESMICH.txt"
+    },
+    {
+      "name": "LICENSE.txt",
+      "target": "sdmc:/Library-PC/LICENSE.txt",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "url": "https://biolooo.github.io/VitarenewFlow/updates/desktop-1/LICENSE.txt"
+    },
+    {
+      "name": "VitarenewFlow-Desktop-source.zip",
+      "target": "sdmc:/Library-PC/VitarenewFlow-Desktop-source.zip",
+      "bytes": 53042,
+      "sha256": "e530c83a0f4e15132a4cf9595f671176f3691b3fe9733ce56f0224f123f183f8",
+      "url": "https://biolooo.github.io/VitarenewFlow/updates/desktop-1/VitarenewFlow-Desktop-source.zip"
+    }
+  ]
+}

@@ -41,7 +41,7 @@ AccessControlInfo:
    - CategoryHomeMenu
    - DirectSdmcWrite
    #- Debug
-   #- TwlCardBackup
+   - TwlCardBackup
    #- TwlNandData
    #- Boss
    - DirectSdmc
@@ -171,6 +171,8 @@ AccessControlInfo:
    - ndm:u
    - news:u
    - nwm::UDS
+   - ptm:sysm
+   - ns:s
    - ptm:u
    - pxi:dev
    - soc:U

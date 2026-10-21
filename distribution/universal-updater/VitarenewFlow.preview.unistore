@@ -1,0 +1,41 @@
+{
+  "storeInfo": {
+    "title": "VitarenewFlow",
+    "author": "VitaRenew",
+    "description": "VitaRenew game launcher for Nintendo 3DS",
+    "file": "VitarenewFlow.unistore",
+    "url": "https://biolooo.github.io/VitarenewFlow/unistore/VitarenewFlow.unistore",
+    "infoURL": "https://biolooo.github.io/VitarenewFlow/unistore/VitarenewFlow-info.json",
+    "sheet": "VitarenewFlow.t3x",
+    "sheetURL": "https://biolooo.github.io/VitarenewFlow/unistore/VitarenewFlow.t3x",
+    "version": 3,
+    "revision": 1
+  },
+  "storeContent": [
+    {
+      "info": {
+        "title": "VitarenewFlow",
+        "author": "VitaRenew",
+        "version": "Not released / Noch nicht freigegeben",
+        "description": "Game library with coverflow, 3DS titles and emulator launch support.",
+        "category": [
+          "utility"
+        ],
+        "console": [
+          "3DS"
+        ],
+        "icon_index": 0,
+        "sheet_index": 0,
+        "title_ids": [
+          987202
+        ],
+        "installed_files": [
+          "sdmc:/3ds/3ds-library/3ds-library.3dsx"
+        ],
+        "last_updated": "2026-10-16T00:00:00Z",
+        "llm_generation": "yes",
+        "preinstall_message": "Requires a supported CFW setup. Emulator adapters are separate. Existing games, covers and saves are not part of this download."
+      }
+    }
+  ]
+}

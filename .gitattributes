@@ -1,0 +1,4 @@
+# Portable verification scripts must retain LF on Windows worktrees.
+*.sh text eol=lf
+*.py text eol=lf
+Makefile text eol=lf

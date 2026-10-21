@@ -8,3 +8,16 @@ desktop/SD-Karte/
 .test-build/
 *.tmp
 *.log
+
+__pycache__/
+prepared-store/
+
+# Preserved working copies; never publish snapshots automatically.
+/local-development-snapshot/
+
+# Local verification output and machine configuration
+/tests/release-0.12.33/**/runtime-test
+/tests/release-0.12.33/**/input-test
+/tests/release-0.12.33/**/twl-test
+/tests/release-0.12.33/**/home-loading-test
+/.flow-local.env

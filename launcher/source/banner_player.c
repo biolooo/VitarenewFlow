@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "banner_player.h"
 #include "banner_format.h"
 #include <citro2d.h>
