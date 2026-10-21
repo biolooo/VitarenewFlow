@@ -8,8 +8,12 @@
 #include "app_update.h"
 #include "components.h"
 #include "twl_advice.h"
+#include "report_transport.h"
 typedef struct { const char *name; const char *cover; const char *backend; bool native; const uint16_t *icon; const char *banner; bool pending; } UiCard;
 typedef struct {
+    bool reportAvailable,reportOpen,reportConfirmed,reportConfigured;
+    ReportSendState reportState;const char *reportDescription;ErrorReportArea reportArea;int32_t reportCode;
+    ErrorReportModel reportModel;ErrorReportRegion reportRegion;ErrorReportAutoboot reportAutoboot;ErrorReportContext reportContext;
     const char *system; const char *status; const char *version;
     const UiCard *cards; unsigned count; unsigned selected; unsigned total;
     bool searchOpen,searchNumeric;const char *searchQuery;const char (*searchSuggestions)[33];const char *const *searchSystems;

@@ -13,14 +13,16 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <errno.h>
-#define RUNNING_VERSION "0.12.33"
+#define RUNNING_VERSION "0.12.35"
 static Thread worker;
+static int diagnostic_code;
+int components_error_code(void){return __atomic_load_n(&diagnostic_code,__ATOMIC_ACQUIRE);}
 static unsigned state,received,total,selected,base;
 static bool cancelled;
 static char message[128];
 static bool stop_requested(void){return __atomic_load_n(&cancelled,__ATOMIC_ACQUIRE);
 }
-static void publish(ComponentState s,const char *text){snprintf(message,sizeof(message),"%s",text);
+static void publish(ComponentState s,const char *text){if(s==COMP_ERROR&&!components_error_code())__atomic_store_n(&diagnostic_code,-1,__ATOMIC_RELEASE);snprintf(message,sizeof(message),"%s",text);
 __atomic_store_n(&state,s,__ATOMIC_RELEASE);
 }
 void components_cancel(void){__atomic_store_n(&cancelled,true,__ATOMIC_RELEASE);
@@ -213,7 +215,8 @@ finish:
  if(global)curl_global_cleanup();
  if(connected)socExit();
  free(soc);
- if(result){for(unsigned i=0;i<d->count;i++){char stage[256];
+ if(result){
+  __atomic_store_n(&diagnostic_code,result,__ATOMIC_RELEASE);for(unsigned i=0;i<d->count;i++){char stage[256];
 suffix(stage,d->files[i].target,".flow-download");
 remove(stage);
 }
@@ -223,6 +226,7 @@ remove(stage);
 void components_start(unsigned index){const ComponentDef *d=component_definition(index);
  if(!d||!d->count)return;
  components_stop();
+__atomic_store_n(&diagnostic_code,0,__ATOMIC_RELEASE);
 selected=index;
 present_cache[index]=-1;
 unsigned bytes=0;

@@ -11,14 +11,16 @@
 #include <string.h>
 #include <malloc.h>
 #include <sys/stat.h>
-#define RUNNING_VERSION "0.12.34"
+#define RUNNING_VERSION "0.12.35"
 static Thread worker;
+static int diagnostic_code;
+int app_update_error_code(void){return __atomic_load_n(&diagnostic_code,__ATOMIC_ACQUIRE);}
 static unsigned state,received,total;
 static bool cancelled;
 static UpdateManifest manifest;
 static char message[128];
 static bool stop_requested(void){return __atomic_load_n(&cancelled,__ATOMIC_ACQUIRE);}
-static void publish(UpdateState s,const char *text){snprintf(message,sizeof(message),"%s",text);__atomic_store_n(&state,s,__ATOMIC_RELEASE);}
+static void publish(UpdateState s,const char *text){if(s==UPDATE_ERROR&&!app_update_error_code())__atomic_store_n(&diagnostic_code,-1,__ATOMIC_RELEASE);snprintf(message,sizeof(message),"%s",text);__atomic_store_n(&state,s,__ATOMIC_RELEASE);}
 void app_update_cancel(void){__atomic_store_n(&cancelled,true,__ATOMIC_RELEASE);}
 void app_update_stop(void){if(worker){app_update_cancel();threadJoin(worker,U64_MAX);threadFree(worker);worker=NULL;}}
 UpdateStatus app_update_status(void){
@@ -98,12 +100,14 @@ finish:
  if(connected)socExit();
  free(soc);
  if(result){
+  __atomic_store_n(&diagnostic_code,result,__ATOMIC_RELEASE);
   if(result==-3)publish(UPDATE_CANCELLED,"Update abgebrochen.");
   else publish(UPDATE_ERROR,result==-2?"Noch kein Update veröffentlicht.":result==-4?"HTTPS-Prüfung fehlgeschlagen. Datum prüfen.":result==-5?"Update-Datei ungültig. Nichts geändert.":result==-6?"Nicht genug Platz auf der SD-Karte.":result==-7?"SD-Schreibfehler. Alte Version bleibt erhalten.":"Keine Verbindung. WLAN prüfen.");
  }
 }
 static void start(bool download){
- app_update_stop();__atomic_store_n(&cancelled,false,__ATOMIC_RELEASE);__atomic_store_n(&received,0,__ATOMIC_RELAXED);__atomic_store_n(&total,download?manifest.bytes:0,__ATOMIC_RELAXED);
+ app_update_stop();
+ __atomic_store_n(&diagnostic_code,0,__ATOMIC_RELEASE);__atomic_store_n(&cancelled,false,__ATOMIC_RELEASE);__atomic_store_n(&received,0,__ATOMIC_RELAXED);__atomic_store_n(&total,download?manifest.bytes:0,__ATOMIC_RELAXED);
  if(!download)memset(&manifest,0,sizeof(manifest));
  __atomic_store_n(&state,download?UPDATE_DOWNLOADING:UPDATE_CHECKING,__ATOMIC_RELEASE);
  worker=threadCreate(run,download?(void*)1:NULL,0x18000,0x38,-2,false);

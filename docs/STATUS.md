@@ -2,6 +2,10 @@
 
 Aktualisiert nach lokaler Migration am 21.10.2026. Verbindlicher Arbeitsort ist dieses Repository. Launcher 0.12.33 und Desktop 0.4.1; alte Kopien unverändert. Lokale Migrationsprüfungen stehen in LOCAL-VERIFICATION.md, Quelle/Sicherung in MIGRATION.md. Hardwareabnahmen bleiben wie unten dokumentiert offen.
 
+## Fehlerberichte — aktiver Entwicklungsstand
+
+Am 21.10.2026 auf Basis Remote-main `815da5a` mit PC-2-Stand 0.12.34 begonnen. Launcher 0.12.35 ist der lokale neue Entwicklungsstand im isolierten Worktree `error-reports`. Strukturierter Berichtsdialog, bewusste Zustimmung, HTTPS-Versandmodul und eigener SQLite-Empfangsdienst sind implementiert. Öffentlicher Empfang im freigegebenen Server-Benutzerverzeichnis läuft; synthetischer HTTPS-Bericht gespeichert und 201 bestätigt. Endpunkt in .35 konfiguriert, OTA-Testveröffentlichung ausdrücklich freigegeben. Native Builds und Hosttests ersetzen weder öffentliche Ende-zu-Ende-Prüfung noch Konsolenabnahme. Desktop .4.1 unverändert. Details: [ERROR-REPORTS](ERROR-REPORTS.md).
+
 ## Aktuelle Basis
 
 - Testreleasevorbereitung 0.12.34 auf `codex/test-release-0.12.34`: Versionen, OTA-/UniStore-Kanäle und Paket lokal konsistent, exaktes Quell-ZIP baut identische 3DSX/SMDH. Noch nicht veröffentlicht; main-Merge-Freigabe und öffentliche Prüfung ausstehend. Details: [RELEASE-0.12.34.md](RELEASE-0.12.34.md).

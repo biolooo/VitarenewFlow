@@ -16,3 +16,6 @@ const char *components_presence_detail(unsigned index);
 bool components_recheck(void);
 
 void components_clear(void);
+
+/* Numeric diagnostic only; never localized messages or file paths. */
+int components_error_code(void);

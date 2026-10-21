@@ -10,3 +10,6 @@ void app_update_cancel(void);
 void app_update_stop(void);
 UpdateStatus app_update_status(void);
 bool app_update_install(void);
+
+/* Numeric diagnostic only; never localized messages or file paths. */
+int app_update_error_code(void);

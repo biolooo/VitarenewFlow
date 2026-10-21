@@ -6,6 +6,8 @@ export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitARM/bin:/usr/bin:/bin
 python3 check-fixture-source.py
 bash launcher/tests/run-backlog-ui.sh
 bash tests/backlog/run-host.sh
+bash tests/error-report/test.sh
+bash tests/report-transport/test.sh
 make -C launcher -j2
 bash tests/component-runtime/test.sh
 bash tests/twl/test.sh

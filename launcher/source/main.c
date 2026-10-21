@@ -2,6 +2,8 @@
 #include "app_update.h"
 #include "update_store.h"
 #include "settings_menu.h"
+#include "report_transport.h"
+#include "report_controls.h"
 // SPDX-License-Identifier: GPL-3.0-only
 // Copyright (C) 2026 VitarenewFlow contributors
 #include "l10n.h"
@@ -54,6 +56,16 @@ static char searchSuggestions[3][SEARCH_QUERY_SIZE];
 static unsigned searchReturn,searchReturnView;
 static int searchRanks[MAX_GAMES];
 static const char *searchSystems[MAX_GAMES];
+static bool reportOpen,reportConfirmed;
+static char reportDescription[ERROR_REPORT_DESCRIPTION_MAX+1];
+static ErrorReport report;
+static int32_t installReportCode;
+static ErrorReportArea recentReportArea=ERROR_REPORT_GENERAL;
+static int32_t recentReportCode;
+static ErrorReportActivity recentReportActivity=ERROR_REPORT_BROWSING;
+static void rememberReport(ErrorReportArea area,int32_t code,ErrorReportActivity activity){
+    recentReportArea=area;recentReportCode=code;recentReportActivity=activity;
+}
 static const char *status="Bereit";
 static char message[180];
 static Result lastError;
@@ -92,6 +104,45 @@ static const char *imports[128];
 static unsigned importCount,importSelected;
 static const char *backendNames[SYSTEM_COUNT]={"3DS-System","YANBF / nds-bootstrap","mGBA Library","DaedalusX64 Library","Snes9x Library","VirtuaNES Library","Red Viper Library","mGBA Library"};
 static const char *backendPaths[SYSTEM_COUNT]={"","","sdmc:/3ds/mgba-library/mgba-library.3dsx","sdmc:/3ds/n64-library/n64-library.3dsx","sdmc:/3ds/snes-library/snes-library.3dsx","sdmc:/3ds/nes-library/nes-library.3dsx","sdmc:/3ds/vb-library/vb-library.3dsx","sdmc:/3ds/mgba-library/mgba-library.3dsx"};
+static bool reportAvailable(void){
+    ComponentState c=components_status().state;UpdateState u=app_update_status().state;
+    return !uiReleased&&!searchOpen&&!installing&&!preparingGame&&!homeLoading&&!powerPrompt&&twlPage!=3&&
+        c!=COMP_DOWNLOAD&&c!=COMP_READY&&u!=UPDATE_CHECKING&&u!=UPDATE_DOWNLOADING&&u!=UPDATE_READY;
+}
+static void openReport(void){
+    if(!reportAvailable())return;
+    report_transport_reset();reportConfirmed=false;reportDescription[0]=0;
+    report=(ErrorReport){.version="0.12.35",.description=reportDescription,
+        .context=envIsHomebrew()?ERROR_REPORT_HOMEBREW:ERROR_REPORT_NATIVE};
+    int boot=autoboot_status();report.autoboot=boot==1?ERROR_REPORT_AUTOBOOT_ON:boot==0?ERROR_REPORT_AUTOBOOT_OFF:ERROR_REPORT_AUTOBOOT_UNKNOWN;
+    if(R_SUCCEEDED(cfguInit())){
+        u8 model=255,region=255;
+        static const ErrorReportModel models[]={ERROR_REPORT_3DS,ERROR_REPORT_3DS_XL,ERROR_REPORT_NEW_3DS,ERROR_REPORT_2DS,ERROR_REPORT_NEW_3DS_XL,ERROR_REPORT_NEW_2DS_XL};
+        if(R_SUCCEEDED(CFGU_GetSystemModel(&model))&&model<6)report.model=models[model];
+        if(R_SUCCEEDED(CFGU_SecureInfoGetRegion(&region))&&region<7)report.region=(ErrorReportRegion)(region+1);
+        cfguExit();
+    }
+    /* Only typed categories/codes; never copy message, status, game or logs. */
+    if(launchFailed){report.area=ERROR_REPORT_LAUNCH;report.code=lastError;report.activity=ERROR_REPORT_STARTING_GAME;}
+    else if(installFailed){report.area=installReportCode?ERROR_REPORT_INSTALL:ERROR_REPORT_GENERAL;report.code=installReportCode;report.activity=installReportCode?ERROR_REPORT_INSTALLING:ERROR_REPORT_ACTIVITY_UNKNOWN;}
+    else if(componentPage){report.area=ERROR_REPORT_COMPONENT;report.code=components_error_code();report.activity=ERROR_REPORT_CHECKING_COMPONENTS;}
+    else if(updatePage){report.area=ERROR_REPORT_UPDATE;report.code=app_update_error_code();report.activity=ERROR_REPORT_CHECKING_UPDATE;}
+    else if(twlPage){report.area=ERROR_REPORT_DS;report.code=twlError;report.activity=ERROR_REPORT_CHECKING_DS;}
+    else if(coverMenu){report.area=ERROR_REPORT_COVER;report.activity=ERROR_REPORT_LOADING_COVER;}
+    else {report.area=recentReportArea;report.code=recentReportCode;report.activity=recentReportActivity;}
+    reportOpen=true;
+}
+static void describeReport(void){
+    SwkbdState keyboard;swkbdInit(&keyboard,SWKBD_TYPE_NORMAL,2,ERROR_REPORT_DESCRIPTION_MAX);
+    swkbdSetHintText(&keyboard,l10n_english()?"What happened? No names or private data.":"Was ist passiert? Keine Namen oder privaten Daten.");
+    swkbdSetInitialText(&keyboard,reportDescription);
+    char draft[ERROR_REPORT_DESCRIPTION_MAX+1]={0};
+    if(swkbdInputText(&keyboard,draft,sizeof(draft))==SWKBD_BUTTON_RIGHT){
+        ErrorReport candidate=report;candidate.description=draft;char json[ERROR_REPORT_JSON_CAPACITY];size_t n;
+        if(error_report_json(&candidate,json,sizeof(json),&n))memcpy(reportDescription,draft,sizeof(draft));
+    }
+    reportConfirmed=false;
+}
 static void openTwl(void){twl_diagnose(&twlReport);twlError=twlReport.error;twlPage=twl_repair_pending()?4:1;settings=false;infoOpen=false;}
 static void rebuild(void){
     visibleCount=0;
@@ -147,8 +198,12 @@ static void rebuild(void){
 static void draw(bool loading,float progress,const char *stage){
     if(uiReleased)return;
     if(musicReady&&!loading)menu_music_start_if_needed();
+    if(componentPage&&components_status().state==COMP_ERROR)rememberReport(ERROR_REPORT_COMPONENT,components_error_code(),ERROR_REPORT_CHECKING_COMPONENTS);
+    if(updatePage&&app_update_status().state==UPDATE_ERROR)rememberReport(ERROR_REPORT_UPDATE,app_update_error_code(),ERROR_REPORT_CHECKING_UPDATE);
+    if(twlPage&&R_FAILED(twlError))rememberReport(ERROR_REPORT_DS,twlError,ERROR_REPORT_CHECKING_DS);
     const char *target=visibleCount?games[visible[selected]].cover:"";
-    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.34",
+    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.35",
+        .reportAvailable=reportAvailable(),.reportOpen=reportOpen,.reportConfirmed=reportConfirmed,.reportConfigured=report_transport_configured(),.reportState=report_transport_state(),.reportDescription=reportDescription,.reportArea=report.area,.reportCode=report.code,.reportModel=report.model,.reportRegion=report.region,.reportAutoboot=report.autoboot,.reportContext=report.context,
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
         .loading=loading,.progress=progress,.stage=stage,.homeLoading=homeLoading,.coverMenu=coverMenu,.coverTarget=target,
@@ -192,6 +247,7 @@ static bool systemPowerAction(bool reboot){
 static bool restartAfterBootChange(void){return systemPowerAction(true);}
 static void saveView(void);
 static bool openHomeMenu(void){
+    report_transport_stop();
     showHomeLoading(1);
     bool registered=false;Result r=APT_IsRegistered(aptGetMenuAppID(),&registered);
     saveView();settings=false;autobootPrompt=false;
@@ -210,7 +266,7 @@ static bool openHomeMenu(void){
         }else r=(Result)-106;
     }
     snprintf(message,sizeof(message),tr("HOME nicht geöffnet (%08lX). Erneut versuchen."),(unsigned long)(u32)r);
-    status=message;app_handoff_log(message);powerPrompt=true;finishHomeLoading();return false;
+    status=message;rememberReport(ERROR_REPORT_HOME,r,ERROR_REPORT_OPENING_HOME);app_handoff_log(message);powerPrompt=true;finishHomeLoading();return false;
 }
 static bool flowMainLoop(void){
     aptHandleSleep();
@@ -220,6 +276,7 @@ static bool flowMainLoop(void){
         openHomeMenu();
     }
     if(aptShouldJumpToHome()){
+        report_transport_stop();
         bool registered=false;NS_APPID menu=aptGetMenuAppID();Result r=APT_IsRegistered(menu,&registered);
         char entry[100];snprintf(entry,sizeof(entry),"HOME request: menu=%u registered=%u result=%08lX",(unsigned)menu,registered,(unsigned long)(u32)r);if(!powerPrompt)app_log(entry);
         if(R_FAILED(r)||!registered){
@@ -239,6 +296,7 @@ static bool flowMainLoop(void){
 }
 static void onApt(APT_HookType event,void *unused){
     (void)unused;
+    if(event==APTHOOK_ONSLEEP||event==APTHOOK_ONSUSPEND||event==APTHOOK_ONEXIT)report_transport_cancel();
     if(event==APTHOOK_ONSLEEP||event==APTHOOK_ONSUSPEND||event==APTHOOK_ONEXIT)menu_music_pause(true);
     if(event==APTHOOK_ONWAKEUP||event==APTHOOK_ONRESTORE)menu_music_pause(false);
     if(event==APTHOOK_ONRESTORE||event==APTHOOK_ONWAKEUP){restored=true;
@@ -583,10 +641,11 @@ Game *g=p->game;
     __atomic_store_n(&p->done,true,__ATOMIC_RELEASE);
 }
 static void installError(Result r){
+
     const char *why=r==CIA_ERROR_SPACE?tr("Nicht genug freier SD-Speicher"):r==CIA_ERROR_EXISTS?tr("Spiel bereits installiert - neu einlesen"):r==CIA_ERROR_INVALID?tr("CIA ungueltig oder inzwischen veraendert"):r==CIA_ERROR_CANCELLED?tr("Installation abgebrochen; CIA bleibt erhalten"):NULL;
     if(why)snprintf(message,sizeof(message),"%s",why);
     else snprintf(message,sizeof(message),tr("Installationsfehler %08lX - CIA bleibt erhalten"),(unsigned long)(u32)r);
-    status=message;installFailed=true;errorTitle=tr("Installation nicht möglich");app_log(message);
+    status=message;rememberReport(ERROR_REPORT_INSTALL,r,ERROR_REPORT_INSTALLING);installReportCode=r;installFailed=true;errorTitle=tr("Installation nicht möglich");app_log(message);
 }
 typedef struct {char path[512];CiaPackage package;u32 copiedKiB,phase;bool cancel,done;Result result,seedResult,cleanupResult;} InstallJob;
 static bool ciaProgress(u64 done,u64 total,bool committing,void *context){
@@ -629,11 +688,11 @@ static void importSelectedSeed(void){
     if(!visibleCount)return;
     Game *g=&games[visible[selected]];if(g->system!=SYSTEM_3DS||g->pending)return;
     SeedJob job={.id=g->id};Thread worker=threadCreate(seedWorker,&job,0x10000,0x30,-2,false);
-    if(!worker){snprintf(message,sizeof(message),tr("Seed-Import konnte nicht gestartet werden"));status=message;installFailed=true;errorTitle=tr("Seed-Import fehlgeschlagen");return;}
+    if(!worker){snprintf(message,sizeof(message),tr("Seed-Import konnte nicht gestartet werden"));status=message;installReportCode=-3;installFailed=true;errorTitle=tr("Seed-Import fehlgeschlagen");return;}
     while(!__atomic_load_n(&job.done,__ATOMIC_ACQUIRE)){if(!flowMainLoop())break;draw(true,0,tr("Spiel-Seed importieren..."));}
     threadJoin(worker,U64_MAX);threadFree(worker);
     snprintf(message,sizeof(message),job.result==0?tr("Seed importiert"):job.result==SEED_NOT_OFFERED?tr("Nintendo bietet fuer diesen Titel keinen Seed an"):tr("Seed-Import fehlgeschlagen: %08lX"),(unsigned long)(u32)job.result);
-    status=message;installFailed=true;errorTitle=job.result==0?tr("Seed importiert"):job.result==SEED_NOT_OFFERED?tr("Seed nicht angeboten"):tr("Seed-Import fehlgeschlagen");
+    status=message;installReportCode=R_FAILED(job.result)?job.result:0;if(installReportCode)rememberReport(ERROR_REPORT_INSTALL,installReportCode,ERROR_REPORT_INSTALLING);installFailed=true;errorTitle=job.result==0?tr("Seed importiert"):job.result==SEED_NOT_OFFERED?tr("Seed nicht angeboten"):tr("Seed-Import fehlgeschlagen");
 }
 static void performInstall(void){
     if(!visibleCount)return;
@@ -667,7 +726,7 @@ static void performInstall(void){
         lastError=job.result;
         if(R_SUCCEEDED(lastError)){
             snprintf(message,sizeof(message),tr("Installiert. %s %s"),R_FAILED(job.cleanupResult)?tr("CIA konnte nicht geloescht werden."):tr("CIA geloescht."),job.seedResult==0?tr("Seed importiert."):job.seedResult==SEED_NOT_OFFERED?tr("Kein Seed angeboten."):tr("Seed fehlgeschlagen: X, dann A erneut."));status=message;
-            if(R_FAILED(job.seedResult)||R_FAILED(job.cleanupResult)){installFailed=true;errorTitle=tr("Installiert - Hinweis");}
+            if(R_FAILED(job.seedResult)||R_FAILED(job.cleanupResult)){installReportCode=R_FAILED(job.seedResult)?job.seedResult:job.cleanupResult;rememberReport(ERROR_REPORT_INSTALL,installReportCode,ERROR_REPORT_INSTALLING);installFailed=true;errorTitle=tr("Installiert - Hinweis");}
             app_log("CIA installation completed and verified");
         }
         else installError(lastError);
@@ -702,7 +761,7 @@ static bool startGame(void){
     if(R_SUCCEEDED(lastError))return true;}
     preparingGame=false;
     if(uiReleased)return true;
-    if(R_FAILED(lastError)){menu_music_reload();snprintf(message,sizeof(message),tr("Startfehler %08lX%s"),(unsigned long)(u32)lastError,lastError==(Result)-30?tr(" - DS-Loader fehlt"):"");
+    if(R_FAILED(lastError)){rememberReport(ERROR_REPORT_LAUNCH,lastError,ERROR_REPORT_STARTING_GAME);menu_music_reload();snprintf(message,sizeof(message),tr("Startfehler %08lX%s"),(unsigned long)(u32)lastError,lastError==(Result)-30?tr(" - DS-Loader fehlt"):"");
     if(lastError==(Result)-107)snprintf(message,sizeof(message),"%s",tr("HOME-Menü nicht bereit. HOME öffnen und Spiel erneut starten."));
     if(lastError==FLOW_ERROR_HBL_CONFIG||lastError==FLOW_ERROR_HBL_MISSING)
         snprintf(message,sizeof(message),"%s",l10n_english()?"Homebrew Launcher unavailable. Check Rosalina title in Luma settings.":"Homebrew Launcher nicht verfuegbar. Rosalina-Titel in Luma pruefen.");
@@ -840,12 +899,12 @@ int main(int argc,char **argv){
     CopyResult copied=copy_result_take("sdmc:/3ds/3ds-library/copy-result.txt");
     if(copied==COPY_DS_READY){systemView=VIEW_DS;selected=0;status=tr("DS-Kopie geprüft; in der DS-Kategorie bereit");}
     else if(copied==COPY_CIA_READY){systemView=VIEW_3DS;selected=0;status=tr("CIA geprüft; grauen Titel zum Installieren wählen");}
-    else if(copied==COPY_INCOMPLETE)status=tr("Modulkopie nicht bestätigt; Kopierassistent erneut öffnen");
+    else if(copied==COPY_INCOMPLETE){rememberReport(ERROR_REPORT_STORAGE,0,ERROR_REPORT_IMPORTING);status=tr("Modulkopie nicht bestätigt; Kopierassistent erneut öffnen");}
     if(copied!=COPY_NONE)app_log(status);
     rebuild();
     flow_reset(&flow,selected);
     int homeResume=autoboot_home_resume();
-    if(homeResume<0)status=tr("Autostart konnte nicht fortgesetzt werden; Einstellungen prüfen");
+    if(homeResume<0){rememberReport(ERROR_REPORT_HOME,homeResume,ERROR_REPORT_OPENING_HOME);status=tr("Autostart konnte nicht fortgesetzt werden; Einstellungen prüfen");}
     else if(homeResume>0){status=tr("Autostart wieder aktiv; HOME bleibt in dieser Sitzung erreichbar");app_log("Autoboot resumed after HOME session without reboot");}
     musicReady=true;menu_music_reload();
     if(twl_repair_pending()){
@@ -865,14 +924,30 @@ int main(int argc,char **argv){
         confirm=false;
         keys&=~KEY_A;
         flow_reset(&flow,selected);}
-        if(keys&KEY_START&&!searchOpen&&!updatePage&&!componentPage&&!copyPrompt&&!powerPrompt&&!twlPage){exitToHomebrew=true;break;}
-        if(!updatePage&&!componentPage&&!twlPage&&!settings&&!infoOpen&&!installPrompt&&!powerPrompt&&!copyPrompt&&osGetTime()-lastCardPoll>=2000){
+        if(keys&KEY_START&&!reportOpen&&!searchOpen&&!updatePage&&!componentPage&&!copyPrompt&&!powerPrompt&&!twlPage){exitToHomebrew=true;break;}
+        if(!reportOpen&&!updatePage&&!componentPage&&!twlPage&&!settings&&!infoOpen&&!installPrompt&&!powerPrompt&&!copyPrompt&&osGetTime()-lastCardPoll>=2000){
             lastCardPoll=osGetTime();Cartridge card;Result r=cartridge_read(&card,language);
             if(R_SUCCEEDED(r)&&(card.present!=lastCartridge.present||(card.present&&(card.id!=lastCartridge.id||card.ds!=lastCartridge.ds||strcmp(card.code,lastCartridge.code))))){
                 app_log(card.present?"Cartridge inserted/changed":"Cartridge removed");unsigned old=selected;scan();selected=old;rebuild();flow_reset(&flow,selected);
             }
         }
-        if(powerPrompt){
+        if(powerPrompt&&reportOpen){report_transport_stop();reportOpen=false;memset(reportDescription,0,sizeof(reportDescription));}
+        bool reportButton=(keys&KEY_TOUCH)&&report_controls_hit(pos.px,pos.py);
+        if(!reportOpen&&reportAvailable()&&reportButton){openReport();keys=0;}
+        if(reportOpen){
+            ReportSendState sending=report_transport_state();
+            bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.py>=205&&pos.py<235&&pos.px>=12&&pos.px<104);
+            bool primary=(keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=205&&pos.py<235&&pos.px>=112&&pos.px<308);
+            bool edit=(keys&KEY_X)||((keys&KEY_TOUCH)&&pos.py>=138&&pos.py<169&&pos.px>=12&&pos.px<308);
+            switch(report_controls_action(sending,report_transport_configured(),reportConfirmed,back,primary,edit)){
+                case REPORT_ACTION_CANCEL:report_transport_cancel();break;
+                case REPORT_ACTION_CLOSE:reportOpen=false;memset(reportDescription,0,sizeof(reportDescription));break;
+                case REPORT_ACTION_EDIT:describeReport();break;
+                case REPORT_ACTION_REVIEW:reportConfirmed=true;break;
+                case REPORT_ACTION_SEND:components_stop();app_update_stop();report_transport_start(&report,true);reportConfirmed=false;break;
+                default:break;
+            }
+        }else if(powerPrompt){
             if(keys&KEY_TOUCH){
                 if(pos.px>=12&&pos.px<308){
                     if(pos.py>=54&&pos.py<85)keys|=KEY_A;
@@ -889,7 +964,7 @@ int main(int argc,char **argv){
                     powerCancelFailed=false;powerPrompt=false;ui_runtime_allow_pending_home(false);ui_runtime_reset();
                     flow_reset(&flow,selected);status=tr("Bereit");
                     menu_music_pause(false);app_log("Power dialog cancelled; OS and local HOME/POWER cleared");
-                }else powerCancelFailed=true;
+                }else {powerCancelFailed=true;rememberReport(ERROR_REPORT_POWER,cancelled,ERROR_REPORT_POWER_MENU);}
             }else if(keys&KEY_A){openHomeMenu();if(uiReleased)leave=true;}
             else if(keys&(KEY_X|KEY_SELECT)){
                 systemPowerAction((keys&KEY_X)!=0);
@@ -921,7 +996,7 @@ int main(int argc,char **argv){
                 bool busy=update.state==UPDATE_CHECKING||update.state==UPDATE_DOWNLOADING;
                 bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px<151)||((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px>=276);
                 bool primary=(keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=192&&pos.py<230&&pos.px>=169);
-                bool notes=!busy&&settings_release_note_count("0.12.34")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
+                bool notes=!busy&&settings_release_note_count("0.12.35")&&((keys&KEY_X)||((keys&KEY_TOUCH)&&settings_update_notes_hit(pos.px,pos.py)));
                 if(back){updateNotes=false;if(busy)app_update_cancel();else updatePage=false;}
                 else if(notes)updateNotes=!updateNotes;
                 else if(primary&&!busy){
@@ -930,7 +1005,7 @@ int main(int argc,char **argv){
                     else if(update.state==UPDATE_INSTALLED){
                         Result r=homebrew_prepare_launch(UPDATE_APP);
                         if(R_SUCCEEDED(r)){saveView();leave=true;}
-                        else {status=tr("Neu öffnen fehlgeschlagen. Über HBL starten.");}
+                        else {rememberReport(ERROR_REPORT_UPDATE,r,ERROR_REPORT_CHECKING_UPDATE);status=tr("Neu öffnen fehlgeschlagen. Über HBL starten.");}
                     }else app_update_check();
                 }
             }
@@ -1014,7 +1089,7 @@ int main(int argc,char **argv){
                 FILE *script=fopen("sdmc:/gm9/scripts/VitarenewFlow-Copy.gm9","rb");
                 FILE *firm=fopen("sdmc:/luma/payloads/GodMode9.firm","rb");
                 if(script&&firm){infoOpen=false;copyPrompt=true;}
-                else {snprintf(message,sizeof(message),"%s",tr("GodMode9 oder Kopierskript fehlt"));status=message;installFailed=true;errorTitle=tr("Modul kopieren");}
+                else {snprintf(message,sizeof(message),"%s",tr("GodMode9 oder Kopierskript fehlt"));status=message;installReportCode=0;installFailed=true;errorTitle=tr("Modul kopieren");}
                 if(script)fclose(script);
                 if(firm)fclose(firm);
             }
@@ -1057,7 +1132,7 @@ int main(int argc,char **argv){
                 if(ok){
                     saveView();status=tr("Autostart gespeichert; gilt ab nächstem Einschalten");
                 }
-                else {snprintf(message,sizeof(message),"%s: %.100s",tr("Autostart fehlgeschlagen"),R_FAILED(check)?"Rosalina target unavailable":autoboot_error());status=message;installFailed=true;errorTitle=tr("Autostart");}
+                else {snprintf(message,sizeof(message),"%s: %.100s",tr("Autostart fehlgeschlagen"),R_FAILED(check)?"Rosalina target unavailable":autoboot_error());status=message;installReportCode=0;installFailed=true;errorTitle=tr("Autostart");}
             }
         }else if(supportOpen){
             if((keys&(KEY_A|KEY_B))||((keys&KEY_TOUCH)&&pos.py>=198))supportOpen=false;
@@ -1094,7 +1169,7 @@ int main(int argc,char **argv){
                     case MENU_LANGUAGE:{
                         bool saved=l10n_save(!l10n_english());app_log(saved?"Language saved":"Language save failed");
                         if(saved){status=tr("Sprache gespeichert");language=l10n_english()?1:2;}
-                        else {snprintf(message,sizeof(message),"%s",tr("Sprache konnte nicht gespeichert werden"));status=message;installFailed=true;errorTitle=tr("Einstellungen");}
+                        else {snprintf(message,sizeof(message),"%s",tr("Sprache konnte nicht gespeichert werden"));status=message;installReportCode=0;installFailed=true;errorTitle=tr("Einstellungen");}
                         break;}
                     case MENU_DS:openTwl();break;
                     case MENU_AUTOBOOT:autobootState=autoboot_status();autobootPrompt=true;break;
@@ -1122,7 +1197,7 @@ int main(int argc,char **argv){
             if((keys&KEY_TOUCH)&&pos.py>=84&&pos.py<192){unsigned n=importSelected/4*4+(pos.py-84)/27;
             if(n<importCount)importSelected=n;}
             if(keys&KEY_SELECT)readImports();
-            if(keys&KEY_A){status=assignCover()?tr("Cover gespeichert"):tr("Cover nicht lesbar: PNG bis 512x512 verwenden");
+            if(keys&KEY_A){bool saved=assignCover();if(!saved)rememberReport(ERROR_REPORT_COVER,0,ERROR_REPORT_LOADING_COVER);status=saved?tr("Cover gespeichert"):tr("Cover nicht lesbar: PNG bis 512x512 verwenden");
             coverMenu=false;}
         }else if(searchOpen){
             bool changed=false;
@@ -1206,6 +1281,7 @@ int main(int argc,char **argv){
         app_log(R_SUCCEEDED(r)?"Exit: original Homebrew Launcher":"Exit: Homebrew Launcher preparation failed");
         if(R_FAILED(r))aptClearChainloader();
     }
+    report_transport_stop();
     components_stop();
     app_update_stop();
     menu_music_stop();

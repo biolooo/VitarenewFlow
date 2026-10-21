@@ -577,6 +577,11 @@ static void chromeTop(void){
 
 }
 
+static void reportHeading(const UiState *s,const char *heading){
+ if(s->reportAvailable)title(48,16,13,132,1,heading,false);
+ else centered(160,15,18,ink,heading);
+}
+
 static void header(const UiState *s){
 
  rounded(8,8,304,36,11,panel);
@@ -593,7 +598,8 @@ static void header(const UiState *s){
 
  key(249,17,"R");
 
- centered(160,17,14,ink,s->system);
+ if(s->reportAvailable)title(78,17,12,100,1,s->system,true);
+ else centered(160,17,14,ink,s->system);
 
  C2D_DrawCircleSolid(23,23,0,7,ink);
  C2D_DrawCircleSolid(23,23,0,5,panel);
@@ -807,7 +813,7 @@ static void information(const UiState *s){
 
 static void twlPanel(const UiState *s){
  rect(0,0,320,240,RGB(9,19,29));rounded(8,8,304,36,10,panel);
- centered(160,15,18,ink,tr("DS-Diagnose"));text(289,17,16,ink,"x");
+ reportHeading(s,tr("DS-Diagnose"));text(289,17,16,ink,"x");
  const char *heading="",*body="",*note="",*action="";
  bool summary=s->twlPage==1;
  if(summary){
@@ -1130,7 +1136,7 @@ void ui_draw(const UiState *s){
 
   if(s->settingsPage!=MENU_ROOT){rounded(12,12,28,28,8,raised);chevron(26,26,false,ink);}
 
-  centered(160,15,18,ink,tr(settings_menu_title(s->settingsPage)));
+  reportHeading(s,tr(settings_menu_title(s->settingsPage)));
 
   rounded(280,12,28,28,8,raised);
 
@@ -1164,7 +1170,7 @@ void ui_draw(const UiState *s){
 
   const ComponentStatus *c=&s->component;bool busy=c->state==COMP_DOWNLOAD||c->state==COMP_READY;
 
-  rect(0,0,320,240,RGB(9,19,29));rounded(8,8,304,36,10,panel);centered(160,15,18,ink,tr(s->componentSelected==6?"Desktop-Verwaltung":"Emulatoren"));text(289,17,16,ink,"x");
+  rect(0,0,320,240,RGB(9,19,29));rounded(8,8,304,36,10,panel);reportHeading(s,tr(s->componentSelected==6?"Desktop-Verwaltung":"Emulatoren"));text(289,17,16,ink,"x");
 
   if(busy){title(20,70,17,280,2,component_definition(s->componentSelected)->name,false);text(20,118,14,muted,tr("Herunterladen und prüfen..."));float p=c->total?(float)c->received/c->total:0;rounded(20,156,280,6,3,raised);rounded(20,156,280*fminf(p,1.f),6,3,accent);char amount[48];snprintf(amount,sizeof(amount),"%.1f / %.1f MB",c->received/1048576.f,c->total/1048576.f);centered(160,174,12,muted,amount);centered(160,202,14,ink,tr("Abbrechen"));}
 
@@ -1195,7 +1201,7 @@ void ui_draw(const UiState *s){
 
   rect(0,0,320,240,RGB(9,19,29));rounded(8,8,304,36,10,panel);
 
-  centered(160,15,18,ink,tr("Updates"));rounded(280,12,28,28,8,raised);text(289,17,16,ink,"x");
+  reportHeading(s,tr("Updates"));rounded(280,12,28,28,8,raised);text(289,17,16,ink,"x");
 
   char label[96];snprintf(label,sizeof(label),"%s  %s",tr("Installiert"),s->version);text(20,61,14,muted,label);
 
@@ -1287,7 +1293,7 @@ void ui_draw(const UiState *s){
  if(s->support){
   rect(0,0,320,240,RGB(9,19,29));
   rounded(8,8,304,36,10,panel);
-  centered(160,15,18,ink,tr("Über & Unterstützung"));
+  reportHeading(s,tr("Über & Unterstützung"));
   rounded(12,54,296,65,10,panel);
   text(24,64,20,ink,"VitarenewFlow");
   char version[64];snprintf(version,sizeof(version),"%s %s",tr("Version"),s->version);
@@ -1365,6 +1371,31 @@ void ui_draw(const UiState *s){
   title(20,191,12,280,2,s->stage,false);
 
  }else centered(160,108,12,muted,s->stage);}
+
+ /* Last overlay: cannot be hidden by another error panel. */
+ if(s->reportAvailable&&!s->loading&&!s->reportOpen){
+  rounded(184,12,56,28,7,raised);centered(212,18,10,accent,tr("Melden"));
+ }
+ if(s->reportOpen&&!s->loading){
+  rect(0,0,320,240,RGB(9,19,29));
+  text(16,12,18,ink,tr("Problem melden"));
+  char detail[100];snprintf(detail,sizeof(detail),"%s %s  /  %08lX",tr("Version"),s->version,(unsigned long)(uint32_t)s->reportCode);
+  text(16,43,11,muted,detail);
+  const char *models[]={"?","3DS","3DS XL","2DS","New 3DS","New 3DS XL","New 2DS XL","PC"};
+  const char *regions[]={"?","JPN","USA","EUR","AUS","CHN","KOR","TWN"};
+  const char *areas[]={"Allgemein","Spielstart","Installation","Update","Komponenten","DS","HOME","POWER","Audio","Cover","Speicher","Desktop"};
+  snprintf(detail,sizeof(detail),"%s / %s / %s",models[s->reportModel<ERROR_REPORT_MODEL_COUNT?s->reportModel:0],regions[s->reportRegion<ERROR_REPORT_REGION_COUNT?s->reportRegion:0],s->reportContext==ERROR_REPORT_HOMEBREW?"Homebrew":"Native");
+  text(16,62,11,ink,detail);
+  snprintf(detail,sizeof(detail),"%s / Autoboot: %s",tr(areas[s->reportArea<ERROR_REPORT_AREA_COUNT?s->reportArea:0]),tr(s->reportAutoboot==ERROR_REPORT_AUTOBOOT_ON?"An":s->reportAutoboot==ERROR_REPORT_AUTOBOOT_OFF?"Aus":"Unklar"));
+  text(16,78,11,ink,detail);
+  title(16,95,10,288,2,tr("Nur diese Diagnose und dein Text. Keine Spiele, Pfade oder Logs. Empfang: VitaRenew."),false);
+  title(16,121,10,288,1,s->reportDescription&&s->reportDescription[0]?s->reportDescription:tr("Beschreibe kurz, was vor dem Fehler passiert ist."),false);
+  rounded(12,138,296,30,8,raised);centered(160,146,12,ink,tr("X Beschreibung bearbeiten"));
+  const char *note=s->reportState==REPORT_SENDING?"Wird gesendet...":s->reportState==REPORT_SENT?"Bericht empfangen. Danke!":s->reportState==REPORT_FAILED?"Nicht bestätigt. WLAN prüfen; erneutes Senden kann doppelt ankommen.":s->reportState==REPORT_CANCELLED?"Abgebrochen; Empfang möglicherweise bereits erfolgt.":!s->reportConfigured?"Versand noch nicht eingerichtet. Nichts gesendet.":s->reportConfirmed?"Mit A ausdrücklich an VitaRenew senden.":"Nur senden, wenn du diesen Angaben zustimmst.";
+  title(16,174,11,288,2,tr(note),false);
+  rounded(12,205,92,30,8,raised);centered(58,213,11,ink,tr(s->reportState==REPORT_SENDING?"B Abbrechen":"B Zurück"));
+  if(s->reportConfigured&&s->reportState!=REPORT_SENDING&&s->reportState!=REPORT_SENT){rounded(112,205,196,30,8,accent);centered(210,213,12,RGB(12,35,36),tr(s->reportConfirmed?"A Jetzt senden":"A Bericht prüfen"));}
+ }
 
  C3D_FrameEnd(0);
 

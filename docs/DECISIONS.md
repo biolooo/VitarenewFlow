@@ -33,3 +33,7 @@ Weitere noch offene UI-Wünsche aus der Zehnerliste: About/Support modernisieren
 ## Lokale Migration 21.10.2026
 
 Der Nutzer beauftragte Start und Fortsetzung des Umstiegs. Nach unabhängiger Prüfung ist Documents/Code/vitarenew-flow die Integrationswurzel; Launcher .33 und Ziel-Desktop .4.1 wurden ausgewählt. Alte Arbeitskopien bleiben erhalten, keine Rücksynchronisation. Eigener lokaler Sicherungsstand und reproduzierbare Prüfung ersetzen die Abhängigkeit vom alten Chat. Das ist keine neue Feature-/Veröffentlichungs- oder Konsolenfreigabe. Details/Nachweise: MIGRATION.md.
+
+## Fehlerberichte und Gerätewechsel — 21.10.2026
+
+Der Nutzer beauftragt einen Meldebutton für Fehlerfälle und wählt einen eigenen Empfangsdienst auf dem Server. Keine automatische Telemetrie: Diagnose-Allowlist statt Rohlogs, optionale bewusste Beschreibung, konkrete Zustimmung vor Versand, feste Größen-/HTTPS-Grenzen. Empfang ist nur nach bestätigter Speicherung erfolgreich. Desktop und externe Abstürze sind gesonderte Integrationsgrenzen. Verwendete Quelle ist Remote-main `815da5a` mit PC-2-Arbeit, nicht der ältere lokale main. Vor allen neuen Aufträgen lokale/Remote-Stände prüfen; ungesendete PC-2-Änderungen lassen sich nicht aus Git ableiten. Öffentliche Serverroute, Benutzerverzeichnis und OTA-Testveröffentlichung .35 hat der Nutzer anschließend ausdrücklich freigegeben.

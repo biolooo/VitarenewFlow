@@ -1,6 +1,12 @@
 # Flow — Einstieg für den Orchestrator
 
-Aktueller Stand 21.10.2026: verbindliche Integrationswurzel ist C:/Users/subje/Documents/Code/vitarenew-flow. Launcher 0.12.33, Desktop 0.4.1. Die lokale Migration übernimmt vorhandene Entwicklung; sie ist keine neue Version und keine Hardwareabnahme.
+Aktueller Stand 21.10.2026: verbindliche Integrationswurzel ist C:/Users/subje/Documents/Code/vitarenew-flow. Launcher 0.12.35 als freigegebener OTA-Teststand, Desktop 0.4.1. Keine Hardwareabnahme vorweggenommen.
+
+## Aktiver Auftrag: Fehlerberichte (21.10.2026)
+
+Der Auftrag basiert auf Remote-main `815da5a` (PC-2-Arbeit/0.12.34 integriert), nicht auf dem veralteten lokalen PC-1-main .33. Isolierter angehängter Worktree `error-reports`, Launcher 0.12.35. [ERROR-REPORTS](ERROR-REPORTS.md) dokumentiert UI, Datenschutz, Empfangsdienst, Tests und Hardwareplan. Der Nutzer hat den öffentlichen Serverempfang im Benutzerverzeichnis und die OTA-Testveröffentlichung ausdrücklich freigegeben. Empfang läuft unter /home/maxim/apps/vitarenew-flow-reports; synthetischer HTTPS-Bericht mit App-CA-Bundle angenommen und in SQLite bestätigt. Paketnachweise: RELEASE-0.12.35.md. Keine automatische weitere Veröffentlichung oder SD-Übertragung. Desktop .4.1 unverändert.
+
+Vor jeder weiteren Aufgabe Remote-Refs/Branches gegen den lokalen Stand prüfen (AGENTS Regel 8). Nicht gepushte Arbeit auf PC 2 bleibt separat abzuklären. Alte Angaben zu `codex/pc2-handoff` unten beschreiben den ursprünglichen Gerätewechsel, nicht die heutige jüngste Quellbasis. Vollständige historische .34-Veröffentlichung heute nicht erneut live auditiert; der neue Featureauftrag ändert keine bestehenden Kanäle.
 
 Lesereihenfolge: AGENTS.md → STATUS.md → MIGRATION.md → ARCHITECTURE.md → DECISIONS.md → ORCHESTRATION.md. PROJECT-COPY.md enthält die ursprüngliche Herkunft, migration-evidence die datierten Nachweise. Der aktuelle Git-Commit benennt die gesicherte Basis; immer zusätzlich den Arbeitsbaum prüfen.
 
