@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "game_info.h"
 #include "library_model.h"
 #include <stdio.h>

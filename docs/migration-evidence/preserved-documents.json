@@ -1,0 +1,37 @@
+[
+  {
+    "path": "README.md",
+    "original_sha256": "ef0b4324de46f8e6c0ccd1af598eabdd5dcb76942ac24cd336ec3ea078786c0d",
+    "preserved_body_sha256_utf8": "ef0b4324de46f8e6c0ccd1af598eabdd5dcb76942ac24cd336ec3ea078786c0d",
+    "method": "Original bytes recovered and retained exactly inside details; current-state banner added",
+    "after_sha256": "b297f6e38e19c95a28180f22e86b258fe965f51380dd9e56629ee494bc557688"
+  },
+  {
+    "path": "docs/ROADMAP.md",
+    "original_sha256": "7ea247f8d972cf4828a1b54a3a46a93f8a3335dd42773c3c8ae4aa9ad129e0f3",
+    "preserved_body_sha256_utf8": "7ea247f8d972cf4828a1b54a3a46a93f8a3335dd42773c3c8ae4aa9ad129e0f3",
+    "method": "Original bytes recovered and retained exactly inside details; current-state banner added",
+    "after_sha256": "ea17c81997fb1f95db2c6ae5659317281356a98d4434af8facb8f13cb110be44"
+  },
+  {
+    "path": "docs/RELEASE-STATUS.md",
+    "original_sha256": "74c3dd2713a326ae99e539814499343157377d0eceb8843698b1ca6d69bb65fa",
+    "preserved_body_sha256_utf8": "74c3dd2713a326ae99e539814499343157377d0eceb8843698b1ca6d69bb65fa",
+    "method": "Original bytes recovered and retained exactly inside details; current-state banner added",
+    "after_sha256": "90ec0669344889e5394509d4c53462394b0ee01185d18f79cff2619a5bea2d63"
+  },
+  {
+    "path": "docs/DS-REPAIR.md",
+    "original_sha256": "0aa2ace04588f6626e425245a90bd22a87f5c340845f0fb35d8588c18860299b",
+    "preserved_body_sha256_utf8": "0aa2ace04588f6626e425245a90bd22a87f5c340845f0fb35d8588c18860299b",
+    "method": "Original bytes recovered and retained exactly inside details; current-state banner added",
+    "after_sha256": "d2a955814722d843dc194edf58f03545b5cf48ce4f95c278bcfbd780e4b34e5e"
+  },
+  {
+    "path": "docs/MENU-MUSIC.md",
+    "original_sha256": "95093c5fa811820374751748cc1ec45305a05b423159b1a011b0524c72b99e99",
+    "preserved_body_sha256_utf8": "95093c5fa811820374751748cc1ec45305a05b423159b1a011b0524c72b99e99",
+    "method": "Original bytes recovered and retained exactly inside details; current-state banner added",
+    "after_sha256": "ea1e5dd1483efc83270fcfb000109e0205e6edf10544aa2430a4ff79b385af55"
+  }
+]

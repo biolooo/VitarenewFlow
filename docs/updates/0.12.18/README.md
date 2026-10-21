@@ -1,7 +1,11 @@
 # VitarenewFlow 0.12.18 — in-app update test
 
-Development test, not stable 1.0. Bootstrap 0.12.17 can download this version through Console & startup > Updates. The two builds differ only in version identifiers so a real online update can be tested. Console acceptance is pending.
+Development test, not the stable 1.0 release. Bootstrap 0.12.17 is installed through the Homebrew Launcher; Settings > Console & startup > Updates downloads this 0.12.18 build over verified HTTPS. The two builds have the same functionality and differ only in their version identifier to test a real update.
 
-3DSX only; games, saves, covers, settings, CIA installations and boot files are preserved. A valid system date and Wi-Fi are required for verified HTTPS. Do not power off or remove the SD during installation. The previous app is retained at /3ds/3ds-library/3ds-library.3dsx.previous.3dsx; restore it to 3ds-library.3dsx on a PC if an interrupted rename requires recovery.
+3DSX only. Existing games, saves, covers, settings, root boot files and CIA installations are not updated. The previous binary is retained as `/3ds/3ds-library/3ds-library.3dsx.previous.3dsx`. In case of an interrupted FAT rename, restore that file to `3ds-library.3dsx` using a PC. Do not remove the SD or power off during installation. Re-downloads are checked against the published size and SHA256 before and after replacement.
 
-VitarenewFlow.3dsx and corresponding VitarenewFlow-source.zip are provided in this folder. Own code: GPL-3.0-only; dependency notices and build instructions are included in the source archive. No games, keys, saves, emulator binaries or Nintendo audio are included.
+Update checks are manual. No background telemetry. A valid console date and working Wi-Fi are required for HTTPS certificate checks. The first real-console online update is still pending acceptance.
+
+Corresponding source, build files, original assets and license texts: `VitarenewFlow-source.zip` alongside this binary. Own code: GPL-3.0-only. DevkitPro dependencies are installed separately: libctru, citro2d/3d, libpng, zlib, curl 8.4.0, Mbed TLS 2.28.8. No games, saves, keys, emulator binaries or Nintendo music are included.
+
+Build with devkitPro: `make -C launcher`. Host update tests: compile tests/update-test.c together with launcher/source/update_format.c and launcher/source/update_store.c using C11 and UBSan.

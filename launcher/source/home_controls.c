@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "home_controls.h"
 int home_footer_action(int x,int y,bool guide,bool hasGames){
     if(y<206||y>=234||x<8||x>=312)return HOME_NONE;
@@ -8,10 +10,11 @@ int home_footer_action(int x,int y,bool guide,bool hasGames){
 }
 int home_header_action(int x,int y){
     if(y<8||y>=44||x<8||x>=312)return HOME_NONE;
-    if(x<44)return HOME_SETTINGS;
+    if(x<44)return HOME_SEARCH;
     if(x>=48&&x<76)return HOME_PREVIOUS;
     if(x>=244&&x<274)return HOME_NEXT;
-    if(x>=278||(x>=78&&x<242))return HOME_CATEGORIES;
+    if(x>=278)return HOME_SETTINGS;
+    if(x>=78&&x<242)return HOME_CATEGORIES;
     return HOME_NONE;
 }
 unsigned home_category_target(unsigned current,unsigned count,bool left,bool right){

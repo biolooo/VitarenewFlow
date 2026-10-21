@@ -1,0 +1,12 @@
+{
+  "tested_commit": "a7a1f84",
+  "method": "git archive HEAD; extract into fresh directory; run committed scripts/verify-local.sh",
+  "native_build": "PASS",
+  "existing_host_fixtures": "PASS",
+  "shell_line_endings": "LF verified from Git archive",
+  "log_sha256": "4a8f2bfc2dbddaae72c79e54722ff15032d78de4040c53764076d2f0acc5bffb",
+  "private_data_required": false,
+  "sdk": "existing external WSL/chroot; no installation",
+  "hardware_acceptance": false,
+  "publication": false
+}

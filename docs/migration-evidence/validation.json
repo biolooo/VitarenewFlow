@@ -1,0 +1,67 @@
+{
+  "checked_utc": "2026-10-21T14:59:48.278939+00:00",
+  "mode": "documentation-only validation; no application build/test executed",
+  "protected_files_checked": 1673,
+  "protected_file_changes": [],
+  "git": {
+    "target": {
+      "head_unchanged": true,
+      "branch_unchanged": true
+    },
+    "legacy-repository": {
+      "head_unchanged": true,
+      "branch_unchanged": true
+    }
+  },
+  "required_docs": [
+    "AGENTS.md",
+    "README.md",
+    "PLANS.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md",
+    "docs/STATUS.md",
+    "docs/ORCHESTRATION.md",
+    "docs/MIGRATION.md",
+    "docs/HANDOFF.md",
+    "docs/PROJECT-OVERVIEW.md"
+  ],
+  "missing_local_links": [],
+  "historical_document_bodies_byte_preserved": true,
+  "legacy_033_release_hashes_match": true,
+  "legacy_033_archive_makefile_matches": true,
+  "note": "No new hardware acceptance inferred; no native SDK/build/helper test executed.",
+  "documentation_files_checked": [
+    "AGENTS.md",
+    "README.md",
+    "PLANS.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md",
+    "docs/STATUS.md",
+    "docs/ORCHESTRATION.md",
+    "docs/MIGRATION.md",
+    "docs/HANDOFF.md",
+    "docs/PROJECT-OVERVIEW.md",
+    "docs/migration-evidence/README.md",
+    "docs/migration-evidence/COMPLETION.md"
+  ],
+  "edited_documents": [
+    "AGENTS.md",
+    "README.md",
+    "docs/ROADMAP.md",
+    "docs/RELEASE-STATUS.md",
+    "docs/DS-REPAIR.md",
+    "docs/MENU-MUSIC.md"
+  ],
+  "new_project_documents": [
+    "PLANS.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md",
+    "docs/STATUS.md",
+    "docs/ORCHESTRATION.md",
+    "docs/MIGRATION.md",
+    "docs/HANDOFF.md",
+    "docs/PROJECT-OVERVIEW.md",
+    "docs/migration-evidence/README.md",
+    "docs/migration-evidence/COMPLETION.md"
+  ]
+}

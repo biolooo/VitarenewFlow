@@ -1,0 +1,6 @@
+{
+  "captured_utc": "2026-10-21T14:47:04.774641+00:00",
+  "task": "documentation only; no builds/tests, git mutation, SD writes, publication or source synchronization",
+  "release_033_source_matches_legacy": true,
+  "excluded": "SD backups, ROMs, saves, console keys and private audio fixtures; no application/private file contents copied; historical documentation text preserved"
+}

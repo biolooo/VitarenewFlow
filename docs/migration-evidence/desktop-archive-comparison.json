@@ -1,0 +1,18 @@
+{
+  "AssemblyInfo.cs": {
+    "outputs\\3ds-library-pc\\source": false,
+    "outputs\\VitarenewFlow-repository\\desktop\\source": true
+  },
+  "MainWindow.xaml": {
+    "outputs\\3ds-library-pc\\source": false,
+    "outputs\\VitarenewFlow-repository\\desktop\\source": true
+  },
+  "Program.cs": {
+    "outputs\\3ds-library-pc\\source": false,
+    "outputs\\VitarenewFlow-repository\\desktop\\source": true
+  },
+  "Tests.cs": {
+    "outputs\\3ds-library-pc\\source": false,
+    "outputs\\VitarenewFlow-repository\\desktop\\source": true
+  }
+}

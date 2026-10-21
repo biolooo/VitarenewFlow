@@ -1,0 +1,1 @@
+Original VitaRenewFlow 16-second ambient composition, synthesized from independently composed chords and notes. No console audio samples. Mono 22050 Hz PCM16, zlib packed; approximately 594 KB. Reproducible with scripts/generate-fallback.py. Copyright 2026 VitaRenewFlow contributors; GPL-3.0-only.

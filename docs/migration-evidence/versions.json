@@ -1,0 +1,44 @@
+[
+  {
+    "path": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\3ds-library\\Makefile",
+    "sha256": "73cd80bb6aa53ec2ede027f96ef5c152b68fb0b4ef2745ec561d86a15bf27c24",
+    "version_lines": [
+      "APP_DESCRIPTION := Game Launcher - Version 0.12.33"
+    ]
+  },
+  {
+    "path": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\launcher\\Makefile",
+    "sha256": "73cd80bb6aa53ec2ede027f96ef5c152b68fb0b4ef2745ec561d86a15bf27c24",
+    "version_lines": [
+      "APP_DESCRIPTION := Game Launcher - Version 0.12.33"
+    ]
+  },
+  {
+    "path": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\launcher\\Makefile",
+    "sha256": "364e9c034be9271b600790691cd70e9ff1f46bc1f73c380a26ef9b1636a89ce4",
+    "version_lines": [
+      "APP_DESCRIPTION := Game Launcher - Version 0.12.32"
+    ]
+  },
+  {
+    "path": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\local-development-snapshot\\3ds-library\\Makefile",
+    "sha256": "364e9c034be9271b600790691cd70e9ff1f46bc1f73c380a26ef9b1636a89ce4",
+    "version_lines": [
+      "APP_DESCRIPTION := Game Launcher - Version 0.12.32"
+    ]
+  },
+  {
+    "path": "C:\\Users\\subje\\Documents\\Codex\\2026-10-13\\kan\\outputs\\VitarenewFlow-repository\\docs\\updates\\latest.txt",
+    "sha256": "5e4ce8b132da7de311c4dcf29d36fd2767c2c38b393cb55174ca2047a9db1231",
+    "version_lines": [
+      "version=0.12.33"
+    ]
+  },
+  {
+    "path": "C:\\Users\\subje\\Documents\\Code\\vitarenew-flow\\docs\\updates\\latest.txt",
+    "sha256": "d6d94c3fb0c4212c0d3420cc877a8f386ef0d99aecfe42cc6e3bdc653b775d9b",
+    "version_lines": [
+      "version=0.12.32"
+    ]
+  }
+]

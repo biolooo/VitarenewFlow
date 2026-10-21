@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 #include "device_settings.h"
 #include <limits.h>
 static const u32 luminanceLevels[]={20,43,73,95,117};

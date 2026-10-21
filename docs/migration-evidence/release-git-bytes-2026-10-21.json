@@ -1,0 +1,9 @@
+{
+  "release_channel_files": 186,
+  "index_matches_worktree_bytes": true,
+  "v0_12_33_manifest_entries": 8,
+  "all_manifest_hashes_pass": true,
+  "fix": "/docs/updates/** -text preserves delivered bytes across Git checkouts",
+  "reason": "Git text normalization changed delivered README/FEATURES and channel bytes in prior migration commit",
+  "application_sources_changed": false
+}

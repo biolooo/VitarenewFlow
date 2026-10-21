@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 VitarenewFlow contributors
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +44,10 @@ namespace LibraryDesktop {
             Get<Button>("Refresh").Click += delegate { Reload(null); };
             Get<TextBox>("Search").TextChanged += delegate { Get<TextBlock>("SearchHint").Visibility = Get<TextBox>("Search").Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed; Filter(); };
             Get<Button>("OpenCard").Click += delegate { Explore(card.Root, false); };
+            Get<Button>("SetupLauncher").Click += delegate {
+                if(busy)return;
+                MessageBox.Show(window,"VitarenewFlow aktualisieren: Auf dem 3DS Menü → Konsole & Start → Updates.\n\nEmulatoren einrichten: Menü → Spiele verwalten → Emulatoren.\n\nDesktop-Verwaltung erneuern: Menü → Spiele verwalten → Desktop-Verwaltung.","Einrichtung auf dem 3DS",MessageBoxButton.OK,MessageBoxImage.Information);
+            };
             Get<Button>("OpenBackups").Click += delegate { string folder = card.PathOnCard("3ds/3ds-library/pc-backups"); if (Directory.Exists(folder)) Explore(folder, false); else SetStatus("Noch keine Cover-Backups. Sie entstehen beim Ersetzen eines vorhandenen Covers."); };
             Get<Button>("ChangeCover").Click += delegate { BrowseCover(); };
             Get<Button>("OpenGameFolder").Click += delegate { var g = grid.SelectedItem as Game; if (g != null && g.FilePath != null) Explore(g.FilePath, true); };
@@ -183,6 +189,7 @@ namespace LibraryDesktop {
         }
         sealed class BatchResult { public int Copied, Skipped; public bool Cancelled; public List<string> Errors = new List<string>(); public string LastGame; }
         void Busy(bool value) {
+            Get<Button>("SetupLauncher").IsEnabled = !value;
             Get<Button>("AutoCovers").IsEnabled = !value;
             busy = value; Get<Button>("AddGames").IsEnabled = !value; Get<Button>("Refresh").IsEnabled = !value;
             Get<TextBox>("Search").IsEnabled = !value; foreach (Button b in nav.Values) b.IsEnabled = !value;
@@ -296,7 +303,7 @@ namespace LibraryDesktop {
                 checks.Add("UI pending CIA allows covers and explains console installation");
             }
             Busy(true);
-            if (Get<Button>("AddGames").IsEnabled || Get<Button>("AutoCovers").IsEnabled || Get<Button>("ChangeCover").IsEnabled || nav["all"].IsEnabled) throw new Exception("Import busy state failed");
+            if (Get<Button>("AddGames").IsEnabled || Get<Button>("AutoCovers").IsEnabled || Get<Button>("ChangeCover").IsEnabled || Get<Button>("SetupLauncher").IsEnabled || nav["all"].IsEnabled) throw new Exception("Import busy state failed");
             checks.Add("UI conflicting write actions disabled during import");
             Busy(false); window.Close(); return checks;
         }

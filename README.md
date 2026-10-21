@@ -1,38 +1,21 @@
 # VitarenewFlow
 
-![VitarenewFlow](docs/assets/title.png)
+Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Windows-Verwaltung. Entwicklung von VitaRenew. Aktuelle lokale Integrationsbasis: **Launcher 0.12.33 / Desktop 0.4.1**, weiterhin Teststand ohne abschließende Hardwareabnahme.
 
-A Nintendo 3DS game launcher by [VitaRenew](https://vitarenew.de).
+## Einstieg
 
-**Development milestone 0.11.0 — not version 1.0. Native CIA installation and handoffs still need real-console acceptance.**
+[Aktueller Status](docs/STATUS.md) · [Orchestrator-Übergabe](docs/HANDOFF.md) · [Architektur](docs/ARCHITECTURE.md) · [Entscheidungen](docs/DECISIONS.md) · [Migration](docs/MIGRATION.md)
 
-Deutsch: Eine gemeinsame Bibliothek für 3DS-Spiele, DS und Emulatoren, mit Coverflow, Originalbanner-Caches, CIA-Installation und Seed-Reparatur. Die bisherigen 3DSX-Spielstarts wurden auf einem New Nintendo 3DS XL getestet. Das neue CIA-Paket ist noch nicht auf der Konsole abgenommen.
+Dieses Repository ist der verbindliche Entwicklungsort. Legacyordner und local-development-snapshot sind historische Referenzen. Datenpfade bleiben aus Kompatibilitätsgründen unter /3ds/3ds-library. Keine Spiele, Saves, BIOS oder Schlüssel werden mitgeliefert.
 
-English: One library for 3DS games, DS and emulators, with coverflow, original banner caches, CIA installation and seed repair. Existing 3DSX launch routes were tested on a New Nintendo 3DS XL. The new native CIA package still needs hardware acceptance.
+## Lokal bauen und prüfen
 
-## Current additions
+Unter WSL mit dem vorhandenen devkitPro/chroot-SDK: `bash scripts/verify-local.sh`. FLOW_TOOLCHAIN_ROOT kann den SDK-Pfad überschreiben. Der Aufruf baut aktuelle Quellen in frischem isoliertem Staging und führt ausgewählte vorhandene Hostfixtures aus. Ergebnisse liegen ignoriert unter .test-build/. Voraussetzungen und Grenzen: [Migration](docs/MIGRATION.md), [lokale Nachweise](docs/LOCAL-VERIFICATION.md).
 
-- Approved VF/laurel branding and startup art without an extra splash delay.
-- Persistent English/German language selection in Settings.
-- Optional VitaRenew support panel under Settings → More settings.
-- Native CIA package with icon and HOME banner.
-- Native CIA handoff to the configured Rosalina takeover title for 3DSX emulators.
+Direkter 3DS-Build bei korrekt gesetztem DEVKITPRO/DEVKITARM: `make -C launcher`. Benötigt libctru, citro2d/3d, libpng, curl, mbedTLS und zlib. Desktop unter Windows: `desktop/source/build.ps1` (.NET Framework 4/WPF); Ausgabe desktop/SD-Karte/3DS Library PC.exe. Native CIA benötigt makerom/bannertool, siehe scripts/build-cia.ps1. Angepasste Emulatoren haben zusätzliche separate Upstream-Buildumgebungen.
 
-## Install / Installation
+## Abnahme und Mitarbeit
 
-See [test installation](docs/INSTALL.md). This milestone updates an existing project SD; it does not bundle games, artwork, BIOS files, keys or emulator binaries. The emulator integrations require the project's tested adapters. A clean end-user installer follows the remaining hardware milestones.
+Build-/Hosttesterfolg ist keine Konsolenabnahme. POWER/HOME, Audio, DS/Module und frische Einrichtung müssen separat auf Hardware geprüft werden. Offene Punkte stehen im Status. Kein automatischer Release oder SD-Transfer nach einem Build. Agenten lesen [AGENTS.md](AGENTS.md) und [Orchestrierung](docs/ORCHESTRATION.md).
 
-[Next console test](docs/acceptance/TEST-0.11.0.md) · [Final acceptance checklist](docs/acceptance/FINAL-1.0.md) · [Roadmap](docs/ROADMAP.md)
-
-## Build
-
-- 3DS: devkitPro devkitARM, libctru, citro2d/citro3d, libpng and zlib. Run `make -C launcher` with DEVKITPRO/DEVKITARM configured.
-- CIA: makerom 0.19.0 and bannertool 1.2.3 from their official repositories; see `scripts/build-cia.ps1`.
-- Windows desktop: .NET Framework 4.x/WPF; run `desktop/source/build.ps1`. Compatible filename: `3DS Library PC.exe`.
-- Host feature tests: `sh scripts/test-host.sh` with a C compiler and UBSan available.
-
-Data paths remain under `/3ds/3ds-library` for compatibility.
-
-## Notices
-
-Source is available for development review. Reuse licensing for original project code and branding will be finalized before 1.0. Third-party components retain their own licenses; see [notices](licenses/NOTICES.md). No GodMode9 implementation is included in the launcher.
+Eigener Code GPL-3.0-only, siehe LICENSE und licenses/NOTICES.md. Fremdkomponenten behalten ihre jeweiligen Bedingungen. Alte README-Texte sind als historischer Beleg unter docs/migration-evidence/before-integration-README.md erhalten.

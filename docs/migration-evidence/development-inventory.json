@@ -1,0 +1,4232 @@
+[
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/BUILD-MANIFEST.json",
+    "bytes": 1289,
+    "sha256": "39a72f1d8d1cf7c71bff7cb0ceeca6d00a72f9a543347f3c27def6c509b27d68"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/BUILD.txt",
+    "bytes": 2622,
+    "sha256": "8e0ac5cfa69040934e70993a72b0db56bb501933cdd5cc726cd3e0a30b6c9c84"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/FIX-0.6.1-MANIFEST.json",
+    "bytes": 351,
+    "sha256": "ffd6cf33428effaefe83788db9be8f800545cf4cb3125832a6c4997b659c37be"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/imgui-picagl-main-source.tar.gz",
+    "bytes": 507931,
+    "sha256": "c60a713aabd01369957059460cef6a52315507dac621cf132938fe1f26d86f24"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/library_return.h",
+    "bytes": 1047,
+    "sha256": "1d5c274b9da11f9d49fd387ae59cc1f3c7c8d8dc13c30a4bcbdbc2d48e00c468"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/n64-library-source.tar.gz",
+    "bytes": 37075247,
+    "sha256": "a7cfd2a7a5c30ed530f6b42918cd5721408e79a29aafde6b164a0b8951a81796"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/NES-FIX-0.6.2.txt",
+    "bytes": 2047,
+    "sha256": "c0455772b32c6ecd6840a1c076e04413cd47a0b366f89568d33d3b91390b83d5"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/nes-legacy-runtime-source.tar.gz",
+    "bytes": 458120,
+    "sha256": "2c733c1cf7d573fe99f358cb35565dcee0f3a6dbddf9adf1fb07c04dbf3cd518"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/nes-legacy-runtime-v0.7.0-source.tar.gz",
+    "bytes": 458454,
+    "sha256": "bf60aba4c8cca8081ce7805492df02730ba49d1ebfcfd4761a85d7c42d0558e0"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/nes-library-source.tar.gz",
+    "bytes": 3870979,
+    "sha256": "11bbad3a4ce6b16cea046ee05b21322b919b408da18a99afc7c494088f58b138"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/nes-library-v0.6.2-source.tar.gz",
+    "bytes": 3871142,
+    "sha256": "b3c2b5a8e25efddffd3461ec2383c6ff0216210130b0a9d74a76b976475f4a8e"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/nes-library-v0.7.0-source.tar.gz",
+    "bytes": 3871372,
+    "sha256": "b17620ee35697ae589021c70205f47af04825e46d647f6e43bfa8148644c0042"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/picaGL-master-source.tar.gz",
+    "bytes": 29104,
+    "sha256": "11fe9c7024cb940df71a9be1e8ca9ad0b148d3f42cf25d8ffe8647233bd25923"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/picaGL-revamp-source.tar.gz",
+    "bytes": 29953,
+    "sha256": "169cc6453e4c3e1c777963d5c9a4e2a64670a8164614bbfff4cb5ff709b17134"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/snes-library-source.tar.gz",
+    "bytes": 3737365,
+    "sha256": "876504ef2c1deebe61339142b4a4fc074e1fb5724f2e7c660edb1cec48e78ae3"
+  },
+  {
+    "area": "outputs/emulator-adapters",
+    "path": "outputs/emulator-adapters/vb-library-source.tar.gz",
+    "bytes": 2536486,
+    "sha256": "ac7028dae587f5167b7f222e603f1fef5b734d306505b11795a7752e502dd31c"
+  },
+  {
+    "area": "outputs/ds-runtime",
+    "path": "outputs/ds-runtime/DATEIEN.json",
+    "bytes": 1691,
+    "sha256": "9f77ac822abde86bed877f77fd342c11e6e697c11e2dc811c602c103a5a99a4a"
+  },
+  {
+    "area": "outputs/ds-runtime",
+    "path": "outputs/ds-runtime/QUELLEN.txt",
+    "bytes": 1087,
+    "sha256": "51fb1e8db067cf18610eefdc993e64b1d95facc4576d708f878605640b27ea1f"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/ADAPTER.txt",
+    "bytes": 1494,
+    "sha256": "9856a3be041edae5c5140780be1cd989e2ad037dc58edb8e8fa8d71bae3011bc"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/library_path.h",
+    "bytes": 333,
+    "sha256": "8aabf2d57c2bd8883413455786c966fb6bf5b2bbcd3738880896562817a9b9be"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/library_path_test.c",
+    "bytes": 515,
+    "sha256": "5075e002610f048c09869cf94be76d03b3a09fb70f4a828df2101093adbdaa63"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/main.c",
+    "bytes": 30419,
+    "sha256": "e35edb6f0c9c2f9b24d0e7951a3a8a510f2163aa9ed9e8fe73d8ba2dfbeb1d0c"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/mgba-0.10.5-library1-source.tar.gz",
+    "bytes": 15016490,
+    "sha256": "1ff522876dd8fdc53a85850f0c4bab0667dd402c259d3a35d8a91b976a0ac3a8"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/mgba-0.10.5-library2-source.tar.gz",
+    "bytes": 15020273,
+    "sha256": "fc0cb60ba87e2618bc46ff36023648a01ab3e7db672bd5b45fb5cfeb233acf02"
+  },
+  {
+    "area": "outputs/mgba-library",
+    "path": "outputs/mgba-library/mgba-0.10.5-library3-source.tar.gz",
+    "bytes": 15019821,
+    "sha256": "2d64df67e97d3ff3b6dc9b12a2365b5e9e4e1ee3649983f1ccaa674244970cc0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build.ps1",
+    "bytes": 2368,
+    "sha256": "046a7c9a40b937bed6d38f71a1c7735eb48cb985016876e0623cf98cd455d355"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/CHANGELOG-v0.9.1.txt",
+    "bytes": 393,
+    "sha256": "b61ee580ea4c938e905507c8c37339eb5b5dc598f373e7682467ff4e332c9ba4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/convert-banners.py",
+    "bytes": 4950,
+    "sha256": "27c060d2ddcfc79858bb66d745d12853df105e0a73d1586f6ab7a47d00024342"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/LIESMICH.txt",
+    "bytes": 2074,
+    "sha256": "166b2f945ca46bb4ca9133ec361669ca1a2a0f1c45b0c80535bbf72ec5ac26b3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/PROVENANCE.json",
+    "bytes": 1492,
+    "sha256": "869b6cfb257c623db504bb27dd4993beb90dd9c999480d20638c3795816ec431"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/SPICA-upstream-source.zip",
+    "bytes": 1474842,
+    "sha256": "5f343c7ac8486d1e97203a52f51b78ac1d8e93273fc7f34e40593f89f4a3ed80"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/licenses/OpenTK-MIT.txt",
+    "bytes": 5385,
+    "sha256": "26ecf545cb214e27c6195f5f345e844d51c85218bb9f366dda7e131eea92db51"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/licenses/SPICA-Unlicense.txt",
+    "bytes": 1210,
+    "sha256": "ca2abdf695884c77ea4b4a5b64ca7b732d9d9dbade4eebc1c2e76c53e9e3bc83"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/source/BakeBanner.cs",
+    "bytes": 6734,
+    "sha256": "f0509218d40522bc8f2f47f24317209d872de1d12498b20a063f32edb5cd355f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/source/Renderer.cs",
+    "bytes": 6428,
+    "sha256": "bcbd74e1fbe07e667855a06b2d195a9a9763ae8e97051a17c539358233a2872d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/LICENSE.txt",
+    "bytes": 1210,
+    "sha256": "ca2abdf695884c77ea4b4a5b64ca7b732d9d9dbade4eebc1c2e76c53e9e3bc83"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/README.md",
+    "bytes": 889,
+    "sha256": "b10c9c6bf8ba60495d8b8592d0e911d966656a32f5f87b4b906c0b746f9d5af4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/README.mono.md",
+    "bytes": 1767,
+    "sha256": "dfb779395cd678ebf7e490adec3a8e31921c8ca51c530ab30d00a3d6c65e7bd9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/BoundingBox.cs",
+    "bytes": 294,
+    "sha256": "ee228540f3407a766f372139d3e35f5cce4a37e57f63b5aba9e471fa9ae1c24b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Camera.cs",
+    "bytes": 5703,
+    "sha256": "3dafe10dd35afe2fac37c44d3f8b16932d42b5e1eac13ca002f3a323cdc7ae96"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Light.cs",
+    "bytes": 3427,
+    "sha256": "e3a92317e1dd07d11cd535a2c5a98916a0716b739334a55e53a77bd15b672135"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/LightType.cs",
+    "bytes": 150,
+    "sha256": "be631cc56a62023b2ff23fff03ddf55a4f7adc4abaa0d161325c533a21f82fa1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/LUT.cs",
+    "bytes": 3219,
+    "sha256": "6a46be08130a41af230864c05d4b0c97bed40dc0d9d8766064dda3da746db222"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Mesh.cs",
+    "bytes": 16639,
+    "sha256": "18969219e874006746307b37f1faae27018fa2d8588ba9b5e51ae11671f54a6b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Model.cs",
+    "bytes": 27701,
+    "sha256": "1d631735868d7154ecf58f079d5fb40ae73e847956367676731ff00fa0977fc7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Renderer.cs",
+    "bytes": 6428,
+    "sha256": "bcbd74e1fbe07e667855a06b2d195a9a9763ae8e97051a17c539358233a2872d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Texture.cs",
+    "bytes": 2083,
+    "sha256": "105212f4a71c9a385d181467daf834c86ef4ac7955906041e2043e2a0bba01d9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/VertexShader.cs",
+    "bytes": 4048,
+    "sha256": "805aad5a39642e19b814d9fdb76f484bbab7c9623e2fe7b46cc2ec555cc447cd"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmExport.cs",
+    "bytes": 4543,
+    "sha256": "20219bd07a855e94630559d01b840f1a21b3ed7b27aac8bb2c32eb3b712b0122"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmExport.Designer.cs",
+    "bytes": 10250,
+    "sha256": "1508dec7319ce753e093b6bf4a5298329c1459077b4fbc8db4d238075d408883"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmGFTFormat.cs",
+    "bytes": 730,
+    "sha256": "36fa035b8e199a1a472fce112f79a2a4868e41b65e7374e39a037c8197d869cb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmGFTFormat.Designer.cs",
+    "bytes": 3267,
+    "sha256": "60a4798765189824a6870da067e3c6a01f6890625bd7c8b37519e473a5971728"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmLoading.cs",
+    "bytes": 1240,
+    "sha256": "dca3bdc38a01ad40ba36c177756e4241bb4efab01c8c4180873cb559d56394e5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmMain.cs",
+    "bytes": 23160,
+    "sha256": "958bec712f6b8d1f204af63f223625060bce8a7e7881e7d50478b135c5f26cc5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/FrmMain.Designer.cs",
+    "bytes": 58597,
+    "sha256": "92f7d82e46a05637bcfab68a1f97d06eecec3dad69e6d881fb6b57867b2d95c4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Program.cs",
+    "bytes": 335,
+    "sha256": "78af40fab7ca53b294d4bc072884ce67910ad00d6c8af4ba2cc340aeece36af0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/TextureManager.cs",
+    "bytes": 1419,
+    "sha256": "afe9e32ef5608bcad619b59de5e7b1094a30a67cca166792bd4b2380bc5a38d8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/FileIO.cs",
+    "bytes": 4246,
+    "sha256": "5513557c0a6e6cbd8dc1308ff3a0803f933a02c4434ae9007b2b69f3f3e07496"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/FormatIdentifier.cs",
+    "bytes": 8945,
+    "sha256": "9c35e65f7878fccae2836d9e8a42e4a157cbfcda472d1db2c3074952030f7e67"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFBtlSklAnim.cs",
+    "bytes": 1492,
+    "sha256": "2dc00323fdb72fdddaf728ba3da8518812c30adfe1efb4f8b05d83e79714a7ae"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFCharaModel.cs",
+    "bytes": 2228,
+    "sha256": "2c8125e7547377f7c51ef199e94a83c6de6854d2368deab8488e6e7b71125971"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFL2OverWorld.cs",
+    "bytes": 4516,
+    "sha256": "b312e44cb9c9ef61d20c6e6b99e1e9967f86a9f7bdec7b4a8dd6990567c3e18d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFOWCharaModel.cs",
+    "bytes": 1675,
+    "sha256": "65130bd250ab35b695dd83ae57145a60339f2d85e19639891c94ffcae6cb2ba4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFOWMapModel.cs",
+    "bytes": 606,
+    "sha256": "a6142d952dae9c27f74da0587d02a2e8e6b4c6110e7a7bd134df4f1729f89898"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFPackage.cs",
+    "bytes": 2005,
+    "sha256": "c454f7753e90c011da4946566f11211ea4885d962f844efcd3a0c15f93dcdac6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFPackedTexture.cs",
+    "bytes": 2302,
+    "sha256": "643234d65d7b1001d3e94a425e6d6bade05aa7c587f4a15883922a477c38e66a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFPkmnModel.cs",
+    "bytes": 5196,
+    "sha256": "fe9b9a54a8cd76faf035bc2442cfdbf7495207d5a173d87f1fac3153a01f324e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Formats/GFPkmnSklAnim.cs",
+    "bytes": 1593,
+    "sha256": "3e619ba841f933d97d7b6b737600d11e081187a16971046498b79c15e7838970"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/SUIAnimSeekBar.cs",
+    "bytes": 7110,
+    "sha256": "5c85f535e245515f39efbf4dec2f328c705dc3533b8742470671bbb65b0544a6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/SUIIconButton.cs",
+    "bytes": 1457,
+    "sha256": "b186c13967601f1e7ef1bc6a81f8983f589d934bc87e1666d3edc0efcbf3eca8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/SUIList.cs",
+    "bytes": 9349,
+    "sha256": "7fef30b89e9fe1e064a4df9bd87aad9f1ce7128f398cb35eaf1611555fa05482"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/SUIList.Designer.cs",
+    "bytes": 2492,
+    "sha256": "45e36267afb38b3143c3c1d951cc0049ac7a60a4041e22764f49fe30efc35f45"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/SUITabControl.cs",
+    "bytes": 4389,
+    "sha256": "00d813bc15ef686f5a079112b692b81556fa4c22e941ebf96c9a0bc469ebaf9e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/SUIVScroll.cs",
+    "bytes": 5718,
+    "sha256": "48f02b843942cd2a6d49f91bfbe2647949db5096692803f58e3931e01e19b5c1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/ToolsRenderer.cs",
+    "bytes": 2407,
+    "sha256": "ef0a681a15a385717ded3e64f2985d9dc847b19db796ad709e78ab41235554b3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Properties/AssemblyInfo.cs",
+    "bytes": 1404,
+    "sha256": "8e14824bc4fc856a4c11fff398f19f5cb346ce19092ae281ce83baf046d02fb9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Properties/Resources.Designer.cs",
+    "bytes": 4402,
+    "sha256": "b90b6b3f04079aa323dce559c53d42dfbf2d47ae65d28957f902077678f1d166"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Properties/Settings.Designer.cs",
+    "bytes": 3713,
+    "sha256": "25c654a369baa93c5e868516ff94dfcc81aed95ca5801b56b63f8be7638f94f2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Resources/FragmentShader.txt",
+    "bytes": 92,
+    "sha256": "b9e6db1a12fddbbe40ec85674b752ff3d20ca4ea757b69f490e368f41761f5a6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Resources/sui_ticked.png",
+    "bytes": 389,
+    "sha256": "29d5fb4437c784a7182c19fa8d03b8e0c399d1f00ee388f4ed6372299b6ee0fb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/Resources/VertexShader.txt",
+    "bytes": 305,
+    "sha256": "f85d89c2fdeb70bc694b67d181f6e7dab254af2f5984732749d390a3d58af3dd"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/Animation/AnimationGroup.cs",
+    "bytes": 4953,
+    "sha256": "2e1bf08dba0390ac2bf212493ece0da90961baaf15a81677a7e17daa7db32d43"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/Animation/AnimationType.cs",
+    "bytes": 180,
+    "sha256": "88fe36c4b53ac6565f7c077719afc1fdebc8d94187a725ac84d0e3d265de591a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/Viewport/AxisLines.cs",
+    "bytes": 3188,
+    "sha256": "22816c619d01b640ae5a9c95d97ebe18c0f6a49a0fa99a71e95da0f1ad48f8d2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/Viewport/GridLines.cs",
+    "bytes": 3664,
+    "sha256": "f76d239a413c95edcd69a2ba26e04e795f214995aeb608c94778e35c71d0f3fa"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.WinForms/GUI/Viewport/Shader.cs",
+    "bytes": 1520,
+    "sha256": "b90a94873ad767372d2ea0567463134b6e89d8d26ecd9ef224a6c5ed63af60f4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/AnimationControl.cs",
+    "bytes": 3451,
+    "sha256": "2e8a802887f9cd61274c065b4d703d2cd91528c3fb4d67fe1be817582aad78d1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/AnimationState.cs",
+    "bytes": 135,
+    "sha256": "41356a4074b53b38acc33afffbb5660f5ddf0a0cac1462da2705ba6f283798c3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/CameraAnimation.cs",
+    "bytes": 5843,
+    "sha256": "61dcb41b2e65a05a1b5b7aa95ca6a5268ebc8399e85f1002eef6ba128c5dd7ec"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/CameraState.cs",
+    "bytes": 383,
+    "sha256": "1f61ce21a024aab2e0113630a2c063c24ccab64c3b49c5371271986603fda5cf"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/IAnimationControl.cs",
+    "bytes": 445,
+    "sha256": "f2836f20b0394ecc396eba842ba97f9ccf0d044ffcd9ddd6b6f26f52724a28ec"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/MaterialAnimation.cs",
+    "bytes": 7980,
+    "sha256": "861b51bbdb30406ad136eb72cf671153a7af4f6bcac14ffd3651959863d0f0cc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/MaterialState.cs",
+    "bytes": 722,
+    "sha256": "a4784a9322291972de70e52d396e49d3a2c6fbf9a8671aabf061dc34fc40d5ad"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/SkeletalAnimation.cs",
+    "bytes": 8659,
+    "sha256": "941872dc2bfb1d873ef9096f8adfdc35a0eaa3f8b4e8fda598069ebcc23eb214"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Animation/VisibilityAnimation.cs",
+    "bytes": 1970,
+    "sha256": "9765b7ffbf473bd0d1045202102082b2d0307c707a12f68421b508f4cb098d72"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Properties/AssemblyInfo.cs",
+    "bytes": 1443,
+    "sha256": "18dbfa8350331682f63c018dfcc9170a1fb98a7a1582190ad0bf93e28f32823b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Properties/Resources.Designer.cs",
+    "bytes": 4982,
+    "sha256": "ce2a7bea4518286bbd8b8486dbc86649c009fa5763b22a65c834294ecb0388b8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Resources/DefaultVertexShader.txt",
+    "bytes": 25398,
+    "sha256": "8e208c54079a4b495c6829549d07b2f64900f71ddd3110c47dd45aaccb313750"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Resources/FragmentShaderBase.txt",
+    "bytes": 811,
+    "sha256": "a9df65a7cd1a240f029fb5d0eebdab460837a5c8f01da3f1e04dca64657380da"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/DefaultShaderIds.cs",
+    "bytes": 739,
+    "sha256": "1426543da15fc45f0212b99ba7730d68a2c78d3fa383968c4d9e85d473d8f657"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/FragmentShaderGenerator.cs",
+    "bytes": 25865,
+    "sha256": "a1ca151d032673563a8c46b5b190bbb4612223752f4a3082d183ba1740807c3f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/GeometryShaderGenerator.cs",
+    "bytes": 3542,
+    "sha256": "e8c742fe05377250d51a698a27484986e4da9305504958cf65bf61149a9e79da"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/Shader.cs",
+    "bytes": 5209,
+    "sha256": "dd64091db75e8a24223e7c82ffdc54ec049356df13c9fe1b366fb2e41d4927fc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/ShaderException.cs",
+    "bytes": 312,
+    "sha256": "742a5d2ad91843471bcfa8bca2be4e65786daa663eab111c380067fa34420d57"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/ShaderGenerator.cs",
+    "bytes": 30752,
+    "sha256": "54c63da78fc6afa9c0b682fb76a2efda8b5f4db103bdf6a73a0d3cb0b645af7e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/ShaderNameBlock.cs",
+    "bytes": 1038,
+    "sha256": "3a0033a2957fdba5f9ff76a93136350df312c924d86411e87fc85c033b6ca94b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/Shaders/VertexShaderGenerator.cs",
+    "bytes": 2509,
+    "sha256": "e3320e0809eb35aef6a97ee67400ec0734ecd6a28473a016f16767a578bbc605"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/Matrix.cs",
+    "bytes": 689,
+    "sha256": "93c8e6214fb7e7f410ba42e004055297cf4f71b951d6350dfb919a3d7134abbc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/PICABlendEquation.cs",
+    "bytes": 901,
+    "sha256": "67e08b37de5dbd6a0f11dc6dcea4a566a90c3feb9090b04fe5d939283715ad23"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/PICABlendFunc.cs",
+    "bytes": 2588,
+    "sha256": "48227b8cfd7fe5bd3189801c3ac76c6846a673606f2c6a608cd1c1cd3e373e27"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/PICAFaceCulling.cs",
+    "bytes": 633,
+    "sha256": "f429eeee6ed81fb8f277f6d8d8d2094718ed2922d24eb48c31e0d4ba0b0888b6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/PICAStencilOp.cs",
+    "bytes": 1282,
+    "sha256": "f48eab97e15fdca33fd03212721ebb0e422039d7f2a178b245ea642cabc2e8a4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/PICATestFunc.cs",
+    "bytes": 1900,
+    "sha256": "0d82779615741fa27bc37d6b4e19b2a3d07fbc3ba0401b0c39b64b34e1b18d08"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/RGBA.cs",
+    "bytes": 443,
+    "sha256": "8e4452bcb3ad60721b8ac4b178b63bd33f67b64cf03069666465c67dadfd8ed2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA.Rendering/SPICA_GL/Vector.cs",
+    "bytes": 846,
+    "sha256": "96de046754704caf9a9bd395d143fab30d0300cbc95fc9b4dbd7794204841785"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Compression/LZ4.cs",
+    "bytes": 1894,
+    "sha256": "18f516d0bdc509b4985e5d32db3ef648203bea372b02d739c96b57e8bba98c3a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/SceneState.cs",
+    "bytes": 393,
+    "sha256": "05cef674e1c84f7346d5f58212da55f695a286f58037e2a7a2770351c4998489"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Math3D/Interpolation.cs",
+    "bytes": 551,
+    "sha256": "1985d9d23d1031d7592893721a21cc0a11abde6d1dedf849df9cacba6613c3cb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Math3D/Matrix.cs",
+    "bytes": 4091,
+    "sha256": "36e07008e3f271a36ec905b045e4b6d1c9350c6af05c4e27a61f9062223592ec"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Math3D/Matrix3x3.cs",
+    "bytes": 1707,
+    "sha256": "586e77e71b8120e8aa130c447999168b8fb4dee32bcb86cf24956cd8ea429316"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Math3D/Matrix3x4.cs",
+    "bytes": 1988,
+    "sha256": "eb1f2dfbed4c453af8221eaa0357953f90c1728ac0031544ce4f523ed173de9b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Math3D/RGBA.cs",
+    "bytes": 1850,
+    "sha256": "19eb37df563fe4739bed11f2c8e6cf8617376a7c97ba06e18566b41f0fbe97e3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Math3D/Vector.cs",
+    "bytes": 2580,
+    "sha256": "c33d49c0313ecc7b7c9267245df51e7621c366644a091072cb93e1eda7230274"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/PICACommand.cs",
+    "bytes": 175,
+    "sha256": "0bde39ee7cdab536eee31602de2ca7e8a322d6a4dde2f2a1692fea75d1451fa9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/PICACommandReader.cs",
+    "bytes": 7015,
+    "sha256": "37d1708ef0a32131484eae9565222fd34cc525f4d36ebdbaf85d8552130551ae"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/PICACommandWriter.cs",
+    "bytes": 3870,
+    "sha256": "470b23168af3d78082d9fe9c1bf8d29267cb51fe02e420039df1e3d5c5b688bd"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/PICARegister.cs",
+    "bytes": 22633,
+    "sha256": "028a32f6f19e913f4d3d57b0386886877d7b77c3e15f0a72e6e7902395e88694"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Properties/AssemblyInfo.cs",
+    "bytes": 1423,
+    "sha256": "c550c96cd5299a93af08ca0fe5146401a1b318e427790d27102c1f8f689790be"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/BinaryDeserializer.cs",
+    "bytes": 11975,
+    "sha256": "77e9dd72c3f05d32e064fab8d27fbae8578d76514a4f39ee3cc7ef2e6001ccb9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/BinarySerialization.cs",
+    "bytes": 2229,
+    "sha256": "cc69724a21332c68727852988d4760736b1ae1413575414b770448b77b8f0d78"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/BinarySerializer.cs",
+    "bytes": 15603,
+    "sha256": "b84aaf02d303c6293d8f5e34e7164a093e5ea627a0be49d63d206f08ff24c0ec"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/BitReader.cs",
+    "bytes": 542,
+    "sha256": "f8634bce986e46c38cc1ca1110d835f09fc56fb4ed965c7182e614827c8f0dd3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/BitWriter.cs",
+    "bytes": 689,
+    "sha256": "52371d9d8e753b3c0e5dc02ddd0fbbbead3b338218b1e6dae1fc6ab144516ded"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/CmpOp.cs",
+    "bytes": 158,
+    "sha256": "aaecd958b8e9f080dfe0e06221f7adc430a8562d65038954a44ba839a8b22b16"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/ICustomSerialization.cs",
+    "bytes": 196,
+    "sha256": "9090ddad9fc0281e089c5feb216dd65aff70d0f4e68e03a9c27eff7b9a47c0de"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/ICustomSerializeCmd.cs",
+    "bytes": 153,
+    "sha256": "125f38009cf8ef3ac00c097fc595ba2c8ae49cf0db3d9801e593445702e9378e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/LengthPos.cs",
+    "bytes": 104,
+    "sha256": "2964fdcddff3553dc8d39497fdb1e72a1fbb1ddfb4228feb3ca3e389337bf6d9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/LengthSize.cs",
+    "bytes": 100,
+    "sha256": "e8cfacaa468d5a2aaea1bf39874dde54f0def020fc5f64fd40570c79f4ed5cda"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/PointerType.cs",
+    "bytes": 109,
+    "sha256": "d07d1edf4a1ccd0633cf65ed85f7f7e2b9f78e7a674bbcc8ae2f8a25c8442b6e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/SerializationOptions.cs",
+    "bytes": 319,
+    "sha256": "49b0444fdd28d07e75f37d31c72c4348fca0c499cb84df575ecf371b415d9d9e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/CustomLengthAttribute.cs",
+    "bytes": 376,
+    "sha256": "8778d771057ec7997a1270346aa20e53665d14714b1e14d7dc33b9d64aff8af7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/FixedLengthAttribute.cs",
+    "bytes": 293,
+    "sha256": "1471e1281ed3c2bd86b7c00004e1d1752a0252e0391d81f6e58615697ed566b0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/IfVersionAttribute.cs",
+    "bytes": 1016,
+    "sha256": "3a83d5179139f815ea1aff225518b97cd6412541e0800bd188bdd498448a1977"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/IgnoreAttribute.cs",
+    "bytes": 105,
+    "sha256": "8cc8f61bf491fa0046863a6012b2c08f7173136e5a15c5a8d7ae3f923221faf0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/InlineAttribute.cs",
+    "bytes": 175,
+    "sha256": "ecd9766403fbc01db550ee97be09f0c517d582925d1896e921673645dce69a1b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/PaddingAttribute.cs",
+    "bytes": 232,
+    "sha256": "ef9f39d7c32464fc6606f1e25fa52a731c6497fd0dfdbe782061274318102368"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/RangeAttribute.cs",
+    "bytes": 149,
+    "sha256": "15b40bde6011377f021630e94f22e25eb00df8bfa4a4840248d318c8f8dbf8db"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/RepeatPointerAttribute.cs",
+    "bytes": 157,
+    "sha256": "d0994aaada009179b8b557e0b7964628beab79d8a02ac3439dd8b92f79eeebf7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/SectionAttribute.cs",
+    "bytes": 299,
+    "sha256": "5ec65b955532fc2a7a6da5433990702b7c6bf0034bec9c8a1f04f29293f6e9de"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/TypeChoiceAttribute.cs",
+    "bytes": 432,
+    "sha256": "023eb0d457b590a7f973d6a769687f06a1cc94d3fc3a001e1fa2414fbbda2342"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/TypeChoiceNameAttribute.cs",
+    "bytes": 317,
+    "sha256": "b5738bd5ff4c26ccb436d01f8f78cc450ddfac7f69d5bf0c57eec82e0f234cfd"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Attributes/VersionAttribute.cs",
+    "bytes": 151,
+    "sha256": "01c3b6339f7d4c1d89a6dba9038359766c6a8b2d613c8ef186146d212220a9dc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Serializer/RefValue.cs",
+    "bytes": 784,
+    "sha256": "3bb645b40f3cababbe3e3bbb9edf1e79b80fe81665ab1b295c0f03530aff6afb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Serialization/Serializer/Section.cs",
+    "bytes": 690,
+    "sha256": "1b4f4996d0e5a7ea42de9c6916819c95fea94b238b8e550e16d6236ae6ebdeea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAAlphaTest.cs",
+    "bytes": 639,
+    "sha256": "72141cca513e5eacf04733665d64d049f37496293487348259c851dcd9575402"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAAttribute.cs",
+    "bytes": 2839,
+    "sha256": "5ed5bca1caf2e795d432be4096e04071c45a9d36eeb6054715825d4bc5808a1d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAAttributeFormat.cs",
+    "bytes": 150,
+    "sha256": "e5dba93835b705c890a87d5d49582730a62fdf43225b712fec2eea21f3366e93"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAAttributeName.cs",
+    "bytes": 561,
+    "sha256": "36651fb95bb3b5d1499eddfd056b2958ee4f06319c58efad4bb8fd3b55be8420"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICABlendEquation.cs",
+    "bytes": 176,
+    "sha256": "fd3084081083be464de8fb86faea8466d97e98db5b229f2178f2ee2cffd173a2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICABlendFunc.cs",
+    "bytes": 462,
+    "sha256": "c0b41e447d258c70dc051d92dc9dd6c9ac99790f14c659ee085e65de8bbb8de5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICABlendFunction.cs",
+    "bytes": 1253,
+    "sha256": "07a5db6d0e114201ef22833e02e98c48584973256eae20d1c416881b733affb1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICABlendMode.cs",
+    "bytes": 112,
+    "sha256": "704d5059e2c084e59921c7a673356e37697bd5508b71695d97a13afe9ab24b40"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAColorOperation.cs",
+    "bytes": 575,
+    "sha256": "b33c36c44f2505bc3e29dcc5337571c5c42fd6ca73c1231d93561614b7695a00"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICADepthColorMask.cs",
+    "bytes": 1179,
+    "sha256": "80ff971114305b1a037a7894bcd14571b6babbf1bbb1f7c62ded3ae17f1cb222"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICADrawMode.cs",
+    "bytes": 169,
+    "sha256": "910314cfe57e7833c409182b588306e97ff5cdda88d3d828a88522fd62860f4b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAFaceCulling.cs",
+    "bytes": 139,
+    "sha256": "d0274d5074e4ca1bab733ece20456ff272b157e7d07fd746b24298f7be6a515e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAFixedAttribute.cs",
+    "bytes": 165,
+    "sha256": "13ae169f2e56969482d6f438b3ca8904c7e5f456e9e16fb48ee53f9b42ab037c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAFragOpMode.cs",
+    "bytes": 137,
+    "sha256": "7464e1ec79dc424053e9d3e5bbdc8fbc0df18a04f319113802e3a00006fb0194"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALogicalOp.cs",
+    "bytes": 332,
+    "sha256": "038bd135564c2271f82d1960f4f6a4ea585108ea382490277321e7edbee56310"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALUTInAbs.cs",
+    "bytes": 1139,
+    "sha256": "4e3fa98a21deba9eaecb1c1f0daa19be4572a6fa93fe90ab4f06cff597585444"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALUTInput.cs",
+    "bytes": 213,
+    "sha256": "667953f7cd8a918900157454c818ceda65ce8c89d0c4950045bb2bae1d7cfb0d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALUTInScale.cs",
+    "bytes": 1255,
+    "sha256": "7b0f432a628891658d8e0e7958d06492e32901792c9f58ee0b0cb3e298add995"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALUTInSel.cs",
+    "bytes": 1251,
+    "sha256": "ac1410645390b92b6a832c0db9be725a141ca7597817029f16147c422c133d0f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALUTScale.cs",
+    "bytes": 810,
+    "sha256": "40deb721e11321d37e030adc84502a819c0a32a0e356f30e2abeece39a6a2d84"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICALUTType.cs",
+    "bytes": 574,
+    "sha256": "2086aaee9a4ac015898466ce6038b71bd70285c6807efb6aac544aaa4bd8a93f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAPrimitiveMode.cs",
+    "bytes": 179,
+    "sha256": "de94158df013543c2b66592e333bfaf4d30f4f8ddb3210165668fbf7a18c83dd"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAStencilOp.cs",
+    "bytes": 223,
+    "sha256": "465bed2dab523e47250c3343a470728abadde991692841c6a52368440e7c7de9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAStencilOperation.cs",
+    "bytes": 690,
+    "sha256": "69d3e81c160b856f15286d1e0362728b9561649a16c9dec6ac63abc9c718003e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAStencilTest.cs",
+    "bytes": 874,
+    "sha256": "d6ec0913097c05ac18fd4a47e83da69bbabafc4659514ec2728501628d40a3e7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATestFunc.cs",
+    "bytes": 204,
+    "sha256": "b13c1809964e16e6a73f9c60e0074c25df1275e52e3ea3df8bf4eb783f15a947"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATexEnvCombiner.cs",
+    "bytes": 585,
+    "sha256": "c18b068796739e6a9169567590e070f0b8110985c3eb5112af2673f6edd9b948"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATexEnvOperand.cs",
+    "bytes": 1378,
+    "sha256": "88f8e1320cadad80de79b59ba64550f0c84cdcb92124ce84ade39f997b06f8a0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATexEnvScale.cs",
+    "bytes": 573,
+    "sha256": "f19ad3618a3a4f2ba36bc67d8bac4e4a50f070e01efb93257d1f17df94154c5b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATexEnvSource.cs",
+    "bytes": 1369,
+    "sha256": "70efdbdd14915134ee47a82f3fa935f9604bc5a8f89dad33af0473cd4a3a6619"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATexEnvStage.cs",
+    "bytes": 3960,
+    "sha256": "5dfbf44968e7a7ccb88c5cb2da1d64283632b5bfc700f10a18f8ce60f841c372"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureCombinerAlphaOp.cs",
+    "bytes": 237,
+    "sha256": "a9f02a848a0418c46137a10e0b146f62851528135eb03e65b341854990f08422"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureCombinerColorOp.cs",
+    "bytes": 317,
+    "sha256": "70c4270a465f02e8b9b173a4a9234c237161b0f476a963fcfe46ee7a20567f57"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureCombinerMode.cs",
+    "bytes": 277,
+    "sha256": "fb1fddb1d9fa1a7e0a4af0c534e5a05ee1247241a088cce1647dd16dd9419287"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureCombinerScale.cs",
+    "bytes": 129,
+    "sha256": "a21936e1d07618e1a03616c6dbd7239ccd863cfbc0a48474d4a3c975b609bd40"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureCombinerSource.cs",
+    "bytes": 349,
+    "sha256": "106c2c025258d815f1fbb7018e831607bb652f8a343a199ea7d323ada44322ea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureFilter.cs",
+    "bytes": 122,
+    "sha256": "a3cb524b2c4b27d2589e14ce5c3acb4487d3180ead33c5991b68dcbd2171a819"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureFormat.cs",
+    "bytes": 1434,
+    "sha256": "08124f21e36b8f2bfdab83b9ecdaf205e8d65cceabc74b9592f96ea1415396a6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureSamplerType.cs",
+    "bytes": 196,
+    "sha256": "9955ffcda20ce0e10169553c9fc1817dce849b3966a8211361fbfdf0781ec15c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICATextureWrap.cs",
+    "bytes": 163,
+    "sha256": "97d59a45d7a65883ebd75c22bc35a311bbd7402c292deb354beb16e284c4be68"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Commands/PICAVectorFloat24.cs",
+    "bytes": 4992,
+    "sha256": "1906c6c11afb33e85c89d61969f9f58a933bb84692b44f0bcbee986333a65442"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Converters/BoneIndices.cs",
+    "bytes": 952,
+    "sha256": "f9284715a8a0446e679134e68a4a6b6617c120d5214de82b99b3e1913eac82d7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Converters/BoneWeights.cs",
+    "bytes": 962,
+    "sha256": "a94c0eb588792f9ad4c9adb3d7aa695564af2592bb9371b242ea63189547478f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Converters/PICAVertex.cs",
+    "bytes": 432,
+    "sha256": "6c4cc568a0002a251483ff8f84c61298752197bea4768a9304dfcdb7f72e0b95"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Converters/TextureCompression.cs",
+    "bytes": 6728,
+    "sha256": "bde1882fa78f9e4056c8b82d70f7c893462986ee9abeb924ea510f104c052f89"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Converters/TextureConverter.cs",
+    "bytes": 11924,
+    "sha256": "e1d1cccd4b8a12ae83009f41cca65ad835e396917bcdba9ab57a8d6bc7ef5fae"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Converters/VerticesConverter.cs",
+    "bytes": 9011,
+    "sha256": "67a8b96c604ac6c959c944d61db27840c39b8c30bad865fc6d3f97dce6b3f1d5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderBinary.cs",
+    "bytes": 11549,
+    "sha256": "43c59f75990d1af45f805bb5800f8c88aca25119d95e36128abb3866f0d9c5e9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInst1.cs",
+    "bytes": 465,
+    "sha256": "e65dcf3c1382f716fbb9246abfa338bed2aae681d11919d9ea411ae57dea75ce"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInst1c.cs",
+    "bytes": 531,
+    "sha256": "1eb4459529e52fd6e02f2f5677c9bb0e49f13229023265618e7cef2405d070cf"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInst1i.cs",
+    "bytes": 467,
+    "sha256": "088f109885a4c0d17f0fb393855899023129f053fc84da5fb69229a5e79cf717"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInst2.cs",
+    "bytes": 489,
+    "sha256": "0d29d05a13c4231ff7a7e6b342fdcee1d3c48d10b576ab700a070418baf849d9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInst3.cs",
+    "bytes": 339,
+    "sha256": "87a318acefddcf86daa7e122fba39ddc2f88002f81e6381e7024a016b263fc66"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInstMAd.cs",
+    "bytes": 535,
+    "sha256": "ff6312db4f4d39db7635cd8c35e9382fe34003f589a6aa457c4285e425dcf9af"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderInstMAdI.cs",
+    "bytes": 537,
+    "sha256": "e531d2b62c0cecde37d2329c4b8c0968bc3a80222ce7d922b26ff11ab48470d9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderLabel.cs",
+    "bytes": 186,
+    "sha256": "3d16eefdb08631ed5fb517a683d4081434a682b6ab3aae97a6e16b63d92df165"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderOpCode.cs",
+    "bytes": 1011,
+    "sha256": "35e1e67a5fcebc5376c7736f1f0d9bd8142b4360d22d665bf2745684e6f2d017"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderOutputReg.cs",
+    "bytes": 149,
+    "sha256": "19fab757c36ae94f1a16dbe4a999955de6e246dcf7cc6b3c712d6e232e7e35fc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderOutputRegName.cs",
+    "bytes": 369,
+    "sha256": "693c94bcc7a866e8a75e39a838afe5723c3dc711bbc86951ab10df09a7181eae"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderProgram.cs",
+    "bytes": 1556,
+    "sha256": "fa8ca36931f34d63cadf046f7f6a42ba79cee05fa65fdf965ac8b9137da559eb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderUniform.cs",
+    "bytes": 236,
+    "sha256": "fb4faff932e04a4296eb24dd3ca72b17b20ae24fc14405d4e546ddf85758280c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderUniformBool.cs",
+    "bytes": 307,
+    "sha256": "f1aa645c8d7baa93183b2a7ed89315fd7ace8efd6a3faaa424122376b928b6af"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/PICA/Shader/ShaderUniformVec4.cs",
+    "bytes": 337,
+    "sha256": "1c26606e9c8d7079343af5b449a2ac40f6446cedc99c3e28064c7e67cb4c91eb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/BitUtils.cs",
+    "bytes": 2258,
+    "sha256": "a1fb662dd12725aa9beec361bfe8c7adf63cfc759894361f2d720e2e308d4c6e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/CRC32Hash.cs",
+    "bytes": 1285,
+    "sha256": "790981e01c311e40b69a6d5f196eec211e13c600d3944ed0845c79056c7e214c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/Exceptions.cs",
+    "bytes": 1062,
+    "sha256": "46a13768ce5d37d9975630c195803b357015bff9c0df18b90345bc19800b2168"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/FNV1a.cs",
+    "bytes": 2153,
+    "sha256": "8110c6ce5f6c63add73cb69ffa29f966a8b6a475d5de2df07995474b42ece43d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/INamed.cs",
+    "bytes": 112,
+    "sha256": "fc60c8c35b2d3290262ef9c3e19ab3da9f3799ab6dedbacf620d87bb88fac79d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/INameIndexed.cs",
+    "bytes": 116,
+    "sha256": "0183c6a45f9ceb5f84aef5ced7b89faffa5441e02166b148026f62b8e5ec35d6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/InvalidMagicException.cs",
+    "bytes": 333,
+    "sha256": "de696cfc29a84c08bb14447c50d8a6723111ac2fcaf28fb9d0e73ec972a7393a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/IOUtils.cs",
+    "bytes": 2234,
+    "sha256": "341a71fe7ea9bdc3baa3783211950b150b4a550e6179dfe1f501dcc7c05daa75"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/IPatriciaDict.cs",
+    "bytes": 395,
+    "sha256": "bc6d14a153625bb6f193a429d48e5ba291075be9cf39e043072775e1a19bbbdc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/IPatriciaTreeNode.cs",
+    "bytes": 326,
+    "sha256": "d1d7b5862843a4c348770743bd1bca100af51833b51ba0f9caa42d55b1840240"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/KeyFrame.cs",
+    "bytes": 903,
+    "sha256": "ae2f5aef1a65dcde39b5aa76cc08361f1c04b04ef34721f4683626ae53fef430"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/KeyFrameQuantization.cs",
+    "bytes": 273,
+    "sha256": "98aebf4252b7dd3c5786c9e3ce9038d32cfc0d6b1c0f935ec6c7ff5af1b2c8e2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/KeyFrameQuantizationHelper.cs",
+    "bytes": 7603,
+    "sha256": "ce5b9da8bef4fe86d1904cddd7475c9c46af358fddf0b86c554cb058876c8d7a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/MeshTransform.cs",
+    "bytes": 3428,
+    "sha256": "3cdcd78528e789ba03e05988604f1714776ca79514294ebf0153a5db27851be6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/PatriciaTree.cs",
+    "bytes": 2403,
+    "sha256": "e4cbd9c1faee6045579f74e7ecb5a3a473bfba2c6f4ec0f14b957c169efc349c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/StringUtils.cs",
+    "bytes": 5629,
+    "sha256": "83b315ccf8ff2fcea077360a0665bae615cea9720e8b3f5a6ce5c94c7ecab2c2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/TextureTransform.cs",
+    "bytes": 1564,
+    "sha256": "9488162aa79fe79285dfb11fc6257aaf400eb2026a5771a838fa13d06a1ae71a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Common/TextureTransformType.cs",
+    "bytes": 134,
+    "sha256": "2bf5698e167063c78f1026b80a6b6533a771b916abfd6091d9b05e58c31f12ff"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Gfx.cs",
+    "bytes": 31117,
+    "sha256": "d6600d0cd7e7c4768f93d77d251e45c490f8428884bcf339e7b8191ad529098b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxConstants.cs",
+    "bytes": 261,
+    "sha256": "4dcebf4f6e68b2f99a31644dc59c43527f3bfaa2bfcbd86e8a9c7307cbaf858c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxDict.cs",
+    "bytes": 2943,
+    "sha256": "a26d33e513cbc49583b2f42e63ad8178b57a26e35df49cb0ef6f2eab5f15dd8b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxDictionary.cs",
+    "bytes": 4271,
+    "sha256": "06926376e0ea4329627de3e2695456defc86e889bbbc0cc0c848e028448a5fea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxDictionaryNode.cs",
+    "bytes": 814,
+    "sha256": "b2fdb1acc08233bfa1ea50b3d37630ee92932ee8830c3b7da33af0ab9f41ebca"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxFragLightLUT.cs",
+    "bytes": 330,
+    "sha256": "6f35047f7a68436f7ad617aef374750bc34d166187f3561a8bccc0d015dc7a57"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxHeader.cs",
+    "bytes": 917,
+    "sha256": "6004106912a1756e0fca8be4c4be54bf17193559b565e245ab44c583dcf0efad"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxLUTReference.cs",
+    "bytes": 698,
+    "sha256": "f306eb506509bdf9ed5d24b3951c27a6ad4454d86f0834fba25aef721af3efaf"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxMetaData.cs",
+    "bytes": 1705,
+    "sha256": "82f57e7bc0c360cbe823006446e092fe46668bb4bed40fce943d252e7536a9c3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxMetaDataType.cs",
+    "bytes": 169,
+    "sha256": "bdf2a25bc853e2de7da83762245674b1f9855d8ccbfadec8afeeadd821bee747"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxNode.cs",
+    "bytes": 781,
+    "sha256": "40d2b5f96aa7e34f3200bee0616f589fdb63f7445ab6d5ba9d37257e20f8b8ee"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxNodeTransform.cs",
+    "bytes": 348,
+    "sha256": "3b8b5783f003906693a4b24f6f9f6216c61c2e026a686bc8074a54ad028907d2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxObject.cs",
+    "bytes": 1613,
+    "sha256": "2d95542d11989f0168daa423354afb5ac0d1fc3218ca384f33615563693eaed2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxRevHeader.cs",
+    "bytes": 202,
+    "sha256": "ac42edde1ba5238480c16a6382f16cea331015deb8c818a36e14f916df5dfe96"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxSectionHeader.cs",
+    "bytes": 330,
+    "sha256": "ffbb836fca45b09e4a8334479142539d8a5a8f6202b15fb8ecd335bd8dc74cc1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxStringFormat.cs",
+    "bytes": 151,
+    "sha256": "9cb33c9f25fb4cde09f2c1201d53139915cb2d0bf98443ab9ce653ef8c97d430"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxStringUtf16BE.cs",
+    "bytes": 835,
+    "sha256": "eb5b33f30be574e19f970df262462989251dfc47364e0d8c62d60f38effc44ca"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxStringUtf16LE.cs",
+    "bytes": 835,
+    "sha256": "36397c38ed916c4cbe0c6a04d9d3393c5e34b7f79771e2a4c8552a9042a6ba5e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/GfxStringUtf8.cs",
+    "bytes": 820,
+    "sha256": "2e32df3ac4358ed36e007cd7eb1e41bae2feacea3ed2c21e6c8b91e65ca5ecea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3D.cs",
+    "bytes": 10207,
+    "sha256": "727de0e983ebc05e0d0caef7cdfcb8ea31bbf100ee9f1a09c4a75627f724465b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DBoundingBox.cs",
+    "bytes": 230,
+    "sha256": "912c99c0a10ffb08451ce72e57328007f9c0a9ca789129ca4fd3cd9d38aae7f6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DComparers.cs",
+    "bytes": 1470,
+    "sha256": "6b70da1438b79186889986d92564bc426bc34938171692b9a694da05b5b968fa"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DDict.cs",
+    "bytes": 2965,
+    "sha256": "effe00e8425de0b72e021a9a4191fd101ec9bb25b97053eadaf1958e944499af"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DFlags.cs",
+    "bytes": 219,
+    "sha256": "eda5fa82fae80f179a11a09be7d5533b4f3c99b1a93960a1edbe30c799f9fa55"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DHeader.cs",
+    "bytes": 1128,
+    "sha256": "646155a53cc49f19609abf5ae9b5b444c7a09fe64261154c7430d4dc27198f5e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DMetaData.cs",
+    "bytes": 1958,
+    "sha256": "cce89e198f44438825edcf0e2554b3adf6efcabf339f4d07685ea656a965b320"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DMetaDataType.cs",
+    "bytes": 208,
+    "sha256": "6d49e7ea127f08f8ae63f1e14d11f07e29b9c841d0b5ef191ad30e4a8dba0148"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DMetaDataValue.cs",
+    "bytes": 2761,
+    "sha256": "8d6cb153dac65033ce0d228a198998667973d92b9824ff895e66caebdddf15dc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DPatriciaTree.cs",
+    "bytes": 3686,
+    "sha256": "a6882b097ae716f180b3ea1e0ed43c5d849b6d21c987a81cdea8cc9e4615334f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DPatriciaTreeNode.cs",
+    "bytes": 795,
+    "sha256": "f8d15243fcd80a0dc65d6e754c40ceafeb59c18f8180d7f70b00ee74e0f4c776"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DRelocator.cs",
+    "bytes": 8403,
+    "sha256": "64eb2ee826f032d3f0041642e920577ae8bd540a47e8e279ddb2fe52cdb0a5e4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DSection.cs",
+    "bytes": 381,
+    "sha256": "f964b1b91ae9e413b08a80ac56ea3f941ea25d688777b9b7088c1d4d13216cea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DStringUtf16.cs",
+    "bytes": 829,
+    "sha256": "e4ac7e6f51bff513a845612f37216b1da62245e35bbc179b425996656c740255"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DVertexData.cs",
+    "bytes": 3834,
+    "sha256": "96d63f7820c88a023d724cff32aafa2f658e3b7606d0472b7fc961f99af226df"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DVertexDataAttribute.cs",
+    "bytes": 4448,
+    "sha256": "4d9dce616e0dc1a84d1fe79dbce0a69ff248a3dc9f5e42616626c6d49f3c2292"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/H3DVertexDataIndices.cs",
+    "bytes": 2629,
+    "sha256": "f04e374dd5c3ad3bd921eb7bf2443154c761f923ba3d74478c21b9844c6a970d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL/GF1MotionPack.cs",
+    "bytes": 1646,
+    "sha256": "1d5a0e8a1ee70d8e9336afe4d8b82364eb76cc4b2996d3829f750dfe6443715d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/GFModelPack.cs",
+    "bytes": 4738,
+    "sha256": "a398db905eb7ea88b2e685cf22e8c593449be77b07b68cf927dfe4fd66f8d2d5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/GFMotionPack.cs",
+    "bytes": 1851,
+    "sha256": "fa5200f73f9ff068622c71444db486c873ae768b5a6149f30b31420227af02be"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/GFNV1.cs",
+    "bytes": 676,
+    "sha256": "ab7bfc02266eaae4b61d304a6da22e53e811b409edbc99b27fb5e0f71eaeaae7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/GFSection.cs",
+    "bytes": 1178,
+    "sha256": "5f4d910769f3f2ee0cb0e5992eaa09fb7acbe01aa39bf53be4cef9b4ff64f124"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFLX/GFbmdl.cs",
+    "bytes": 265,
+    "sha256": "212ee65356f0890065d9b852c62b0f2b45e14e37dedebe38e55086fa7f014fbf"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFLX/GFLXPack.cs",
+    "bytes": 2792,
+    "sha256": "6711250c91f406b2f1c40870f422487b7080991b776c9515c4a423d1b80f9b7c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/ModelBinary/MBn.cs",
+    "bytes": 4300,
+    "sha256": "03a42f8dcd334e528d9bb4166ceb9bad07ba4a19bd660f1a84f6be5ded7123b7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/ModelBinary/MBnAttributeFormat.cs",
+    "bytes": 853,
+    "sha256": "e06a1f6b90d2aa3cd0fb5774e82b7dd53fc30526d3f6ac968c9604e23f3d8863"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/ModelBinary/MBnAttributeName.cs",
+    "bytes": 1200,
+    "sha256": "73be39910322608ded34dfe3bd9d74e8365324102ef5e9247beadc8671705be5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/ModelBinary/MBnIndicesDesc.cs",
+    "bytes": 1170,
+    "sha256": "16e9c7040878d7dd03a7ca5a72296157818c5c82d0dfb5eaaa36c0afca1e1053"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/ModelBinary/MBnVerticesDesc.cs",
+    "bytes": 3330,
+    "sha256": "403bd32651c6eb5b5fa170c8c831821657e8afeb875b74cbf10c0951589667ec"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Packages/GFL/GFPackage.cs",
+    "bytes": 1376,
+    "sha256": "277e48953eed4cc2512da577b7fb2b5e0d0a4194e2bc1fb7dc808247460b61e5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Model/MTBone.cs",
+    "bytes": 370,
+    "sha256": "6d2ef53f2f7e32cf01aed140ad357b081b2396f623e64a17f38e35123fe7101b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Model/MTMaterial.cs",
+    "bytes": 312,
+    "sha256": "43d560876a097f1aaf50751a40187d99baa644e9243737bc281f0c2bd47dad96"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Model/MTMaterials.cs",
+    "bytes": 5900,
+    "sha256": "f7750cfc267383e9a9421d0e35ac143ea0618497ea2cf91531be9d68cfaa7568"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Model/MTMesh.cs",
+    "bytes": 2953,
+    "sha256": "d2d6cd1f7e92a7884eb612f19aea4ed7b6a52db60e57e1178c48a9a4d546340c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Model/MTModel.cs",
+    "bytes": 14272,
+    "sha256": "5c79d13b17d8ab9ee6f473a4eaaa44d4c9cfa0b174a1e434da860ab301713759"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTAlphaBlend.cs",
+    "bytes": 2205,
+    "sha256": "d901c4cecf5a6d5c516bad22ca0bb3ad09016ef79873fb1a64c04f4bb7ca73ea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTAttributesGroup.cs",
+    "bytes": 4443,
+    "sha256": "953abb48debc4a55676e5a5a18c507e10550ce57d1158e3d7a2543346dc4170b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTBlendFunction.cs",
+    "bytes": 2187,
+    "sha256": "5c8020de0178f0d573089c14c80dccb4b37af849bb007763322f99f4064265cd"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTDepthStencil.cs",
+    "bytes": 902,
+    "sha256": "405d602ba6ca30465158d73fb4bb94ceb9e964fa1beb13ba3622592e645825ff"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTFragmentLighting.cs",
+    "bytes": 1264,
+    "sha256": "0bbc39023ff294259e24f718df145e94cd53b956a94cdd608af999ba175fac54"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTShaderEffect.cs",
+    "bytes": 176,
+    "sha256": "060369e8bc1042941156af9f34ab2172374c0b39cc8e247281566840c0040776"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTShaderEffects.cs",
+    "bytes": 4169,
+    "sha256": "6d28133eea1d7d3dc3be6c43c58e4c56722c95a5e22c49be619d44735a5a2f30"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTTestFunction.cs",
+    "bytes": 1153,
+    "sha256": "6a884d9767ee560e222ae86602bc9814acc0a5813b04029a0a73bd030e0cf974"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Shader/MTTextureMap.cs",
+    "bytes": 215,
+    "sha256": "560ecaa44aa7383873568eea64b6ab86c8612b663ab7f820abfe87d192b75663"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Texture/MTTexture.cs",
+    "bytes": 1898,
+    "sha256": "29bdda4b212ad3070d8ac6298dd4a1c21b3c3277b23c466a709465202c3e69b7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/MTFramework/Texture/MTTextureFormat.cs",
+    "bytes": 857,
+    "sha256": "70413e143bc917131d67657d1731e5031285c34f98136742dd1c4e0969482bc1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/GFBone.cs",
+    "bytes": 1017,
+    "sha256": "6c1082cbd3348ab3192745a513a20af9840f80c501915506462ce2a6596c0e14"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/GFHashName.cs",
+    "bytes": 683,
+    "sha256": "40056b8c4814dea61880e0e43178f30b0786e412b17bbfac1a33275df3b6928f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/GFLUT.cs",
+    "bytes": 3732,
+    "sha256": "88124d76e18ef2a050e3ef0179f8addf00f96207ae9abad240c169521d6d9697"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/GFModel.cs",
+    "bytes": 20806,
+    "sha256": "148558f09418dd4a0079bc90be88b27d48ce4871682bef1740c7c3bbee483de2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFMaterialMot.cs",
+    "bytes": 4474,
+    "sha256": "43b9201b4d1ae506bdf7804c5e71edf3c7b0f95a99bae5e9f829e12d8ada5b25"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFMotBoneTransform.cs",
+    "bytes": 3509,
+    "sha256": "ec88dcfa230deddaabb8f933a1d557a6119061a636463e369f74eef393088c77"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFMotBoolean.cs",
+    "bytes": 697,
+    "sha256": "3085f0060f8da6025a5412b72a268aacec4b16ecbff881368948b6df4b651a06"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFMotion.cs",
+    "bytes": 4003,
+    "sha256": "2edbe5570be2c6541ade0a9fad6105d4bc818e716cccb245850bbfd532ec051b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFMotKeyFrame.cs",
+    "bytes": 2876,
+    "sha256": "058a183186a3fc8ec912cc27ff41339ec562de155e56af364022c02e4594feda"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFMotUVTransform.cs",
+    "bytes": 1786,
+    "sha256": "d821b7dfdd64b5afb9fc76df5db48c7a2ffc73c60269dd8aae6ea61f9bad01ac"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFSkeletonMot.cs",
+    "bytes": 4700,
+    "sha256": "39133a178ebb6d0802b6b68952b8ec12666fb25c2cd6c901b8659fbff59f851d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Motion/GFVisibilityMot.cs",
+    "bytes": 2169,
+    "sha256": "5494c80119761c7fa351f8011392158a567f128dc1a5d7369f34c5c1092b7d7b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Shader/GFShader.cs",
+    "bytes": 13004,
+    "sha256": "ee9db67ae57744b59c3cbc6162399ef6ff405a35813089c05126858a3ec46a66"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Texture/GFTexture.cs",
+    "bytes": 2376,
+    "sha256": "47a6dd88ef207e65988c572fb2b358a66f9f5026670824fdd80e43afad1c3050"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Texture/GFTextureFormat.cs",
+    "bytes": 1825,
+    "sha256": "1dda199cc0b3105d538e11692e10a130e2b3048ed08a3f647259503369e9e21e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Material/GFMagFilter.cs",
+    "bytes": 130,
+    "sha256": "00f9f34d6aea95519c0a8aa41f08e6014151205c1c5dbedfcb802a77551dcc90"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Material/GFMaterial.cs",
+    "bytes": 18201,
+    "sha256": "fc9f39aedf73cc2334d11ac1c70028d8c8a02c28da7836d8cb91870b37e79725"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Material/GFMinFilter.cs",
+    "bytes": 246,
+    "sha256": "63033e5200f8cff74b2e03f910aaf823a18c866a4e953df1e888c7c1c0705420"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Material/GFTextureCoord.cs",
+    "bytes": 2025,
+    "sha256": "f03ba3d1f8f216a73c39b39bab633033d45d9147f1ed4442c034951bc3eab641"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Material/GFTextureMappingType.cs",
+    "bytes": 243,
+    "sha256": "7a3eb3b8df6c3046ce16c90c3ae3a1d466cd0bbd6329a5d573f5930b7c38e582"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Material/GFTextureWrap.cs",
+    "bytes": 175,
+    "sha256": "40b655ecc019037065f6c6b02ea7853b277ef593af7f31e113ca61b8a6085d4b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Mesh/GFMesh.cs",
+    "bytes": 17888,
+    "sha256": "c94c028bf9802a5628683c7f6a111e8f04ec7d491566f48d3655a4e0e02ca5e9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL2/Model/Mesh/GFSubMesh.cs",
+    "bytes": 1079,
+    "sha256": "63198f7f4f2591dc03ca3c131934973a48fe26f0cc2223e7c782804d6e1de3f1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL/Motion/GF1MotBone.cs",
+    "bytes": 1790,
+    "sha256": "e6c1b49113c9dbaaafb606965c4679ddbafeca28b2c11fb2a25799f0008bc2d2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL/Motion/GF1MotBoneTransform.cs",
+    "bytes": 1251,
+    "sha256": "20dc2aac923f62f59b8c25808e4379dd73f8cfa41362b9e0c50e25188649e252"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL/Motion/GF1Motion.cs",
+    "bytes": 14353,
+    "sha256": "5b6c76f92c4a9644d6e978f0ef85e074d7938bb504ea343ba2f1504360d726a6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/GFL/Motion/GF1MotKeyFrame.cs",
+    "bytes": 359,
+    "sha256": "10c5b2a40d62e7319beaf74cff83e99397d9dc7781c9219a4093b26e26f9a343"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAE.cs",
+    "bytes": 30275,
+    "sha256": "8556e4b1ac70678b4f2a49c3fde9d778dd7e2e3119d4742f4dc4cb19e7bb5fb6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEAccessor.cs",
+    "bytes": 922,
+    "sha256": "29835243d68a2868a74f8cd7a13e7607adabca3c750a937e73994e78cc9274a9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEAnimation.cs",
+    "bytes": 953,
+    "sha256": "eb5dc6b42c138d5b3e7c1393d170b488e108c47e898f30549cf0bdfb89e6cdfa"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEArray.cs",
+    "bytes": 241,
+    "sha256": "157935fc1d2de79a5a53d5be6c8227edb8bfd0854cacb561b446e0ef3980361c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEAsset.cs",
+    "bytes": 287,
+    "sha256": "048ef2f8f7bee4a60e8c601001358553872d65ac057890b263ea2b7787023d68"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEController.cs",
+    "bytes": 253,
+    "sha256": "522fb9065ff03a7736fa4f19bfc8a80ab5a35fc7bd7c11ab5751a4e7f1b91ac6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEEffect.cs",
+    "bytes": 3921,
+    "sha256": "56775cf0358a84bca38173789590f89fd6e90811e70dfd32dc7eec28a15ebd2c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEGeometry.cs",
+    "bytes": 251,
+    "sha256": "e25a69aa63878dc821cf41f34727d47904adbfbd9735f4d262ea59aa22163d56"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEImage.cs",
+    "bytes": 236,
+    "sha256": "ca1db9d79cdac41b9679566ea99f24dc112575915f48f59269da0147ca76d875"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEInput.cs",
+    "bytes": 210,
+    "sha256": "d5838db5dc5509c228ebf5f0eb22fbd95f76c8dec05ec58902b38afe6f5f709a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEInputOffset.cs",
+    "bytes": 392,
+    "sha256": "98e2c83cfed9ee77bdd23ad9d1f0087ba7f121afc74195e5abac090176fb293a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEMaterial.cs",
+    "bytes": 372,
+    "sha256": "4e03ffcd43884089bae409c1dd6fb57cb2713b063789f29112375e9ef181a89d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEMatrix.cs",
+    "bytes": 839,
+    "sha256": "6d50bfa620eb7a1f2a09b6658a36b26b17b223ade7088aea45de0ef31b5f90f0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEMesh.cs",
+    "bytes": 1881,
+    "sha256": "944a7b612741e37e48d25eb1d8223ff8b35699130f66d37457c143ce571cca89"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAENode.cs",
+    "bytes": 2194,
+    "sha256": "44cb969f713888fabc1c561ac5e854873a2a27b2d0b594c30e159bd4bc103050"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAESkin.cs",
+    "bytes": 1322,
+    "sha256": "a517106a9385fcfdbcceae4d7fd86609421a567ab87243e0b83ae28a4fcc3d05"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAESource.cs",
+    "bytes": 1500,
+    "sha256": "e8ccc6424cf182487088ebbd6109721069ea0ca27e67bbb90ac69475503e9b7a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEUtils.cs",
+    "bytes": 1724,
+    "sha256": "60a3baf5e69857ad0b94b12b1a7a748d2485836948d4341e2059a04fc445df91"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEVector3.cs",
+    "bytes": 448,
+    "sha256": "ef7820517b82a07469a52413624e0d6a2be8876564d9b61f488c847a7f9f9753"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEVector4.cs",
+    "bytes": 450,
+    "sha256": "a1e7552794c27a353667c3bd6763f886dfde8f808aff92a3d8c38868ae70f60c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/COLLADA/DAEVisualScene.cs",
+    "bytes": 547,
+    "sha256": "589ed4ca97bd8aac4ef63dbf7dbf9e9060a36cb7ae0b3f94ecc79c4f4425da35"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/StudioMdl/SMD.cs",
+    "bytes": 17653,
+    "sha256": "0124656c013fc466750222f39d9b47704d9cf4ad5b6292e0784601dd0268a871"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/StudioMdl/SMDBone.cs",
+    "bytes": 204,
+    "sha256": "c1f5dd341179d4c0d431aa9e4bdf62344582bd703f0df560e74c5da3269ad463"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/StudioMdl/SMDMesh.cs",
+    "bytes": 316,
+    "sha256": "e43e9086b3086395887dd9569774700a4bf648de6ddb783ed1790bb1f167b6d0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/StudioMdl/SMDNode.cs",
+    "bytes": 168,
+    "sha256": "5b7cd3fde3e373c2022fc2aea48e83e53442d5aba224a492a254d72597b3dd7f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/WavefrontOBJ/OBJ.cs",
+    "bytes": 14607,
+    "sha256": "3117cc2d962477b1a036f991ed5947e249d2cbd82588506d4eedebfa72827add"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/Generic/WavefrontOBJ/OBJMesh.cs",
+    "bytes": 498,
+    "sha256": "3e3ec94837ee46bf47ccc0a6f830c660a52baa6d341aab59365c96ef1b75b114"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimation.cs",
+    "bytes": 721,
+    "sha256": "a75aa4fd62b77fe05eb91f4d31b2bc8dc762584fb8a02969201465483331fe9e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimationCurve.cs",
+    "bytes": 272,
+    "sha256": "b0b83c9bfd120efe77a1e6d16b08ba373fd3a31246a5b5ab6243ab977993b035"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimationElement.cs",
+    "bytes": 2208,
+    "sha256": "847955fce9e50e8649308caf4a29dbc49afe92119f01de2a6960f13841836e12"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimationFlags.cs",
+    "bytes": 158,
+    "sha256": "a7eb411e0d25b72ee51126bbf9dac796b8e4c948fde0ee83964398c2cb55f8de"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimationType.cs",
+    "bytes": 199,
+    "sha256": "3c7a821cc086b346a504919048bbf7f06e60a17981b6102da9d782830006b6f5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimBoolean.cs",
+    "bytes": 570,
+    "sha256": "31fd2680c0be4b8acbecf653043b04a9edaabad3637d98af8ecd876d5ad81450"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimFloat.cs",
+    "bytes": 732,
+    "sha256": "9ebf0230820db7f318a560fef43efb9e1b525aa581759508ec26c917612714c8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimMtxTransform.cs",
+    "bytes": 827,
+    "sha256": "f9a06ee7d679d05a40616a481e20dfa8a59ceb4dc5bf61320b00125d7e474175"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimQuatTransform.cs",
+    "bytes": 6811,
+    "sha256": "68bc03b158664e29172a516352320e0acbb2fd7256119a105ca611cfe2c80452"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimQuatTransformFlags.cs",
+    "bytes": 380,
+    "sha256": "6749ba7ae9514953bcb3b32b84dd980b4ffee3c7e3fb293ef52ba34847c53882"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimRGBA.cs",
+    "bytes": 1093,
+    "sha256": "3e2b27748453388ce6209689e8261441a48d9d8493f7bbeeec743013db9d9c8f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimTransform.cs",
+    "bytes": 6528,
+    "sha256": "174051aeca76fa5f1c9a659e3d4bfdf53bac50cc49e5005d3eaeb0ecd2e5b16c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimTransformFlags.cs",
+    "bytes": 1224,
+    "sha256": "dfd12e1860c696f51184b4113ee1298b9eb8ff605dada843613844970ab83955"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimVector.cs",
+    "bytes": 3336,
+    "sha256": "c8ba694a40122f87ec41ec6e34b2cf1c8dcb7645f353000989861653e7d70b0a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimVector2D.cs",
+    "bytes": 905,
+    "sha256": "2a69b4b2addd4dbf59a8b8826bb86df25414d1e2e994ca3d7ac60e1b018080a1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimVector3D.cs",
+    "bytes": 1003,
+    "sha256": "751a380b13eff26cf685f3b88ca08e838b7f9c885f29a9aad4e4b44c62314cc1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DAnimVectorFlags.cs",
+    "bytes": 511,
+    "sha256": "c559fb4fd0db0f6e59422614d061eff7a9dfdd545bd34e07f9ec237b79702028"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DFloatKeyFrameGroup.cs",
+    "bytes": 10037,
+    "sha256": "82cb3acb85b7f58d796f730f54d9f146a099b221114f1c0695989a1c2cbe3cfc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DInterpolationType.cs",
+    "bytes": 150,
+    "sha256": "fa1cce82d77ebebc83f1b3f2fffb200368fcecf55c0a541627afd641fe3288f1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DLoopType.cs",
+    "bytes": 172,
+    "sha256": "ac1f9e9561c3f2274b12f71df99d5f55e32113725f57509a15f5ae8f118bfb08"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DMaterialAnim.cs",
+    "bytes": 681,
+    "sha256": "819d6b25d01f8bc2a0e6ccd16cc896983ef45fb8ca8520898c3a623614d8db0c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DPrimitiveType.cs",
+    "bytes": 281,
+    "sha256": "3ea6f11236d072530aa0e390279510ed4b99b22a79c63806d6f8c8713c5dc693"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Animation/H3DTargetType.cs",
+    "bytes": 1497,
+    "sha256": "8184f84ad46a1af8ab44beee334ae206503a6b31a3b6d8effdf25273a085f88d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCamera.cs",
+    "bytes": 1309,
+    "sha256": "6576a3b1962b9940642d3e2a0a95f317ad48dcca573358a21610904840cc8def"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraFlags.cs",
+    "bytes": 265,
+    "sha256": "f9faa0062ae77d06c900c74f9bab71acda8f02f3de2d37f477825ad5d899fa78"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraProjectionOrthogonal.cs",
+    "bytes": 222,
+    "sha256": "514cb2e287a44e7378288092a2593e9c23bd306e7660b776593aa921db5b72c5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraProjectionPerspective.cs",
+    "bytes": 221,
+    "sha256": "586b141d66c86cb6c39697c3e0583fbe2ca0d6b7c8344d2d983b8cd7cb769ab4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraProjectionType.cs",
+    "bytes": 144,
+    "sha256": "903720e002c21e3370ea73669f99561647d5cd9db5d7b5e8f41466bd0de38c3d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraViewAim.cs",
+    "bytes": 175,
+    "sha256": "e9b2c009a5650971c4cd6fc1493c41bb6d7f96932d3b2d0bf5b2d87338b45a0d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraViewLookAt.cs",
+    "bytes": 182,
+    "sha256": "ac225f96ad972c79fe9c2a0776107a34fdbe7fc1d04bf9692041867fe38f7bab"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraViewRotation.cs",
+    "bytes": 153,
+    "sha256": "8676cbab5a841bc38417967861039fa0cdb1bfecc92beaad64bb250ff23701a1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Camera/H3DCameraViewType.cs",
+    "bytes": 142,
+    "sha256": "29a5c092b03e13c451ceca9239066703555bb15312ce95d85765322268f8112e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Fog/H3DFog.cs",
+    "bytes": 191,
+    "sha256": "a64ad76945e84d9d6b9c131f28d0a8545b5a2ec9ef1d31119f9654fc497bface"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DAmbientLight.cs",
+    "bytes": 137,
+    "sha256": "f4173926c32781b8b2965200d470a443041ac77d3db77ceaa135712806a5a152"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DFragmentLight.cs",
+    "bytes": 643,
+    "sha256": "469128cd7dcd00996977ba398e10704023460b3db0663a35631709fd3299feb7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DHemisphereLight.cs",
+    "bytes": 254,
+    "sha256": "65fcd073556feade51a53dd5a13bfa4a1702b8a4a33a9325f82b357feb78f597"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DLight.cs",
+    "bytes": 2134,
+    "sha256": "671b41659edaf0e5338952028661610ed151319cbbd7845b274ae3cf4a561d5b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DLightFlags.cs",
+    "bytes": 201,
+    "sha256": "97d49f52e8b2031720b8d80fb7976964ac5ce898fa17637a66b9cc2df0968bf2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DLightType.cs",
+    "bytes": 448,
+    "sha256": "56860f1fdea63ea0b4d84c7cddfcb1144a2656d89c7d84a14113a26ba654aebe"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Light/H3DVertexLight.cs",
+    "bytes": 421,
+    "sha256": "09b6338121f8f6ddf7cc7d284b3db8c1ecde3e66649fda82461a20c1ed8ff5dc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/LUT/H3DLUT.cs",
+    "bytes": 484,
+    "sha256": "96a9d01f1456b5e13d76d5389e87a66ae0d081292f5e58942459217a2bd56b0e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/LUT/H3DLUTFlags.cs",
+    "bytes": 144,
+    "sha256": "9e5d54bf80ddeb5f25aaa29c1d75f99bcddfb97f77dcbd4d572e59f938e225bb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/LUT/H3DLUTSampler.cs",
+    "bytes": 2865,
+    "sha256": "d42b95d5db3e2d8a38272befd00b14f38ce1d29807d8a63c9b24200133062f78"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/H3DBillboardMode.cs",
+    "bytes": 251,
+    "sha256": "8b0397a517a6b27cce6b0884a7c1c4e6e9b1b0af742b836e5fe5248166d228d8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/H3DBone.cs",
+    "bytes": 3851,
+    "sha256": "5398fb78e7b3fa95e64edb4edb931e983dda8175d9bc434358c7d492bcde2d19"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/H3DBoneFlags.cs",
+    "bytes": 655,
+    "sha256": "e7a6cb36fc400e799d3d19796842df05520dc8d83090bd51593a402d04321a5a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/H3DBoneScaling.cs",
+    "bytes": 144,
+    "sha256": "cf7a51f5ea83883eca7036f92e31478f1540a9ee3eb4d6692f0ca53139cc435b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/H3DModel.cs",
+    "bytes": 3325,
+    "sha256": "42fdee3b9b7923424291c2624d36c3db9f0ad29bc6ac1ad5bcd7ae8709a4ef8d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/H3DModelFlags.cs",
+    "bytes": 263,
+    "sha256": "1361562a84bd1729585ca5156bc5e83af2a20ee79995f9be4c8cc983ccf4ef55"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Scene/H3DScene.cs",
+    "bytes": 195,
+    "sha256": "424b52936f987a2f82cfdad512116cd7c6be3b11e7851677ea69ebc431bb5110"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Shader/H3DShader.cs",
+    "bytes": 679,
+    "sha256": "ff68b64cf473d8c88f62d94fdbbf58e147f93fafe0e3511a0764e88365de1c80"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Texture/H3DTexture.cs",
+    "bytes": 9166,
+    "sha256": "ebf6de3b99cfb48c862ffebf92143b74d2d742dd67f98e9e4f64edefcd4ce1c9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DBumpMode.cs",
+    "bytes": 151,
+    "sha256": "78b3bd89d668688ab4dcd4bc10396685ce2b4fefbea2561e1b9c7bab976f66a7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DFragmentFlags.cs",
+    "bytes": 600,
+    "sha256": "4ac4da82a3883594659998fd819fc15c18ed1360ffa89fe9fe3b9ab01238face"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DFresnelSelector.cs",
+    "bytes": 160,
+    "sha256": "e2725a49b38cc7e8a39504108833fb765a9af01dea4b874755161e5d8fb64232"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DMaterial.cs",
+    "bytes": 8932,
+    "sha256": "71736c83592e33c2889eb2ad449b658c0a1680e8c77aed17318ae4193991dd63"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DMaterialFlags.cs",
+    "bytes": 1035,
+    "sha256": "b83d2d981c22343bbd0a7a352afebcfe1f8522a0d94a3c353580df9b65425848"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DMaterialParams.cs",
+    "bytes": 20955,
+    "sha256": "1952ab4144a57702a793124ebdf29e2b4fd38f68bacdfe70083251ad997a5b04"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DMaterialShader.cs",
+    "bytes": 115,
+    "sha256": "145999514202e3d33629fca5c76b6bc2b828ede2418b29878d04c45f81ca4fcb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTexCoordConfig.cs",
+    "bytes": 218,
+    "sha256": "bbbb4edfe5f64733f711477a8926442f5db665a3b545058e6bbbc38611debb9d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureCoord.cs",
+    "bytes": 725,
+    "sha256": "30984a55a4aa6595451f44f56f559a9ee806091f7f5083acd94059d64fdeb8b3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureCoordFlags.cs",
+    "bytes": 161,
+    "sha256": "56d35ab7ae32659f7cabba4c5fe91518950df04079e8053f2cbf5e984173704f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureMagFilter.cs",
+    "bytes": 140,
+    "sha256": "d508b14a0c402661fb9fd306fc16680bf336b84b6553d5d470feb217f1b23403"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureMapper.cs",
+    "bytes": 764,
+    "sha256": "96811de26e80e9f93f876c50c01110c13418020ecab9416bc808716c24497a9c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureMappingType.cs",
+    "bytes": 246,
+    "sha256": "96640f1cf754c30ac56d2f68b54b75c81fb60f0b19746225a1fc0264dcf0e82e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureMinFilter.cs",
+    "bytes": 256,
+    "sha256": "74b9c8fd661b942235081325796ee4bf075658e856b73cce6733f95e9225b72b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureTransformType.cs",
+    "bytes": 169,
+    "sha256": "fb632cab591aa5426d82d4cec83c75e479d46fac1c31f55fa4ed6fbe29909fdb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTextureWrap.cs",
+    "bytes": 178,
+    "sha256": "108ace181f9b6fe5c92eaf5a4d6a900fbe839c7aaf350dfde0eb0bc3ebeaafae"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Material/H3DTranslucencyKind.cs",
+    "bytes": 276,
+    "sha256": "aa5ee9d546f1d44ea35e1b407f059bbd26baa2cd048dd9beef164af9f21a6629"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Mesh/H3DMesh.cs",
+    "bytes": 17106,
+    "sha256": "10602d8758202bc6cc492efdd1dcc4d7ffb3b44a65c18d527644abd62f05ac30"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Mesh/H3DMeshSkinning.cs",
+    "bytes": 145,
+    "sha256": "4306ca0b7edcbdc0ef0fa04304f465120250dfb7103aa30924f64d555c2808f2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Mesh/H3DMeshType.cs",
+    "bytes": 131,
+    "sha256": "0ea81535b2bee8d22a1ea6810a576de9306068cf807acde7c0041d5cc4fb4bb2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Mesh/H3DSubMesh.cs",
+    "bytes": 5883,
+    "sha256": "30b92df105957b19731a398ea111f0912d065f9a4006d1d400ac27d3b4c63ed2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Mesh/H3DSubMeshCulling.cs",
+    "bytes": 112,
+    "sha256": "e21d938e3eb8ac5557c35d74ebc7f79388a6d4280fa26cb74d5df058a16031c0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrH3D/Model/Mesh/H3DSubMeshSkinning.cs",
+    "bytes": 147,
+    "sha256": "44ddad8f08cef252aa72c6af28ae17c9b317f960a61378bb34ea40a5aa1c1b46"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimation.cs",
+    "bytes": 19694,
+    "sha256": "3f08583010b8eff9972f4a8a3abaae2a6dd931bf477eaad02ed9a96c21acb956"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimationElement.cs",
+    "bytes": 2285,
+    "sha256": "fe8acb7f33367f38222c42a7fa997d50ed52479ea19945fb50d6277be0d526d7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimBoolean.cs",
+    "bytes": 2006,
+    "sha256": "673d7a8d00afd359c5f5ec74fae663211a87855d20cb9b702993a6e2fce50543"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimFloat.cs",
+    "bytes": 728,
+    "sha256": "6eeb97fca152c9c56cfcfbb0a8b5a5f6d4951c7de0d41701e184d7b955f7275a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimMtxTransform.cs",
+    "bytes": 479,
+    "sha256": "0ef68ccd3f3abe81b5276c4e92c2b320a493566606a09110fcdf08870e5c52fb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimQuatTransform.cs",
+    "bytes": 5720,
+    "sha256": "e8ec063e03c0a07d99033e681fd60153f324cdf875749d21ad5460ba2ef04c5e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimQuatTransformFlags.cs",
+    "bytes": 373,
+    "sha256": "0bfcabcbc191cdbc4cc7df2c9bcdc16aaa48e4dddc273585c5829df1c6c75414"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimRGBA.cs",
+    "bytes": 1093,
+    "sha256": "54fcec86d66757bc2812c4ad86d463be7616622514e916795074edb64204d98a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimTransform.cs",
+    "bytes": 6375,
+    "sha256": "c312e0a833051f7938a081483df17027bc9dbfc8c24ea7136d950e7a5c841ec8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimTransformFlags.cs",
+    "bytes": 1251,
+    "sha256": "74ede9a495447eadd789591472aefb9356f091173aa317664a41f68b2104c663"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimVector.cs",
+    "bytes": 4178,
+    "sha256": "e770d735eca405c25875b2a209e29b430d40bd07412eadf4172aee7d0ee33fad"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimVector2D.cs",
+    "bytes": 905,
+    "sha256": "dc52eee68ab1bed50a54512658d7cfb6f8e05f2683be933eb43dae69cf3508ae"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxAnimVector3D.cs",
+    "bytes": 996,
+    "sha256": "59f2a7f229a71544dad1e9d7a1d214cc2d2a54b4766051e9cb6a7d9c5fb93445"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxFloatKeyFrameGroup.cs",
+    "bytes": 9296,
+    "sha256": "c4a8496a42a53d89a8c429601cba8066cfe737d244de6253120bf48453a3a497"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxLoopMode.cs",
+    "bytes": 125,
+    "sha256": "d545ebfa870252700e5df5550da4ade0f6131a389cac9c44fb0debcf2d0cc273"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxLoopType.cs",
+    "bytes": 172,
+    "sha256": "31d45b5fc9f1b895d677aba715afe89012a37f01f2c19900e70290ae8a656183"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Animation/GfxPrimitiveType.cs",
+    "bytes": 279,
+    "sha256": "a70f5890c3cfd16d6a96f41e97810206fb9067e4cee29a5647b3ccf07c2075c1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimEvaluationTiming.cs",
+    "bytes": 150,
+    "sha256": "91dbe00ff164f493e5a0725548854f6b6635bacbf97226a1f31563186ec45a99"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroup.cs",
+    "bytes": 737,
+    "sha256": "b526c34381c1a0552957e458b2e95997634b817e79e67500ef3556e8634ca514"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupBlendOp.cs",
+    "bytes": 538,
+    "sha256": "1b33872038a1c278bb4c04a68ca520fef4fe8538115e728b1bbc581715146cf7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupBone.cs",
+    "bytes": 502,
+    "sha256": "1bcc9b47d6fcd3eacd9dc9a13bf0c083267b7ae4747e052f53e6930799f1c712"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupElement.cs",
+    "bytes": 1079,
+    "sha256": "f8d51c164c16453bb2f37ebdb03813b633dc82dab94fb542b342b006fd629481"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupMaterialColor.cs",
+    "bytes": 549,
+    "sha256": "31ca3e88358e2e413fe39cc1b943893d89f65ee92a463b9412f636181a5bc2e0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupMesh.cs",
+    "bytes": 300,
+    "sha256": "a41f16b362d093fca8f890b45d1ab5652e6b18f8c6df2816f9e5150e4702c296"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupMeshNodeVis.cs",
+    "bytes": 530,
+    "sha256": "a431b63215a975229e36ec59a5b03924b24e1af93730f0b28367afc6b5baedd1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupModel.cs",
+    "bytes": 272,
+    "sha256": "0d38183e60354e6c88b231e8e0461ab861b33486d1d9c265eb8ea3a3e0cdfbc6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupObjType.cs",
+    "bytes": 270,
+    "sha256": "19c462e4435058e72cafafdeaaec91d435b276b7793e2b28825f01ced28d9a83"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupTexCoord.cs",
+    "bytes": 576,
+    "sha256": "b652910829d7331bef945ea49b4fe73a56f58b7134562e26f6c9323352e61aa7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupTexMapper.cs",
+    "bytes": 573,
+    "sha256": "9030ad0d7e8f913daf4c15ac05af876759a15cf1c46ec4afd25febd72b2f6199"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/AnimGroup/GfxAnimGroupTexSampler.cs",
+    "bytes": 577,
+    "sha256": "e0b7732e5d732ebb989ffc1f410364e2c11f7044888a2ca6cd0f7d15435f3712"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCamera.cs",
+    "bytes": 4230,
+    "sha256": "baa11cd312226bdc383b737ad5dcd7bfcc810a8a4ce780c3b88a75eb61f4a974"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraProjection.cs",
+    "bytes": 393,
+    "sha256": "ea5f21b252697a4657c9018ffad8e9af50db5cb208ff2ffcd350e6bd5dda842f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraProjectionFrustum.cs",
+    "bytes": 125,
+    "sha256": "4fdce909153aff2656ea24d01d4d54f36e5fe88e42b57e1976400f6198007f50"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraProjectionOrthogonal.cs",
+    "bytes": 245,
+    "sha256": "8d52f00407192b692fc1a2227c560a414c3d9857fd0d59cbda1b0e1674a3b0a6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraProjectionPerspective.cs",
+    "bytes": 188,
+    "sha256": "de3dbf7e1398e0ad5849ab0dd148bcbe6cabee827965342ccc62233a43e28b95"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraProjectionType.cs",
+    "bytes": 161,
+    "sha256": "63398d1edba136b98583f691dc014025044e81669e2e162341deae52658e5987"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraView.cs",
+    "bytes": 295,
+    "sha256": "d7831fd3860b46a95227201811b5e1e5a9ea6ca21e098c62890b1ffceb9eb73c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraViewAim.cs",
+    "bytes": 236,
+    "sha256": "51875997c7dbe33fb1111b0c1804098df1fbd460df5333380b06d17325689442"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraViewAimFlags.cs",
+    "bytes": 190,
+    "sha256": "dbeda46aafe851c0ec1301e3e6df86bfd8063b87b4196a0d30ea7799d6724f66"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraViewLookAt.cs",
+    "bytes": 246,
+    "sha256": "9ebf961cd9c621142361e93dc2124b258e9cbe3ffe16443b611edca97b1d742f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraViewLookAtFlags.cs",
+    "bytes": 241,
+    "sha256": "da60187a8d7a7dd6681f04d0223cf6e8855aa9545903dbc843b5c78ec13b9f35"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraViewRotation.cs",
+    "bytes": 205,
+    "sha256": "435c3081dec3da9b30da5dd88c0ffe64485e0fd408f188e446b17dd8ceabc931"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Camera/GfxCameraViewType.cs",
+    "bytes": 142,
+    "sha256": "23aa217a07e34f9180baa0dcb529e50fc8b7c5bd79b068708b7c3917befc890b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Emitter/GfxEmitter.cs",
+    "bytes": 298,
+    "sha256": "ab4337a1fc79261b47458225496428ab9380868c26ea970f8f00ca43027d16b2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Fog/GfxFog.cs",
+    "bytes": 290,
+    "sha256": "129d3cda70c31ab75985e1995eea5e38f9c845a29e8d61911db71584f8190395"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxAmbientLight.cs",
+    "bytes": 236,
+    "sha256": "b98c9104275ad3e68409599d680bca5ee188e2954af802b2ca2a656c29a433a8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxFragmentLight.cs",
+    "bytes": 828,
+    "sha256": "9d4cb78d2efcb5832bf85d12a1588556b84a9d60e828b9fe6f62989eeeddbc83"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxFragmentLightFlags.cs",
+    "bytes": 271,
+    "sha256": "93fa2776ebcb88c34c35d526c08758fbe35b766e3dcb03deedda8212998470f0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxHemisphereLight.cs",
+    "bytes": 265,
+    "sha256": "bb22f6f20dfa4eb4ebddaccbba86a456d788a789b0506cc3549fc510cfb9477e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxHemisphereLightFlags.cs",
+    "bytes": 150,
+    "sha256": "801169e0a7e76d7e73b46abd40c601c207dd6f7a14beb751d8a380278ce45235"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxLight.cs",
+    "bytes": 3694,
+    "sha256": "b04ce2648e209503715635b8326c6637a4f12368994cc0847d065e61fe1c9ef1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxLightType.cs",
+    "bytes": 141,
+    "sha256": "71227ee978b3842cddde09d96e1fb75da5e8275539d6f86c4ecb5840c1c8e338"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxVertexLight.cs",
+    "bytes": 551,
+    "sha256": "6d4c117bc488c20de83b02c4de732e7844b8a10a12ecde3b308693079e8d4a38"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Light/GfxVertexLightFlags.cs",
+    "bytes": 173,
+    "sha256": "efdd8e0ddc54c5ab3b271ba7cc6fbfa56989a3f5f72730bdfc8000d519b4dff1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/LUT/GfxLUT.cs",
+    "bytes": 330,
+    "sha256": "ef59f6a70b4b49c655175a814846d10fa24151399bea9f6d5183a04a3ee48b65"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/LUT/GfxLUTSampler.cs",
+    "bytes": 2520,
+    "sha256": "de0b02604aa11e4b0c5d368ac563502adc4a855deb3c84c0ea44d88242e97dac"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxBillboardMode.cs",
+    "bytes": 258,
+    "sha256": "30e6e12493aa9c59c607a6ab1df07b10700a609d4a812bcff89c15a53821c297"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxBone.cs",
+    "bytes": 897,
+    "sha256": "3b9b951c26dea75030205b738549167f490c4cf91bde7bce3fa0ce0277869b62"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxBoneFlags.cs",
+    "bytes": 541,
+    "sha256": "64f0225a470671a270e43b5bd247847894aa30332257ab91bc7375fc41fac0e6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxMeshNodeVisibility.cs",
+    "bytes": 348,
+    "sha256": "88ffc762584eef75679e9c95eed4807b6a77f4861b6118d1e2242625e8a71d70"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxModel.cs",
+    "bytes": 988,
+    "sha256": "c867a9acf5451db931ea125bb45ab5c047b0d176c13bc9aec1c9244cf1f3b88f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxModelFlags.cs",
+    "bytes": 170,
+    "sha256": "f8d980361dbf0f5febae0bd108ef259feb81168fea851266164e5a86998835f2"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxModelSkeletal.cs",
+    "bytes": 131,
+    "sha256": "06da31db7398fe49182b7bd67ecfd373d482b6a105bd330c7fcf46287c3929b8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxSkeleton.cs",
+    "bytes": 558,
+    "sha256": "7a9ed527a091f4ff07c2beee4126741eae1c2feef91d628bbb2564334740ce6c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/GfxSkeletonScalingRule.cs",
+    "bytes": 152,
+    "sha256": "a9f356204ec048d37c5aeeb4325e15b106335f8dfea6f37cf0536c24217f9b4f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Scene/GfxScene.cs",
+    "bytes": 294,
+    "sha256": "d3f84157563e39593a9ca1a44613d015557d1f97e7d996719f9f647786723dc9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Shader/GfxShader.cs",
+    "bytes": 296,
+    "sha256": "e7bacae1f0d1c1ff5afc171f2f80a7b0b343b4a3dbc4789827722bf80d43f238"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Texture/GfxTexture.cs",
+    "bytes": 530,
+    "sha256": "2c1fde2aadd05e99447fb86c4b010fd859d2e85bbaa2fcdea1e01caab217c500"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Texture/GfxTextureCube.cs",
+    "bytes": 372,
+    "sha256": "eef1f0ddfc784aa497bc50ec672d6eb74ad56802c4e3af6504fa6a1adf24940d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Texture/GfxTextureImage.cs",
+    "bytes": 139,
+    "sha256": "15729813ef47cdcde9c39cb318fbffe94ff1448efacb29815663a5396602c17e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Texture/GfxTextureImageData.cs",
+    "bytes": 395,
+    "sha256": "5db75ad3d171c461152eea1c9b552e51541dcd93d89584fe8c93c0655fb5eb13"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxAlphaTest.cs",
+    "bytes": 1566,
+    "sha256": "bf3630657e9d134d7b7db6071bc959974dcde2f8388f4235eaa3848ca2d76f1c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxBumpMode.cs",
+    "bytes": 151,
+    "sha256": "8d28144643e8f3e283eaea446fa7c5d0f69f0ac9b671f30a7d5be18fab686049"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFaceCulling.cs",
+    "bytes": 857,
+    "sha256": "9d2de58f98a235e83aee9c3d2e87793b29a1c57a570fec74fa689c235dc8f29d"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragLight.cs",
+    "bytes": 914,
+    "sha256": "1588d4dc1b76f839738a81e371600cb0e7e6646b9d859c1b41790a054325c244"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragLightLUTs.cs",
+    "bytes": 1684,
+    "sha256": "b0dc9993275f7d07faf74b25733add2832faac3b0a0a702953929208b1da9824"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragmentFlags.cs",
+    "bytes": 557,
+    "sha256": "91f1c5826ec33f6d96efc1114de218ebe6e6dc45ee838be044b97762a3ef1251"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragOp.cs",
+    "bytes": 4693,
+    "sha256": "6ce57509f4040c1f024546972edc57f851154fc16dce47b510ce078d9a1cb0ef"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragOpBlend.cs",
+    "bytes": 2126,
+    "sha256": "b102c64383c3fdbe5207bb8cede40c1f5316c47aa145c120c92a6226ca490c79"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragOpBlendMode.cs",
+    "bytes": 177,
+    "sha256": "984a453cf51328bf930f1f4fc8d9e13b98d7e987efa17694e752e6b3dd4edfa9"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragOpDepth.cs",
+    "bytes": 1488,
+    "sha256": "5b8571209a06175fbccc6ffd0a88755ebfa8d041552c9f1ebf2bbaacd462f4a1"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragOpDepthFlags.cs",
+    "bytes": 198,
+    "sha256": "e8db9971ff18ccee8e5af42fb9811847d736629cc21c14b15b887e95bbf6c2dc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragOpStencil.cs",
+    "bytes": 1934,
+    "sha256": "7059cfb7281e38090069f790f42f54c33913b9822bc44772d3a06197cbd4d335"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFragShader.cs",
+    "bytes": 3444,
+    "sha256": "efd60341afcb83ea581dfc88a10f50009d446912988c83eb62917190770c1c7f"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxFresnelSelector.cs",
+    "bytes": 160,
+    "sha256": "804687d866f957c241ad6f60ea2dd48532e97e1db0d0ad8f9d9b26156629e4c3"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxLogicalOp.cs",
+    "bytes": 1930,
+    "sha256": "aaeb9ed425b43dfc79404a4ddacb2d13c4642f5142f9a9c984afe42a1ed0036c"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxMaterial.cs",
+    "bytes": 7350,
+    "sha256": "3017d796068e7a346a69b353507e7556248bc8e618231982d4967540534cf4d6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxMaterialColor.cs",
+    "bytes": 2986,
+    "sha256": "7156850c07e3ebc0d77246e102308ad27f1636b42620570537516716ea8afd70"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxMaterialFlags.cs",
+    "bytes": 406,
+    "sha256": "d06f131753846937d1eecdb9d597caac2a7014b2da7c68f6889ee3420542f949"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxProcTextureMapper.cs",
+    "bytes": 118,
+    "sha256": "e0d5c24aa1798cd7fa417cb9ced3c45653532f96dc7df66e18a817733b3c2758"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxRasterization.cs",
+    "bytes": 1362,
+    "sha256": "c948487cc4d7e5b4ebcb004360050fe3dcc5d9dd40e7da1bdc9ecb191797c69a"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxShaderDesc.cs",
+    "bytes": 111,
+    "sha256": "44490be79043bda09ecaa9e83b7f64ec388ab66d37caf4f5cf1cf24f5ead34d4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxShaderDescFlags.cs",
+    "bytes": 291,
+    "sha256": "1f172a75e002a4f9b6cf719c70df3863a016c0e7c700dc23ab259bd52cf3433b"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxShaderParam.cs",
+    "bytes": 112,
+    "sha256": "af75b559a52fee1cc2f7466ffd3322a79e6191b9144746394a866785edeb2b65"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxShaderReference.cs",
+    "bytes": 454,
+    "sha256": "2d056fd88e21d265d2c72c25fb7c5c3b9943d3065b4d21f417c9bf9110d7fae5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTestFunc.cs",
+    "bytes": 1277,
+    "sha256": "05a753626f952a8496f3374e068472b70c9caf4fc78468dbd17c9a138e1439f4"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTexCoordConfig.cs",
+    "bytes": 225,
+    "sha256": "7f44b414687b94e86330312f668cbcf014c9136a9b21f8bbfe5916fcc323fecf"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTexEnv.cs",
+    "bytes": 8935,
+    "sha256": "113ec6b74681294c913697f21f14d06c32f95d68c649570edce22bcac66024aa"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTexEnvConstant.cs",
+    "bytes": 309,
+    "sha256": "d85d89a66c44e473cd845abd50b2bfd29ef7de40ea7a0a7feec1686e506388d6"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureCoord.cs",
+    "bytes": 1770,
+    "sha256": "e4372efeccc76f51d86dc5f5e5330ebeb72e98b37c154a250325731b6c68d49e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureMapper.cs",
+    "bytes": 5107,
+    "sha256": "d44254388585cf3c7bbd30aa08a74f83e492ebf85fdc086dbc46724ef3afc700"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureMappingType.cs",
+    "bytes": 246,
+    "sha256": "f85a6b4b6a073408a14d905212a0c06158365f2c33545809060580e7387736c7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureMinFilter.cs",
+    "bytes": 249,
+    "sha256": "0a2b388276ae9b4d050699fca6b2b4685a25a6f239048ba9f2fe07c2b398c257"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureReference.cs",
+    "bytes": 457,
+    "sha256": "d02a291233cab67b0e200e4abad2894cd77ecceaca8c575dee3d6f985186c98e"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureSampler.cs",
+    "bytes": 286,
+    "sha256": "09ceae758d642a69fd9ba3e758b6704ca8affc2daf264cfb4158ad0637c71b90"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureSamplerStd.cs",
+    "bytes": 207,
+    "sha256": "4f800196156aa4c6d6c5a058b392c497ee672a9e05ef61182615afe46ef5eceb"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTextureTransformType.cs",
+    "bytes": 169,
+    "sha256": "944bdfad3b46dc834e7b9b604759686cfc05e732abe3c89093a42573f2456385"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Material/GfxTranslucencyKind.cs",
+    "bytes": 171,
+    "sha256": "5d0798738e2beece50e1e748ff97196fa1e802f388d3f6bc216aa552106aff88"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxAttribute.cs",
+    "bytes": 2476,
+    "sha256": "efb231c0ec087837402aea7a3e9bb621c2a73aab062b4164d26ccf8d9ec916f8"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxBlendShape.cs",
+    "bytes": 383,
+    "sha256": "4c56d4dfd1713e00ed6eb651efc0b0cd109745509fec34683b2211f96f1623fc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxBoundingBox.cs",
+    "bytes": 240,
+    "sha256": "5b2190652b144ec3b3ab27d211e0a6c984181e8714eef4a98ea22f4bfdb9a9a0"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxFace.cs",
+    "bytes": 422,
+    "sha256": "655cb81e33f7ff883f5080451297909203435f23bd7efcf60c1fc2dea67385c7"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxFaceDescriptor.cs",
+    "bytes": 1699,
+    "sha256": "b76476c4d0a7dc3e9b9ba4f617853cfcad788e447eecf4a9435e303d280df8bf"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxGLDataType.cs",
+    "bytes": 1008,
+    "sha256": "577aa17923922fa7519ba9e139f70da75eb5e1b9d9c701b10fb056b66a619404"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxMesh.cs",
+    "bytes": 1347,
+    "sha256": "4fc2b69517c3cc0183dd4afdf0f1b440ad92dec03637fa951833d864dc603a89"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxShape.cs",
+    "bytes": 787,
+    "sha256": "ec538addab0f036f9f19eb740cb2044c37341e7824ce607bbd16ae60a8761d06"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxSubMesh.cs",
+    "bytes": 396,
+    "sha256": "b0f4862d9b6e5dad95b13dd64d7fb6f2c2dc031ad59c47bce603c912be3d84ea"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxSubMeshSkinning.cs",
+    "bytes": 147,
+    "sha256": "146d8f8739be2688036118a7686c593f220ad6eb2533f0a5a76db2bf11434457"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxVertexBuffer.cs",
+    "bytes": 423,
+    "sha256": "ba5694decdc79e0a56e9409d1ae2b7e09b3b0457c3aa9ea4eb21fa5da97d48dc"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxVertexBufferFixed.cs",
+    "bytes": 238,
+    "sha256": "8794e78aa414b655e244ce6e8683b5eb66a10d80afc71a8e2a07faa0e9b50ac5"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxVertexBufferInterleaved.cs",
+    "bytes": 485,
+    "sha256": "7365211e321dba09947f7bbad5e5f00d6d622dcd72eebf83fb1071471edb3617"
+  },
+  {
+    "area": "outputs/banner-tools",
+    "path": "outputs/banner-tools/build/SPICA-master/SPICA/Formats/CtrGfx/Model/Mesh/GfxVertexBufferType.cs",
+    "bytes": 153,
+    "sha256": "bee7d4087447e1d7ee2009986223de0183e898e532ad70722172ea4fad9273db"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/BUILD.json",
+    "bytes": 1177,
+    "sha256": "72c824de460649b3885104e96632e6403063382c605e665e06f214493261ed42"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/SD-TRANSFER.json",
+    "bytes": 440,
+    "sha256": "c01064ec553e55d5e35a0c9aec436e3f03b009bea9f5bd33b5df2ebfdbed74cc"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/symbols.txt",
+    "bytes": 15724,
+    "sha256": "f7a1e5a7de3b59db4b578e4b8bd32eed9d4043843e530e7fe4edb2faffb70f7f"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/TEST-DE.md",
+    "bytes": 2783,
+    "sha256": "f1b34c29ae831566b4e6aa08c90590e211aa3a3a24b22696b89830431d8c96f4"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/source/main.c",
+    "bytes": 7238,
+    "sha256": "6583935a8ad05be06aa35d32b8813841ea867c375f1335dd3e8809360c923945"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/SD-Karte/3ds/flow-home-test/flow-home-test.3dsx",
+    "bytes": 150268,
+    "sha256": "cfa4ce89fdd0f166a311762de299c179c4671deda242d94a25ba6080588a008b"
+  },
+  {
+    "area": "outputs/home-start-test",
+    "path": "outputs/home-start-test/SD-Karte/3ds/flow-home-test/flow-home-test.smdh",
+    "bytes": 14016,
+    "sha256": "32a578b58968deffdd6586384f1e4177f4964de6aeae0b232802fd580786b57b"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/3c5026e520aeec9e208399f6d0a62098d5ee4c13d8cca97cdb9adbc6bb56a1c0.tar.gz",
+    "bytes": 215133357,
+    "sha256": "3c5026e520aeec9e208399f6d0a62098d5ee4c13d8cca97cdb9adbc6bb56a1c0"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/59e22667830bf04fb35e15ed9c70023e9d121719bb87f0db7f3159ee7c7e0b8d.tar.gz",
+    "bytes": 28230270,
+    "sha256": "59e22667830bf04fb35e15ed9c70023e9d121719bb87f0db7f3159ee7c7e0b8d"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/74701f26999d7854982cfa51dafd83beeaf644031b943c4cbd0a245139a742a4.tar.gz",
+    "bytes": 265076006,
+    "sha256": "74701f26999d7854982cfa51dafd83beeaf644031b943c4cbd0a245139a742a4"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/build.sh",
+    "bytes": 902,
+    "sha256": "fb2ef6c5beedc6bce0da5d3da508e850758454ca40cb00b0369fd744fff95d69"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/ea5d3216df1fb580c54c016ee13ff58eb965c0a0b0ef08afd8dfd5a1c03e95a8.tar.gz",
+    "bytes": 28381973,
+    "sha256": "ea5d3216df1fb580c54c016ee13ff58eb965c0a0b0ef08afd8dfd5a1c03e95a8"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/extract.py",
+    "bytes": 438,
+    "sha256": "c37208bed113955f8e9c5f01aea2ab101305b05ebb7a9cd13d0658f4542cf867"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/layers.json",
+    "bytes": 921,
+    "sha256": "42bf3ea530ce8b42d3ecf017b95339a2ec4d52d96bb5d17ab8fcb0eaf0d1932f"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/manifest.json",
+    "bytes": 1660,
+    "sha256": "f2044796d2647023efba1177805b8023db187fa40bf471131a97085a1bb77a69"
+  },
+  {
+    "area": "work/toolchain",
+    "path": "work/toolchain/pull.py",
+    "bytes": 1447,
+    "sha256": "f5ee4d2de424af039a205537f15c1a7780eb396d1c8ab37c4bac30b036cfec8c"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/deployment-status.json",
+    "bytes": 1061,
+    "sha256": "cf987ab8eb34a89512b2199f8fce5542fdffcb11264e180785af279d70506786"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/deployment.json",
+    "bytes": 133,
+    "sha256": "55c52dce209793e3caa1642571d36a7ee978782bdd1aa2d460532ee3d8f7e64a"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/input_test.c",
+    "bytes": 5262,
+    "sha256": "5441ceafe888b761d587ca43df4d9fdb07ac6513d301dcaa40b7e0764bfcd2c9"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/package.py",
+    "bytes": 5671,
+    "sha256": "f2836dc972560808d72b176be368aa586e66bcc923da4251a43d75604d42e2c2"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/prepare-tests.py",
+    "bytes": 12891,
+    "sha256": "a433cef0d6d773dcbfa905421a89f29802b502270ffc39a0ea533f7d75493e89"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-0-en.png",
+    "bytes": 30111,
+    "sha256": "69f0ae2bd1717d3921c4fe20213e78914ed0ec2c328257d905954ff29cfb2cf0"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-0.png",
+    "bytes": 32591,
+    "sha256": "e26168fb1b3923682cc8174caa22bd41eb8e83e54515fe04b9260dbf8f7e27c4"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-1-en.png",
+    "bytes": 27532,
+    "sha256": "54f0cad818727e2b257e53debaaf7ebd92abedaeba2b41ed41c6fc4286ba33e1"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-1.png",
+    "bytes": 29786,
+    "sha256": "ac7fe60e187c2486422aeaacb260ea29a140d60376a0bd974c9a021f7db8758c"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-2-en.png",
+    "bytes": 27856,
+    "sha256": "9167ba14a652d0d7b6db8e4c80f9683a76c2db2c02c5222c268a434cb2e4ce7a"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-2.png",
+    "bytes": 29314,
+    "sha256": "d799e71cc388452e7960883d831b39cfcdf63b0d04faee58f2b94cae5ec0e7ce"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-3-en.png",
+    "bytes": 28790,
+    "sha256": "9067c7b8989857aad336e16e752f882ddffc72740e848b36e4dfc377abe6bde4"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-3.png",
+    "bytes": 31946,
+    "sha256": "eee6ba02b054429a7c1d47aaefde5f7b4a53e801d0bc306ce2c9729b761bc299"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview-prepare.py",
+    "bytes": 2929,
+    "sha256": "e9b220a7ca7c9e5bbbf0a6e7cb221e2cd1f58472b8fcbf4548715e179d1c8f03"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview.c",
+    "bytes": 7185,
+    "sha256": "7cea1a284226f5e1582a5ca2499ba66ffd39ac089b55f2b57d61b5ab4074a85c"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/preview.sh",
+    "bytes": 781,
+    "sha256": "6b2e0fdcfdafb622cba6a7c76deab5e5dc75b5e12d11008e52774b666bb21b09"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/public-assets.json",
+    "bytes": 1421,
+    "sha256": "fa67879aa15f522d60ff58440dadd74f2e22b7191e981f2d6f5cb84eebffbf06"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/public-channel.json",
+    "bytes": 588,
+    "sha256": "78ccdacc0ada375d3c39428bb79d454154efb89b146969ad6d822e5af522afee"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/published.png",
+    "bytes": 114382,
+    "sha256": "77a589a1be7543e528dedcbf631a251a93cce86831403c69d5665aaf12b47b78"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/render.py",
+    "bytes": 1770,
+    "sha256": "8294c527930b58e2f19fada8e6f16b7981fb103b40c230cca3367837ff44a4fc"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/run.sh",
+    "bytes": 499,
+    "sha256": "06bfe89a3c4d0bff0d0e11bb74b597bc13b78aacabaf5244c01ccf5edf9b6e36"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/source-build.sh",
+    "bytes": 821,
+    "sha256": "cc27c4a7446e0800374dce3c048e549905539ee3837247325e912583823d8d68"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/source-tests.sh",
+    "bytes": 825,
+    "sha256": "6ffbcd8b1629df39bb07accd49107c7b6d23b9fb382eb6266fcf9a28a0b6afdf"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/test.c",
+    "bytes": 12445,
+    "sha256": "03118d4ee8f2d4b06f568128b61b1ee872364118dd80f72d4b30b9401fcc423d"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/test.sh",
+    "bytes": 365,
+    "sha256": "ec50e0a1c9f457e4d666a8c833e86bdd862256d1753f5efd589a898904a27f72"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/verify-public.py",
+    "bytes": 1110,
+    "sha256": "9542cacc43d049095cfe4dae0d429609018a9d25afae253baf8433a842c09eef"
+  },
+  {
+    "area": "work/desktop-v01233",
+    "path": "work/desktop-v01233/mock/3ds.h",
+    "bytes": 448,
+    "sha256": "795d871aae4ce96e358a6eeb75cb2367156638ff08db106876d73c0b1d7a0934"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/deployment.json",
+    "bytes": 140,
+    "sha256": "94cdc73c1317093f00a9aedcae6c6dc40e15c52583496986d777233cc7bf716f"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/input-prepare.py",
+    "bytes": 5255,
+    "sha256": "e52939794e57fedc7cdba162c7a0fcfee16df1eb1f26712d45fca536a7c285f3"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/input_test.c",
+    "bytes": 8877,
+    "sha256": "5e10169300a305e6d37a3d49471213e184c15ee9f7ff2dcefe404772dbf2fa63"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/main-update.py",
+    "bytes": 4450,
+    "sha256": "65ab3e6540405ef0f6f115f181e39008333fb953fc514fb14dce3381d0c816f9"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/package.py",
+    "bytes": 6873,
+    "sha256": "5af2f6d181a486934969fb391c909d4583c279d66f0b80b12aa3a6045db608c3"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/prepare.py",
+    "bytes": 4468,
+    "sha256": "cc7d130c08521076abea48f64c42681aacd60e0151ea6c5f897559d3eb52413e"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-0-en.png",
+    "bytes": 25104,
+    "sha256": "47eb7c87c1f18086aecaf5522bca47a9459e37af254ac7b04e45d27252c3f3b6"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-0.png",
+    "bytes": 25113,
+    "sha256": "8a5cae83e164d0009be989b81de06f7c214f60fe7a2874d688de77b20679a52b"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-1-en.png",
+    "bytes": 22142,
+    "sha256": "99bd41cbefd83772ee536473bf495e90f63daaedd39be9e0308e3d00f26e8759"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-1.png",
+    "bytes": 21475,
+    "sha256": "2ab0547e41bf4a5b366ba5531d0477df0219ea98109ad0ed2196721def3d4b1d"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-2-en.png",
+    "bytes": 23946,
+    "sha256": "b63eb964a33fbf141eeaed0e83a5d735a921b23a4af1043c6977f3f16346550a"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-2.png",
+    "bytes": 23208,
+    "sha256": "ac366c68a79bb248216fc15b82f3a7da189c2776a4eac84f6d388a87874926c3"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-3-en.png",
+    "bytes": 21745,
+    "sha256": "6f759d60ffbf1dbaee18e1eff68fa2d51cde33d947a3301c6b779f39f4605ff7"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-3.png",
+    "bytes": 21335,
+    "sha256": "8a954e678f3dfc29e7f59dd913b599367d072a25b73ddba23d513f728d7d4e8f"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-4-en.png",
+    "bytes": 27539,
+    "sha256": "d74f2a4366cdd8fa25b5c68698b09ac695b740223e7f06bf7e951a026eb4a5f6"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-4.png",
+    "bytes": 27302,
+    "sha256": "d5c28f6a550d665bdc3c3e764197829bd8f66261badc0ce5731f459b96841309"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-5-en.png",
+    "bytes": 27908,
+    "sha256": "3e5eaab50a2d23a44f458dd580bbc7788cc617effb27cdaa708cedb76414372d"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-5.png",
+    "bytes": 27574,
+    "sha256": "7d16c6b34a0e39eebeeccbb70d4a33ab19f852821f9421152624955b5142000d"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-6-en.png",
+    "bytes": 25260,
+    "sha256": "5a62f70f3982e205e2e74b8b6a76b780cdc1ee6ca056b10db60537f9e934be0b"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-6.png",
+    "bytes": 27556,
+    "sha256": "398cdc6857f79a8d53acdf6d03c4c85a30a10413acc8bdafe6b48b162193bfdd"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-7-en.png",
+    "bytes": 23635,
+    "sha256": "87f8ddc62b769f27d87fe90b26568b5a95f333706bd0087be19d25a948d3559e"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-7.png",
+    "bytes": 25230,
+    "sha256": "deeaf9cfb4d55c9f23e6ff78e84b7b13651f7f4fcd44ad1684089921e0bff636"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-8-en.png",
+    "bytes": 23616,
+    "sha256": "45e0b7568ac9a5cf9df692d07bd8b0a8a9c9e28a89c68697e3dd6f79c2b3bea1"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-8.png",
+    "bytes": 28283,
+    "sha256": "cc0b84740a289d6307e8905e77418e45cfee9c1a573bd7fab5c93d24de2c7691"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview-prepare.py",
+    "bytes": 2514,
+    "sha256": "9e6e876fc0c0bde37c42a0a9d64b97f40b3785842d898ab3d78bc9562508ba72"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview.c",
+    "bytes": 8061,
+    "sha256": "4ad4e5080cea92f535da1a2435c737f9e1b37376d78caed14762f9a9f4aa6740"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/preview.sh",
+    "bytes": 646,
+    "sha256": "6c0aa5d8f7eb1e220e06c5301450ed66b21edb753f5a849a4d49fad224d277c0"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/public-assets.json",
+    "bytes": 1421,
+    "sha256": "d581bfed1faf7f46b686963ee4f637d79d13d49de67e925291808dffce9b599b"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/public-channel.json",
+    "bytes": 588,
+    "sha256": "eb664d5b549bd0e46f8c9c14761909905e4821c044507979f92fc16b9fd35c0a"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/published.png",
+    "bytes": 114384,
+    "sha256": "5cf98f0328bbe09c017f2f1947ae0e46f0860fe847cc989a2772eb7aa841af96"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/render.py",
+    "bytes": 1740,
+    "sha256": "829119207e3facf54c29394390707d971a9333f6400415aaf176f661fb423cbd"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/run.sh",
+    "bytes": 503,
+    "sha256": "2792b59ef3ae517f4a9887a5aa9767188ca4b6e79cb75bd01f3a60592ba02776"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/source-build.sh",
+    "bytes": 821,
+    "sha256": "fba4d09c5231dd6954a566fd5d29a057f60073499c31ea71a0e9b8c6e84f9e05"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/source-tests.sh",
+    "bytes": 811,
+    "sha256": "dbb819036d4ee53848863d0e5f833dd06293caf18c01dcf07d4f7480d65e8816"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/test.c",
+    "bytes": 7280,
+    "sha256": "0e7040aca054ccf19a8e3f3468298c163aa6cc6f32a731b80d4d38404ea36cd2"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/test.sh",
+    "bytes": 427,
+    "sha256": "9ebc51a5c1ced6bd058a492026509cee8a483d03f5bc1cdac775fb70a4adf479"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/tests-prepare.py",
+    "bytes": 6893,
+    "sha256": "7d31c4966ac9620438005bb8bc45e5b36966d638a30de67b50665e606a22baff"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/ui-update.py",
+    "bytes": 5159,
+    "sha256": "f37cde8f2d808a123754aa2407bfd1a75fc3add5408842c8819dada2aeff2ceb"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/verify-public.py",
+    "bytes": 1128,
+    "sha256": "f125624be5b9cd6be930250b1a4eba22fe278f66c78ae58228dd9619ad1dbddc"
+  },
+  {
+    "area": "work/twl-v01232",
+    "path": "work/twl-v01232/mock/3ds.h",
+    "bytes": 725,
+    "sha256": "5df5eff5c73884a4e07fb1f037e17b6dfea8acdaf31214cc7cf124a38468986c"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/deployment.json",
+    "bytes": 222,
+    "sha256": "49ade4f14e393ef1d9f9f2e34e87f6c6623778d7ab399c803fb177b351dbeadc"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/input_test.c",
+    "bytes": 4755,
+    "sha256": "753030caca4a5d64d5c4b9e7067e629a920720dedaab75e85371f7931431eac3"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/package-prepare.py",
+    "bytes": 5350,
+    "sha256": "08d18176f4b5cab43b53d4c3034df4d77edcde015e488d3a0f5f23fff898d419"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/package.py",
+    "bytes": 7258,
+    "sha256": "e77149ed29ee0ea7343cf07e38dfe84fc19b01137eb2e28529ad0aad4179051a"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/prepare-tests.py",
+    "bytes": 10698,
+    "sha256": "e2e02de3aa74c14b2cb54741f76f6fd795364f5381cd2029b1f5627981cddb7f"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/prepare.py",
+    "bytes": 1527,
+    "sha256": "31692fdddb4f74ae3ed8d422e4fc9e847dbcec90f33fbab9fe60985b3660a194"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/preview-en.png",
+    "bytes": 46618,
+    "sha256": "750de8b4f62cf8187cb47faca32586874a9284d55956fa27ad492c00f185cf93"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/preview-prepare.py",
+    "bytes": 2080,
+    "sha256": "63e9d893b021013d10e6a1923963f534f0ab922fdff50c4c6fb3b9fb85ce0b73"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/preview-unknown.png",
+    "bytes": 43932,
+    "sha256": "d4c60bd6915287188ad268b02bd3cd8c25949468afc558b98f70a00712d5c461"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/preview.c",
+    "bytes": 5521,
+    "sha256": "9fede98414f0da3527b79e3b3bfb8d64322eaf1bd58844fbb418e0493b1f6448"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/preview.png",
+    "bytes": 42302,
+    "sha256": "4561b6eceb6ca778862334e1db9cf0aa9f3543f453c28a063996378e245d0330"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/preview.sh",
+    "bytes": 701,
+    "sha256": "00fee5970ca2d7075b09ce2174be1a44c0dbd113789ce9bb2eec9d39ef3579a4"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/public-assets.json",
+    "bytes": 1421,
+    "sha256": "53175ed93b0662b23ddec89dd18b54412d8d4050110cbc802e283037f657760a"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/public-channel.json",
+    "bytes": 588,
+    "sha256": "23ebade338f2ed69698975a6a05fd77c342b34035ec1ece7b8e2e1c6bceed4e8"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/published.png",
+    "bytes": 114404,
+    "sha256": "2b576aa685b5f5e841571fa135e181aa7cc4d91b3d4e9a06d2c937000b282a08"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/render.py",
+    "bytes": 958,
+    "sha256": "425e3c517c1197bd3f401978b3e7657f4127358e411b3686ec094a245ab883cb"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/run.sh",
+    "bytes": 509,
+    "sha256": "833443daae36a76e45e190247f3698cd6f8380f2e005f3504ec9f7ef1f7c98c4"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/source-build.sh",
+    "bytes": 821,
+    "sha256": "d53095f6a6b430e0b42afe1a3f2558512a29bc9909873765f13a55103034ad38"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/source-tests.sh",
+    "bytes": 825,
+    "sha256": "036a6e444e049e37260708693d5903c82f5014b26c209995546825682bf3117a"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/test.c",
+    "bytes": 10114,
+    "sha256": "1ee1c0d8c8b4e9cac4c9d7854ad32c9b5a62a208cf1001b0e26ee89a619500f8"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/test.sh",
+    "bytes": 365,
+    "sha256": "ec50e0a1c9f457e4d666a8c833e86bdd862256d1753f5efd589a898904a27f72"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/verify-public.py",
+    "bytes": 1132,
+    "sha256": "a131691cd64338d3907a3948b89f4cd2cf39cd7e299672961f3b0b3c7ae0f11a"
+  },
+  {
+    "area": "work/runtime-v01231",
+    "path": "work/runtime-v01231/mock/3ds.h",
+    "bytes": 448,
+    "sha256": "795d871aae4ce96e358a6eeb75cb2367156638ff08db106876d73c0b1d7a0934"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/l10n-check.py",
+    "bytes": 587,
+    "sha256": "94f5ad262a86c560fe85cfdfaec40c923514f364642d8906f4768500e82b807a"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/package-prepare.py",
+    "bytes": 4734,
+    "sha256": "10e8bc3f70615fa09d9bb6b0bb906d7c84339ef2ecf7d041871d198b23aa92ab"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/package.py",
+    "bytes": 6671,
+    "sha256": "0dc68cb221ae645478d37b581a42ec6c31a36b441460993c7e1482d8a082d70d"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/prepare-tests.py",
+    "bytes": 6985,
+    "sha256": "333bca96a16e431b3406cd07928526ef553509a54249e82e8a9842d5b47002e8"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/preview-en.png",
+    "bytes": 43500,
+    "sha256": "010740e588c595eb1b08847956ac872269af132136afdb262b80d77f667adb03"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/preview-prepare.py",
+    "bytes": 1693,
+    "sha256": "99cfcc01df1416e5d970436d4ac46faad52080c7dd8a80a3f5fb0a77510834ab"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/preview.c",
+    "bytes": 3194,
+    "sha256": "badc514510dbd13f3c2db2edb6a32bfa5f63b11a73d7e6748af98243b151734f"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/preview.png",
+    "bytes": 45440,
+    "sha256": "3d607cc0f89569fa9f1dd1b53c176112f0ee93e0177f1776e154fdad8888bb19"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/preview.sh",
+    "bytes": 658,
+    "sha256": "b9147ce5ce71df3cef83d759a8779593a8799dbff056b1bd8d77d65ed99a286d"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/public-assets.json",
+    "bytes": 1421,
+    "sha256": "66cb7d3b08c705035c891b6dda135bc3856c0590194820a6e076bb74ab22fb23"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/public-channel.json",
+    "bytes": 588,
+    "sha256": "ca228d4718db6d4b618b9e8763fd586dfd960280c4a4807e7e51917b47de699e"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/published.png",
+    "bytes": 114339,
+    "sha256": "94eb8a6a4ca2ea031886d02a451f20305a65feba873d5424f28250ffd9e20eae"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/refresh-draft.py",
+    "bytes": 228,
+    "sha256": "cc12c9389aa587464327e1a55feb2a80b3263cba3357e8578afcda58f0dce4c6"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/render.py",
+    "bytes": 885,
+    "sha256": "1ced01c45ab899dba0617f1697326b4b67bca85a3739c23f86a4726344fb8ced"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/run.sh",
+    "bytes": 303,
+    "sha256": "b0b80980d8ebdfe61b59251bca32be95c91890cd334176d8fd574e367628aebb"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/runtime-prepare.py",
+    "bytes": 1302,
+    "sha256": "925e89c3650e0558f154f019636208b67d45c0f77646d1a3890a11a74545c13c"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/runtime.sh",
+    "bytes": 583,
+    "sha256": "94bb8292ed546976bf4f9e8a1aff637a3527512a1d5fc29c53c11125e8f1e91c"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/runtime_test.c",
+    "bytes": 1816,
+    "sha256": "5fe9a79fdc786a14db475abb3606a39a5e7add0d196d80e152cb71e69d6209ee"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/source-build.sh",
+    "bytes": 821,
+    "sha256": "d2e930b78e227ee15537440cd179046b401831dfa48f57c643937196b7601272"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/test.c",
+    "bytes": 12275,
+    "sha256": "20a787eb678028b6a19a2925804544be42408e3f966e43b0f5280566fd077201"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/test.sh",
+    "bytes": 201,
+    "sha256": "ab65c3d67ec77d26c3e9d744c32df92b288d34557b9c863078dd82fa46324836"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/verify-public.py",
+    "bytes": 1137,
+    "sha256": "7f6d17e9cf9991547837e0290a233a06c05f3940fec4daa9987739ca9c843df8"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/runtime-mock/3ds.h",
+    "bytes": 276,
+    "sha256": "70792bae83a250d60df28c39cc3b38c52d8207da677f1b14f9b3211463b7ddd1"
+  },
+  {
+    "area": "work/home-loading-v01229",
+    "path": "work/home-loading-v01229/runtime-mock/citro3d.h",
+    "bytes": 138,
+    "sha256": "89ba2dbbf7209df5f9e5b5131edce316bb994ed2e5386d36decddea96dd365f5"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/package.py",
+    "bytes": 5406,
+    "sha256": "6a075755a466ed598edc7a742d66d3cbcdd611234fe1dbda4c56620a0bf3122c"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/prepare-package.py",
+    "bytes": 3431,
+    "sha256": "6b03f952264f4c7b482cc050750a622ccf5ae0911266066bfece095b98f6827a"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/prepare-tests.py",
+    "bytes": 3903,
+    "sha256": "ca1da59e56564c5aaacc9fb38c4b9ce9e6bc5dda11193a082878968ad41870be"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/public-assets.json",
+    "bytes": 1421,
+    "sha256": "02052096e98aeec98f5c96ac43f96454c8216d09a34d673a7df1e1dd420538e3"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/public-channel.json",
+    "bytes": 588,
+    "sha256": "3bbe0198ec402ac55791b4cc2353f8ce192a9f78ec9f3ed841b2393ed537a324"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/published.png",
+    "bytes": 114325,
+    "sha256": "26dfc46e21663c8c5c6125585441fa2ef692576e8a39f787c983582b0a3114fb"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/source-build.sh",
+    "bytes": 821,
+    "sha256": "ce89a8179dbe082192ba9eaf14126a5c3cccb79e2f8b3aecd94c53ec3f7b7f5d"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/test-prepare.py",
+    "bytes": 6205,
+    "sha256": "0ad80bbde17a8e44bc20fa9cffec345c7f26b3201c3fcf0b4e077cf945668657"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/test.c",
+    "bytes": 8313,
+    "sha256": "569a61b6b4c688344c282bed9a26d7cbace83972cd64497b46c111b486edba87"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/test.sh",
+    "bytes": 344,
+    "sha256": "45ea5633383646cf8dfc014d9332a8d826a3e280a2962124c25c02387d46caf8"
+  },
+  {
+    "area": "work/power-v01227",
+    "path": "work/power-v01227/verify-public.py",
+    "bytes": 1130,
+    "sha256": "cfecb3e2b848a9a9196e518bb718894189e3d477fe76afbef88ed4757dd4ebc5"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/bgm_test.c",
+    "bytes": 5560,
+    "sha256": "2a56bb1a1075567e41070799f20191bfe17be826d0801d0e5587b4c88599ca7f"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/decode.c",
+    "bytes": 1577,
+    "sha256": "add2785efec9ca52e74d49ba4b9c42f520a376a72572de259092a6fa88e08198"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/ffmpeg_rounding.c",
+    "bytes": 6951,
+    "sha256": "acca03efc154716e4de8a31d8a95d7b348c927c824fd839fc30ccac76cba3482"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/old_bgm_format.c",
+    "bytes": 6664,
+    "sha256": "55c5dd7ff4366136909f18f92f1b3edc004939e0460abd1b453d2ae8a8ea68d8"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/package-prepare.py",
+    "bytes": 4193,
+    "sha256": "125f4f380f7cc193b5a0f60760c87815a9c1c52d2cff2d0a622abfef71b394cc"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/package.py",
+    "bytes": 5925,
+    "sha256": "7a94af82d4a2d95b8a4bba0ad5cb848c5b621d9bff8eb56b1609c6a84ba3f1ff"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/prepare-tests.py",
+    "bytes": 1778,
+    "sha256": "cdd13c437cc63d19458edd72228da4d69aa161b8b13a7df8980e4388dc0c7b0a"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/public-assets.json",
+    "bytes": 1421,
+    "sha256": "c2f16740bb90d04b96b112fd27c8aec97437f62bc6ed19f94a825922785634a5"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/public-channel.json",
+    "bytes": 588,
+    "sha256": "17ec6f0716f573642dce7e41075eee881c4e8a41c42b437aead61f730667020e"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/published.png",
+    "bytes": 114396,
+    "sha256": "fc9b26697c5c5fbff1c00a63a798174567fbc6eff57720bc95a1b96d9210e621"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/reference-check.sh",
+    "bytes": 504,
+    "sha256": "e3020ca381840d09fce52caa5f7f15a2c6c38148dae9abef502909d4f0c44a91"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/source-build.sh",
+    "bytes": 821,
+    "sha256": "801c59d009a33ee509adcc394ea0c3b5b1c2133d4083dade5f978a5df8139e73"
+  },
+  {
+    "area": "work/music-v01230",
+    "path": "work/music-v01230/verify-public.py",
+    "bytes": 1130,
+    "sha256": "a6a4dddd566bc7c62bf9fbb38d8565607f9c9f6e9012f1e9b3b621a455348aaa"
+  }
+]
