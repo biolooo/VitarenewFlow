@@ -1,6 +1,16 @@
 # VitarenewFlow
 
-Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Windows-Verwaltung. Entwicklung von VitaRenew. Aktuelle lokale Integrationsbasis: **Launcher 0.12.33 / Desktop 0.4.1**, weiterhin Teststand ohne abschließende Hardwareabnahme.
+Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Windows-Verwaltung. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.38 / Desktop0.4.1** (22.10.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
+
+## Installation und Teststatus
+
+Für eine bereits gemoddete 3DS-/2DS-Konsole mit Universal-Updater: [Installationsseite mit QR-Code](https://biolooo.github.io/VitarenewFlow/updates/install.html). Eigenen UniStore hinzufügen, VitarenewFlow (Test) wählen und Installieren / Install ausführen. Der Installer liefert App und HOME-Shortcut gemeinsam. Spiele, BIOS und Spielstände werden nicht mitgeliefert. Zusätzliche Komponenten lassen sich anschließend in Flow einrichten.
+
+Flow steht aktuell im eigenen UniStore; eine Aufnahme in den Standardkatalog Universal-DB ist noch nicht erfolgt. Der HOME-Shortcut lädt die aktuelle 3DSX von der SD; spätere OTA-Updates benötigen keine neu installierte Shortcut-CIA.
+
+## KI-Transparenz
+
+Für Appcode und Entwicklungsdokumentation wurden KI-Werkzeuge umfangreich eingesetzt. Das Projekt ist entsprechend als KI-unterstützt zu kennzeichnen, nicht als lediglich geringfügige Nutzung. Tests und Reviews ersetzen keine echte Konsolenabnahme.
 
 ## Einstieg
 

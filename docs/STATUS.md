@@ -1,5 +1,7 @@
 # Projektstatus und Abnahme
 
+Universal-DB-Vorbereitung22.10.2026: [technischer Prüfbericht](UNIVERSAL-DB-PREPARATION.md) mit verifizierten App-/Download-/Installationsfakten und offenen Punkten angelegt. Wegen der aktuellen upstream KI-Regeln kein generiertes Datenbank-JSON und kein PR-/Issue-Text; menschliche Erstellung nötig. Kein Antrag, Release/Tag oder Push erfolgt. GitHub-Releases fehlen bisher (Empfehlung, keine allgemeine Pflicht). Mehrdateiinstallation muss erhalten bleiben; CIA allein genügt nicht. README lokal aktualisiert und KI-Nutzung transparent gemacht.
+
 Veröffentlichung .38 bestätigt22.10.2026: Releasecommit a04fbd0, Pages-Lauf39758606547 erfolgreich. Alle zehn Paketdateien inklusive notes.txt und vier Kanäle öffentlich bytegleich geprüft. Nachweis: [0.12.38](release-evidence/0.12.38.json). Shopify-Orchestrator mit öffentlich verifizierten Änderungen zur Websitepflege informiert; konkrete neue Shopify-Vorschauadresse noch in Arbeit. Keine .38-Konsolenabnahme. Nachfolgende Vorbereitungsangaben sind historischer Verlauf.
 
 ## Freigegebener Release0.12.38 — 22.10.2026
