@@ -1,5 +1,7 @@
 # Flow — Einstieg für den Orchestrator
 
+Shopify-Abstimmung22.10.2026: Nutzer beauftragt eigene SEO-Installationsseite mit Homepagebanner weit unten. VitaRenew Shopify Orchestrator direkt angeschrieben; noch keine fertige Seite bestätigt. Künftige website-relevante veröffentlichte Änderungen gezielt weitergeben, dauerhaft in AGENTS/Release-Skill verankert. Direkte Nutzerautorisierung und Zielchat: [SHOPIFY-HANDOFF](SHOPIFY-HANDOFF.md).
+
 ## X-Updateinfos — lokaler Entwicklungsstand 0.12.38
 
 Nutzer meldete unzuverlässige X-Infos. Ursache: fest eingebaute Hinweise der installierten Version und deren Versionsliste bestimmten Darstellung/Zugänglichkeit. Ersetzt durch eigene X-/Touch-Infoseite mit Version, DE/EN-Hinweisen, Blättern und B/X-Rückkehr; keine Installationsaktion aus dieser Ansicht. Lange gültige Hinweise erhalten weitere Seiten anhand tatsächlicher Schriftmetriken. Kein Text einer anderen Version wird als Zielupdatehinweis ausgegeben; fehlende Hinweise werden klar angezeigt und verhindern OTA nicht.
