@@ -23,3 +23,5 @@ Eine feste Appversion in Evergreen-Anleitung vermeiden. Teststatus unter1.0 klar
 ## Releasehinweis22.10.2026 — .38
 
 Shopify-Orchestrator nach erfolgreichem Pages-Lauf39758606547 und14öffentlichen Bytevergleichen über .38 informiert: Zielupdateinfos per X/Touch, blätterbare DE/EN-Ansicht, einmalige Aktualisierung von .37 nötig. Installationsquellen und Teststatus bleiben. Konkrete Vorschauadresse im Shopify-Chat angefordert, noch nicht bestätigt. Keine private Reportdatenweitergabe.
+
+Vorschau inzwischen erreichbar und perHTTP200 mit passendem Seitentitel/Installationsinhalt bestätigt. Unveröffentlichter Entwurf im Theme206275248469; vollständiger temporärer Vorschau-Link privat unter `.test-build/shopify-preview-link.json` sowie im Shopify-Chat, nicht im öffentlichen Git. Mobile/Banner-QA beim Abruf noch in Arbeit. Keine Website-Livefreigabe oder fertige SEO-Abnahme behauptet.
