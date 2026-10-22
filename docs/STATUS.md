@@ -1,5 +1,9 @@
 # Projektstatus und Abnahme
 
+## Freigegebener Release0.12.38 — 22.10.2026
+
+Nutzer hat Veröffentlichung von0.12.38 ausdrücklich beauftragt. Frische Prüfung, Paketierung und exakte Quellpaketreproduktion laufen vor Push; öffentliches Deployment und Bytes werden danach bestätigt. Keine Konsolenabnahme. Shopify-Orchestrator um neue Vorschauadresse gebeten; nach bestätigtem Release gezielt um Updatehinweis auf der SEO-Seite bitten (X/Touch vor Installation zeigt Zielversion; .37 benötigt einmal Update). Reale Seitenadresse noch nicht bestätigt. Folgende .38-Lokalangaben sind der Vorbereitungsverlauf.
+
 ## X-Updateinfos — lokaler Entwicklungsstand 0.12.38
 
 Frischer nativer Build und vollständige lokale Suite bestanden: `.test-build/verification-20261021-214042`. Einschließlich generiertem Sidecar im tatsächlichen C-Parser, optionalem HTTPS-Transport/Abbruch/Parallel-Snapshots, X-/Touch-Eingaben sowie tatsächlichen Font-/Wrap-Funktionen für lange Hinweise ohne Textverlust. 10 Python-Pipeline-/Bestandstests bestanden. Echte Paketierung zusätzlich im isolierten Testrepository geprüft: zehn Assets/neun Manifesthashes, JSON/README/Sidecar konsistent, benötigte Quellen im ZIP, Überschreiben bestehender Version verweigert; reale Kanäle unverändert. Nachweis `.test-build/notes-package-smoke.json`. Bestehende öffentliche .37-Dateien nochmals bytegleich verifiziert.

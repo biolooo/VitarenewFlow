@@ -1,5 +1,9 @@
 # Flow — Einstieg für den Orchestrator
 
+## Freigegebener Release0.12.38 — 22.10.2026
+
+Nutzer hat Veröffentlichung von0.12.38 ausdrücklich beauftragt. Frische Prüfung, Paketierung und exakte Quellpaketreproduktion laufen vor Push; öffentliches Deployment und Bytes werden danach bestätigt. Keine Konsolenabnahme. Shopify-Orchestrator um neue Vorschauadresse gebeten; nach bestätigtem Release gezielt um Updatehinweis auf der SEO-Seite bitten (X/Touch vor Installation zeigt Zielversion; .37 benötigt einmal Update). Reale Seitenadresse noch nicht bestätigt. Folgende .38-Lokalangaben sind der Vorbereitungsverlauf.
+
 Shopify-Abstimmung22.10.2026: Nutzer beauftragt eigene SEO-Installationsseite mit Homepagebanner weit unten. VitaRenew Shopify Orchestrator direkt angeschrieben; noch keine fertige Seite bestätigt. Künftige website-relevante veröffentlichte Änderungen gezielt weitergeben, dauerhaft in AGENTS/Release-Skill verankert. Direkte Nutzerautorisierung und Zielchat: [SHOPIFY-HANDOFF](SHOPIFY-HANDOFF.md).
 
 ## X-Updateinfos — lokaler Entwicklungsstand 0.12.38

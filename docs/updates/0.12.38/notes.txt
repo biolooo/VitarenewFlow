@@ -1,0 +1,8 @@
+VFNOTES1
+version=0.12.38
+de=X zeigt die Neuerungen der angebotenen Updateversion.
+en=X shows what is new in the offered update version.
+de=Eigene Infoseite mit blätterbaren Hinweisen auf Deutsch und Englisch.
+en=A separate information page with browsable German and English highlights.
+de=Updatehinweise werden bei jeder Veröffentlichung automatisch mitgeliefert und geprüft.
+en=Update highlights are automatically included and verified with every release.

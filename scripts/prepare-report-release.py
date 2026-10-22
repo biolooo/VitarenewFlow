@@ -66,9 +66,13 @@ cp scripts/verify-stage.sh verify-stage.sh
 bash verify-stage.sh
 ```
 
-Keep tests/error-report, tests/report-transport and tests/backlog in place: they are
-current root-relative tests, not additional fixtures to flatten. The stage script
-sets DEVKITPRO/DEVKITARM/PATH and builds launcher/3ds-library.3dsx and .smdh.
+Keep tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
+in place: they are current root-relative tests, not additional fixtures to flatten.
+Keep release-notes/0.12.38.json and scripts/generate-release-notes.py in place too.
+The stage runner checks the generated installed header against this JSON and
+validates its generated notes.txt with the actual C parser before the build.
+Do not regenerate a different header or replace the JSON to make a mismatch pass.
+The stage script sets DEVKITPRO/DEVKITARM/PATH and builds launcher/3ds-library.3dsx and .smdh.
 Compare both artifacts byte-for-byte with the delivered files before accepting
 reproducibility. No real console, WLAN, HOME/POWER OS transfer or NAND is tested.
 
