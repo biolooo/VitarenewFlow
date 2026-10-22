@@ -1,5 +1,7 @@
 # Projektstatus und Abnahme
 
+Veröffentlichung .38 bestätigt22.10.2026: Releasecommit a04fbd0, Pages-Lauf39758606547 erfolgreich. Alle zehn Paketdateien inklusive notes.txt und vier Kanäle öffentlich bytegleich geprüft. Nachweis: [0.12.38](release-evidence/0.12.38.json). Shopify-Orchestrator mit öffentlich verifizierten Änderungen zur Websitepflege informiert; konkrete neue Shopify-Vorschauadresse noch in Arbeit. Keine .38-Konsolenabnahme. Nachfolgende Vorbereitungsangaben sind historischer Verlauf.
+
 ## Freigegebener Release0.12.38 — 22.10.2026
 
 Nutzer hat Veröffentlichung von0.12.38 ausdrücklich beauftragt. Frische Prüfung, Paketierung und exakte Quellpaketreproduktion laufen vor Push; öffentliches Deployment und Bytes werden danach bestätigt. Keine Konsolenabnahme. Shopify-Orchestrator um neue Vorschauadresse gebeten; nach bestätigtem Release gezielt um Updatehinweis auf der SEO-Seite bitten (X/Touch vor Installation zeigt Zielversion; .37 benötigt einmal Update). Reale Seitenadresse noch nicht bestätigt. Folgende .38-Lokalangaben sind der Vorbereitungsverlauf.

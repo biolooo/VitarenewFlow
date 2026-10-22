@@ -1,5 +1,7 @@
 # VitarenewFlow0.12.38
 
+Veröffentlichung .38 bestätigt22.10.2026: Releasecommit a04fbd0, Pages-Lauf39758606547 erfolgreich. Alle zehn Paketdateien inklusive notes.txt und vier Kanäle öffentlich bytegleich geprüft. Nachweis: [0.12.38](release-evidence/0.12.38.json). Shopify-Orchestrator mit öffentlich verifizierten Änderungen zur Websitepflege informiert; konkrete neue Shopify-Vorschauadresse noch in Arbeit. Keine .38-Konsolenabnahme. Nachfolgende Vorbereitungsangaben sind historischer Verlauf.
+
 - X/Touch zeigt Neuerungen der angebotenen Version vor ihrer Installation.
 - Eigene blätterbare DE/EN-Infoseite, B/X zurück, keine Installation aus der Infoseite.
 - Eine versionierte Changelogquelle erzeugt lokale Hinweise, README und notes.txt; Build/Paket/Pages prüfen Vollständigkeit.

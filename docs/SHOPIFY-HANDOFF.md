@@ -19,3 +19,7 @@ QR: https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow-QR.png
 Store: https://biolooo.github.io/VitarenewFlow/updates/VitarenewFlow.unistore
 
 Eine feste Appversion in Evergreen-Anleitung vermeiden. Teststatus unter1.0 klar nennen, eigene Spiele separat, keine Spiele/BIOS/Saves enthalten. Lokale .38-Remoteinfos sind bis bestätigtem Release nicht als öffentlich nutzbar darzustellen.
+
+## Releasehinweis22.10.2026 — .38
+
+Shopify-Orchestrator nach erfolgreichem Pages-Lauf39758606547 und14öffentlichen Bytevergleichen über .38 informiert: Zielupdateinfos per X/Touch, blätterbare DE/EN-Ansicht, einmalige Aktualisierung von .37 nötig. Installationsquellen und Teststatus bleiben. Konkrete Vorschauadresse im Shopify-Chat angefordert, noch nicht bestätigt. Keine private Reportdatenweitergabe.

@@ -1,0 +1,67 @@
+{
+  "version": "0.12.38",
+  "checked_at": "2026-10-22T09:52:21.339769+00:00",
+  "files": {
+    "0.12.38/FEATURES-DE.md": {
+      "size": 1342,
+      "sha256": "876a316067f2b0cdb3f43190dd587be99c96bc3e4951fc041b0cf45129352808"
+    },
+    "0.12.38/README.md": {
+      "size": 1342,
+      "sha256": "876a316067f2b0cdb3f43190dd587be99c96bc3e4951fc041b0cf45129352808"
+    },
+    "0.12.38/VitarenewFlow-Boot.3dsx": {
+      "size": 116260,
+      "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+    },
+    "0.12.38/VitarenewFlow-Copy.gm9": {
+      "size": 3092,
+      "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+    },
+    "0.12.38/VitarenewFlow-Shortcut.cia": {
+      "size": 164800,
+      "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+    },
+    "0.12.38/VitarenewFlow-source.zip": {
+      "size": 1976711,
+      "sha256": "db7144c679ebd1e0ec1ff95a2e567a8f2e2d316d13f2487e3440eb9a9e97d4a2"
+    },
+    "0.12.38/VitarenewFlow.3dsx": {
+      "size": 1624164,
+      "sha256": "6bc8b9735bcec49fcef778c010352369b4915336fcf7d61b3deea97a3a515abf"
+    },
+    "0.12.38/VitarenewFlow.smdh": {
+      "size": 14016,
+      "sha256": "dc1719fd3323242a8a8bb5d84caa91b24a69fb32c0b86fd39674e40143210ea9"
+    },
+    "0.12.38/notes.txt": {
+      "size": 460,
+      "sha256": "648ad3db490ddc17e270439f5b488c3713c6fadf932750ca03338832629dfe05"
+    },
+    "0.12.38/SHA256.json": {
+      "size": 832,
+      "sha256": "45f05995d8a37f10bbb203fa7f007d4ee482f5af10fdab82a702cf2aa44431c3"
+    },
+    "latest.txt": {
+      "size": 190,
+      "sha256": "e23589dde655fb717323728a0093d23ffe33e83b00af24d026390625262f3004"
+    },
+    "VitarenewFlow.unistore": {
+      "size": 4311,
+      "sha256": "3486dbb6a648418e7f1fcc16d8b254646e533c5b06a96b20ca68920c3ddde36d"
+    },
+    "VitarenewFlow-info.json": {
+      "size": 516,
+      "sha256": "eaea3bebef71cfa038a3c5a23913597e585fcab55497344500fe6bad7bb45474"
+    },
+    "install.html": {
+      "size": 1779,
+      "sha256": "ce15e2a8513d243fed0b17da82008f67a130b65cfa3502ea778b62fa2b21488c"
+    }
+  },
+  "release_commit": "a04fbd0",
+  "pages_run": 39758606547,
+  "conclusion": "success",
+  "exact_rebuild": "3DSX, SMDH, parser-validated notes.txt byte-identical",
+  "hardware_acceptance": false
+}
