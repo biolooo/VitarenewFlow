@@ -1,3 +1,4 @@
+#include "ds_library.h"
 #include "forwarder_restore.h"
 #include "app_update.h"
 #include "update_store.h"
@@ -53,6 +54,10 @@ static UiCard cards[MAX_GAMES];
 static UiCard neighborCards[32];static unsigned neighborCount;
 static unsigned visible[MAX_GAMES],visibleCount,selected,systemView;
 static bool searchOpen,searchNumeric;
+static DsRoots dsRoots;static DsScan dsScan;static DsBrowser dsBrowser;
+static const char *dsFolderMessage="";
+static bool dsFolders,dsPicking;static unsigned dsRootSelected;
+#define DS_CONFIG "sdmc:/3ds/3ds-library/ds-folders.txt"
 static char searchQuery[SEARCH_QUERY_SIZE];
 static char searchSuggestions[3][SEARCH_QUERY_SIZE];
 static unsigned searchReturn,searchReturnView;
@@ -136,7 +141,7 @@ static bool reportFallback(void){
 static void openReport(void){
     if(!reportAvailable())return;
     report_transport_reset();reportConfirmed=false;reportDetails=false;reportDescription[0]=0;
-    report=(ErrorReport){.version="0.12.38",.description=reportDescription,
+    report=(ErrorReport){.version="0.12.39",.description=reportDescription,
         .context=envIsHomebrew()?ERROR_REPORT_HOMEBREW:ERROR_REPORT_NATIVE};
     int boot=autoboot_status();report.autoboot=boot==1?ERROR_REPORT_AUTOBOOT_ON:boot==0?ERROR_REPORT_AUTOBOOT_OFF:ERROR_REPORT_AUTOBOOT_UNKNOWN;
     if(R_SUCCEEDED(cfguInit())){
@@ -228,9 +233,10 @@ static void draw(bool loading,float progress,const char *stage){
     if(updatePage&&app_update_status().state==UPDATE_ERROR)rememberReport(ERROR_REPORT_UPDATE,app_update_error_code(),ERROR_REPORT_CHECKING_UPDATE);
     if(twlPage&&R_FAILED(twlError))rememberReport(ERROR_REPORT_DS,twlError,ERROR_REPORT_CHECKING_DS);
     const char *target=visibleCount?games[visible[selected]].cover:"";
-    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.38",
+    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.39",
         .reportAvailable=reportAvailable(),.reportFallback=reportFallback(),.reportDetails=reportDetails,.reportHistorical=reportHistorical,.reportDiagnostics=&reportDiagnostics,.reportOpen=reportOpen,.reportConfirmed=reportConfirmed,.reportConfigured=report_transport_configured(),.reportState=report_transport_state(),.reportDescription=reportDescription,.reportArea=report.area,.reportCode=report.code,.reportModel=report.model,.reportRegion=report.region,.reportAutoboot=report.autoboot,.reportContext=report.context,
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
+        .dsFolderMessage=dsFolderMessage,.dsFolders=dsFolders,.dsPicking=dsPicking,.dsRoots=&dsRoots,.dsBrowser=&dsBrowser,.dsScan=&dsScan,.dsRootSelected=dsRootSelected,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
         .loading=loading,.progress=progress,.stage=stage,.homeLoading=homeLoading,.coverMenu=coverMenu,.coverTarget=target,
         .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.updateNotes=updateNotes,.updateNotesPage=updateNotesPage,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.component=components_status(),
@@ -272,6 +278,14 @@ static bool systemPowerAction(bool reboot){
     aptSetSleepAllowed(sleep);return false;
 }
 static bool restartAfterBootChange(void){return systemPowerAction(true);}
+static void scan(void);
+static void openDsFolders(void){settings=false;dsFolderMessage="";dsFolders=true;dsPicking=false;dsRootSelected=0;}
+static void dsRescan(void){scan();rebuild();flow_reset(&flow,selected);}
+static bool saveDsRoots(const DsRoots *next){
+    mkdir("sdmc:/3ds",0777);mkdir("sdmc:/3ds/3ds-library",0777);
+    if(!ds_roots_save(next,DS_CONFIG)){dsFolderMessage=l10n_english()?"Could not save folders. Check SD card.":"Ordner nicht gespeichert. SD-Karte prüfen.";return false;}
+    dsRoots=*next;systemView=VIEW_DS;dsRescan();return true;
+}
 static void saveView(void);
 static bool openHomeMenu(void){
     recordActivity(ERROR_REPORT_OPENING_HOME);
@@ -347,6 +361,18 @@ static Result metadata(u64 id,FS_MediaType media){
     return R_SUCCEEDED(r)&&catalog_smdh_valid(smdh,bytes)?0:(Result)-1;
 }
 static int compare(const void *a,const void *b){return strcasecmp(((const Game*)a)->name,((const Game*)b)->name);}
+static bool dsFound(const char *path,void *unused){
+    (void)unused;for(unsigned j=0;j<gameCount;j++)if(!strcasecmp(games[j].path,path))return true;
+    if(gameCount>=MAX_GAMES)return false;
+    Game *g=&games[gameCount++];memset(g,0,sizeof(*g));g->system=SYSTEM_DS;
+    snprintf(g->path,sizeof(g->path),"%s",path);const char *name=strrchr(path,'/');name=name?name+1:path;
+    snprintf(g->key,sizeof(g->key),"%.255s",name);snprintf(g->name,sizeof(g->name),"%.159s",name);char *ext=strrchr(g->name,'.');if(ext)*ext=0;
+    library_cover_path(g->cover,sizeof(g->cover),SYSTEM_DS,g->key);return true;
+}
+static bool dsScanContinue(void *unused){
+    (void)unused;if(!flowMainLoop())return false;hidScanInput();if(hidKeysDown()&KEY_B)return false;
+    static unsigned tick;if((++tick%24)==0){status=l10n_english()?"DS folders · B Cancel":"DS-Ordner · B Abbrechen";draw(true,.6f,l10n_english()?"Finding DS games · B Cancel":"DS-Spiele suchen · B Abbrechen");}return true;
+}
 static void scan(void){
     ui_clear_covers();
     for(unsigned i=0;i<gameCount;++i){free(games[i].icon);
@@ -426,7 +452,7 @@ static void scan(void){
         struct dirent *entry;
         while((entry=readdir(dir)) && gameCount<MAX_GAMES){
             int sys=library_file_system(entry->d_name);
-            if(sys<0)continue;
+            if(sys<0||(sys==SYSTEM_DS&&f==0))continue;
             char path[512];
             int n=snprintf(path,sizeof(path),"%s/%s",folders[f],entry->d_name);
             struct stat st;
@@ -448,6 +474,7 @@ static void scan(void){
         status=tr("ROM-Ordner lesen...");
         draw(true,.5f+.45f*(f+1)/8,tr("ROM-Bibliothek wird gelesen"));
     }
+    ds_library_scan(&dsRoots,&dsScan,dsFound,dsScanContinue,NULL);
     qsort(games,gameCount,sizeof(Game),compare);
     rebuild();
     flow_reset(&flow,selected);
@@ -925,6 +952,7 @@ int main(int argc,char **argv){
     for(unsigned i=0;i<VIEW_COUNT;++i){unsigned value=0;if(fscanf(view,"%u",&value)!=1)value=0;remembered[legacyView?library_legacy_view(i):i]=value;}
     fclose(view);}
     if(legacyView)restoreSys=library_legacy_view(restoreSys);
+    ds_roots_load(&dsRoots,DS_CONFIG);
     scan();
     systemView=restoreSys<VIEW_COUNT?restoreSys:0;
     selected=restoreSelection;
@@ -957,7 +985,7 @@ int main(int argc,char **argv){
         keys&=~KEY_A;
         flow_reset(&flow,selected);}
         if(keys&KEY_START&&!reportOpen&&!searchOpen&&!updatePage&&!componentPage&&!copyPrompt&&!powerPrompt&&!twlPage){exitToHomebrew=true;break;}
-        if(!reportOpen&&!updatePage&&!componentPage&&!twlPage&&!settings&&!infoOpen&&!installPrompt&&!powerPrompt&&!copyPrompt&&osGetTime()-lastCardPoll>=2000){
+        if(!reportOpen&&!updatePage&&!componentPage&&!twlPage&&!settings&&!dsFolders&&!infoOpen&&!installPrompt&&!powerPrompt&&!copyPrompt&&osGetTime()-lastCardPoll>=2000){
             lastCardPoll=osGetTime();Cartridge card;Result r=cartridge_read(&card,language);
             if(R_SUCCEEDED(r)&&(card.present!=lastCartridge.present||(card.present&&(card.id!=lastCartridge.id||card.ds!=lastCartridge.ds||strcmp(card.code,lastCartridge.code))))){
                 app_log(card.present?"Cartridge inserted/changed":"Cartridge removed");unsigned old=selected;scan();selected=old;rebuild();flow_reset(&flow,selected);
@@ -1030,7 +1058,7 @@ int main(int argc,char **argv){
                 ((keys&(KEY_RIGHT|KEY_DOWN|KEY_R))?UPDATE_DETAILS_KEY_NEXT:0)|((keys&KEY_TOUCH)?UPDATE_DETAILS_TOUCH:0);
             UpdateDetailsAction action=update_details_action(busy,updateNotes,input,pos.px,pos.py);
             if(updateNotes){
-                const UpdateNotes *notes=update_details_notes(&update,"0.12.38");
+                const UpdateNotes *notes=update_details_notes(&update,"0.12.39");
                 unsigned count=ui_update_notes_pages(notes,l10n_english());
                 if(action==UPDATE_DETAILS_BACK||action==UPDATE_DETAILS_TOGGLE)updateNotes=false;
                 else if(action==UPDATE_DETAILS_PREVIOUS&&updateNotesPage)updateNotesPage--;
@@ -1179,6 +1207,36 @@ int main(int argc,char **argv){
             bool reportHit=(keys&KEY_TOUCH)&&report_controls_support_hit(pos.px,pos.py);
             if(reportAvailable()&&((keys&KEY_X)||reportHit))openReport();
             else if((keys&(KEY_A|KEY_B))||((keys&KEY_TOUCH)&&pos.py>=205&&pos.py<235))supportOpen=false;
+        }else if(dsFolders){
+            if(dsPicking){
+                if(keys&KEY_B){if(!ds_browser_parent(&dsBrowser))dsPicking=false;}
+                if(keys&KEY_UP&&dsBrowser.count)dsBrowser.selected=(dsBrowser.selected+dsBrowser.count-1)%dsBrowser.count;
+                if(keys&KEY_DOWN&&dsBrowser.count)dsBrowser.selected=(dsBrowser.selected+1)%dsBrowser.count;
+                if((keys&KEY_TOUCH)&&pos.py>=60&&pos.py<79&&pos.px>=252){
+                    if(pos.px<284)dsBrowser.selected=dsBrowser.selected>=3?dsBrowser.selected-3:0;
+                    else if((dsBrowser.selected/3+1)*3<dsBrowser.count)dsBrowser.selected=(dsBrowser.selected/3+1)*3;
+                }
+                if((keys&KEY_TOUCH)&&pos.py>=80&&pos.py<185&&pos.px>=12&&pos.px<308){unsigned hit=dsBrowser.selected/3*3+(pos.py-80)/35;if(hit<dsBrowser.count)ds_browser_enter(&dsBrowser,hit);}
+                else if(keys&KEY_A)ds_browser_enter(&dsBrowser,dsBrowser.selected);
+                if((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px<48){if(!ds_browser_parent(&dsBrowser))dsPicking=false;}
+                if((keys&KEY_X)||((keys&KEY_TOUCH)&&pos.py>=196&&pos.py<232&&pos.px>=12&&pos.px<308)){
+                    DsRoots next=dsRoots;if(!ds_roots_add(&next,dsBrowser.path))dsFolderMessage=l10n_english()?"Folder limit reached. Remove one first.":"Ordnerlimit erreicht. Zuerst einen entfernen.";
+                    else if(saveDsRoots(&next)){dsPicking=false;dsFolders=false;status=l10n_english()?"DS folder saved and searched":"DS-Ordner gespeichert und durchsucht";}
+                }
+            }else{
+                if(keys&KEY_B||((keys&KEY_TOUCH)&&pos.py<44&&pos.px<48))dsFolders=false;
+                if(keys&KEY_UP&&dsRoots.count)dsRootSelected=(dsRootSelected+dsRoots.count-1)%dsRoots.count;
+                if(keys&KEY_DOWN&&dsRoots.count)dsRootSelected=(dsRootSelected+1)%dsRoots.count;
+                if((keys&KEY_TOUCH)&&pos.py>=98&&pos.py<162&&pos.px>=12&&pos.px<308){unsigned hit=dsRootSelected/2*2+(pos.py-98)/32;if(hit<dsRoots.count)dsRootSelected=hit;}
+                if((keys&KEY_TOUCH)&&pos.py>=78&&pos.py<97&&pos.px>=232){
+                    if(pos.px<256)dsRootSelected=dsRootSelected>=2?dsRootSelected-2:0;
+                    else if(pos.px<280&&(dsRootSelected/2+1)*2<dsRoots.count)dsRootSelected=(dsRootSelected/2+1)*2;
+                    else if(pos.px>=280)keys|=KEY_X;
+                }
+                if((keys&KEY_X)&&dsRoots.count){DsRoots next=dsRoots;for(unsigned i=dsRootSelected+1;i<next.count;i++)strcpy(next.paths[i-1],next.paths[i]);next.count--;if(saveDsRoots(&next))dsRootSelected=0;}
+                if((keys&KEY_A)||((keys&KEY_TOUCH)&&pos.py>=168&&pos.py<201&&pos.px>=12&&pos.px<308)){strcpy(dsBrowser.path,"sdmc:/");ds_browser_read(&dsBrowser);dsPicking=true;}
+                if((keys&KEY_Y)||((keys&KEY_TOUCH)&&pos.py>=207&&pos.py<235&&pos.px>=12&&pos.px<308)){dsFolders=false;openTwl();}
+            }
         }else if(settings){
             bool closeMenu=(keys&KEY_TOUCH)&&pos.px>=276&&pos.px<312&&pos.py>=8&&pos.py<44;
             bool back=(keys&KEY_B)||((keys&KEY_TOUCH)&&pos.px>=8&&pos.px<44&&pos.py>=8&&pos.py<44&&settingsPage!=MENU_ROOT);
@@ -1215,7 +1273,7 @@ int main(int argc,char **argv){
                         if(saved){status=tr("Sprache gespeichert");language=l10n_english()?1:2;}
                         else {snprintf(message,sizeof(message),"%s",tr("Sprache konnte nicht gespeichert werden"));status=message;installReportCode=0;installUnexpected=true;rememberReport(ERROR_REPORT_STORAGE,0,ERROR_REPORT_BROWSING);installFailed=true;errorTitle=tr("Einstellungen");}
                         break;}
-                    case MENU_DS:openTwl();break;
+                    case MENU_DS:openDsFolders();break;
                     case MENU_AUTOBOOT:autobootState=autoboot_status();autobootPrompt=true;break;
                     case MENU_SCAN:{recordActivity(ERROR_REPORT_BROWSING);
                         draw(true,0,tr("Spiele werden eingelesen"));unsigned old=selected;
@@ -1278,6 +1336,11 @@ int main(int argc,char **argv){
             if(keys&KEY_B)confirm=false;
             else if((keys&KEY_A)&&visibleCount)leave=startGame();
         }else{
+            bool dsEmpty=systemView==VIEW_DS&&!visibleCount;
+            int dsHit=(keys&KEY_TOUCH)&&dsEmpty?ds_empty_hit(pos.px,pos.py):0;
+            if(dsEmpty&&((keys&KEY_A)||dsHit==1)){openDsFolders();strcpy(dsBrowser.path,"sdmc:/");ds_browser_read(&dsBrowser);dsPicking=true;draw(false,0,"");continue;}
+            if(dsEmpty&&((keys&KEY_X)||dsHit==2)){dsRescan();draw(false,0,"");continue;}
+            if(dsEmpty&&((keys&KEY_Y)||dsHit==3)){openTwl();draw(false,0,"");continue;}
             int footerAction=(keys&KEY_TOUCH)?home_footer_action(pos.px,pos.py,false,visibleCount!=0):HOME_NONE;
             int headerAction=(keys&KEY_TOUCH)?home_header_action(pos.px,pos.py):HOME_NONE;
             if(headerAction==HOME_SEARCH){

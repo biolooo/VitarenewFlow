@@ -1,5 +1,10 @@
 # Entscheidungen und Quellen
 
+## DS-Dateisuche und leere Ansicht — 26.10.2026
+
+Bestehende Dateistrukturen unterstützen statt Spiele umzusortieren. Standardwurzeln `/roms/nds`, `/nds`, `/games/nds` einschließlich Unterordnern; explizite zusätzliche Ordner erhalten Vorrang. Sichtbare Grenzen und Abbruch statt unbegrenzt blockierender Suche. Kein Schluss von leerer Liste auf defektes TWL-System. Eine globale Textsuche bleibt ein eigener Zustand. Initial keine neue Diagnoseübertragung oder Schemaänderung; Berichtsevidenz bleibt unklar, die Verbesserung folgt dem ausdrücklich beauftragten UX-/Suchauftrag. Keine automatische Veröffentlichung.
+
+
 ## X-Updateinfos — lokaler Entwicklungsstand 0.12.38
 
 Nutzer meldete unzuverlässige X-Infos. Ursache: fest eingebaute Hinweise der installierten Version und deren Versionsliste bestimmten Darstellung/Zugänglichkeit. Ersetzt durch eigene X-/Touch-Infoseite mit Version, DE/EN-Hinweisen, Blättern und B/X-Rückkehr; keine Installationsaktion aus dieser Ansicht. Lange gültige Hinweise erhalten weitere Seiten anhand tatsächlicher Schriftmetriken. Kein Text einer anderen Version wird als Zielupdatehinweis ausgegeben; fehlende Hinweise werden klar angezeigt und verhindern OTA nicht.

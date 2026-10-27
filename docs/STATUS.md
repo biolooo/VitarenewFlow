@@ -1,5 +1,13 @@
 # Projektstatus und Abnahme
 
+Releaseauftrag 27.10.2026: Nutzer benötigt die fertige DS-Version direkt auf dem 3DS zum Test. 0.12.39 wird als OTA-/UniStore-Testupdate bereitgestellt; frische Prüfung, exakte Quellpaketreproduktion und öffentliche Byteprüfung folgen. Keine Konsolenabnahme. Die geplante sechsstündliche Report-Auswertung wurde auf ausdrücklichen Nutzerwunsch gelöscht; der bestehende Empfangsdienst bleibt unverändert.
+
+
+## DS-Spiele finden — lokal 0.12.39, 26.10.2026
+
+Nutzerauftrag: hilfreiche, passende leere DS-Ansicht und robuste tatsächliche Suche. Basis `01efb07`, Remote-main `c53d944` vor Beginn frisch abgeglichen, keine fremden Änderungen. Rekursive typische Ordner, bis acht selbst gewählte gespeicherte Spieleordner und Ordnerverwaltung; direkte Touch-/Tastenaktionen im leeren DS-Bereich. DS-Diagnose weiterhin separat erreichbar. Fehlende Loader verstecken Spiele nicht. Keine Spiele verschieben, keine Saves ändern. Details und Hardwareplan: [DS-DISCOVERY](DS-DISCOVERY.md). Frischer nativer Build und vollständige lokale Suite bestanden: `.test-build/verification-20261026-122036`. DE/EN-Ansichten mit tatsächlichen C-Funktionen/Schriftmetriken visuell geprüft; Scanner und FAT-Sicherung mit Fehlerfällen getestet. Keine Veröffentlichung/Push/Konsolenabnahme. Desktop 0.4.1 unverändert.
+
+
 Universal-DB-Vorbereitung22.10.2026: [technischer Prüfbericht](UNIVERSAL-DB-PREPARATION.md) mit verifizierten App-/Download-/Installationsfakten und offenen Punkten angelegt. Wegen der aktuellen upstream KI-Regeln kein generiertes Datenbank-JSON und kein PR-/Issue-Text; menschliche Erstellung nötig. Kein Antrag, Release/Tag oder Push erfolgt. GitHub-Releases fehlen bisher (Empfehlung, keine allgemeine Pflicht). Mehrdateiinstallation muss erhalten bleiben; CIA allein genügt nicht. README lokal aktualisiert und KI-Nutzung transparent gemacht.
 
 Veröffentlichung .38 bestätigt22.10.2026: Releasecommit a04fbd0, Pages-Lauf39758606547 erfolgreich. Alle zehn Paketdateien inklusive notes.txt und vier Kanäle öffentlich bytegleich geprüft. Nachweis: [0.12.38](release-evidence/0.12.38.json). Shopify-Orchestrator mit öffentlich verifizierten Änderungen zur Websitepflege informiert; konkrete neue Shopify-Vorschauadresse noch in Arbeit. Keine .38-Konsolenabnahme. Nachfolgende Vorbereitungsangaben sind historischer Verlauf.

@@ -11,7 +11,7 @@ static const MenuItem personal[]={
  {"Theme neu laden","Hintergrund und Musik aktualisieren",MENU_THEME}};
 static const MenuItem games[]={
  {"Spiele neu einlesen","Neue Spiele auf der SD-Karte suchen",MENU_SCAN},
- {"DS-Diagnose","DS-System und Loader prüfen",MENU_DS},
+ {"DS-Spieleordner","Ordner auswählen und DS prüfen",MENU_DS},
  {"Emulatoren","Herunterladen und einrichten",MENU_COMPONENTS},
  {"Desktop-Verwaltung","Windows-App auf die SD laden",MENU_DESKTOP}};
 static const MenuItem system[]={

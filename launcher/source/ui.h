@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "game_info.h"
+#include "ds_library.h"
 #include "app_update.h"
 #include "components.h"
 #include "twl_advice.h"
@@ -21,6 +22,8 @@ typedef struct {
     bool confirm; bool loading; float progress; const char *stage;
     unsigned homeLoading; /* 0 none, 1 prepare, 2 system handoff, 3 reboot to HOME */
     bool coverMenu; const char *coverTarget; const char **imports; unsigned importCount; unsigned importSelected;
+    const char *dsFolderMessage;
+    bool dsFolders,dsPicking;unsigned dsRootSelected;const DsRoots *dsRoots;const DsBrowser *dsBrowser;const DsScan *dsScan;
     bool setupDs;
     bool updatePage,updateNotes;unsigned updateNotesPage;UpdateStatus update;
     bool componentPage,componentRechecked;unsigned componentSelected;ComponentStatus component;

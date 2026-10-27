@@ -1,0 +1,8 @@
+VFNOTES1
+version=0.12.39
+de=DS-Spiele werden auch in Unterordnern und weiteren Spieleordnern gefunden.
+en=DS games are also found in subfolders and additional game folders.
+de=Eigene DS-Spieleordner direkt in Flow auswählen und speichern.
+en=Select and save your own DS game folders directly in Flow.
+de=Eine hilfreiche leere DS-Ansicht führt zur Ordnerauswahl und erneuten Suche.
+en=A helpful empty DS view guides you to folder selection and a new scan.

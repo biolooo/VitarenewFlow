@@ -1,4 +1,4 @@
-"""Prepare immutable local 0.12.38 layout test assets and four channels; never deploy.
+"""Prepare immutable local 0.12.39 layout test assets and four channels; never deploy.
 
 Run only after configuring the approved public HTTPS endpoint and completing
 scripts/verify-local.sh: python scripts/prepare-report-release.py --verification PATH
@@ -17,8 +17,8 @@ from datetime import datetime, timezone
 from urllib.parse import urlsplit
 import zipfile
 
-VERSION = "0.12.38"
-PREVIOUS = "0.12.37"
+VERSION = "0.12.39"
+PREVIOUS = "0.12.38"
 PUBLIC_BASE = "https://biolooo.github.io/VitarenewFlow/updates"
 COMPANIONS = ("VitarenewFlow-Boot.3dsx", "VitarenewFlow-Shortcut.cia", "VitarenewFlow-Copy.gm9")
 DOWNLOADS = ("VitarenewFlow.3dsx", "VitarenewFlow.smdh", *COMPANIONS)
@@ -43,13 +43,13 @@ def release_document(notes):
             + "um künftig die mitgelieferten Hinweise neuer Versionen anzeigen zu können.\n\n"
             + "Frischer nativer Build und Hostprüfungen sowie exakte Quellpaketreproduktion erforderlich.\n"
             + "Keine Konsolenabnahme vorweggenommen. Modell, Region, Startweg und Autoboot festhalten.\n"
-            + "X/Touch, DE/EN, Blättern, B/X-Rückkehr sowie fehlende Hinweise auf Konsole prüfen.\n"
+            + "DS-Ordnerauswahl, Unterordner, Speichern nach Neustart, DE/EN und Touch auf Konsole prüfen.\n"
             + "3DSX/SMDH, unveränderte Boot-/Shortcut-/GM9-Begleiter, Quellen und Manifest enthalten.\n"
             + "Keine Spiele, Saves, Schlüssel, SDKs oder privaten Berichte enthalten. Desktop .4.1 unverändert.\n"
             + "Die vorherige 3DSX bleibt beim Update als manueller Rückweg erhalten.\n")
 
 
-BUILD_NOTES = '''# Build this exact 0.12.38 source package
+BUILD_NOTES = '''# Build this exact 0.12.39 source package
 
 Use the pinned devkitARM linux/amd64 chroot in docs/PC2-SETUP.md with host GCC,
 UBSan, Python and zlib1g-dev. Extract into a NEW directory inside that chroot,
@@ -66,9 +66,9 @@ cp scripts/verify-stage.sh verify-stage.sh
 bash verify-stage.sh
 ```
 
-Keep tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
+Keep tests/ds-library, tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
 in place: they are current root-relative tests, not additional fixtures to flatten.
-Keep release-notes/0.12.38.json and scripts/generate-release-notes.py in place too.
+Keep release-notes/0.12.39.json and scripts/generate-release-notes.py in place too.
 The stage runner checks the generated installed header against this JSON and
 validates its generated notes.txt with the actual C parser before the build.
 Do not regenerate a different header or replace the JSON to make a mismatch pass.
@@ -184,6 +184,7 @@ def source_archive(root, updates):
     required = {"launcher/Makefile", "launcher/source/report_transport.h", "launcher/source/error_report.c", "launcher/source/report_transport.c",
                 "launcher/source/release_notes_generated.h", "scripts/generate-release-notes.py",
                 "release-notes/" + VERSION + ".json", "tests/update-notes/test.sh",
+                "launcher/source/ds_library.c", "launcher/source/ds_library.h", "tests/ds-library/test.sh", "tests/ds-library/test.c",
                 "scripts/verify-stage.sh", "tests/error-report/test.sh", "tests/report-transport/test.sh",
                 "receiver/error-reports/server.py", "receiver/error-reports/test_server.py",
                 "receiver/error-reports/Dockerfile", "receiver/error-reports/compose.yaml", "receiver/error-reports/start-local.sh"}
@@ -247,7 +248,7 @@ def prepare(root, verification):
     assets["SHA256.json"] = (json.dumps(manifest, indent=2) + "\n").encode("ascii")
     store["storeInfo"]["revision"] = revision + 1
     entry["info"]["version"] = VERSION
-    entry["info"]["description"] = "Version-bound update highlights with reliable X/touch controls and DE/EN notes."
+    entry["info"]["description"] = "Find DS games in subfolders and your own folders, with helpful empty-library guidance."
     entry["info"]["last_updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     install = entry["Installieren / Install"]
     downloads = [action for action in install["script"] if action.get("type") == "downloadFile"]
@@ -288,7 +289,7 @@ def prepare(root, verification):
             output.write(data)
         os.replace(staged, updates / name)
     print("PREPARED locally:", release)
-    print("Ten assets including version-bound notes and four .38 channels; no push, publication or hardware acceptance performed.")
+    print("Ten assets including version-bound notes and four .39 channels; no push, publication or hardware acceptance performed.")
 
 
 def main():

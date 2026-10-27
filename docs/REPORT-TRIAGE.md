@@ -1,6 +1,6 @@
 # Regelmäßige Fehlerauswertung
 
-Nutzerauftrag 21.10.2026: Reports regelmäßig sammeln/kategorisieren und daraus belegte Fixes oder bessere Diagnose ableiten. Aktive Chat-Automation `flow-fehlerberichte-auswerten`, alle sechs Stunden. Sie läuft im lokalen Codex-Kontext; dieser PC mit Codex und SSH-Zugang muss verfügbar sein. Der Server empfängt Berichte davon unabhängig fortlaufend.
+Nutzerauftrag 21.10.2026: Reports regelmäßig sammeln/kategorisieren und daraus belegte Fixes oder bessere Diagnose ableiten. Chat-Automation `flow-fehlerberichte-auswerten` am 27.10.2026 auf ausdrücklichen Nutzerwunsch gelöscht; keine weiteren geplanten Auswertungen. Historisch alle sechs Stunden. Sie läuft im lokalen Codex-Kontext; dieser PC mit Codex und SSH-Zugang muss verfügbar sein. Der Server empfängt Berichte davon unabhängig fortlaufend.
 
 ## Lesender Datenzugang
 

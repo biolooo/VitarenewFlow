@@ -347,6 +347,41 @@ static bool publishCover(unsigned slot){
 
 }
 
+/* Dedicated empty-library guidance: no disabled Open button or 0/0 counter. */
+static void ds_empty_panel(const UiState *s){
+ bool en=l10n_english();bool partial=s->dsScan&&(s->dsScan->limited||s->dsScan->cancelled);
+ rounded(16,51,288,53,11,panel);rounded(29,62,29,29,7,raised);
+ text(34,68,12,accent,"DS");title(70,60,14,225,1,en?"Let's find your DS games":"Finden wir deine DS-Spiele",false);
+ text(70,82,10,muted,en?"Your files stay where they are.":"Deine Dateien bleiben an ihrem Platz.");
+ rounded(16,115,288,34,9,accent);text(29,124,13,RGB(12,35,36),en?"A  Choose a games folder":"A  Spieleordner auswählen");
+ rounded(16,155,288,32,9,panel);text(29,164,12,ink,en?"X  Search again":"X  Erneut nach Spielen suchen");
+ text(29,199,11,muted,en?"Y  Check DS setup":"Y  DS-Einrichtung prüfen");
+ centered(160,225,9,muted,partial?(en?"Search incomplete. Choose a specific folder.":"Suche unvollständig. Wähle einen Spieleordner."):(en?"Unpacked .nds files · subfolders included":"Entpackte .nds-Dateien · inklusive Unterordner"));
+}
+static void ds_folders_panel(const UiState *s){
+ bool en=l10n_english();rect(0,0,320,240,RGB(10,20,32)); /* own full page */
+ text(14,15,12,accent,en?"B Back":"B Zurück");text(88,15,16,ink,en?"DS game folders":"DS-Spieleordner");
+ if(s->dsPicking){const DsBrowser *b=s->dsBrowser;
+  title(16,48,11,288,1,b->path,false);text(16,65,9,muted,en?"A Open folder · B Parent folder":"A Öffnen · B Zurück");
+  rounded(252,60,28,19,5,raised);centered(266,63,10,accent,"<");rounded(284,60,24,19,5,raised);centered(296,63,10,accent,">");
+  unsigned start=b->selected/3*3;for(unsigned row=0;row<3&&start+row<b->count;row++){unsigned i=start+row;rounded(12,80+35*row,296,30,7,i==b->selected?raised:panel);title(24,87+35*row,12,270,1,b->names[i],false);}
+  if(!b->count)centered(160,116,12,muted,en?"No subfolders here":"Hier sind keine Unterordner");
+  if(b->unreadable||b->limited)text(16,182,9,muted,en?"List limited. Choose a parent folder.":"Liste gekürzt. Überordner wählen.");
+  if(s->dsFolderMessage&&*s->dsFolderMessage)title(16,181,9,288,1,s->dsFolderMessage,false);
+  rounded(12,196,296,36,9,accent);centered(160,207,12,RGB(12,35,36),en?"X  Use this folder":"X  Diesen Ordner verwenden");
+ }else{
+  if(s->dsFolderMessage&&*s->dsFolderMessage)title(16,49,11,288,2,s->dsFolderMessage,false);else{
+  text(16,49,11,ink,en?"Always searched, including subfolders:":"Immer durchsucht, inklusive Unterordner:");
+  text(16,67,10,muted,"/roms/nds   /nds   /games/nds");}
+  text(16,85,9,muted,en?"Extra folders · X Remove":"Eigene Ordner · X Entfernen");
+  rounded(232,78,22,19,4,raised);centered(243,82,10,accent,"<");rounded(256,78,22,19,4,raised);centered(267,82,10,accent,">");rounded(280,78,28,19,4,raised);centered(294,82,10,accent,"X");
+  const DsRoots *r=s->dsRoots;unsigned start=s->dsRootSelected/2*2;
+  for(unsigned row=0;row<2&&start+row<r->count;row++){unsigned i=start+row;rounded(12,98+32*row,296,28,7,i==s->dsRootSelected?raised:panel);title(22,105+32*row,10,276,1,r->paths[i],false);}
+  if(!r->count)centered(160,121,11,muted,en?"No additional folders yet":"Noch keine zusätzlichen Ordner");
+  rounded(12,168,296,33,8,accent);centered(160,178,12,RGB(12,35,36),en?"A  Add a games folder":"A  Spieleordner hinzufügen");
+  centered(160,215,11,muted,en?"Y  Check DS setup":"Y  DS-Einrichtung prüfen");
+ }
+}
 static void prepareCovers(const UiState *s){
 
     cover_loader_begin();unsigned selectedSlot=COVER_SLOTS;
@@ -930,10 +965,18 @@ static void drawTop(const UiState *s,float eye){
 
  if(current){if(s->systemIndex==SYSTEM_3DS){if(!bannerVisible||!banner_draw(eye<0))art(current,200+eye,135,132,132,false);}else art(current,200,138,348,176,false);}
 
- else {centered(200,105,18,ink,tr("Deine Sammlung"));
-
+ else if(s->systemIndex==SYSTEM_DS){
+  bool en=l10n_english(),partial=s->dsScan&&(s->dsScan->limited||s->dsScan->cancelled);
+  rounded(170,40,60,48,12,panel);centered(200,54,18,accent,"DS");
+  centered(200,104,18,ink,en?"Your DS games":"Deine DS-Spiele");
+  centered(200,139,12,muted,partial?(en?"Search is not complete yet":"Die Suche ist noch nicht vollständig"):(en?"No DS games found yet":"Noch keine DS-Spiele gefunden"));
+  centered(200,166,12,ink,en?"Choose your games folder below.":"Wähle unten deinen Spieleordner.");
+ }else {centered(200,105,18,ink,tr("Deine Sammlung"));
  centered(200,139,12,ink,tr("Hier sind noch keine Spiele."));}
 
+ if(current&&s->systemIndex==SYSTEM_DS&&s->dsScan&&(s->dsScan->limited||s->dsScan->cancelled)){
+  rounded(36,210,328,23,7,panel);centered(200,215,11,muted,l10n_english()?"Search incomplete · check DS game folders":"Suche unvollständig · DS-Spieleordner prüfen");
+ }
  chromeTop();
 
  if(s->loading){rect(0,0,400,240,RGB(6,13,23));
@@ -1104,6 +1147,8 @@ void ui_draw(const UiState *s){
 
  header(s);
 
+ if(!s->count&&s->systemIndex==SYSTEM_DS&&!s->loading){ds_empty_panel(s);}
+ else{
  rounded(8,163,304,37,9,panel);
 
  if(s->count)title(160,ui_font_width(14,s->cards[s->selected].name)<=286?173:164,14,286,2,s->cards[s->selected].name,true);
@@ -1127,7 +1172,7 @@ void ui_draw(const UiState *s){
  if(strcmp(s->status,tr("Bereit"))&&frame-statusFrame<180&&!s->controls&&!s->info){rounded(8,163,304,37,9,RGB(20,43,50));
 
  title(160,165,12,286,2,tr(s->status),true);}
-
+ }
  }
  if(s->searchOpen)search_panel(s);
 
@@ -1151,13 +1196,14 @@ void ui_draw(const UiState *s){
 
  }
 
+ if(s->dsFolders&&!s->loading)ds_folders_panel(s);
  if(s->setupDs){popup(tr("DS-Loader fehlt"));
 
  text(20,99,12,ink,tr("Einmalig YANBF bootstrap installieren."));
 
  text(20,163,14,accent,tr("A Einrichten     B Zurück"));}
 
- if(s->settings){
+ if(s->settings&&!s->dsFolders){
 
   rect(0,0,320,240,RGB(9,19,29));
 

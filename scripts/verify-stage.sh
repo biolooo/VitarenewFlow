@@ -12,6 +12,7 @@ bash tests/backlog/run-host.sh
 bash tests/error-report/test.sh
 bash tests/update-notes/test.sh .test-build/generated-notes.txt "$VERSION"
 bash tests/report-transport/test.sh
+bash tests/ds-library/test.sh
 make -C launcher -j2
 bash tests/component-runtime/test.sh
 bash tests/twl/test.sh

@@ -11,7 +11,7 @@
 #include <string.h>
 #include <malloc.h>
 #include <sys/stat.h>
-#define RUNNING_VERSION "0.12.38"
+#define RUNNING_VERSION "0.12.39"
 static Thread worker;
 static int diagnostic_code;
 int app_update_error_code(void){return __atomic_load_n(&diagnostic_code,__ATOMIC_ACQUIRE);}
