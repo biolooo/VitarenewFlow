@@ -1,0 +1,77 @@
+{
+  "version": "0.12.39",
+  "release_commit": "84ac43c62da6bbc6bcf17b618f501ee2adfbb383",
+  "workflow": {
+    "id": 40486000717,
+    "conclusion": "success",
+    "url": "https://github.com/biolooo/VitarenewFlow/actions/runs/40486000717"
+  },
+  "local_verification": ".test-build/verification-20261027-110539",
+  "exact_source_zip_reproduction": "PASS 3DSX/SMDH/notes byte-for-byte",
+  "public_verification": {
+    "version": "0.12.39",
+    "checked_at": "2026-10-27T10:08:01.169022+00:00",
+    "files": {
+      "0.12.39/FEATURES-DE.md": {
+        "size": 1346,
+        "sha256": "2896a4dee6ff56f554fca4efbdde47a934ef7cca5c1f0545a8297aa88a470fb3"
+      },
+      "0.12.39/README.md": {
+        "size": 1346,
+        "sha256": "2896a4dee6ff56f554fca4efbdde47a934ef7cca5c1f0545a8297aa88a470fb3"
+      },
+      "0.12.39/VitarenewFlow-Boot.3dsx": {
+        "size": 116260,
+        "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+      },
+      "0.12.39/VitarenewFlow-Copy.gm9": {
+        "size": 3092,
+        "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+      },
+      "0.12.39/VitarenewFlow-Shortcut.cia": {
+        "size": 164800,
+        "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+      },
+      "0.12.39/VitarenewFlow-source.zip": {
+        "size": 1995055,
+        "sha256": "1d6196f30647d37af6549b68b05d03b53cf79eab3a1c28612d712c70df47d2b6"
+      },
+      "0.12.39/VitarenewFlow.3dsx": {
+        "size": 1637144,
+        "sha256": "a53b6af9a96059e891bd567e9ebdb6af467d635b2ae785d0b1cdb5873039bb1d"
+      },
+      "0.12.39/VitarenewFlow.smdh": {
+        "size": 14016,
+        "sha256": "e594d355d4a5abc75dcc0a7814f9e4a2ecfef8fcadf21ba25a6c4ef1905f3cbf"
+      },
+      "0.12.39/notes.txt": {
+        "size": 457,
+        "sha256": "3b96fa40663ff32f5c962032cc81ac1b41b52eec3871268b94a78e16a733287e"
+      },
+      "0.12.39/SHA256.json": {
+        "size": 832,
+        "sha256": "d86a8ccac5669bab0c3a164d1c3fd54cd552a01c9eb5bbc910bdd4a6790bf76f"
+      },
+      "latest.txt": {
+        "size": 190,
+        "sha256": "ae76991f4dd5f9f1c15b1c5d4e5186fba77ab6256e65e30fce37d17ca71c1212"
+      },
+      "VitarenewFlow.unistore": {
+        "size": 4318,
+        "sha256": "c5bd16550434442a54059c17826f7a39e50bf95c8c1d4558d76b18ad06b08470"
+      },
+      "VitarenewFlow-info.json": {
+        "size": 516,
+        "sha256": "ed545ee6ac61aac60ed97510ae618ba18f803de8ff652d0c86812431671d6451"
+      },
+      "install.html": {
+        "size": 1779,
+        "sha256": "695b3aefec96dbb588547a47310090638400318c1d01bf903d33229f0871a394"
+      }
+    }
+  },
+  "independent_review": "PASS",
+  "hardware_acceptance": "pending",
+  "report_automation": "deleted on explicit user request 2026-10-27",
+  "shopify": "website adjustment requested; not claimed complete"
+}
