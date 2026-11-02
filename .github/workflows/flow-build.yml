@@ -1,0 +1,60 @@
+name: Verify Flow native build
+
+on:
+  push:
+    branches: ['codex/flow-startup-*']
+    paths:
+      - 'launcher/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'release-notes/**'
+      - 'docs/updates/**'
+      - '.github/workflows/flow-build.yml'
+  workflow_dispatch:
+    inputs:
+      source_version:
+        description: 'Optional version whose exact local source ZIP must reproduce its delivered binaries'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    container:
+      image: devkitpro/devkitarm@sha256:15b79ce75822c289538d8153da5fa7aafe5e6adc32ad8a575a197beca0f0761b
+      options: --cpus=2 --memory=2g --memory-swap=2g --pids-limit=256
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Prepare ephemeral host test tools
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends gcc g++ make python3 zlib1g-dev
+      - name: Build and test isolated sources
+        env:
+          FLOW_SOURCE_VERSION: ${{ inputs.source_version }}
+        run: |
+          python3 scripts/build-ci.py
+          if [ -z "$FLOW_SOURCE_VERSION" ]; then
+            version=$(sed -n 's/^APP_DESCRIPTION[[:space:]]*:=[[:space:]]*Game Launcher - Version //p' launcher/Makefile)
+            if [ -f "docs/updates/$version/VitarenewFlow-source.zip" ]; then
+              FLOW_SOURCE_VERSION="$version" python3 scripts/build-ci.py
+            fi
+          fi
+      - name: Retain verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flow-verification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .test-build/ci-verification/
+          if-no-files-found: error
+          retention-days: 3
