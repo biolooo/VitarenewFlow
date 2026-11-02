@@ -1,5 +1,34 @@
 # Projektstatus und Abnahme
 
+## Startzeit großer 3DS-Bibliotheken — Auftrag 02.11.2026
+
+Nutzer beauftragt kürzere Zeit vom Öffnen von Flow bis zum bedienbaren Menü und
+anschließende Bereitstellung als OTA-/UniStore-Testupdate. Root orchestriert;
+Implementierung und unabhängige Prüfung delegiert. Basis `de84faf`, frisch gegen
+origin/main und die älteren PC-2-Branches abgeglichen; Arbeitsbaum vor Auftrag sauber.
+Entwicklungs-/Buildbranch `codex/flow-startup-0.12.40`, Ziel Launcher 0.12.40,
+Desktop 0.4.1 unverändert. Persistente Titeldaten und weniger Arbeit im Startpfad
+werden implementiert; gemessene Konsolenbeschleunigung ist noch offen.
+
+Mac ohne SDK: native Prüfung erfolgt im kurzlebigen GitHub-Standardrunner mit
+gepinntem devkitARM-Container aus PC2-SETUP, ohne Produktionsserveränderung.
+Workflow `61c4b6f`; erster Baseline-Lauf `41448705217` baute main/.39 und bestand
+die Hostsuite. Historisches .39-Quell-ZIP baute ebenfalls, reproduzierte die alten
+3DSX-Bytes jedoch nicht; Ursache offen. Für .40 sind frische native Suite und
+bytegleiche Reproduktion ihres exakten Quell-ZIP vor Veröffentlichung verpflichtend.
+.40 ist noch nicht veröffentlicht oder auf Konsole abgenommen. Keine SD-/Boot-/NAND-Änderung.
+
+Implementierung reviewt: installierte IDs werden weiterhin aktuell abgefragt;
+Namen/Icons kommen bei passender Sprache, Medium und Titelversion aus einem
+validierten sequenziellen Cache. Fehlende/geänderte Einträge werden live gelesen.
+Rohbannerexport erst bei expliziter Spielinfo; Startscan schreibt keine Bannerlogs
+pro Titel und zeichnet höchstens alle 100 ms. Cache wird nach dem ersten Menüframe
+inkrementell im Leerlauf gespeichert: ersten Start einige Sekunden offen lassen.
+Hosttest tatsächlicher Scanfragmente: 300 Titel kalt 300 Metadaten-/Produktabrufe
+und 8 Ladeframes; warm 0/0/0 Metadaten/Produkt/Banner und 10 gebündelte Versionsabrufe;
+1024 Titel warm 0/0/0 und 32 Versionsabrufe. Cachefehler-,Sprachwechsel-,Abbruch-
+und FAT-Renamefälle bestanden. Dies sind Aufrufzahlen, keine Konsolenzeitmessung.
+
 Veröffentlichung 0.12.39 bestätigt 27.10.2026: Releasecommit `84ac43c`, Pages-Lauf `40486000717` erfolgreich. Zehn Paketdateien und vier Kanäle öffentlich bytegleich geprüft; exaktes Quell-ZIP reproduziert 3DSX/SMDH/notes.txt. [Nachweis](release-evidence/0.12.39.json). Shopify-Orchestrator zur DS-Ordneranleitung beauftragt, Websiteänderung noch nicht bestätigt. Konsolenabnahme offen. Geplante Report-Auswertung auf Nutzerwunsch gelöscht; Empfang unverändert. Folgende Vorbereitungsangaben dokumentieren den Verlauf.
 
 
