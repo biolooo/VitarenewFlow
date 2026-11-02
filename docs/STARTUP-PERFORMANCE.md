@@ -72,3 +72,13 @@ und Bannerabrufe sowie zehn gebündelte Versionsabrufe. Bei 1024 warmen Titeln
 32 Versionsabrufe, ebenfalls null Metadaten-/Produktcode-/Bannerabrufe.
 Das belegt weniger blockierende Arbeit, keine konkrete Beschleunigung in Sekunden.
 Konsolenabnahme und reale Startzeit bleiben bis zum Gerätetest offen.
+
+## Native Stackprüfung
+
+Der native CI-Build erfasst zusätzlich GCC-Stackberichte (`-fstack-usage`).
+Nach dem Stackfix misst CI-Lauf `41451062292` statische Frames: `main` 10584 B,
+`scan` 5912 B, `title_cache_read` 4872 B und Cachecallback 32 B. Der Reader hält
+seinen serialisierten 4784-B-Record kurzzeitig auf dem Heap und fällt bei fehlendem
+Speicher auf Livezugriffe zurück. Der Idlewriter ist eine eigene Funktion.
+Die GCC-Berichte sind statische Compilerwerte; sie ersetzen keine Messung des
+Stackhöchststands auf echter Konsole und enthalten keine externe Bibliothekskette.

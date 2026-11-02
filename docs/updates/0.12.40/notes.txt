@@ -1,0 +1,6 @@
+VFNOTES1
+version=0.12.40
+de=3DS-Titelnamen und Icons werden für schnellere Folgestarts zwischengespeichert.
+en=3DS title names and icons are cached for faster subsequent starts.
+de=Weniger Banner- und Ladebildschirmarbeit beim Öffnen großer 3DS-Bibliotheken.
+en=Less banner and loading-screen work when opening large 3DS libraries.

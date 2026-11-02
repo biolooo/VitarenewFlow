@@ -1,5 +1,5 @@
 VFUPDATE1
-version=0.12.39
-size=1637144
-sha256=a53b6af9a96059e891bd567e9ebdb6af467d635b2ae785d0b1cdb5873039bb1d
-url=https://biolooo.github.io/VitarenewFlow/updates/0.12.39/VitarenewFlow.3dsx
+version=0.12.40
+size=1640184
+sha256=9fe3f233844deb474f236816f7a55eeb0005e0f79ea15f0717a4c523dd3f6216
+url=https://biolooo.github.io/VitarenewFlow/updates/0.12.40/VitarenewFlow.3dsx
