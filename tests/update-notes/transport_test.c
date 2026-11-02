@@ -18,7 +18,10 @@ static pthread_mutex_t snapshot_mutex=PTHREAD_MUTEX_INITIALIZER;
 static atomic_int sockets,globals,notes_requests,snapshots;
 static atomic_bool read_status;
 static int notes_http=200,notes_error,notes_oversize,cancel_notes,invalid_manifest,thread_failure;
-static char target[24]="0.12.40",notes_version[24]="0.12.40";
+#ifndef TEST_RUNNING_VERSION
+#error "Pass the runtime version from app_update.c via TEST_RUNNING_VERSION"
+#endif
+static char target[24],notes_version[24];
 void LightLock_Lock(LightLock *lock){(void)lock;assert(!pthread_mutex_lock(&snapshot_mutex));}
 void LightLock_Unlock(LightLock *lock){(void)lock;assert(!pthread_mutex_unlock(&snapshot_mutex));}
 int socInit(void *p,unsigned n){assert(p&&n==0x100000);atomic_fetch_add(&sockets,1);return 0;}
@@ -87,20 +90,23 @@ static void *observe(void *unused){
  return NULL;
 }
 int main(void){
+ unsigned major,minor,patch;char trailing;
+ assert(sscanf(TEST_RUNNING_VERSION,"%u.%u.%u%c",&major,&minor,&patch,&trailing)==3&&major<=999&&minor<=999&&patch<920);
+ snprintf(target,sizeof(target),"%u.%u.%u",major,minor,patch+1);strcpy(notes_version,target);
  UpdateStatus s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_AVAILABLE&&s.notes.count==1);
- assert(!strcmp(s.available,"0.12.40")&&!strcmp(s.notes.de[0],"Neue Hinweise")&&!strcmp(s.notes.en[0],"New highlights"));
+ assert(!strcmp(s.available,target)&&!strcmp(s.notes.de[0],"Neue Hinweise")&&!strcmp(s.notes.en[0],"New highlights"));
  notes_http=404;s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_MISSING&&!s.notes.count&&!app_update_error_code());
  notes_http=200;notes_error=CURLE_PEER_FAILED_VERIFICATION;s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_MISSING&&!app_update_error_code());
  notes_error=1;s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_MISSING);notes_error=0;
  notes_oversize=1;s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_MISSING);notes_oversize=0;
- strcpy(notes_version,"0.12.41");s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_MISSING);strcpy(notes_version,target);
+ snprintf(notes_version,sizeof(notes_version),"%u.%u.%u",major,minor,patch+2);s=checked();assert(s.state==UPDATE_AVAILABLE&&s.notes_state==UPDATE_NOTES_MISSING);strcpy(notes_version,target);
  cancel_notes=1;s=checked();assert(s.state==UPDATE_CANCELLED&&s.notes_state==UPDATE_NOTES_MISSING);cancel_notes=0;
  invalid_manifest=1;int before=atomic_load(&notes_requests);s=checked();assert(s.state==UPDATE_ERROR&&atomic_load(&notes_requests)==before);invalid_manifest=0;
- strcpy(target,"0.12.36");strcpy(notes_version,target);s=checked();assert(s.state==UPDATE_CURRENT&&s.notes_state==UPDATE_NOTES_AVAILABLE);
+ strcpy(target,TEST_RUNNING_VERSION);strcpy(notes_version,target);s=checked();assert(s.state==UPDATE_CURRENT&&s.notes_state==UPDATE_NOTES_AVAILABLE);
  thread_failure=1;s=checked();assert(s.state==UPDATE_ERROR&&s.notes_state==UPDATE_NOTES_MISSING);thread_failure=0;
  pthread_t reader;atomic_store(&read_status,true);assert(!pthread_create(&reader,NULL,observe,NULL));
  for(unsigned i=0;i<80;i++){
-  snprintf(target,sizeof(target),"0.12.%u",40+i);strcpy(notes_version,target);notes_http=i%2?404:200;
+  snprintf(target,sizeof(target),"%u.%u.%u",major,minor,patch+1+i);strcpy(notes_version,target);notes_http=i%2?404:200;
   s=checked();assert(s.state==UPDATE_AVAILABLE);assert(s.notes_state==(notes_http==200?UPDATE_NOTES_AVAILABLE:UPDATE_NOTES_MISSING));
  }
  atomic_store(&read_status,false);assert(!pthread_join(reader,NULL));assert(atomic_load(&snapshots)>0);

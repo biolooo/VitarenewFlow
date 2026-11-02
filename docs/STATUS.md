@@ -16,6 +16,10 @@ Workflow `61c4b6f`; erster Baseline-Lauf `41448705217` baute main/.39 und bestan
 die Hostsuite. Historisches .39-Quell-ZIP baute ebenfalls, reproduzierte die alten
 3DSX-Bytes jedoch nicht; Ursache offen. Für .40 sind frische native Suite und
 bytegleiche Reproduktion ihres exakten Quell-ZIP vor Veröffentlichung verpflichtend.
+Erster .40-Lauf `41449359252` stoppte vor dem nativen Build an einem bestehenden
+Updatehinweis-Test mit fest eingebauter Zukunftsversion .40. Die Fixture wird
+versionsrelativ korrigiert; keine Runtimeänderung dafür nötig. Der nächste Build
+erfasst zusätzlich GCC-Stackberichte mit `-fstack-usage`, ohne andere Buildflags zu ändern.
 .40 ist noch nicht veröffentlicht oder auf Konsole abgenommen. Keine SD-/Boot-/NAND-Änderung.
 
 Implementierung reviewt: installierte IDs werden weiterhin aktuell abgefragt;
@@ -28,6 +32,7 @@ Hosttest tatsächlicher Scanfragmente: 300 Titel kalt 300 Metadaten-/Produktabru
 und 8 Ladeframes; warm 0/0/0 Metadaten/Produkt/Banner und 10 gebündelte Versionsabrufe;
 1024 Titel warm 0/0/0 und 32 Versionsabrufe. Cachefehler-,Sprachwechsel-,Abbruch-
 und FAT-Renamefälle bestanden. Dies sind Aufrufzahlen, keine Konsolenzeitmessung.
+Gerätevergleich, Cachepersistenz und Messgrenzen: [STARTUP-PERFORMANCE](STARTUP-PERFORMANCE.md).
 
 Veröffentlichung 0.12.39 bestätigt 27.10.2026: Releasecommit `84ac43c`, Pages-Lauf `40486000717` erfolgreich. Zehn Paketdateien und vier Kanäle öffentlich bytegleich geprüft; exaktes Quell-ZIP reproduziert 3DSX/SMDH/notes.txt. [Nachweis](release-evidence/0.12.39.json). Shopify-Orchestrator zur DS-Ordneranleitung beauftragt, Websiteänderung noch nicht bestätigt. Konsolenabnahme offen. Geplante Report-Auswertung auf Nutzerwunsch gelöscht; Empfang unverändert. Folgende Vorbereitungsangaben dokumentieren den Verlauf.
 

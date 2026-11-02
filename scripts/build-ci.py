@@ -68,6 +68,10 @@ def main():
         shutil.copyfile(stage / "scripts/check-fixture-source.py", stage / "check-fixture-source.py")
         shutil.copyfile(stage / "scripts/verify-stage.sh", stage / "verify-stage.sh")
         run(["bash", "verify-stage.sh"], stage, log)
+        stack_output = output / "stack-usage"
+        stack_output.mkdir()
+        for report in (stage / "launcher/build").glob("*.su"):
+            shutil.copyfile(report, stack_output / report.name)
         artifacts = {}
         for name in ("3ds-library.3dsx", "3ds-library.smdh"):
             source = stage / "launcher" / name
