@@ -9,6 +9,9 @@
 #include <time.h>
 #include <sys/stat.h>
 static unsigned accepted;
+static bool failAllocation;
+/* This test's separate cache object redirects only its malloc call here. */
+void *title_cache_test_malloc(size_t size){return failAllocation?NULL:malloc(size);}
 static unsigned versionOffset;
 static int cancelRead(const TitleCacheEntry *entry,void *context){(void)entry;(void)context;return -1;}
 static int accept(const TitleCacheEntry *entry,void *context){
@@ -35,7 +38,7 @@ int main(void){
     char temp[]="/tmp/flow-title-cache-XXXXXX";assert(mkdtemp(temp));char path[512],previous[524];snprintf(path,sizeof(path),"%s/cache",temp);snprintf(previous,sizeof(previous),"%s.previous",path);
     unsigned count=300;TitleCacheStats stats;accepted=0;
     assert(!title_cache_read(path,2,accept,&count,&stats));
-    writeCache(path,count);assert(!title_cache_read(path,2,cancelRead,NULL,&stats)&&stats.invalid==count&&!stats.hits);assert(title_cache_read(path,2,accept,&count,&stats));assert(stats.records==count&&stats.hits==count&&!stats.invalid&&accepted==count);
+    writeCache(path,count);failAllocation=true;assert(!title_cache_read(path,2,accept,&count,&stats)&&!stats.hits&&!stats.records&&!accepted);failAllocation=false;assert(!title_cache_read(path,2,cancelRead,NULL,&stats)&&stats.invalid==count&&!stats.hits);assert(title_cache_read(path,2,accept,&count,&stats));assert(stats.records==count&&stats.hits==count&&!stats.invalid&&accepted==count);
     accepted=0;assert(!title_cache_read(path,1,accept,&count,&stats)&&!accepted); // language
     versionOffset=1;assert(title_cache_read(path,2,accept,&count,&stats)&&stats.hits==0);versionOffset=0;
     count=299;accepted=0;assert(title_cache_read(path,2,accept,&count,&stats)&&stats.hits==299&&accepted==299); // removed title not resurrected
@@ -53,7 +56,7 @@ int main(void){
     assert(!title_cache_begin(&writer,path,2,TITLE_CACHE_LIMIT+1));
     // Bounded maximum library, one record of scratch storage regardless of N.
     count=TITLE_CACHE_LIMIT;clock_t before=clock();writeCache(path,count);accepted=0;assert(title_cache_read(path,2,accept,&count,&stats)&&accepted==count);double ms=1000.0*(clock()-before)/CLOCKS_PER_SEC;
-    printf("PASS: title cache 0/300/1024, language/version/new/removed, corruption/truncation, abort and rename-failure preservation; maximum roundtrip CPU %.2f ms (HOST, not console)\n",ms);
+    printf("PASS: title cache 0/300/1024, language/version/new/removed, corruption/truncation, allocation failure, abort and rename-failure preservation; maximum roundtrip CPU %.2f ms (HOST, not console)\n",ms);
     writeCache(path,0);accepted=0;assert(title_cache_read(path,2,accept,&count,&stats)&&stats.records==0&&!accepted);
     assert(!remove(path));assert(!rmdir(temp));return 0;
 }

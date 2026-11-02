@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "title_cache.h"
 #include <string.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 /* Explicit LE layout, no persisted pointers/padding, bounded to < 5 MiB. */
 #define HEADER_SIZE 24
@@ -24,7 +25,10 @@ static bool decode(TitleCacheEntry *entry,const unsigned char *record){
 bool title_cache_read(const char *path,unsigned language,TitleCacheAccept accept,void *context,TitleCacheStats *stats){
     TitleCacheStats result={0};bool valid=false;
     FILE *file=fopen(path,"rb");if(!file){if(stats)*stats=result;return false;}
-    unsigned char header[HEADER_SIZE],record[RECORD_SIZE];
+    /* A separate serialized record plus decoded entry would consume ~9.6 KiB
+       of the 32-KiB application stack. Keep one bounded scratch on the heap. */
+    unsigned char header[HEADER_SIZE],*record=malloc(RECORD_SIZE);
+    if(!record){fclose(file);if(stats)*stats=result;return false;}
     if(fread(header,1,sizeof(header),file)!=sizeof(header)||memcmp(header,"VFTCACHE",8)||get32(header+8)!=1||get32(header+12)!=language||get32(header+20)!=checksum(header,20))goto done;
     unsigned count=get32(header+16);if(count>TITLE_CACHE_LIMIT)goto done;
     if(fseek(file,0,SEEK_END))goto done;
@@ -32,7 +36,7 @@ bool title_cache_read(const char *path,unsigned language,TitleCacheAccept accept
     result.records=count;
     for(unsigned i=0;i<count;++i){
         TitleCacheEntry entry;
-        if(fread(record,1,sizeof(record),file)!=sizeof(record)){result.invalid+=count-i;goto done;}
+        if(fread(record,1,RECORD_SIZE,file)!=RECORD_SIZE){result.invalid+=count-i;goto done;}
         if(!decode(&entry,record)){++result.invalid;continue;}
         int accepted=accept?accept(&entry,context):0;
         if(accepted<0){result.invalid+=count-i;goto done;}
@@ -40,7 +44,7 @@ bool title_cache_read(const char *path,unsigned language,TitleCacheAccept accept
     }
     valid=true;
 done:
-    fclose(file);if(stats)*stats=result;return valid;
+    free(record);fclose(file);if(stats)*stats=result;return valid;
 }
 void title_cache_abort(TitleCacheWriter *writer){
     if(writer->file){fclose(writer->file);writer->file=NULL;}

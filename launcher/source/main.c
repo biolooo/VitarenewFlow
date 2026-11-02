@@ -400,7 +400,8 @@ static int titleCacheAccept(const TitleCacheEntry *entry,void *unused){
 static bool titleCacheEligible(const Game *g){return g->system==SYSTEM_3DS&&!g->cartridge&&!g->pending&&g->versionKnown&&g->metadataReady&&g->productKnown&&g->icon;}
 /* The cache is expendable. Write at most four 4.7-KiB records per idle frame only
    after input handling and the first usable menu frame, never in scan(). */
-static void titleCacheIdle(bool idle){
+/* Keep the entry scratch out of main()'s persistent 3DS stack frame. */
+static void __attribute__((noinline)) titleCacheIdle(bool idle){
     if(!titleCachePending)return;
     if(!idle){titleCacheIdleSince=osGetTime();return;}
     if(osGetTime()-titleCacheIdleSince<1000)return;

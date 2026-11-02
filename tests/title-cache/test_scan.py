@@ -31,6 +31,8 @@ typedef struct {u64 titleID;u64 size;u16 version;} AM_TitleInfo;
 #define MEDIATYPE_NAND 0
 #define MEDIATYPE_SD 1
 #define SYSTEM_3DS 0
+static bool failCacheAllocation;
+void *title_cache_test_malloc(size_t size){return failCacheAllocation?NULL:malloc(size);}
 static unsigned liveCount=300,nandCount,baseId,changedVersion;
 static bool infoFails;
 static unsigned productReads,metadataReads,batchCalls,draws;
@@ -70,6 +72,8 @@ int main(void){
  scan(false);assert(gameCount==300&&metadataReads==300&&productReads==300&&scanCacheHits==0&&batchCalls==10);assert(draws<20);unsigned coldDraws=draws;assert(titleCachePending);completeCache();
  counters();scan(false);assert(gameCount==300&&scanCacheHits==300&&metadataReads==0&&productReads==0&&batchCalls==10&&draws==0&&!titleCachePending);
  printf("PASS actual 300-title scan: cold metadata/product=%u/%u frames=%u; warm metadata/product/banner=0/0/0 frames=%u version_batches=%u\n",300u,300u,coldDraws,draws,batchCalls);
+ // A cache scratch allocation failure falls back to live title contents.
+ failCacheAllocation=true;counters();scan(false);assert(scanCacheHits==0&&metadataReads==300&&productReads==300);failCacheAllocation=false;
  // Removed ID 1 cannot return from the cache, new ID301 is loaded live.
  baseId=1;counters();scan(false);assert(gameCount==300&&games[0].id==2&&games[299].id==301&&scanCacheHits==299&&metadataReads==1);completeCache();
  // Installed version change invalidates just that title.
@@ -97,7 +101,9 @@ int main(void){
 '''
 with tempfile.TemporaryDirectory(prefix='flow-scan-test-') as temporary:
     folder=Path(temporary);test=folder/'test.c';test.write_text(prefix+game+state+runtime+tests)
-    subprocess.run([os.environ.get('CC','cc'),'-std=c11','-O2','-Wall','-Wextra','-Werror','-fsanitize=undefined','-I'+str(root/'launcher/source'),str(test),str(root/'launcher/source/title_cache.c'),'-o',str(folder/'test')],check=True)
+    flags=[os.environ.get('CC','cc'),'-std=c11','-O2','-Wall','-Wextra','-Werror','-fsanitize=undefined','-I'+str(root/'launcher/source')]
+    subprocess.run(flags+['-Dmalloc=title_cache_test_malloc','-c',str(root/'launcher/source/title_cache.c'),'-o',str(folder/'cache.o')],check=True)
+    subprocess.run(flags+[str(test),str(folder/'cache.o'),'-o',str(folder/'test')],check=True)
     subprocess.run([str(folder/'test')],cwd=folder,check=True)
 # The settings handler must cancel the old pending save, not relabel old names.
 assert 'if(saved){titleCacheCancel();status=tr("Sprache gespeichert");language=' in source
