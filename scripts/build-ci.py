@@ -67,6 +67,11 @@ def main():
         shutil.copytree(stage / "tests/release-0.12.33", stage / "tests", dirs_exist_ok=True)
         shutil.copyfile(stage / "scripts/check-fixture-source.py", stage / "check-fixture-source.py")
         shutil.copyfile(stage / "scripts/verify-stage.sh", stage / "verify-stage.sh")
+        # Match verify-stage's native environment exactly, but surface compiler
+        # failures before unrelated host fixtures. Its later make remains a no-op.
+        run(["env", "DEVKITPRO=/opt/devkitpro", "DEVKITARM=/opt/devkitpro/devkitARM",
+             "PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitARM/bin:/usr/bin:/bin",
+             "make", "-C", "launcher", "-j2"], stage, log)
         run(["bash", "verify-stage.sh"], stage, log)
         stack_output = output / "stack-usage"
         stack_output.mkdir()

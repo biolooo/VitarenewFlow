@@ -48,7 +48,7 @@ static Result AM_GetTitleProductCode(unsigned media,u64 id,char *product){(void)
 static bool catalog_is_application_mock(u64 id){return id!=0;}
 #define catalog_is_application catalog_is_application_mock
 static bool library_is_homebrew(u64 id,const char *product){(void)id;return product&&!strcmp(product,"CTR-H-X");}
-static bool library_cover_path(char *path,size_t capacity,int system,const char *key){(void)system;snprintf(path,capacity,"cover/%s",key);return true;}
+static bool library_cover_path(char *path,size_t capacity,int system,const char *key){(void)system;size_t length=strlen(key);if(length+7>capacity)return false;memmove(path+6,key,length+1);memcpy(path,"cover/",6);return true;}
 static u8 smdh[SMDH_SIZE];
 static Result metadata(u64 id,unsigned media){++metadataReads;now+=3;memset(smdh,0,sizeof(smdh));smdh[0]=id&255;smdh[1]=media;return 0;}
 static void catalog_name_mock(char *name,size_t capacity,const u8 *data,unsigned language,bool publisher){(void)publisher;snprintf(name,capacity,"Game %u medium %u lang %u",data[0],data[1],language);}
