@@ -1,38 +1,54 @@
 # Projektstatus und Abnahme
 
-## Startzeit großer 3DS-Bibliotheken — Auftrag 02.11.2026
+## Startzeit großer 3DS-Bibliotheken — 0.12.40 veröffentlicht 02.11.2026
 
-Nutzer beauftragt kürzere Zeit vom Öffnen von Flow bis zum bedienbaren Menü und
-anschließende Bereitstellung als OTA-/UniStore-Testupdate. Root orchestriert;
-Implementierung und unabhängige Prüfung delegiert. Basis `de84faf`, frisch gegen
-origin/main und die älteren PC-2-Branches abgeglichen; Arbeitsbaum vor Auftrag sauber.
-Entwicklungs-/Buildbranch `codex/flow-startup-0.12.40`, Ziel Launcher 0.12.40,
-Desktop 0.4.1 unverändert. Persistente Titeldaten und weniger Arbeit im Startpfad
-werden implementiert; gemessene Konsolenbeschleunigung ist noch offen.
+Nutzerauftrag umgesetzt: schnellere Flow-Öffnung bei vielen installierten 3DS-Titeln,
+anschließend OTA-/UniStore-Testupdate bereitgestellt. Root orchestrierte ausschließlich;
+Implementierung, unabhängiger Review und Releaseausführung waren delegiert.
+Mac-Entwicklungswurzel: `/Users/maximneumann/Documents/Codex/vitarenewflow`.
+Basis `de84faf`, aktuelle Remote-Refs und ältere PC-2-Branches separat geprüft;
+keine fremden Änderungen übernommen oder überschrieben. Paket-/Releasecommit
+`bea0674`, Launcher 0.12.40, Desktop 0.4.1 unverändert.
 
-Mac ohne SDK: native Prüfung erfolgt im kurzlebigen GitHub-Standardrunner mit
-gepinntem devkitARM-Container aus PC2-SETUP, ohne Produktionsserveränderung.
-Workflow `61c4b6f`; erster Baseline-Lauf `41448705217` baute main/.39 und bestand
-die Hostsuite. Historisches .39-Quell-ZIP baute ebenfalls, reproduzierte die alten
-3DSX-Bytes jedoch nicht; Ursache offen. Für .40 sind frische native Suite und
-bytegleiche Reproduktion ihres exakten Quell-ZIP vor Veröffentlichung verpflichtend.
-Erster .40-Lauf `41449359252` stoppte vor dem nativen Build an einem bestehenden
-Updatehinweis-Test mit fest eingebauter Zukunftsversion .40. Die Fixture wird
-versionsrelativ korrigiert; keine Runtimeänderung dafür nötig. Der nächste Build
-erfasst zusätzlich GCC-Stackberichte mit `-fstack-usage`, ohne andere Buildflags zu ändern.
-.40 ist noch nicht veröffentlicht oder auf Konsole abgenommen. Keine SD-/Boot-/NAND-Änderung.
+Installierte IDs werden weiterhin aktuell gelesen und Titelversionen gebündelt geprüft.
+Ein validierter sequenzieller Cache speichert Namen/Icons nach ID, Medium, Sprache
+und Titelversion; neue/geänderte oder fehlerhafte Einträge fallen auf Livezugriffe zurück.
+Keine Rohbannerexporte oder Logdateiöffnungen pro Titel im Startscan; Ladeframes
+höchstens alle 100 ms. Rohbannerexport jetzt bei expliziter Spielinfo,
+vorhandene `.lbn`-Banner bleiben nutzbar. Cachepersistenz nach dem ersten Menüframe
+inkrementell im Leerlauf: ersten Start mindestens zehn Sekunden ohne Eingabe offen
+lassen, bei langsamer SD bis `Title cache: committed` im lokalen performance.log.
 
-Implementierung reviewt: installierte IDs werden weiterhin aktuell abgefragt;
-Namen/Icons kommen bei passender Sprache, Medium und Titelversion aus einem
-validierten sequenziellen Cache. Fehlende/geänderte Einträge werden live gelesen.
-Rohbannerexport erst bei expliziter Spielinfo; Startscan schreibt keine Bannerlogs
-pro Titel und zeichnet höchstens alle 100 ms. Cache wird nach dem ersten Menüframe
-inkrementell im Leerlauf gespeichert: ersten Start einige Sekunden offen lassen.
-Hosttest tatsächlicher Scanfragmente: 300 Titel kalt 300 Metadaten-/Produktabrufe
-und 8 Ladeframes; warm 0/0/0 Metadaten/Produkt/Banner und 10 gebündelte Versionsabrufe;
-1024 Titel warm 0/0/0 und 32 Versionsabrufe. Cachefehler-,Sprachwechsel-,Abbruch-
-und FAT-Renamefälle bestanden. Dies sind Aufrufzahlen, keine Konsolenzeitmessung.
-Gerätevergleich, Cachepersistenz und Messgrenzen: [STARTUP-PERFORMANCE](STARTUP-PERFORMANCE.md).
+Native SDK-CI `41451062292`: frischer .40-Build und komplette Hostsuite bestanden.
+CI `41451631355`: kompletter Checkoutbuild und exaktes fertiges Quell-ZIP erneut
+gebaut/geprüft; gelieferte 3DSX/SMDH bytegleich reproduziert, Notes aus DE/EN-Quelle
+und echtem C-Parser geprüft. Quellenhashinventare identisch. Unabhängiger Review
+bestätigt Paket, Revision 22, fünf Installationsdownloads und unveränderte Begleiter.
+Pages `41452076482` zu exakt `bea0674` erfolgreich; alle zehn Paketdateien und vier
+Kanäle öffentlich bytegleich verifiziert. [Releasebeleg](release-evidence/0.12.40.json).
+Vorherige veröffentlichte Releasebytes gegen `de84faf` unverändert.
+
+Hostprüfung tatsächlicher Scanfragmente: 300 Titel kalt 300 Metadaten-/Produktabrufe
+und acht Ladeframes; warm null Metadaten-/Produkt-/Bannerabrufe und zehn gebündelte
+Versionsabrufe; 1024 Titel warm null dieser Einzelabrufe und 32 Versionsabrufe.
+Das sind Aufrufzahlen, keine gemessenen Konsolensekunden. Statische native
+Stackberichte führten vor Veröffentlichung zu einem Reader-Scratch auf dem Heap
+mit getesteter Allokationsfehler-Rückfallebene; Readerframe um 4776 B reduziert.
+Kein gemessener Stackhöchststand und keine vollständige externe Bibliothekskette.
+
+Update: Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen;
+HOME-Shortcut muss nicht neu installiert werden. Tatsächliche Startzeit und
+Konsolenabnahme bleiben offen. [Messanleitung](STARTUP-PERFORMANCE.md): denselben
+HOME-/Autoboot-/SD-/Titelbestand vergleichen, erster .40-Start gegen Folgestart
+nach erfolgreichem Cachecommit; Stoppuhr HOME-Icon→bedienbar plus `Startup ready`
+intern ab main(). Keine SD-/Boot-/NAND-Änderung durch die Entwicklung.
+Websitepfade und Evergreen-Anleitung unverändert, kein Shopify-Folgeauftrag nötig.
+
+Historischer Baselinehinweis: der initiale CI-.39-Quell-ZIP-Nachbau wich von alten
+Payloadbytes ab; viele Checkout-/ZIP-Quellhashunterschiede waren CRLF/LF einschließlich
+PEM-Text. Ursache der verbleibenden historischen Byteabweichung nicht abschließend
+geklärt. .40 ist davon unabhängig exakt reproduziert. Die folgenden .39-Angaben
+und älteren Auftragstexte dokumentieren den historischen Verlauf.
 
 Veröffentlichung 0.12.39 bestätigt 27.10.2026: Releasecommit `84ac43c`, Pages-Lauf `40486000717` erfolgreich. Zehn Paketdateien und vier Kanäle öffentlich bytegleich geprüft; exaktes Quell-ZIP reproduziert 3DSX/SMDH/notes.txt. [Nachweis](release-evidence/0.12.39.json). Shopify-Orchestrator zur DS-Ordneranleitung beauftragt, Websiteänderung noch nicht bestätigt. Konsolenabnahme offen. Geplante Report-Auswertung auf Nutzerwunsch gelöscht; Empfang unverändert. Folgende Vorbereitungsangaben dokumentieren den Verlauf.
 

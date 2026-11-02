@@ -1,5 +1,26 @@
 # Entscheidungen und Quellen
 
+## Schneller Start großer 3DS-Bibliotheken — 02.11.2026, 0.12.40
+
+Der installierte Bestand bleibt maßgeblich: IDs frisch enumerieren und Versionen
+gebündelt prüfen, statt alte Bibliothekslisten ungeprüft wieder anzuzeigen. Nur
+Namen/Icons und Homebrew-Einordnung sind entbehrliche, begrenzt gespeicherte Cachewerte;
+Medium, Sprache und Titelversion müssen passen. Sequenzielles Lesen einer Datei
+vermeidet viele einzelne SD-Dateiöffnungen. Struktur/Prüfsummen und Grenzen validieren;
+bei fehlenden, beschädigten oder nicht allokierbaren Daten live lesen.
+
+Die erste bedienbare Ansicht hat Vorrang vor Cachepersistenz und Rohbannerexport.
+Cache nach dem ersten Menüframe in begrenzten Idleportionen schreiben, vollständigen
+Vorgänger bei FAT-Rename-/Schreibabbruch erhalten. Rohbanner explizit bei Spielinfo
+exportieren; vorhandene konvertierte Banner weiter anzeigen. Keine zusätzlichen
+Worker/Races, keine Veränderungen an Spielen/Saves oder am HOME-Shortcut.
+
+Native GCC-Stackberichte zusätzlich zum Hostreview verwenden: seriellen Readerrecord
+kurzzeitig begrenzt allokieren und Idlewriter separat halten. Das reduziert statische
+Frames, belegt aber keinen auf Konsole gemessenen Stackpeak. Performanceabnahme richtet
+sich nach HOME-Icon→bedienbar und interner Startupmessung, nicht nach Hostsekunden.
+Siehe [Messanleitung](STARTUP-PERFORMANCE.md) und [Releasebeleg](release-evidence/0.12.40.json).
+
 ## DS-Dateisuche und leere Ansicht — 26.10.2026
 
 Bestehende Dateistrukturen unterstützen statt Spiele umzusortieren. Standardwurzeln `/roms/nds`, `/nds`, `/games/nds` einschließlich Unterordnern; explizite zusätzliche Ordner erhalten Vorrang. Sichtbare Grenzen und Abbruch statt unbegrenzt blockierender Suche. Kein Schluss von leerer Liste auf defektes TWL-System. Eine globale Textsuche bleibt ein eigener Zustand. Initial keine neue Diagnoseübertragung oder Schemaänderung; Berichtsevidenz bleibt unklar, die Verbesserung folgt dem ausdrücklich beauftragten UX-/Suchauftrag. Keine automatische Veröffentlichung.

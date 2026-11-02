@@ -1,6 +1,6 @@
 # VitarenewFlow
 
-Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Windows-Verwaltung. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.38 / Desktop0.4.1** (22.10.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
+Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Windows-Verwaltung. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.40 / Desktop0.4.1** (02.11.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
 
 ## Installation und Teststatus
 

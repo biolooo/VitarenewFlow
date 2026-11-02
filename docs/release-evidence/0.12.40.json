@@ -1,0 +1,118 @@
+{
+  "version": "0.12.40",
+  "release_commit": "bea06742d9dd2e4e98db7c9f253b159559e58417",
+  "workflow": {
+    "id": 41452076482,
+    "conclusion": "success",
+    "url": "https://github.com/biolooo/VitarenewFlow/actions/runs/41452076482"
+  },
+  "native_verification": {
+    "run_id": 41451062292,
+    "conclusion": "success",
+    "local_evidence": ".test-build/ci-build-41451062292/checkout"
+  },
+  "exact_source_zip_reproduction": {
+    "run_id": 41451631355,
+    "conclusion": "success",
+    "local_evidence": ".test-build/ci-reproduction-41451631355/source-0.12.40",
+    "suite": "complete native build and host fixtures",
+    "payloads": "3DSX/SMDH byte-for-byte equal to delivered files",
+    "source_zip_sha256": "13e1fd31dcdb7fbf6f2239b135ccb47676c248e8ff9b44d3e631b5fd2d102b22",
+    "generated_notes": "version-bound sidecar equals archived DE/EN JSON and is accepted by actual C parser"
+  },
+  "public_verification": {
+    "version": "0.12.40",
+    "checked_at": "2026-11-02T13:21:40.292793+00:00",
+    "files": {
+      "0.12.40/FEATURES-DE.md": {
+        "size": 1117,
+        "sha256": "ede76757c0ff83b5353e9ab3efd04616b5c42f1efe7909d39fc12e452a679e1f"
+      },
+      "0.12.40/README.md": {
+        "size": 1117,
+        "sha256": "ede76757c0ff83b5353e9ab3efd04616b5c42f1efe7909d39fc12e452a679e1f"
+      },
+      "0.12.40/VitarenewFlow-Boot.3dsx": {
+        "size": 116260,
+        "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+      },
+      "0.12.40/VitarenewFlow-Copy.gm9": {
+        "size": 3092,
+        "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+      },
+      "0.12.40/VitarenewFlow-Shortcut.cia": {
+        "size": 164800,
+        "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+      },
+      "0.12.40/VitarenewFlow-source.zip": {
+        "size": 1995358,
+        "sha256": "13e1fd31dcdb7fbf6f2239b135ccb47676c248e8ff9b44d3e631b5fd2d102b22"
+      },
+      "0.12.40/VitarenewFlow.3dsx": {
+        "size": 1640184,
+        "sha256": "9fe3f233844deb474f236816f7a55eeb0005e0f79ea15f0717a4c523dd3f6216"
+      },
+      "0.12.40/VitarenewFlow.smdh": {
+        "size": 14016,
+        "sha256": "40c10d366cd8157eca2740b1da9397951fca1d2ac4fba1a4318752a6c091cf7a"
+      },
+      "0.12.40/notes.txt": {
+        "size": 335,
+        "sha256": "b7181c60853b43b0b4e2cc5012972dafafa0c6d3f865e955e13739fdeb203694"
+      },
+      "0.12.40/SHA256.json": {
+        "size": 832,
+        "sha256": "26090dac3e5e63e75fc8f21925a8c9a52492d0aaa0c2af2bc58a13457362ac56"
+      },
+      "latest.txt": {
+        "size": 190,
+        "sha256": "e1587de5695bc0036ca931378bb6b8b8b32146316f55f3fed1773858bf9dd04a"
+      },
+      "VitarenewFlow.unistore": {
+        "size": 4319,
+        "sha256": "6ee4e5c569733af35694b5fd06284b3048c6cd5d3c11c99f0c784c818930c07c"
+      },
+      "VitarenewFlow-info.json": {
+        "size": 516,
+        "sha256": "62da4262c2d089b50764f0aa66aa11489984ffb35904fb0e00ad43bf0cd0797e"
+      },
+      "install.html": {
+        "size": 1779,
+        "sha256": "29afd510459bd6440754d8ff88355f84da98deebb827b8706506ca1d2cc97404"
+      }
+    }
+  },
+  "native_stack_frames_bytes": {
+    "main": 10584,
+    "scan": 5912,
+    "title_cache_read": 4872,
+    "titleCacheAccept": 32,
+    "titleCacheIdle": 4840,
+    "reader_reduction": 4776,
+    "limitation": "Compiler static frames, not measured console high-water mark; external library frames not fully included."
+  },
+  "performance_validation": {
+    "host_300_title_cold": {
+      "metadata_reads": 300,
+      "product_code_reads": 300,
+      "loading_frames": 8
+    },
+    "host_300_title_warm": {
+      "metadata_reads": 0,
+      "product_code_reads": 0,
+      "banner_exports": 0,
+      "version_batches": 10
+    },
+    "host_1024_title_warm": {
+      "metadata_reads": 0,
+      "product_code_reads": 0,
+      "banner_exports": 0,
+      "version_batches": 32
+    },
+    "console_startup_seconds": null
+  },
+  "hardware_acceptance": false,
+  "desktop_version": "0.4.1",
+  "previous_releases": "unchanged byte-for-byte against de84faf",
+  "website_coordination": "not required: install paths, URLs, menu navigation and test status unchanged; internal startup optimization only"
+}
