@@ -72,11 +72,13 @@ def main():
         run(["env", "DEVKITPRO=/opt/devkitpro", "DEVKITARM=/opt/devkitpro/devkitARM",
              "PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitARM/bin:/usr/bin:/bin",
              "make", "-C", "launcher", "-j2"], stage, log)
-        run(["bash", "verify-stage.sh"], stage, log)
         stack_output = output / "stack-usage"
         stack_output.mkdir()
         for report in (stage / "launcher/build").glob("*.su"):
             shutil.copyfile(report, stack_output / report.name)
+        size = subprocess.check_output(["/opt/devkitpro/devkitARM/bin/arm-none-eabi-size", str(stage / "launcher/3ds-library.elf")], text=True)
+        (output / "native-size.txt").write_text(size)
+        run(["bash", "verify-stage.sh"], stage, log)
         artifacts = {}
         for name in ("3ds-library.3dsx", "3ds-library.smdh"):
             source = stage / "launcher" / name

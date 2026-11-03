@@ -45,7 +45,8 @@ static void custom(void){
  assert(!strcmp(found[0],"sdmc:/custom/deep/extra.nds"));
  /* Default-only games/roms tree is visited once, not another DS pass. */
  s=scan(NULL);assert(count==2&&s.files==2&&s.directories==2);
- char path[DS_PATH_MAX]="sdmc:/games";directory(path);for(unsigned i=0;i<9;i++){strcat(path,"/deep");directory(path);}char game[DS_PATH_MAX];int n=snprintf(game,sizeof(game),"%s/x.nds",path);assert(n>0&&n<(int)sizeof(game));file(game);
+ /* Use one spelling: FAT cannot contain separate Games and games roots. */
+ char path[DS_PATH_MAX]="sdmc:/Games";directory(path);for(unsigned i=0;i<9;i++){strcat(path,"/deep");directory(path);}char game[DS_PATH_MAX];int n=snprintf(game,sizeof(game),"%s/x.nds",path);assert(n>0&&n<(int)sizeof(game));file(game);
  s=scan(NULL);assert(s.limited&&!has(game));
  memset(&roots,0,sizeof(roots));assert(ds_roots_add(&roots,path));s=scan(&roots);assert(has(game));/* Other formats below the automatic depth bound remain explicitly incomplete. */assert(s.limited);
  puts("PASS: DS-only extra roots retain priority, mixed overlap is complete, one automatic scan, deep explicit roots retain full reach");
