@@ -1,28 +1,39 @@
 # Flow — Einstieg für den Orchestrator
 
-## Emulatorordner erkennen — 0.12.41 in Entwicklung · 03.11.2026
+## Emulatorordner und Desktopplattformen — 0.12.41 veröffentlicht · 03.11.2026
 
-Nutzerauftrag: Spiele unterschiedlicher Emulatoren auf vorhandener SD finden;
-anschließende Veröffentlichung und plattformübergreifende Desktopdownloads wurden
-im aktuellen Auftrag zusätzlich angefordert, sind noch nicht abgeschlossen.
-Basis `9983b31`, sauberer main mit frisch geprüften Remote-Refs. Bestehende .40-
-Startoptimierung und veröffentlichte Pakete bleiben erhalten. Ein gemeinsamer,
-begrenzter Scanner ersetzt flache Emulator- und separate automatische DS-Suche:
-positive typische SD-Spielewurzeln einschließlich Unterordnern, ursprüngliche
-Spielpfade, bestehende DS-Zusatzordner und unterstützte Formate. Keine Vollsuche in
-Systembäumen, keine Spielinhalte gelesen, keine SD-Dateien verändert oder kopiert.
-Gesamtbibliothek jetzt 1536 Plätze; der unabhängige .40-Metadatencache bleibt auf
-1024 installierte 3DS-Titel begrenzt und enthält keine ROM-Einträge.
+Nutzerauftrag abgeschlossen, Root ausschließlich Orchestrator; Implementierung und
+unabhängige Prüfung delegiert. Basis `9983b31`, Releasecommit `19597a5`.
+Der begrenzte Scanner findet vorhandene Spielewurzeln einschließlich Unterordnern,
+erhält Originalpfade/DS-Zusatzordner und meidet automatische Systembaumsuche.
+Bibliothekslimit 1536; .40-Titelcache weiterhin 1024 installierte 3DS-Titel.
+Readonly-SD-Metadatenbefund: 846 unterstützte ROMs; synthetisch 198 native + 846 ROMs
+= 1044 vollständig. Keine SD-Dateien verändert, keine Spielinhalte übernommen;
+nach Nutzerfreigabe zum Entfernen der SD keine weiteren Kartenabfragen.
 
-Hosttests echter Module und aktuell extrahierter main-Callback bestanden:
-Rekursion/Case/Duplikate/Originalpfade/1536/Abbruch/IO-Fehler/Suchgrenzen, .40-
-Cachetests weiter grün. Reiner Namens-/Pfadscan der eingesteckten Karte findet alle
-846 unterstützten ROM-Dateien in sieben Spieleverzeichnissen (885 Einträge,
-keine Suchbegrenzung). Synthetische gemischte Bibliothek: 198 installierte Titel
-plus 846 ROMs = 1044 vollständig. Native Build-/Stack-/BSS-Prüfung, vollständige
-Suite, Paketierung/Reproduktion, Veröffentlichung und Konsolenabnahme noch offen.
-Desktop Mac/Linux und plattformwählbarer Download werden separat integriert;
-Hinweise behaupten diese bis dahin nicht als fertig.
+Native CI `41631060043` und vollständige Suite bestanden; CI `41631587735`
+reproduziert das exakte fertige Quell-ZIP einschließlich neuer Desktop-/DE-EN-Tests
+mit bytegleichen 3DSX/SMDH. Unabhängiges Stack-/BSS-/Assetgate bestanden.
+Pages `41633256738` zu genau `19597a5` erfolgreich; 14 Launcher- und sieben
+Desktop-URLs öffentlich bytegleich bestätigt. [Nachweis](release-evidence/0.12.41.json).
+Alte .40-Pakete und Windows-Desktopdateien bleiben unverändert.
+
+Desktop 0.4.2 für macOS Apple Silicon/Intel und Linux x64 verfügbar, Windows weiter
+0.4.1. Gemeinsame Import-/Coverengine, native Avalonia-Oberfläche, selbstenthaltene
+Pakete ohne Benutzer-.NET-Installation. Finaler Portstand `3e53960`, CI `41628360517`:
+alle drei nativen Plattformen mit 50 Enginechecks und Headless-/Backend-UI-Prüfung;
+zusätzlich bestehender Windows-WPF-Build und 108 Selbsttests bestanden.
+Mac-Pakete ad-hoc signiert, nicht Apple-Developer-ID-signiert oder notarisiert.
+Geprüft macOS 15 und Ubuntu 24.04/X11-Xvfb; Voraussetzungen stehen im Paketreadme.
+
+Update: Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen.
+Desktop: Menü → Spiele verwalten → Desktop-Verwaltung → passende Plattform wählen.
+3DS lädt nur das passende Archiv und geprüfte Begleitdateien auf SD; Entpacken und
+Start auf dem Computer. Vier Plattformen, Windowsbestand erhalten, begrenztes
+Desktop-Timeout 900 s, bestehende TLS-/Hashprüfung unverändert.
+Konsolenabnahme und neue reale Startzeit bleiben offen. Websitefolgeauftrag als
+Entwurf dokumentiert; alter Shopify-Chat auf diesem Mac nicht auffindbar,
+keine Websiteänderung behauptet. Aktuelle Entwicklung wieder von main abrufen.
 
 ## Startzeit großer 3DS-Bibliotheken — 0.12.40 veröffentlicht 02.11.2026
 

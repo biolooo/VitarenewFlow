@@ -29,3 +29,33 @@ Vorschau inzwischen erreichbar und perHTTP200 mit passendem Seitentitel/Installa
 ## Releasehinweis 27.10.2026 — .39
 
 Nach öffentlicher Byteprüfung aller zehn Assets/vier Kanäle (Pages40486000717) den bestehenden Shopify-Orchestrator zur Anleitungsergänzung beauftragt: DS-Unterordnersuche, eigene Spieleordner, neue hilfreiche Leeransicht. Evergreen-Anleitung ohne Versionszwang, bestehende Vorschaugrenzen. Keine private Reportinformation versendet; Websiteumsetzung nicht bestätigt.
+
+## Folgeauftrag vorbereitet, Zustellung offen · 03.11.2026 — .41 / Desktop .4.2
+
+Launcher 0.12.41 und Desktop 0.4.2 sind öffentlich bereitgestellt: Pages-Lauf
+`41633256738` zu Releasecommit `19597a5` erfolgreich, alle 21 Paket-/Kanaldateien
+öffentlich bytegleich geprüft. Referenzen: [Installation](https://biolooo.github.io/VitarenewFlow/updates/install.html),
+[Launcherhinweise](https://biolooo.github.io/VitarenewFlow/updates/0.12.41/README.md),
+[Desktoppakete](https://biolooo.github.io/VitarenewFlow/updates/desktop-0.4.2/package.json).
+
+Vorbereiteter Folgeauftrag für die bestehende SEO-Anleitung: Im Desktopabschnitt
+**Menü → Spiele verwalten → Desktop-Verwaltung** mit Auswahl **Windows**, **macOS ·
+Apple Silicon**, **macOS · Intel** und **Linux · x64** erklären. Windows bleibt bei
+seinem bisherigen Paket. Mac/Linux werden als Archiv unter `Library-PC` auf der SD
+abgelegt und am Computer entpackt. Voraussetzungen präzise nennen: macOS 15 oder
+neuer; Linux x64 wurde nativ auf Ubuntu 24.04 geprüft. Die Mac-App ist ad-hoc
+signiert, nicht Apple-notarisiert; mögliche Sicherheitsrückfragen transparent
+benennen, keine globalen Sicherheitsmechanismen abschalten lassen. Im
+Spieleordnerabschnitt die automatische Suche in üblichen Spielewurzeln samt
+Unterordnern und die Grenze von 1536 Bibliothekseinträgen erläutern. Eigene Spiele
+bleiben separat, es werden keine Spiele, BIOS oder Saves mitgeliefert. Keine feste
+Appversion in die Evergreen-Anleitung aufnehmen. Teststatus unter 1.0 und bisherige
+Vorschau-/Live-Grenzen beibehalten; Homepagebanner nicht unnötig ändern.
+
+**Technisch noch nicht zugestellt:** Der autorisierte bestehende Windows-Zielchat
+`01a15efd-26f7-7b50-9a66-afc183f93433` (`local`) ist auf diesem Mac nicht auffindbar
+(`read_thread`: „No Codex thread found“). Keine Nachricht gesendet, keinen neuen
+Sidebar-Chat angelegt und keine Websiteänderung vorgenommen. Der Entwurf bleibt
+bis zum Zugriff auf den bestehenden Shopify-Orchestrator offen; dies blockiert
+den verifizierten Flow-/Desktop-Release nicht. Keine privaten Kartendaten,
+Spielnamen oder Reports wurden weitergegeben.

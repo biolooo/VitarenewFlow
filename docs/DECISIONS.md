@@ -1,5 +1,23 @@
 # Entscheidungen und Quellen
 
+## Vorhandene Spieleordner und native Desktopplattformen — 03.11.2026
+
+Spiele dort erkennen, wo sie bereits liegen: positive Wurzelaliase und begrenzter
+iterativer Scanner statt Umordnen oder automatischer Vollsuche durch Systembäume.
+Gesamtlimit 1536 für den gemischten Bestand; der unabhängige .40-Metadatencache
+bleibt unverändert auf 1024 native Titel begrenzt. Grenzen/IO-Fehler sichtbar halten.
+
+Windows-WPF und dessen ausgeliefertes 0.4.1-Paket erhalten. Für Mac/Linux native
+Avalonia-UI und gemeinsame bewährte Import-/Coverlogik mit OS-spezifischer
+Mountidentität, FAT32-Prüfung und Skia-Bildverarbeitung. Selbstenthaltene Plattform-
+archive; auf 3DS nur explizit ausgewählte Downloads mit kompilierten Größen/Hashes,
+keine Ausführung/Entpackung. Nach UI-Auswahl wird die Definition für Worker/Commit
+festgehalten. Lizenzhinweise und passende Quellen gehören zum Paket.
+
+Freigabe über echte native Plattformbuilds, synthetische Daten und Backend-UI-Tests,
+Launcher-Quell-ZIP-Reproduktion und 21 öffentliche Byteabgleiche. Das ersetzt keine
+Konsolenabnahme und keine Apple-Notarisierung. [Beleg](release-evidence/0.12.41.json).
+
 ## Schneller Start großer 3DS-Bibliotheken — 02.11.2026, 0.12.40
 
 Der installierte Bestand bleibt maßgeblich: IDs frisch enumerieren und Versionen

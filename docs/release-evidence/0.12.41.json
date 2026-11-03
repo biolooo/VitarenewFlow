@@ -1,0 +1,153 @@
+{
+  "version": "0.12.41",
+  "release_commit": "19597a556a395d102fc227e0608cdfe2eaf7d182",
+  "workflow": {
+    "id": 41633256738,
+    "conclusion": "success",
+    "url": "https://github.com/biolooo/VitarenewFlow/actions/runs/41633256738"
+  },
+  "native_verification": {
+    "run_id": 41631060043,
+    "conclusion": "success",
+    "source_commit": "95c02b1",
+    "local_evidence": ".test-build/final-native-41631060043/checkout"
+  },
+  "exact_source_zip_reproduction": {
+    "run_id": 41631587735,
+    "conclusion": "success",
+    "local_evidence": ".test-build/final-repro-41631587735/source-0.12.41",
+    "result": "complete native suite and byte-identical delivered 3DSX/SMDH; generated version-bound notes validated",
+    "source_zip_sha256": "b10bfbb2d88f2627d76afc68692a420e1baf25839c644a3ea1bc36a78b07ecde"
+  },
+  "public_verification": {
+    "version": "0.12.41",
+    "checked_at": "2026-11-03T12:10:47.084396+00:00",
+    "files": {
+      "0.12.41/FEATURES-DE.md": {
+        "size": 1285,
+        "sha256": "0e0993d002d0e9ed96ff2427820fd650e5e7d0c2a9837a337d20a993b32c003e"
+      },
+      "0.12.41/README.md": {
+        "size": 1285,
+        "sha256": "0e0993d002d0e9ed96ff2427820fd650e5e7d0c2a9837a337d20a993b32c003e"
+      },
+      "0.12.41/VitarenewFlow-Boot.3dsx": {
+        "size": 116260,
+        "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+      },
+      "0.12.41/VitarenewFlow-Copy.gm9": {
+        "size": 3092,
+        "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+      },
+      "0.12.41/VitarenewFlow-Shortcut.cia": {
+        "size": 164800,
+        "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+      },
+      "0.12.41/VitarenewFlow-source.zip": {
+        "size": 2021057,
+        "sha256": "b10bfbb2d88f2627d76afc68692a420e1baf25839c644a3ea1bc36a78b07ecde"
+      },
+      "0.12.41/VitarenewFlow.3dsx": {
+        "size": 1645652,
+        "sha256": "acfa4011cc51a7ec30897fdc3a79f0bed19cc1d15602d54b81f976f469094790"
+      },
+      "0.12.41/VitarenewFlow.smdh": {
+        "size": 14016,
+        "sha256": "c8585d068109703e1768e2736d780b6e04bf85ff7f20e5c7b9f6c71581b92c53"
+      },
+      "0.12.41/notes.txt": {
+        "size": 489,
+        "sha256": "2c9139bff251cb36381fc25235e221e21d0db016b42f8c376ba59dd72e9efb1e"
+      },
+      "0.12.41/SHA256.json": {
+        "size": 832,
+        "sha256": "0184d5126befdc9ee5b2deaeada24cd497c432d1360328346629f7f3c3bd2a74"
+      },
+      "latest.txt": {
+        "size": 190,
+        "sha256": "6c9b031af13254d4a9797242aeb4e06de7eafc806dbe1e320b42385ed47af224"
+      },
+      "VitarenewFlow.unistore": {
+        "size": 4325,
+        "sha256": "21bdd9ce5d4958c6b9e320570d4c547012791ef2484fbe43e673392e26118566"
+      },
+      "VitarenewFlow-info.json": {
+        "size": 516,
+        "sha256": "f37ece58cbf8d6f004be54ed53e78f490b192074cd59807b1d2664a21632c2d9"
+      },
+      "install.html": {
+        "size": 1779,
+        "sha256": "a19654a7286066279a8e4997c06f6179390179934398ca259537fd412a46be5d"
+      }
+    }
+  },
+  "desktop": {
+    "portable_version": "0.4.2",
+    "windows_version": "0.4.1 unchanged",
+    "source_commit": "3e5396044a3a1df7d78ecc4950460374206d685b",
+    "native_ci_run_id": 41628360517,
+    "native_ci_conclusion": "success",
+    "targets": [
+      "macOS 15 arm64",
+      "macOS 15 Intel x64",
+      "Ubuntu 24.04 x64/X11-Xvfb"
+    ],
+    "tests": "50 synthetic engine checks per native target, headless and real-backend UI checks, Mac signed-bundle launch; existing Windows WPF build and 108 self-tests passed",
+    "developer_id_notarized": false,
+    "signing": "Mac ad-hoc bundle integrity signatures only",
+    "source_zip_sha256": "df89145157120ae56a86d98dd47d0adab77794ea49a4abe5719b51b93d42babb",
+    "public_verification": {
+      "version": "0.4.2",
+      "checked_at": "2026-11-03T12:10:52.287782+00:00",
+      "files": {
+        "LIESMICH.txt": {
+          "size": 1614,
+          "sha256": "086a0f95f263e90551326329391c5ef64aecb998357e4606e10f0fc859cb832e"
+        },
+        "NOTICES.txt": {
+          "size": 1192648,
+          "sha256": "2dfe3020577371e08b8f8da2917635f2c00b91d809b082d7c2416539cc4e50f2"
+        },
+        "VitarenewFlow-Desktop-linux-x64.tar.gz": {
+          "size": 45544504,
+          "sha256": "0e083ee73c40be1c4bdeebcc5606007e7406de9afb61da6f9008d277ef5dae45"
+        },
+        "VitarenewFlow-Desktop-macOS-arm64.zip": {
+          "size": 45949812,
+          "sha256": "621c81c3b407ab06e2c295e0ffa9aa9ff8930d78521484b8ed8cf8b547a3d3f9"
+        },
+        "VitarenewFlow-Desktop-macOS-x64.zip": {
+          "size": 48166953,
+          "sha256": "504dda636875f9c7277a2e063dbb39417a7e0539c88857b405dcfb552b337a48"
+        },
+        "VitarenewFlow-Desktop-source.zip": {
+          "size": 330874,
+          "sha256": "df89145157120ae56a86d98dd47d0adab77794ea49a4abe5719b51b93d42babb"
+        },
+        "package.json": {
+          "size": 4432,
+          "sha256": "67f3de5a49d961dd7152426cc28edcbaf9ca0f4778462cb2bd15ca9176554e76"
+        }
+      }
+    }
+  },
+  "public_url_count": 21,
+  "discovery": {
+    "read_only_sd_supported_roms": 846,
+    "synthetic_installed_plus_roms": 1044,
+    "library_capacity": 1536,
+    "title_metadata_cache_capacity": 1024,
+    "actual_sd_writes": false
+  },
+  "native_static_checks": {
+    "bss_bytes": 3785800,
+    "main_frame_bytes": 10584,
+    "scan_frame_bytes": 5912,
+    "reader_frame_bytes": 4872,
+    "draw_frame_bytes": 2440,
+    "limitation": "static compiler reports; no measured console stack peak"
+  },
+  "hardware_console_acceptance": false,
+  "previous_payloads": "0.12.40 and existing desktop-1 Windows files unchanged",
+  "website_coordination": "pending: existing Windows Shopify chat not available on this Mac; no message, new chat or website modification"
+}

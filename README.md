@@ -1,12 +1,20 @@
 # VitarenewFlow
 
-Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Windows-Verwaltung. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.40 / Desktop0.4.1** (02.11.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
+Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Desktop-Verwaltung für Windows, macOS und Linux. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.41 / Desktop Windows0.4.1, macOS/Linux0.4.2** (03.11.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
 
 ## Installation und Teststatus
 
 Für eine bereits gemoddete 3DS-/2DS-Konsole mit Universal-Updater: [Installationsseite mit QR-Code](https://biolooo.github.io/VitarenewFlow/updates/install.html). Eigenen UniStore hinzufügen, VitarenewFlow (Test) wählen und Installieren / Install ausführen. Der Installer liefert App und HOME-Shortcut gemeinsam. Spiele, BIOS und Spielstände werden nicht mitgeliefert. Zusätzliche Komponenten lassen sich anschließend in Flow einrichten.
 
 Flow steht aktuell im eigenen UniStore; eine Aufnahme in den Standardkatalog Universal-DB ist noch nicht erfolgt. Der HOME-Shortcut lädt die aktuelle 3DSX von der SD; spätere OTA-Updates benötigen keine neu installierte Shortcut-CIA.
+
+Desktop herunterladen: in Flow **Menü → Spiele verwalten → Desktop-Verwaltung**
+und Windows, macOS Apple Silicon, macOS Intel oder Linux x64 wählen. Alternativ:
+[Mac Apple Silicon](https://biolooo.github.io/VitarenewFlow/updates/desktop-0.4.2/VitarenewFlow-Desktop-macOS-arm64.zip),
+[Mac Intel](https://biolooo.github.io/VitarenewFlow/updates/desktop-0.4.2/VitarenewFlow-Desktop-macOS-x64.zip),
+[Linux x64](https://biolooo.github.io/VitarenewFlow/updates/desktop-0.4.2/VitarenewFlow-Desktop-linux-x64.tar.gz).
+Mac-Pakete sind ad-hoc signiert, nicht Apple-notarisiert. Voraussetzungen und
+Startanleitung liegen im Archiv und [Paketreadme](docs/updates/desktop-0.4.2/LIESMICH.txt).
 
 ## KI-Transparenz
 
