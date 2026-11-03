@@ -1,0 +1,79 @@
+name: Build native portable Flow Desktop
+on:
+  push:
+    branches: ['codex/desktop-port-*', 'codex/flow-startup-*']
+    paths: ['desktop/**', 'scripts/build-portable-desktop.py', '.github/workflows/desktop-port.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            rid: osx-arm64
+          - os: macos-15-intel
+            rid: osx-x64
+          - os: ubuntu-24.04
+            rid: linux-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+      DOTNET_GENERATE_ASPNET_CERTIFICATE: 'false'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.403'
+      - name: Linux desktop libraries in ephemeral runner
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y xvfb libx11-6 libx11-xcb1 libice6 libsm6 libfontconfig1 libglib2.0-0 libicu-dev
+      - name: Build and exercise native applications
+        env:
+          FLOW_DESKTOP_RID: ${{ matrix.rid }}
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" = Linux ]; then
+            xvfb-run -a python3 scripts/build-portable-desktop.py --rid "$FLOW_DESKTOP_RID"
+          else
+            python3 scripts/build-portable-desktop.py --rid "$FLOW_DESKTOP_RID"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: flow-desktop-${{ matrix.rid }}-${{ github.run_id }}
+          path: |
+            .test-build/desktop-release/${{ matrix.rid }}/*.json
+            .test-build/desktop-release/${{ matrix.rid }}/*.png
+            .test-build/desktop-release/${{ matrix.rid }}/*.zip
+            .test-build/desktop-release/${{ matrix.rid }}/*.tar.gz
+          if-no-files-found: error
+          retention-days: 3
+  windows-regression:
+    runs-on: windows-2025
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force desktop/SD-Karte, .test-build | Out-Null
+          & ./desktop/source/build.ps1
+          $app = (Resolve-Path 'desktop/SD-Karte/3DS Library PC.exe').Path
+          $report = Join-Path (Get-Location) '.test-build/windows-desktop-selftest.json'
+          $process = Start-Process -FilePath $app -ArgumentList @('--self-test', ('"' + $report + '"')) -PassThru -Wait
+          if ($process.ExitCode -ne 0) { throw 'Windows regression self-test failed' }
+          if (!(Get-Content $report -Raw | ConvertFrom-Json).passed) { throw 'Windows report failed' }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: flow-desktop-windows-regression-${{ github.run_id }}
+          path: .test-build/windows-desktop-selftest.json
+          retention-days: 3

@@ -8,7 +8,9 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+#if !PORTABLE_DESKTOP
 using Drawing = System.Drawing;
+#endif
 
 namespace LibraryDesktop {
     public sealed class Game {
@@ -25,7 +27,11 @@ namespace LibraryDesktop {
         public bool Native { get { return System == "3ds"; } }
         public string Platform { get { return Card.Platform(System); } }
         public string Caption { get { return Platform + (Pending ? " · Installation ausstehend" : Native ? " · installiert" : " · " + Card.Bytes(Size)); } }
+        #if PORTABLE_DESKTOP
+        public Avalonia.Media.IImage Cover { get; set; }
+#else
         public System.Windows.Media.ImageSource Cover { get; set; }
+#endif
         public string CoverLabel { get { return File.Exists(CoverPath) ? "Cover vorhanden" : "Cover hinzufügen"; } }
     }
     public sealed class ImportPlan {
@@ -39,7 +45,11 @@ namespace LibraryDesktop {
     public sealed class Card {
         public readonly string Root;
         readonly bool sandbox;
+        #if PORTABLE_DESKTOP
+        readonly string serial;
+#else
         readonly uint serial;
+#endif
         public static readonly string[] Systems = { "3ds", "ds", "gba", "n64", "snes", "nes", "vb", "gb" };
         public static readonly string[] Views = { "3ds", "homebrew", "ds", "gameboy", "n64", "snes", "nes", "vb" };
         public static bool IsHomebrew(string id) {
@@ -53,18 +63,28 @@ namespace LibraryDesktop {
             {"000400000F104200", "VitarenewFlow"}, {"000400000D40D200", "Nimbus"}, {"000400000D921E00", "Homebrew Launcher"}, {"000400000DEAD100", "RGB"},
             {"000400000F800100", "FBI"}, {"000400000FE7CB00", "Red Viper"}
         };
+        #if !PORTABLE_DESKTOP
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern bool GetVolumeInformation(string root, StringBuilder name, int nameSize, out uint serialNumber, out uint maxName, out uint flags, StringBuilder fileSystem, int fsSize);
+
+        #endif
 
         public Card(string root) : this(root, false) { }
         internal Card(string root, bool testSandbox) {
             Root = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
             sandbox = testSandbox;
+#if PORTABLE_DESKTOP
+            if (!sandbox) PortableVolume.RequireMountRoot(Root);
+#else
             if (!sandbox && !Root.Equals(Path.GetPathRoot(Root), StringComparison.OrdinalIgnoreCase))
                 throw new IOException("Die App bitte direkt im Hauptverzeichnis der 3DS-SD-Karte öffnen.");
+#endif
             serial = VolumeSerial();
             Validate();
         }
+#if PORTABLE_DESKTOP
+        string VolumeSerial() { return PortableVolume.Identity(Root, sandbox); }
+#else
         uint VolumeSerial() {
             uint n, max, flags; var fs = new StringBuilder(64);
             if (!GetVolumeInformation(Path.GetPathRoot(Root), null, 0, out n, out max, out flags, fs, fs.Capacity))
@@ -72,6 +92,7 @@ namespace LibraryDesktop {
             if (!sandbox && fs.ToString() != "FAT32") throw new IOException("Hier wurde keine FAT32-SD-Karte erkannt.");
             return n;
         }
+#endif
         public void Validate() {
             if (VolumeSerial() != serial || !Directory.Exists(Path.Combine(Root, "Nintendo 3DS")) || !File.Exists(Path.Combine(Root, "3ds/3ds-library/3ds-library.3dsx")))
                 throw new IOException("Die 3DS-Library-SD-Karte fehlt oder wurde ausgetauscht. App schließen und von der richtigen Karte erneut öffnen.");
@@ -83,7 +104,11 @@ namespace LibraryDesktop {
                 if ((File.Exists(current) || Directory.Exists(current)) && (File.GetAttributes(current) & FileAttributes.ReparsePoint) != 0)
                     throw new IOException("Verknüpfte Ordner werden aus Sicherheitsgründen nicht beschrieben.");
                 var p = Directory.GetParent(current.TrimEnd(Path.DirectorySeparatorChar));
+#if PORTABLE_DESKTOP
+                current = p == null ? null : p.FullName.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+#else
                 current = p == null ? null : p.FullName + (p.FullName.EndsWith("\\") ? "" : "\\");
+#endif
             }
         }
         public string PathOnCard(string relative) {
@@ -94,7 +119,7 @@ namespace LibraryDesktop {
             return path;
         }
         static void CheckKey(string key) {
-            if (String.IsNullOrWhiteSpace(key) || key == "." || key == ".." || key.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 || key.EndsWith(".") || key.EndsWith(" ") || Encoding.UTF8.GetByteCount(key) > 255)
+            if (String.IsNullOrWhiteSpace(key) || key == "." || key == ".." || key.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 || key.Any(c => c < 32 || "<>:\"/\\|?*".Contains(c)) || key.EndsWith(".") || key.EndsWith(" ") || Encoding.UTF8.GetByteCount(key) > 255)
                 throw new IOException("Dateiname ist für die 3DS-Library ungeeignet oder zu lang.");
         }
         public static string Platform(string sys) {
@@ -122,8 +147,18 @@ namespace LibraryDesktop {
             if (key.Length + 4 > 255 || path.Length > 247) throw new IOException("Dateiname ist für die Cover-Verwaltung zu lang. Vor dem Import einen kürzeren Namen verwenden.");
             return path;
         }
+#if PORTABLE_DESKTOP
+        public string DiscoveryNotice { get; internal set; } = "";
+#endif
         public List<Game> Scan() {
             Validate(); var games = new List<Game>();
+#if PORTABLE_DESKTOP
+            foreach (string f in PortableDiscovery.Scan(this)) {
+                string sys = Detect(f), key = Path.GetFileName(f);
+                try { games.Add(new Game { System = sys, Key = key, FilePath = f, CoverPath = CoverFor(sys,key), Title = CleanTitle(key), Size = new FileInfo(f).Length }); }
+                catch (IOException) { }
+            }
+#else
             foreach (string rel in ScanDirectories) {
                 string dir = PathOnCard(rel); if (!Directory.Exists(dir)) continue;
                 foreach (string f in Directory.GetFiles(dir)) {
@@ -133,13 +168,15 @@ namespace LibraryDesktop {
                     catch (IOException) { /* Unrepresentable filename: never silently rename a ROM/save pair. */ }
                 }
             }
+#endif
             string native = PathOnCard("Nintendo 3DS"); var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            foreach (string id0 in Directory.GetDirectories(native).Where(x => Regex.IsMatch(Path.GetFileName(x), "^[0-9a-fA-F]{32}$")))
-            foreach (string id1 in Directory.GetDirectories(id0).Where(x => Regex.IsMatch(Path.GetFileName(x), "^[0-9a-fA-F]{32}$")))
+            foreach (string id0 in Directory.GetDirectories(native).Where(x => (File.GetAttributes(x) & FileAttributes.ReparsePoint) == 0 && Regex.IsMatch(Path.GetFileName(x), "^[0-9a-fA-F]{32}$")))
+            foreach (string id1 in Directory.GetDirectories(id0).Where(x => (File.GetAttributes(x) & FileAttributes.ReparsePoint) == 0 && Regex.IsMatch(Path.GetFileName(x), "^[0-9a-fA-F]{32}$")))
             foreach (string group in new[] { "00040000", "00040002" }) {
                 string folder = Path.Combine(id1, "title", group); if (!Directory.Exists(folder)) continue;
+                RejectLinks(folder);
                 foreach (string title in Directory.GetDirectories(folder)) {
-                    string low = Path.GetFileName(title); if (!Regex.IsMatch(low, "^[0-9a-fA-F]{8}$")) continue;
+                    string low = Path.GetFileName(title); if ((File.GetAttributes(title) & FileAttributes.ReparsePoint) != 0 || !Regex.IsMatch(low, "^[0-9a-fA-F]{8}$")) continue;
                     string id = (group + low).ToUpperInvariant(), label;
                     if (!seen.Add(id)) continue;
                     if (!NativeNames.TryGetValue(id, out label)) label = "3DS-Titel · " + id;
@@ -149,6 +186,7 @@ namespace LibraryDesktop {
             string ciaFolder = PathOnCard("cias");
             if (Directory.Exists(ciaFolder)) foreach (string file in Directory.GetFiles(ciaFolder).Where(f => Path.GetExtension(f).Equals(".cia", StringComparison.OrdinalIgnoreCase))) {
                 try {
+                    if ((File.GetAttributes(file) & FileAttributes.ReparsePoint) != 0) continue;
                     string id, name;
                     if (!CiaMetadata.Read(file, out id, out name)) continue;
                     Game installed = games.FirstOrDefault(g => g.Native && g.Key == id);
@@ -197,15 +235,25 @@ namespace LibraryDesktop {
             string temp = Path.Combine(parent, ".library-" + Guid.NewGuid().ToString("N") + ".partial");
             try {
                 long length = new FileInfo(fresh.Source).Length;
-                var drive = new DriveInfo(Path.GetPathRoot(Root));
-                if (drive.AvailableFreeSpace < length + 1048576) throw new IOException("Nicht genügend freier Speicher auf der SD-Karte.");
+#if PORTABLE_DESKTOP
+                long available = PortableVolume.FreeBytes(Root);
+#else
+                long available = new DriveInfo(Path.GetPathRoot(Root)).AvailableFreeSpace;
+#endif
+                if (available < length + 1048576) throw new IOException("Nicht genügend freier Speicher auf der SD-Karte.");
                 string hash;
+#if PORTABLE_DESKTOP
+                var mediumCheck = System.Diagnostics.Stopwatch.StartNew();
+#endif
                 using (var input = new FileStream(fresh.Source, FileMode.Open, FileAccess.Read, FileShare.Read))
                 using (var output = new FileStream(temp, FileMode.CreateNew, FileAccess.Write, FileShare.None))
                 using (var sha = SHA256.Create()) {
                     byte[] buffer = new byte[1048576]; int n; long done = 0;
                     while ((n = input.Read(buffer, 0, buffer.Length)) > 0) {
                         if (cancel != null && cancel()) throw new OperationCanceledException("Import abgebrochen. Keine neue Spieldatei übernommen.");
+#if PORTABLE_DESKTOP
+                        if (mediumCheck.ElapsedMilliseconds >= 500) { Validate(); mediumCheck.Restart(); }
+#endif
                         output.Write(buffer, 0, n); sha.TransformBlock(buffer, 0, n, null, 0); done += n;
                         if (progress != null) progress(new CopyProgress { Done = done, Total = length, Name = fresh.Name });
                     }
@@ -231,6 +279,9 @@ namespace LibraryDesktop {
             string temp = Path.Combine(Path.GetDirectoryName(target), ".library-" + token + ".partial"), rollback = Path.Combine(Path.GetDirectoryName(target), ".library-" + token + ".rollback");
             string backup = null;
             try {
+#if PORTABLE_DESKTOP
+                PortableImages.Convert(imageFile, temp);
+#else
                 using (var stream = File.OpenRead(imageFile)) using (var image = Drawing.Image.FromStream(stream, true, true)) {
                     if ((long)image.Width * image.Height > 40000000) throw new IOException("Bitte ein Bild mit höchstens 40 Megapixeln verwenden.");
                     if (image.PropertyIdList.Contains(0x112)) {
@@ -251,6 +302,7 @@ namespace LibraryDesktop {
                     }
                 }
                 using (var verify = Drawing.Image.FromFile(temp)) { if (verify.Width > 256 || verify.Height > 256) throw new IOException("Cover-Konvertierung fehlgeschlagen."); }
+#endif
                 string newHash = Hash(temp); Validate(); PathOnCard(target.Substring(Root.Length));
                 if (onlyMissing && File.Exists(target)) throw new CoverExistsException();
                 if (File.Exists(target)) {

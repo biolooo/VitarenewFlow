@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType><TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>disable</Nullable>
+    <DefineConstants>$(DefineConstants);PORTABLE_DESKTOP</DefineConstants>
+    <AssemblyName>VitarenewFlow.Desktop</AssemblyName><Version>0.4.2</Version>
+    <PublishTrimmed>false</PublishTrimmed><Deterministic>true</Deterministic>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RuntimeIdentifiers>osx-arm64;osx-x64;linux-x64</RuntimeIdentifiers>
+    <NoWarn>$(NoWarn);SYSLIB0014;SYSLIB0039</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="12.1.5" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.5" />
+    <PackageReference Include="Avalonia.Headless" Version="12.1.5" />
+    <PackageReference Include="SkiaSharp" Version="3.119.4" />
+    <Compile Include="../source/Library.cs" Link="Engine/Library.cs" />
+    <Compile Include="../source/CiaMetadata.cs" Link="Engine/CiaMetadata.cs" />
+    <Compile Include="../source/AutoCovers.cs" Link="Engine/AutoCovers.cs" />
+    <EmbeddedResource Include="../source/BrandIcon.png" LogicalName="BrandIcon.png" />
+  </ItemGroup>
+</Project>
