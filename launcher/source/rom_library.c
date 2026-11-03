@@ -57,12 +57,14 @@ static void push(Walker *w,const char *path,unsigned depth,unsigned mask){
  Frame *f=&w->frames[w->active++];f->dir=dir;strcpy(f->path,path);f->depth=depth;f->mask=mask;w->result->directories++;
 }
 static void walk(Walker *w,const char *root,unsigned mask){
- if(!progress(w))return;push(w,root,0,mask);
+ if(!progress(w)){return;}
+ push(w,root,0,mask);
  while(w->active&&progress(w)){
   Frame *f=&w->frames[w->active-1];struct dirent *e=next_entry(w,f->dir);
   if(!e){closedir(f->dir);w->active--;continue;}
-  if(!strcmp(e->d_name,".")||!strcmp(e->d_name,".."))continue;
-  if(!entry_budget(w))break;if(e->d_name[0]=='.')continue;
+  if(!strcmp(e->d_name,".")||!strcmp(e->d_name,"..")){continue;}
+  if(!entry_budget(w)){break;}
+  if(e->d_name[0]=='.'){continue;}
   char path[DS_PATH_MAX];if(!child_path(path,f->path,e->d_name)){w->result->limited=true;continue;}
   struct stat st;if(lstat(path,&st)){w->result->missing++;w->result->limited=true;continue;}
   if(S_ISDIR(st.st_mode)){
@@ -86,14 +88,19 @@ static void emulator_roots(Walker *w,const char *apps){
  static const char *names[]={"DaedalusX64","mGBA","snes9x_3ds","virtuanes_3ds","red-viper"};
  DIR *dir=opendir(apps);if(!dir){w->result->missing++;w->result->limited=true;return;}struct dirent *e;
  while(progress(w)&&(e=next_entry(w,dir))){
-  if(!strcmp(e->d_name,".")||!strcmp(e->d_name,".."))continue;if(!entry_budget(w))break;if(e->d_name[0]=='.')continue;
+  if(!strcmp(e->d_name,".")||!strcmp(e->d_name,"..")){continue;}
+  if(!entry_budget(w)){break;}
+  if(e->d_name[0]=='.'){continue;}
   bool known=false;for(unsigned i=0;i<sizeof(names)/sizeof(names[0]);i++)if(!strcasecmp(e->d_name,names[i]))known=true;
-  if(!known)continue;char emulator[DS_PATH_MAX];struct stat st;
+  if(!known){continue;}
+  char emulator[DS_PATH_MAX];struct stat st;
   if(!child_path(emulator,apps,e->d_name)){w->result->limited=true;continue;}
   if(lstat(emulator,&st)){w->result->missing++;w->result->limited=true;continue;}if(!S_ISDIR(st.st_mode))continue;
   DIR *sub=opendir(emulator);if(!sub){w->result->missing++;w->result->limited=true;continue;}struct dirent *folder;
   while(progress(w)&&(folder=next_entry(w,sub))){
-   if(!strcmp(folder->d_name,".")||!strcmp(folder->d_name,".."))continue;if(!entry_budget(w))break;if(folder->d_name[0]=='.')continue;
+   if(!strcmp(folder->d_name,".")||!strcmp(folder->d_name,"..")){continue;}
+  if(!entry_budget(w)){break;}
+   if(folder->d_name[0]=='.'){continue;}
    if(strcasecmp(folder->d_name,"roms")&&strcasecmp(folder->d_name,"games"))continue;
    char root[DS_PATH_MAX];if(!child_path(root,emulator,folder->d_name)){w->result->limited=true;continue;}
    walk(w,root,MASK_ALL);
@@ -109,7 +116,9 @@ void rom_library_scan(const DsRoots *extraDsRoots,DsScan *result,DsVisit visit,D
  DIR *dir=progress(w)?opendir("sdmc:/"):NULL;
  if(!dir){if(!result->cancelled){result->missing++;result->limited=true;}}
  else{struct dirent *e;while(progress(w)&&(e=next_entry(w,dir))){
-  if(!strcmp(e->d_name,".")||!strcmp(e->d_name,".."))continue;if(!entry_budget(w))break;if(e->d_name[0]=='.')continue;
+  if(!strcmp(e->d_name,".")||!strcmp(e->d_name,"..")){continue;}
+  if(!entry_budget(w)){break;}
+  if(e->d_name[0]=='.'){continue;}
   if(!root_name(e->d_name)&&strcasecmp(e->d_name,"3ds"))continue;
   char path[DS_PATH_MAX];struct stat st;
   if(!child_path(path,"sdmc:/",e->d_name)){result->limited=true;continue;}
