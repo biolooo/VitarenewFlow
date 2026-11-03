@@ -1,5 +1,29 @@
 # Flow — Einstieg für den Orchestrator
 
+## Emulatorordner erkennen — 0.12.41 in Entwicklung · 03.11.2026
+
+Nutzerauftrag: Spiele unterschiedlicher Emulatoren auf vorhandener SD finden;
+anschließende Veröffentlichung und plattformübergreifende Desktopdownloads wurden
+im aktuellen Auftrag zusätzlich angefordert, sind noch nicht abgeschlossen.
+Basis `9983b31`, sauberer main mit frisch geprüften Remote-Refs. Bestehende .40-
+Startoptimierung und veröffentlichte Pakete bleiben erhalten. Ein gemeinsamer,
+begrenzter Scanner ersetzt flache Emulator- und separate automatische DS-Suche:
+positive typische SD-Spielewurzeln einschließlich Unterordnern, ursprüngliche
+Spielpfade, bestehende DS-Zusatzordner und unterstützte Formate. Keine Vollsuche in
+Systembäumen, keine Spielinhalte gelesen, keine SD-Dateien verändert oder kopiert.
+Gesamtbibliothek jetzt 1536 Plätze; der unabhängige .40-Metadatencache bleibt auf
+1024 installierte 3DS-Titel begrenzt und enthält keine ROM-Einträge.
+
+Hosttests echter Module und aktuell extrahierter main-Callback bestanden:
+Rekursion/Case/Duplikate/Originalpfade/1536/Abbruch/IO-Fehler/Suchgrenzen, .40-
+Cachetests weiter grün. Reiner Namens-/Pfadscan der eingesteckten Karte findet alle
+846 unterstützten ROM-Dateien in sieben Spieleverzeichnissen (885 Einträge,
+keine Suchbegrenzung). Synthetische gemischte Bibliothek: 198 installierte Titel
+plus 846 ROMs = 1044 vollständig. Native Build-/Stack-/BSS-Prüfung, vollständige
+Suite, Paketierung/Reproduktion, Veröffentlichung und Konsolenabnahme noch offen.
+Desktop Mac/Linux und plattformwählbarer Download werden separat integriert;
+Hinweise behaupten diese bis dahin nicht als fertig.
+
 ## Startzeit großer 3DS-Bibliotheken — 0.12.40 veröffentlicht 02.11.2026
 
 Nutzerauftrag umgesetzt: schnellere Flow-Öffnung bei vielen installierten 3DS-Titeln,

@@ -27,7 +27,7 @@ bool ds_roots_add(DsRoots *roots,const char *path){char clean[DS_PATH_MAX];if(!r
 }
 static bool read_roots(DsRoots *roots,const char *config){
  memset(roots,0,sizeof(*roots));FILE *f=fopen(config,"rb");if(!f)return false;
- char line[DS_PATH_MAX+2];while(fgets(line,sizeof(line),f)){size_t n=strcspn(line,"\r\n");if(line[n])line[n]=0;else if(n==sizeof(line)-1){int c;while((c=fgetc(f))!=EOF&&c!='\n');continue;}ds_roots_add(roots,line);}
+ char line[DS_PATH_MAX+2];while(fgets(line,sizeof(line),f)){size_t n=strcspn(line,"\r\n");if(line[n])line[n]=0;else if(n==sizeof(line)-1){int c;while((c=fgetc(f))!=EOF&&c!='\n'){}continue;}ds_roots_add(roots,line);}
  bool ok=!ferror(f);if(fclose(f))ok=false;return ok;
 }
 static bool companion(char *out,size_t cap,const char *config,const char *suffix){int n=snprintf(out,cap,"%s%s",config,suffix);return n>=0&&(size_t)n<cap;}

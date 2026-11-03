@@ -1,4 +1,5 @@
 #include "ds_library.h"
+#include "rom_library.h"
 #include "forwarder_restore.h"
 #include "app_update.h"
 #include "update_store.h"
@@ -43,7 +44,7 @@
 #include "game_seed.h"
 #include "native_handoff.h"
 #include <math.h>
-#define MAX_GAMES 1024
+#define MAX_GAMES 1536
 typedef struct {u64 id;
 FS_MediaType media;
 int system;
@@ -143,7 +144,7 @@ static bool reportFallback(void){
 static void openReport(void){
     if(!reportAvailable())return;
     report_transport_reset();reportConfirmed=false;reportDetails=false;reportDescription[0]=0;
-    report=(ErrorReport){.version="0.12.40",.description=reportDescription,
+    report=(ErrorReport){.version="0.12.41",.description=reportDescription,
         .context=envIsHomebrew()?ERROR_REPORT_HOMEBREW:ERROR_REPORT_NATIVE};
     int boot=autoboot_status();report.autoboot=boot==1?ERROR_REPORT_AUTOBOOT_ON:boot==0?ERROR_REPORT_AUTOBOOT_OFF:ERROR_REPORT_AUTOBOOT_UNKNOWN;
     if(R_SUCCEEDED(cfguInit())){
@@ -235,7 +236,7 @@ static void draw(bool loading,float progress,const char *stage){
     if(updatePage&&app_update_status().state==UPDATE_ERROR)rememberReport(ERROR_REPORT_UPDATE,app_update_error_code(),ERROR_REPORT_CHECKING_UPDATE);
     if(twlPage&&R_FAILED(twlError))rememberReport(ERROR_REPORT_DS,twlError,ERROR_REPORT_CHECKING_DS);
     const char *target=visibleCount?games[visible[selected]].cover:"";
-    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.40",
+    UiState state={.system=library_view_names[systemView],.status=status,.version="0.12.41",
         .reportAvailable=reportAvailable(),.reportFallback=reportFallback(),.reportDetails=reportDetails,.reportHistorical=reportHistorical,.reportDiagnostics=&reportDiagnostics,.reportOpen=reportOpen,.reportConfirmed=reportConfirmed,.reportConfigured=report_transport_configured(),.reportState=report_transport_state(),.reportDescription=reportDescription,.reportArea=report.area,.reportCode=report.code,.reportModel=report.model,.reportRegion=report.region,.reportAutoboot=report.autoboot,.reportContext=report.context,
         .searchOpen=searchOpen,.searchQuery=searchQuery,.searchSuggestions=searchSuggestions,.searchNumeric=searchNumeric,.searchSystems=searchSystems,
         .dsFolderMessage=dsFolderMessage,.dsFolders=dsFolders,.dsPicking=dsPicking,.dsRoots=&dsRoots,.dsBrowser=&dsBrowser,.dsScan=&dsScan,.dsRootSelected=dsRootSelected,
@@ -363,17 +364,19 @@ static Result metadata(u64 id,FS_MediaType media){
     return R_SUCCEEDED(r)&&catalog_smdh_valid(smdh,bytes)?0:(Result)-1;
 }
 static int compare(const void *a,const void *b){return strcasecmp(((const Game*)a)->name,((const Game*)b)->name);}
-static bool dsFound(const char *path,void *unused){
+static bool romFound(const char *path,void *unused){
     (void)unused;for(unsigned j=0;j<gameCount;j++)if(!strcasecmp(games[j].path,path))return true;
     if(gameCount>=MAX_GAMES)return false;
-    Game *g=&games[gameCount++];memset(g,0,sizeof(*g));g->system=SYSTEM_DS;
-    snprintf(g->path,sizeof(g->path),"%s",path);const char *name=strrchr(path,'/');name=name?name+1:path;
+    const char *name=strrchr(path,'/');name=name?name+1:path;int system=library_file_system(name);
+    if(system<0||strlen(path)>=sizeof(games[0].path))return true;
+    Game *g=&games[gameCount++];memset(g,0,sizeof(*g));g->system=system;
+    strcpy(g->path,path);
     snprintf(g->key,sizeof(g->key),"%.255s",name);snprintf(g->name,sizeof(g->name),"%.159s",name);char *ext=strrchr(g->name,'.');if(ext)*ext=0;
-    library_cover_path(g->cover,sizeof(g->cover),SYSTEM_DS,g->key);return true;
+    library_cover_path(g->cover,sizeof(g->cover),system,g->key);return true;
 }
 static bool dsScanContinue(void *unused){
     (void)unused;if(!flowMainLoop())return false;hidScanInput();if(hidKeysDown()&KEY_B)return false;
-    static unsigned tick;if((++tick%24)==0){status=l10n_english()?"DS folders · B Cancel":"DS-Ordner · B Abbrechen";draw(true,.6f,l10n_english()?"Finding DS games · B Cancel":"DS-Spiele suchen · B Abbrechen");}return true;
+    static u64 drawnAt;u64 now=osGetTime();if(now-drawnAt>=100){drawnAt=now;status=l10n_english()?"Game folders · B Cancel":"Spieleordner · B Abbrechen";draw(true,.6f,l10n_english()?"Finding games · B Cancel":"Spiele suchen · B Abbrechen");}return true;
 }
 #define TITLE_CACHE_PATH "sdmc:/3ds/3ds-library/title-cache-v1.bin"
 static TitleCacheWriter titleCacheWriter;
@@ -526,40 +529,11 @@ static void scan(bool refresh){
             status=tr("Installationsdateien lesen...");draw(true,.48f,tr("CIA-Spiele werden gelesen"));
         }closedir(cias);
     }
-    const char *folders[]={"sdmc:/roms/nds","sdmc:/roms/gba","sdmc:/roms/n64","sdmc:/3ds/DaedalusX64/Roms","sdmc:/roms/snes","sdmc:/roms/nes","sdmc:/roms/vb","sdmc:/roms/gb"};
-    for(unsigned f=0;f<sizeof(folders)/sizeof(folders[0]);++f){
-        DIR *dir=opendir(folders[f]);
-        if(!dir)continue;
-        struct dirent *entry;
-        while((entry=readdir(dir)) && gameCount<MAX_GAMES){
-            int sys=library_file_system(entry->d_name);
-            if(sys<0||(sys==SYSTEM_DS&&f==0))continue;
-            char path[512];
-            int n=snprintf(path,sizeof(path),"%s/%s",folders[f],entry->d_name);
-            struct stat st;
-            if(n<0||(size_t)n>=sizeof(path)||stat(path,&st)||!S_ISREG(st.st_mode))continue;
-            bool duplicate=false;
-            for(unsigned j=0;j<gameCount;++j)if(!strcmp(games[j].path,path))duplicate=true;
-            if(duplicate)continue;
-            Game *g=&games[gameCount++];
-            memset(g,0,sizeof(*g));
-            g->system=sys;
-            snprintf(g->path,sizeof(g->path),"%s",path);
-            snprintf(g->key,sizeof(g->key),"%.255s",entry->d_name);
-            snprintf(g->name,sizeof(g->name),"%.159s",entry->d_name);
-            char *ext=strrchr(g->name,'.');
-            if(ext)*ext=0;
-            library_cover_path(g->cover,sizeof(g->cover),sys,g->key);
-        }
-        closedir(dir);
-        status=tr("ROM-Ordner lesen...");
-        draw(true,.5f+.45f*(f+1)/8,tr("ROM-Bibliothek wird gelesen"));
-    }
-    ds_library_scan(&dsRoots,&dsScan,dsFound,dsScanContinue,NULL);
+    rom_library_scan(&dsRoots,&dsScan,romFound,dsScanContinue,NULL);
     qsort(games,gameCount,sizeof(Game),compare);
     rebuild();
     flow_reset(&flow,selected);
-    status=gameCount==MAX_GAMES?tr("Limit: 1024 Eintraege erreicht"):tr("Bereit");
+    status=gameCount==MAX_GAMES?(l10n_english()?"Library limit: 1536 entries":"Bibliothekslimit: 1536 Einträge"):dsScan.cancelled?(l10n_english()?"Search cancelled; list incomplete":"Suche abgebrochen; Liste unvollständig"):dsScan.limited?(l10n_english()?"Search incomplete; check game folders":"Suche unvollständig; Spieleordner prüfen"):tr("Bereit");
     titleCacheIdleSince=osGetTime();
     char timing[160];snprintf(timing,sizeof(timing),"Library scan: total_ms=%llu titles=%u hits=%u metadata=%u all_entries=%u",(unsigned long long)(osGetTime()-scanStartedAt),installedCount,scanCacheHits,scanMetadataReads,gameCount);app_perf_log(timing);
 }
@@ -1147,7 +1121,7 @@ int main(int argc,char **argv){
                 ((keys&(KEY_RIGHT|KEY_DOWN|KEY_R))?UPDATE_DETAILS_KEY_NEXT:0)|((keys&KEY_TOUCH)?UPDATE_DETAILS_TOUCH:0);
             UpdateDetailsAction action=update_details_action(busy,updateNotes,input,pos.px,pos.py);
             if(updateNotes){
-                const UpdateNotes *notes=update_details_notes(&update,"0.12.40");
+                const UpdateNotes *notes=update_details_notes(&update,"0.12.41");
                 unsigned count=ui_update_notes_pages(notes,l10n_english());
                 if(action==UPDATE_DETAILS_BACK||action==UPDATE_DETAILS_TOGGLE)updateNotes=false;
                 else if(action==UPDATE_DETAILS_PREVIOUS&&updateNotesPage)updateNotesPage--;
@@ -1310,7 +1284,7 @@ int main(int argc,char **argv){
                 if((keys&KEY_TOUCH)&&pos.py>=8&&pos.py<44&&pos.px<48){if(!ds_browser_parent(&dsBrowser))dsPicking=false;}
                 if((keys&KEY_X)||((keys&KEY_TOUCH)&&pos.py>=196&&pos.py<232&&pos.px>=12&&pos.px<308)){
                     DsRoots next=dsRoots;if(!ds_roots_add(&next,dsBrowser.path))dsFolderMessage=l10n_english()?"Folder limit reached. Remove one first.":"Ordnerlimit erreicht. Zuerst einen entfernen.";
-                    else if(saveDsRoots(&next)){dsPicking=false;dsFolders=false;status=l10n_english()?"DS folder saved and searched":"DS-Ordner gespeichert und durchsucht";}
+                    else if(saveDsRoots(&next)){dsPicking=false;dsFolders=false;if(!dsScan.limited&&!dsScan.cancelled&&gameCount<MAX_GAMES)status=l10n_english()?"DS folder saved and searched":"DS-Ordner gespeichert und durchsucht";}
                 }
             }else{
                 if(keys&KEY_B||((keys&KEY_TOUCH)&&pos.py<44&&pos.px<48))dsFolders=false;
@@ -1366,7 +1340,7 @@ int main(int argc,char **argv){
                     case MENU_AUTOBOOT:autobootState=autoboot_status();autobootPrompt=true;break;
                     case MENU_SCAN:{recordActivity(ERROR_REPORT_BROWSING);
                         draw(true,0,tr("Spiele werden eingelesen"));unsigned old=selected;
-                        scan(true);selected=old;rebuild();flow_reset(&flow,selected);status=tr("Spieleliste aktualisiert");break;}
+                        scan(true);selected=old;rebuild();flow_reset(&flow,selected);if(!dsScan.limited&&!dsScan.cancelled&&gameCount<MAX_GAMES)status=tr("Spieleliste aktualisiert");break;}
                     default:break;
                     }
                 }

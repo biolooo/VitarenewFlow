@@ -1,0 +1,13 @@
+{
+  "version": "0.12.41",
+  "highlights": [
+    {
+      "de": "Emulatorspiele werden in typischen SD-Spieleordnern und ihren Unterordnern gefunden.",
+      "en": "Emulator games are found in common SD game folders and their subfolders."
+    },
+    {
+      "de": "Die Bibliothek bietet Platz für bis zu 1536 Spiele verschiedener Systeme.",
+      "en": "The library supports up to 1536 games across different systems."
+    }
+  ]
+}

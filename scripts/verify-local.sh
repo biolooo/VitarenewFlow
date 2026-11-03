@@ -20,6 +20,7 @@ cp -a "$PROJECT/launcher/source" "$PROJECT/launcher/branding" "$PROJECT/launcher
 cp -a "$PROJECT/tests/release-0.12.33/." "$STAGE/tests/"
 cp -a "$PROJECT/tests/error-report" "$STAGE/tests/"
 cp -a "$PROJECT/tests/ds-library" "$STAGE/tests/"
+cp -a "$PROJECT/tests/rom-discovery" "$STAGE/tests/"
 cp -a "$PROJECT/tests/title-cache" "$STAGE/tests/"
 cp -a "$PROJECT/tests/update-notes" "$STAGE/tests/"
 cp -a "$PROJECT/tests/report-transport" "$STAGE/tests/"

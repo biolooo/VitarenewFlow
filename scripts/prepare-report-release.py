@@ -1,4 +1,4 @@
-"""Prepare immutable local 0.12.40 startup performance test assets and four channels; never deploy.
+"""Prepare immutable local 0.12.41 ROM discovery test assets and four channels; never deploy.
 
 Run only after configuring the approved public HTTPS endpoint and completing
 scripts/verify-local.sh: python scripts/prepare-report-release.py --verification PATH
@@ -17,8 +17,8 @@ from datetime import datetime, timezone
 from urllib.parse import urlsplit
 import zipfile
 
-VERSION = "0.12.40"
-PREVIOUS = "0.12.39"
+VERSION = "0.12.41"
+PREVIOUS = "0.12.40"
 PUBLIC_BASE = "https://biolooo.github.io/VitarenewFlow/updates"
 COMPANIONS = ("VitarenewFlow-Boot.3dsx", "VitarenewFlow-Shortcut.cia", "VitarenewFlow-Copy.gm9")
 DOWNLOADS = ("VitarenewFlow.3dsx", "VitarenewFlow.smdh", *COMPANIONS)
@@ -42,17 +42,17 @@ def release_document(notes):
             + "Fehlende Infos verhindern kein Update.\n\n"
             + "Frischer nativer Build und Hostprüfungen sowie exakte Quellpaketreproduktion erforderlich.\n"
             + "Keine Konsolenabnahme vorweggenommen. Modell, Region, Startweg und Autoboot festhalten.\n"
-            + "Startzeit mit vielen 3DS-Titeln bei kaltem/warmem Cache sowie nach Installation und Sprachwechsel prüfen.\n"
+            + "Emulatorordner, Unterordner, große gemischte Bibliotheken sowie Abbruch und Suchgrenzen auf Konsole prüfen.\n"
             + "3DSX/SMDH, unveränderte Boot-/Shortcut-/GM9-Begleiter, Quellen und Manifest enthalten.\n"
-            + "Keine Spiele, Saves, Schlüssel, SDKs oder privaten Berichte enthalten. Desktop .4.1 unverändert.\n"
+            + "Keine Spiele, Saves, Schlüssel, SDKs oder privaten Berichte enthalten. Desktoppakete sind separat versioniert.\n"
             + "Die vorherige 3DSX bleibt beim Update als manueller Rückweg erhalten.\n")
 
 
-BUILD_NOTES = '''# Build this exact 0.12.40 source package
+BUILD_NOTES = '''# Build this exact 0.12.41 source package
 
 Use linux/amd64 devkitpro/devkitarm at the immutable image digest
 sha256:15b79ce75822c289538d8153da5fa7aafe5e6adc32ad8a575a197beca0f0761b.
-The .40 CI build uses this exact container with host gcc/g++, make, Python 3
+The .41 CI build uses this exact container with host gcc/g++, make, Python 3
 and zlib1g-dev installed only in its ephemeral layer. The native SDK and 3DS
 libraries remain those in the pinned image. A matching existing chroot is also
 possible (docs/PC2-SETUP.md). Extract into a NEW isolated directory, never over
@@ -69,9 +69,9 @@ cp scripts/verify-stage.sh verify-stage.sh
 bash verify-stage.sh
 ```
 
-Keep tests/title-cache, tests/ds-library, tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
+Keep tests/rom-discovery, tests/title-cache, tests/ds-library, tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
 in place: they are current root-relative tests, not additional fixtures to flatten.
-Keep release-notes/0.12.40.json and scripts/generate-release-notes.py in place too.
+Keep release-notes/0.12.41.json and scripts/generate-release-notes.py in place too.
 The stage runner checks the generated installed header against this JSON and
 validates its generated notes.txt with the actual C parser before the build.
 Do not regenerate a different header or replace the JSON to make a mismatch pass.
@@ -189,6 +189,8 @@ def source_archive(root, updates):
                 "release-notes/" + VERSION + ".json", "tests/update-notes/test.sh",
                 "launcher/source/title_cache.c", "launcher/source/title_cache.h", "tests/title-cache/test.sh", "tests/title-cache/test.c",
                 "launcher/source/ds_library.c", "launcher/source/ds_library.h", "tests/ds-library/test.sh", "tests/ds-library/test.c",
+                "launcher/source/rom_library.c", "launcher/source/rom_library.h", "tests/rom-discovery/test.sh",
+                "tests/rom-discovery/test.c", "tests/rom-discovery/test_scan.py", "tests/rom-discovery/test_io.c",
                 "scripts/verify-stage.sh", "tests/error-report/test.sh", "tests/report-transport/test.sh",
                 "receiver/error-reports/server.py", "receiver/error-reports/test_server.py",
                 "receiver/error-reports/Dockerfile", "receiver/error-reports/compose.yaml", "receiver/error-reports/start-local.sh"}
@@ -252,7 +254,7 @@ def prepare(root, verification):
     assets["SHA256.json"] = (json.dumps(manifest, indent=2) + "\n").encode("ascii")
     store["storeInfo"]["revision"] = revision + 1
     entry["info"]["version"] = VERSION
-    entry["info"]["description"] = "Faster library startup for large installed 3DS collections using cached title metadata."
+    entry["info"]["description"] = "Find emulator games in common SD folders and subfolders; library capacity up to 1536 entries."
     entry["info"]["last_updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     install = entry["Installieren / Install"]
     downloads = [action for action in install["script"] if action.get("type") == "downloadFile"]
@@ -293,7 +295,7 @@ def prepare(root, verification):
             output.write(data)
         os.replace(staged, updates / name)
     print("PREPARED locally:", release)
-    print("Ten assets including version-bound notes and four .40 channels; no push, publication or hardware acceptance performed.")
+    print("Ten assets including version-bound notes and four .41 channels; no push, publication or hardware acceptance performed.")
 
 
 def main():
