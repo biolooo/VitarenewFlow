@@ -38,6 +38,7 @@ internal static class PortableDiscovery {
                 string relative = line.Trim();
                 if (!relative.StartsWith("sdmc:/", StringComparison.OrdinalIgnoreCase) || relative.Contains('\\') || relative.Substring(6).Contains(':')) continue;
                 relative = relative.Substring(6).TrimStart('/');
+                if (relative.Length == 0) { limited = true; continue; } // Explicit whole-SD DS root needs a narrower folder on desktop.
                 try { if (relative.Length > 0) { string resolved=card.PathOnCard(relative); if(roots.Add(resolved)) Walk(resolved, 0, true); } } catch (IOException) { limited = true; }
             }
         }

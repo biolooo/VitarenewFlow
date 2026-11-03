@@ -82,8 +82,23 @@ internal static class EngineTests {
         string before=Card.Hash(game.CoverPath);var again=engine.Run(card,new[]{game},(p,t)=>{},()=>false);Check(again.Loaded==0&&Card.Hash(game.CoverPath)==before,"Auto-cover preserves existing artwork");
         var cancelled=new AutoCovers((u,c)=>throw new Exception("Network must not run")).Run(card,new[]{game},(p,t)=>{},()=>true);Check(cancelled.Cancelled,"Auto-cover cancellation before network");
     }
+
+    static void DiscoveryEdges() {
+        var card=CreateUiCard();string config=card.PathOnCard("3ds/3ds-library/ds-folders.txt");
+        string deep=Path.Combine(card.Root,"CustomDeep");
+        for(int i=0;i<10;i++)deep=Path.Combine(deep,"level");Write(Path.Combine(deep,"TooDeep.nds"),new byte[1]);
+        Write(config,Encoding.UTF8.GetBytes("_nds\nsdmc:/CustomDeep\nsdmc:/Missing\n"));
+        var files=PortableDiscovery.Scan(card);Check(card.DiscoveryNotice.Length!=0&&files.Any(p=>p.EndsWith("Sample.gba")),"Partial deep/missing DS branch does not suppress later automatic roots");
+        string longPath=card.PathOnCard("GBA");for(int i=0;i<3;i++)longPath=Path.Combine(longPath,new string('界',60));Write(Path.Combine(longPath,"TooLong.gba"),new byte[1]);
+        files=PortableDiscovery.Scan(card);Check(card.DiscoveryNotice.Length!=0&&!files.Any(p=>p.EndsWith("TooLong.gba")),"Native 512-byte UTF8 path budget enforced");
+        Directory.Delete(Path.Combine(card.Root,"GBA",new string('界',60)),true);
+        string valid=Path.Combine(card.Root,"CustomValid");Write(Path.Combine(valid,"Found.nds"),new byte[1]);
+        Write(config,Encoding.UTF8.GetBytes(string.Concat(Enumerable.Repeat("invalid-relative\n",9))+"sdmc:/CustomValid\n"));
+        Check(PortableDiscovery.Scan(card).Any(p=>p.EndsWith("Found.nds")),"Invalid DS lines do not consume eight valid-root slots");
+        Write(config,Encoding.UTF8.GetBytes("sdmc:/\n"));PortableDiscovery.Scan(card);Check(card.DiscoveryNotice.Length!=0,"Whole-SD DS selection visibly marked partial instead of silent skip");
+    }
     internal static int Run(string report) {
-        Checks.Clear();try { Volumes();var card=CreateUiCard();Inventory(card);Operations(card);ImagesAndAutoCovers(card);File.WriteAllText(report,JsonSerializer.Serialize(new{version="0.4.2",passed=true,checks=Checks.Count,results=Checks},new JsonSerializerOptions{WriteIndented=true}));return 0; }
+        Checks.Clear();try { Volumes();var card=CreateUiCard();Inventory(card);Operations(card);ImagesAndAutoCovers(card);DiscoveryEdges();File.WriteAllText(report,JsonSerializer.Serialize(new{version="0.4.2",passed=true,checks=Checks.Count,results=Checks},new JsonSerializerOptions{WriteIndented=true}));return 0; }
         catch(Exception ex){File.WriteAllText(report,JsonSerializer.Serialize(new{version="0.4.2",passed=false,error=ex.ToString(),results=Checks},new JsonSerializerOptions{WriteIndented=true}));Console.Error.WriteLine(ex);return 1;}
     }
 }
