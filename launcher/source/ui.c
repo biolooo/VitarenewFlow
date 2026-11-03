@@ -1247,14 +1247,20 @@ void ui_draw(const UiState *s){
 
   rect(0,0,320,240,RGB(9,19,29));rounded(8,8,304,36,10,panel);reportHeading(s,tr(s->componentSelected==6?"Desktop-Verwaltung":"Emulatoren"));text(289,17,16,ink,"x");
 
-  if(busy){title(20,70,17,280,2,component_definition(s->componentSelected)->name,false);text(20,118,14,muted,tr("Herunterladen und prüfen..."));float p=c->total?(float)c->received/c->total:0;rounded(20,156,280,6,3,raised);rounded(20,156,280*fminf(p,1.f),6,3,accent);char amount[48];snprintf(amount,sizeof(amount),"%.1f / %.1f MB",c->received/1048576.f,c->total/1048576.f);centered(160,174,12,muted,amount);centered(160,202,14,ink,tr("Abbrechen"));}
+  if(busy){title(20,70,17,280,2,components_definition(s->componentSelected)->name,false);text(20,118,14,muted,tr("Herunterladen und prüfen..."));float p=c->total?(float)c->received/c->total:0;rounded(20,156,280,6,3,raised);rounded(20,156,280*fminf(p,1.f),6,3,accent);char amount[48];snprintf(amount,sizeof(amount),"%.1f / %.1f MB",c->received/1048576.f,c->total/1048576.f);centered(160,174,12,muted,amount);centered(160,202,14,ink,tr("Abbrechen"));}
 
   else {
 
-   if(s->componentSelected==6){text(20,65,18,ink,"VitarenewFlow Desktop");title(20,99,13,280,3,tr("Spiele hinzufügen und Cover pflegen. Die Windows-App wird auf der SD gespeichert."),false);ComponentAvailability desktop=components_availability(6);text(20,151,12,desktop==COMP_AVAILABLE?accent:muted,tr(desktop==COMP_AVAILABLE?"Auf SD vorhanden":desktop==COMP_UNCHECKED?"Status unklar":"Noch nicht installiert"));}
-   else for(unsigned row=0;row<3;row++){unsigned i=s->componentSelected/3*3+row;const ComponentDef *d=component_definition(i);float y=54+row*40;rounded(12,y,296,35,8,i==s->componentSelected?raised:panel);text(22,y+8,15,ink,d->name);ComponentAvailability found=components_availability(i);const char *label=!d->count?"Später":found==COMP_AVAILABLE?"Bereit":found==COMP_UNCHECKED?"Unklar":"Fehlt";text(250,y+10,11,i==s->componentSelected?accent:muted,tr(label));}
+   if(s->componentSelected==6){
+    for(unsigned platform=0;platform<DESKTOP_PLATFORM_COUNT;platform++){
+     float y=54+platform*29;bool active=platform==s->desktopPlatform;
+     rounded(12,y,296,25,7,active?raised:panel);text(22,y+5,13,active?accent:ink,component_desktop_label(platform));
+     if(active){ComponentAvailability found=components_availability(6);text(254,y+6,10,accent,tr(found==COMP_AVAILABLE?"Bereit":found==COMP_UNCHECKED?"Unklar":"Fehlt"));}
+    }
+   }
+   else for(unsigned row=0;row<3;row++){unsigned i=s->componentSelected/3*3+row;const ComponentDef *d=components_definition(i);float y=54+row*40;rounded(12,y,296,35,8,i==s->componentSelected?raised:panel);text(22,y+8,15,ink,d->name);ComponentAvailability found=components_availability(i);const char *label=!d->count?"Später":found==COMP_AVAILABLE?"Bereit":found==COMP_UNCHECKED?"Unklar":"Fehlt";text(250,y+10,11,i==s->componentSelected?accent:muted,tr(label));}
 
-   const ComponentDef *d=component_definition(s->componentSelected);const char *msg=c->state==COMP_ERROR||c->state==COMP_DONE||c->state==COMP_CANCELLED?c->message:!d->count?"Download noch nicht freigegeben.":components_presence_detail(s->componentSelected);title(20,174,11,280,2,tr(msg),false);
+   const ComponentDef *d=components_definition(s->componentSelected);const char *msg=c->state==COMP_ERROR||c->state==COMP_DONE||c->state==COMP_CANCELLED?c->message:!d->count?"Download noch nicht freigegeben.":components_presence_detail(s->componentSelected);title(20,174,11,280,2,tr(msg),false);
 
    if(s->componentSelected!=6){
     rounded(12,201,48,30,8,raised);centered(36,209,11,ink,"L/R");

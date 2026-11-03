@@ -49,3 +49,22 @@ static const ComponentDef definitions[]={
  {"VitarenewFlow Desktop","Windows · 0.4.1",desktop_files,4},
 };
 const ComponentDef *component_definition(unsigned index){return index<COMPONENT_COUNT?&definitions[index]:0;}
+
+#include "desktop_catalog_generated.h"
+const ComponentDef *component_desktop_definition(unsigned platform){
+ if(!platform)return &definitions[6];
+ return platform<DESKTOP_PLATFORM_COUNT?&desktop_portable_definitions[platform-1]:NULL;
+}
+const char *component_desktop_label(unsigned platform){
+ static const char *labels[]={"Windows","macOS · Apple Silicon","macOS · Intel","Linux · x64"};
+ return platform<DESKTOP_PLATFORM_COUNT?labels[platform]:"";
+}
+int component_desktop_hit(int x,int y){
+ if(x<12||x>=308||y<54)return -1;
+ unsigned row=(unsigned)(y-54)/29;
+ return row<DESKTOP_PLATFORM_COUNT&&(y-54)%29<25?(int)row:-1;
+}
+unsigned component_desktop_step(unsigned platform,int direction){
+ if(platform>=DESKTOP_PLATFORM_COUNT)platform=0;
+ return direction<0?(platform+DESKTOP_PLATFORM_COUNT-1)%DESKTOP_PLATFORM_COUNT:direction>0?(platform+1)%DESKTOP_PLATFORM_COUNT:platform;
+}

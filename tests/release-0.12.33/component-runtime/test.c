@@ -77,8 +77,10 @@ u64 id=DS_BOOTSTRAP_ID;
 return R_SUCCEEDED(AM_GetTitleInfo(MEDIATYPE_NAND,1,&id,&info));
 }return true;
 }
+static unsigned desktop_platform;
+const ComponentDef *components_definition(unsigned index){return component_definition(index);}
 static const char *presence_detail[COMPONENT_COUNT];
-static ComponentAvailability probe_present(unsigned index){const ComponentDef *d=component_definition(index);
+static ComponentAvailability probe_present(unsigned index){const ComponentDef *d=components_definition(index);
  if(!d||!d->count)return COMP_MISSING;
  if(index==1){
   DsRuntimeState ds=ds_runtime_check();
@@ -86,7 +88,7 @@ static ComponentAvailability probe_present(unsigned index){const ComponentDef *d
   presence_detail[index]=details[ds];
   return ds==DS_RUNTIME_READY?COMP_AVAILABLE:ds==DS_RUNTIME_UNAVAILABLE?COMP_UNCHECKED:COMP_MISSING;
  }
- if(index==6){
+ if(index==6&&!desktop_platform){
   /* Only the executable determines presence; sidecars are repaired by the
      verified installer. Keep the documented pre-rename executable supported. */
   const char *paths[]={d->files[0].target,"sdmc:/3DS Library PC.exe"};
@@ -103,7 +105,12 @@ static ComponentAvailability probe_present(unsigned index){const ComponentDef *d
   presence_detail[index]=unknown?"SD konnte nicht geprüft werden. Erneut prüfen.":"Keine Windows-App auf der SD gefunden.";
   return unknown?COMP_UNCHECKED:COMP_MISSING;
  }
- struct stat file;bool ready=!stat(d->files[0].target,&file)&&S_ISREG(file.st_mode)&&file.st_size>0;
+ struct stat file;int result=stat(d->files[0].target,&file);bool ready=!result&&S_ISREG(file.st_mode)&&file.st_size>0;
+ if(index==6){
+  bool unknown=result&&errno!=ENOENT&&errno!=ENOTDIR;
+  presence_detail[index]=unknown?"SD konnte nicht geprüft werden. Erneut prüfen.":ready?"Archiv dieser Plattform auf SD vorhanden. Am Computer entpacken.":"Kein Archiv dieser Plattform auf der SD gefunden.";
+  return unknown?COMP_UNCHECKED:ready?COMP_AVAILABLE:COMP_MISSING;
+ }
  presence_detail[index]=ready?"Flow-Startdatei vorhanden.":"Flow-Startdatei fehlt oder ist leer.";
  return ready?COMP_AVAILABLE:COMP_MISSING;
 }
@@ -118,7 +125,7 @@ bool components_recheck(void){
  ComponentState s=components_status().state;if(s==COMP_DOWNLOAD||s==COMP_READY)return false;
  for(unsigned i=0;i<COMPONENT_COUNT;i++){
   present_cache[i]=-1;ComponentAvailability found=components_availability(i);
-  char log[180];snprintf(log,sizeof(log),"Runtime check %s: %u; %s",component_definition(i)->name,(unsigned)found,components_presence_detail(i));app_log(log);
+  char log[180];snprintf(log,sizeof(log),"Runtime check %s: %u; %s",components_definition(i)->name,(unsigned)found,components_presence_detail(i));app_log(log);
  }
  return true;
 }

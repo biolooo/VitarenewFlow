@@ -8,6 +8,10 @@
     {
       "de": "Die Bibliothek bietet Platz für bis zu 1536 Spiele verschiedener Systeme.",
       "en": "The library supports up to 1536 games across different systems."
+    },
+    {
+      "de": "Desktop-Verwaltung für macOS und Linux direkt im Menü auf die SD laden.",
+      "en": "Download the macOS and Linux desktop manager to the SD card from the menu."
     }
   ]
 }

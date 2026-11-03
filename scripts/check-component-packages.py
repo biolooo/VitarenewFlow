@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import importlib.util
 import re
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
@@ -102,6 +103,14 @@ def main() -> int:
             print(f"{directory}: {count} payload entries, {len(companions)} companion paths inventoried")
         except (OSError, ValueError, TypeError) as exc:
             errors.append(f"{directory}: {exc}")
+    try:
+        spec = importlib.util.spec_from_file_location("flow_desktop_catalog", Path(__file__).with_name("generate-desktop-catalog.py"))
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        module.generate(args.root, check=True)
+        print("desktop-0.4.2: actual portable bytes and compiled catalog verified")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append("desktop-0.4.2: " + str(exc))
     if errors:
         for error in errors:
             print("FAIL:", error)

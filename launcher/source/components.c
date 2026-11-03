@@ -17,7 +17,10 @@
 static Thread worker;
 static int diagnostic_code;
 int components_error_code(void){return __atomic_load_n(&diagnostic_code,__ATOMIC_ACQUIRE);}
-static unsigned state,received,total,selected,base;
+static unsigned state,received,total,selected,base,desktop_platform,active_desktop_platform;
+static const ComponentDef *active_definition;
+const ComponentDef *components_definition(unsigned index){return index==6?component_desktop_definition(desktop_platform):component_definition(index);}
+unsigned components_desktop_platform(void){return desktop_platform;}
 static bool cancelled;
 static char message[128];
 static bool stop_requested(void){return __atomic_load_n(&cancelled,__ATOMIC_ACQUIRE);
@@ -88,7 +91,7 @@ curl_easy_setopt(curl,CURLOPT_SSL_VERIFYHOST,2L);
  /* Exact publisher URL;
  redirects fail closed. */
  curl_easy_setopt(curl,CURLOPT_CONNECTTIMEOUT,12L);
-curl_easy_setopt(curl,CURLOPT_TIMEOUT,180L);
+curl_easy_setopt(curl,CURLOPT_TIMEOUT,selected==6?900L:180L);
  curl_easy_setopt(curl,CURLOPT_LOW_SPEED_LIMIT,256L);
 curl_easy_setopt(curl,CURLOPT_LOW_SPEED_TIME,15L);
  curl_easy_setopt(curl,CURLOPT_NOSIGNAL,1L);
@@ -130,7 +133,7 @@ for(unsigned i=0;i<32;i++)snprintf(hex+2*i,3,"%02x",digest[i]);
 return ok&&!strcmp(hex,def->sha);
 }
 static const char *presence_detail[COMPONENT_COUNT];
-static ComponentAvailability probe_present(unsigned index){const ComponentDef *d=component_definition(index);
+static ComponentAvailability probe_present(unsigned index){const ComponentDef *d=components_definition(index);
  if(!d||!d->count)return COMP_MISSING;
  if(index==1){
   DsRuntimeState ds=ds_runtime_check();
@@ -138,7 +141,7 @@ static ComponentAvailability probe_present(unsigned index){const ComponentDef *d
   presence_detail[index]=details[ds];
   return ds==DS_RUNTIME_READY?COMP_AVAILABLE:ds==DS_RUNTIME_UNAVAILABLE?COMP_UNCHECKED:COMP_MISSING;
  }
- if(index==6){
+ if(index==6&&!desktop_platform){
   /* Only the executable determines presence; sidecars are repaired by the
      verified installer. Keep the documented pre-rename executable supported. */
   const char *paths[]={d->files[0].target,"sdmc:/3DS Library PC.exe"};
@@ -155,11 +158,21 @@ static ComponentAvailability probe_present(unsigned index){const ComponentDef *d
   presence_detail[index]=unknown?"SD konnte nicht geprüft werden. Erneut prüfen.":"Keine Windows-App auf der SD gefunden.";
   return unknown?COMP_UNCHECKED:COMP_MISSING;
  }
- struct stat file;bool ready=!stat(d->files[0].target,&file)&&S_ISREG(file.st_mode)&&file.st_size>0;
+ struct stat file;int result=stat(d->files[0].target,&file);bool ready=!result&&S_ISREG(file.st_mode)&&file.st_size>0;
+ if(index==6){
+  bool unknown=result&&errno!=ENOENT&&errno!=ENOTDIR;
+  presence_detail[index]=unknown?"SD konnte nicht geprüft werden. Erneut prüfen.":ready?"Archiv dieser Plattform auf SD vorhanden. Am Computer entpacken.":"Kein Archiv dieser Plattform auf der SD gefunden.";
+  return unknown?COMP_UNCHECKED:ready?COMP_AVAILABLE:COMP_MISSING;
+ }
  presence_detail[index]=ready?"Flow-Startdatei vorhanden.":"Flow-Startdatei fehlt oder ist leer.";
  return ready?COMP_AVAILABLE:COMP_MISSING;
 }
 static int present_cache[COMPONENT_COUNT]={-1,-1,-1,-1,-1,-1,-1};
+bool components_set_desktop_platform(unsigned platform){
+ ComponentState current=components_status().state;
+ if(platform>=DESKTOP_PLATFORM_COUNT||current==COMP_DOWNLOAD||current==COMP_READY)return false;
+ components_clear();desktop_platform=platform;present_cache[6]=-1;return true;
+}
 ComponentAvailability components_availability(unsigned index){if(index>=COMPONENT_COUNT)return COMP_MISSING;if(present_cache[index]<0)present_cache[index]=probe_present(index);return (ComponentAvailability)present_cache[index];}
 bool components_present(unsigned index){return components_availability(index)==COMP_AVAILABLE;}
 const char *components_presence_detail(unsigned index){
@@ -170,13 +183,13 @@ bool components_recheck(void){
  ComponentState s=components_status().state;if(s==COMP_DOWNLOAD||s==COMP_READY)return false;
  for(unsigned i=0;i<COMPONENT_COUNT;i++){
   present_cache[i]=-1;ComponentAvailability found=components_availability(i);
-  char log[180];snprintf(log,sizeof(log),"Runtime check %s: %u; %s",component_definition(i)->name,(unsigned)found,components_presence_detail(i));app_log(log);
+  char log[180];snprintf(log,sizeof(log),"Runtime check %s: %u; %s",components_definition(i)->name,(unsigned)found,components_presence_detail(i));app_log(log);
  }
  return true;
 }
 static void run(void *unused){
  (void)unused;
-const ComponentDef *d=component_definition(selected);
+const ComponentDef *d=active_definition;
 void *soc=memalign(0x1000,0x100000);
 bool connected=false,global=false;
 int result=-1;
@@ -223,11 +236,11 @@ remove(stage);
  publish(result==-3?COMP_CANCELLED:COMP_ERROR,result==-3?"Abgebrochen. Nichts verändert.":result==-5?"Dateiprüfung fehlgeschlagen. Nichts verändert.":result==-6?"Nicht genug freier SD-Speicher.":result==-7?"SD-Schreibfehler. Nichts verändert.":result==-4?"HTTPS fehlgeschlagen. Datum prüfen.":"Download fehlgeschlagen. WLAN prüfen.");
  }else publish(COMP_READY,"Dateien geprüft. Einrichtung läuft...");
 }
-void components_start(unsigned index){const ComponentDef *d=component_definition(index);
+void components_start(unsigned index){const ComponentDef *d=components_definition(index);
  if(!d||!d->count)return;
  components_stop();
 __atomic_store_n(&diagnostic_code,0,__ATOMIC_RELEASE);
-selected=index;
+selected=index;active_definition=d;active_desktop_platform=desktop_platform;
 present_cache[index]=-1;
 unsigned bytes=0;
 for(unsigned i=0;i<d->count;i++)bytes+=d->files[i].bytes;
@@ -241,7 +254,7 @@ worker=threadCreate(run,NULL,0x18000,0x38,-2,false);
 bool components_commit(void){
  if(components_status().state!=COMP_READY)return false;
  components_stop();
-const ComponentDef *d=component_definition(selected);
+const ComponentDef *d=active_definition;
  bool backed[COMPONENT_MAX_FILES]={0},moved[COMPONENT_MAX_FILES]={0};
 unsigned i;
  for(i=0;
@@ -271,7 +284,7 @@ for(unsigned j=0;j<sizeof(dirs)/sizeof(*dirs);j++)if(!parents(dirs[j])){publish(
 return false;
 }}
  present_cache[selected]=-1;
-publish(COMP_DONE,selected==6?"Auf SD gespeichert. Am PC VitarenewFlow Desktop.exe öffnen.":"Eingerichtet. Spiele neu einlesen und starten.");
+publish(COMP_DONE,selected==6?(active_desktop_platform?"Archiv auf SD gespeichert. Am Computer entpacken und Desktop-App öffnen.":"Auf SD gespeichert. Am PC VitarenewFlow Desktop.exe öffnen."):"Eingerichtet. Spiele neu einlesen und starten.");
 app_log("Components: verified install completed");
 return true;
 rollback:

@@ -26,7 +26,7 @@ typedef struct {
     bool dsFolders,dsPicking;unsigned dsRootSelected;const DsRoots *dsRoots;const DsBrowser *dsBrowser;const DsScan *dsScan;
     bool setupDs;
     bool updatePage,updateNotes;unsigned updateNotesPage;UpdateStatus update;
-    bool componentPage,componentRechecked;unsigned componentSelected;ComponentStatus component;
+    bool componentPage,componentRechecked;unsigned componentSelected,desktopPlatform;ComponentStatus component;
     float carousel; unsigned systemIndex; bool settings,systemPicker; unsigned menuSelected;
     int brightness; bool brightnessAvailable; const char *themeSource; bool launching;
     bool controls;

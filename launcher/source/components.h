@@ -19,3 +19,8 @@ void components_clear(void);
 
 /* Numeric diagnostic only; never localized messages or file paths. */
 int components_error_code(void);
+
+const ComponentDef *components_definition(unsigned index);
+unsigned components_desktop_platform(void);
+/* Fails closed while a download or verified staged installation is active. */
+bool components_set_desktop_platform(unsigned platform);

@@ -1,0 +1,27 @@
+VitarenewFlow Desktop 0.4.2 — macOS und Linux (Testversion)
+
+Auf dem 3DS die passende Plattform wählen und das Paket auf die SD herunterladen.
+Archiv auf den Computer kopieren und dort entpacken. Es werden keine Spiele,
+BIOS-Dateien oder Spielstände mitgeliefert. .NET ist im Paket enthalten.
+
+macOS 15 oder neuer: Apple Silicon (M1/M2/M3/M4) oder Intel passend wählen.
+VitarenewFlow Desktop.app öffnen, dann das Hauptverzeichnis der FAT32-3DS-SD
+wählen. Die App ist ad-hoc signiert, nicht Apple-Developer-ID-signiert oder
+notarisiert. macOS kann eine ausdrückliche Freigabe unter Datenschutz & Sicherheit
+verlangen. Gatekeeper nicht global abschalten.
+
+Linux x86_64: Paket in einen lokalen Ordner entpacken und
+./VitarenewFlow.Desktop starten. Geprüft: Ubuntu 24.04 x64 mit X11/Xvfb.
+Benötigt werden eine glibc-basierte Desktopumgebung, X11, libX11/libICE/libSM,
+Fontconfig, GLib und ICU sowie lsblk aus util-linux für die FAT32-Prüfung.
+Eine Ausführung auf allen Linuxdistributionen wird nicht behauptet.
+
+Spiele hinzufügen zeigt erst eine Vorschau. Vorhandene Spiele werden nicht
+überschrieben. Cover werden auf maximal 256 Pixel verkleinert; bisherige Cover
+werden gesichert. Spielstände werden nur angezeigt, nicht synchronisiert.
+Die SD muss ihre Nintendo-3DS-Struktur und 3ds/3ds-library/3ds-library.3dsx enthalten.
+Es wird keine Umformatierung oder Boot-/NAND-Reparatur ausgeführt.
+
+Windows bleibt unverändert bei der bisherigen Desktopausgabe 0.4.1.
+Quellen und Buildanleitung liegen im beigefügten Source-ZIP; genaue Abhängigkeiten
+und Lizenzen in packages.lock.json und NOTICES.txt.

@@ -13,7 +13,7 @@ static const MenuItem games[]={
  {"Spiele neu einlesen","Neue Spiele auf der SD-Karte suchen",MENU_SCAN},
  {"DS-Spieleordner","Ordner auswählen und DS prüfen",MENU_DS},
  {"Emulatoren","Herunterladen und einrichten",MENU_COMPONENTS},
- {"Desktop-Verwaltung","Windows-App auf die SD laden",MENU_DESKTOP}};
+ {"Desktop-Verwaltung","Windows, macOS oder Linux auf SD laden",MENU_DESKTOP}};
 static const MenuItem system[]={
  {"Autostart","Flow beim Einschalten starten",MENU_AUTOBOOT},
  {"HOME-Menü öffnen","Zum Nintendo HOME-Menü wechseln",MENU_HOME},

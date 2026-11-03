@@ -69,8 +69,12 @@ cp scripts/verify-stage.sh verify-stage.sh
 bash verify-stage.sh
 ```
 
-Keep tests/rom-discovery, tests/title-cache, tests/ds-library, tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
+Keep tests/desktop-downloads, tests/rom-discovery, tests/title-cache, tests/ds-library, tests/error-report, tests/update-notes, tests/report-transport and tests/backlog
 in place: they are current root-relative tests, not additional fixtures to flatten.
+The compiled Desktop catalog and canonical metadata JSON are retained under launcher/source.
+The stage runner explicitly checks that source-only contract with
+`python3 scripts/generate-desktop-catalog.py --check-embedded`; actual Desktop archives
+are checked in the full checkout before packaging and are not bundled into this launcher ZIP.
 Keep release-notes/0.12.41.json and scripts/generate-release-notes.py in place too.
 The stage runner checks the generated installed header against this JSON and
 validates its generated notes.txt with the actual C parser before the build.
@@ -189,6 +193,7 @@ def source_archive(root, updates):
                 "release-notes/" + VERSION + ".json", "tests/update-notes/test.sh",
                 "launcher/source/title_cache.c", "launcher/source/title_cache.h", "tests/title-cache/test.sh", "tests/title-cache/test.c",
                 "launcher/source/ds_library.c", "launcher/source/ds_library.h", "tests/ds-library/test.sh", "tests/ds-library/test.c",
+                "launcher/source/desktop_catalog_generated.h", "launcher/source/desktop_catalog_manifest.json", "scripts/generate-desktop-catalog.py", "tests/desktop-downloads/test.sh", "tests/desktop-downloads/test.py",
                 "launcher/source/rom_library.c", "launcher/source/rom_library.h", "tests/rom-discovery/test.sh",
                 "tests/rom-discovery/test.c", "tests/rom-discovery/test_scan.py", "tests/rom-discovery/test_io.c",
                 "scripts/verify-stage.sh", "tests/error-report/test.sh", "tests/report-transport/test.sh",
@@ -218,6 +223,11 @@ def prepare(root, verification):
     for marker in ("PASS: native build and existing component", "PASS: independent Python JSON decode and 200 exact escaping roundtrips",
                    "PASS: actual HTTPS transport consent", "PASS: actual modal consent/review/edit/back priorities"):
         require(marker in log, "Missing required verification: " + marker)
+    # Release packaging must validate real Desktop bytes, not just source-only metadata.
+    desktop_spec = importlib.util.spec_from_file_location("flow_desktop_catalog", Path(__file__).with_name("generate-desktop-catalog.py"))
+    desktop_module = importlib.util.module_from_spec(desktop_spec)
+    desktop_spec.loader.exec_module(desktop_module)
+    desktop_module.generate(root, check=True)
     generator = notes_module()
     release_notes = generator.generate(root, VERSION, check=True)
     notes_bytes = generator.sidecar(release_notes)

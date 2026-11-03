@@ -242,7 +242,7 @@ static void draw(bool loading,float progress,const char *stage){
         .dsFolderMessage=dsFolderMessage,.dsFolders=dsFolders,.dsPicking=dsPicking,.dsRoots=&dsRoots,.dsBrowser=&dsBrowser,.dsScan=&dsScan,.dsRootSelected=dsRootSelected,
         .cards=cards,.count=visibleCount,.selected=selected,.total=visibleCount,.confirm=confirm,
         .loading=loading,.progress=progress,.stage=stage,.homeLoading=homeLoading,.coverMenu=coverMenu,.coverTarget=target,
-        .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.updateNotes=updateNotes,.updateNotesPage=updateNotesPage,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.component=components_status(),
+        .imports=imports,.importCount=importCount,.importSelected=importSelected,.setupDs=setupDs,.updatePage=updatePage,.updateNotes=updateNotes,.updateNotesPage=updateNotesPage,.update=app_update_status(),.componentPage=componentPage,.componentSelected=componentSelected,.desktopPlatform=components_desktop_platform(),.component=components_status(),
         .carousel=flow.position,.systemIndex=visibleCount?(unsigned)games[visible[selected]].system:library_view_system(systemView),.settings=settings,.settingsPage=settingsPage,.autobootPrompt=autobootPrompt,.autobootState=autobootState,.powerPrompt=powerPrompt,.copyPrompt=copyPrompt,.twlAdvice=twl_recommendation(&twlReport),.twlPage=twlPage,.twlError=(int32_t)twlError,.twlNeedsReboot=twlNeedsReboot,.twlKnown=twlReport.known,.twlSupported=twlReport.supported,.twlMissing=twlReport.missing,.twlLoader=twlReport.loader,.twlFiles=twlReport.files,.support=supportOpen,.systemPicker=systemPicker,.menuSelected=menuSelected,
         .componentRechecked=osGetTime()<componentCheckedUntil,.powerCancelFailed=powerCancelFailed,.themeSource=themeSource,.launching=preparingGame,.controls=controlsPage,.info=infoOpen?&gameInfo:NULL,.infoScroll=infoScroll,
         .installPrompt=installPrompt,.installing=installing,.installSize=installSize,.installSpace=installSpace,.installEta=installEta,.installError=(installFailed||launchFailed)?message:NULL,.launchError=launchFailed,.launchRepair=launchFailed&&launchRepairComponent>=0,.errorTitle=errorTitle,.prefetch=neighborCards,.prefetchCount=neighborCount};
@@ -1097,7 +1097,7 @@ int main(int argc,char **argv){
             }else if(keys&KEY_Y){powerPrompt=false;exitToHomebrew=true;leave=true;}
         }else if(componentPage){
             ComponentStatus cs=components_status();bool busy=cs.state==COMP_DOWNLOAD||cs.state==COMP_READY;
-            if(cs.state==COMP_READY){bool home=aptIsHomeAllowed(),sleep=aptIsSleepAllowed();installing=true;aptSetHomeAllowed(false);aptSetSleepAllowed(false);draw(true,0,tr("Emulator wird eingerichtet"));components_commit();installing=false;aptSetHomeAllowed(home);aptSetSleepAllowed(sleep);}
+            if(cs.state==COMP_READY){bool home=aptIsHomeAllowed(),sleep=aptIsSleepAllowed();installing=true;aptSetHomeAllowed(false);aptSetSleepAllowed(false);draw(true,0,tr(componentSelected==6?"Desktop wird auf SD gespeichert":"Emulator wird eingerichtet"));components_commit();installing=false;aptSetHomeAllowed(home);aptSetSleepAllowed(sleep);}
             else if(keys&KEY_B || ((keys&KEY_TOUCH)&&((pos.py<44&&pos.px>=276)||(busy&&pos.py>=192)||(componentSelected==6&&pos.py>=201&&pos.py<231&&pos.px<94)))){if(busy)components_cancel();else componentPage=false;}
             else if(!busy){
                 if(keys&(KEY_L|KEY_R|KEY_UP|KEY_DOWN|KEY_TOUCH))components_clear();
@@ -1105,6 +1105,14 @@ int main(int argc,char **argv){
                 bool recheck=(keys&KEY_X)||(footer&&(componentSelected==6?(pos.px>=104&&pos.px<186):(pos.px>=68&&pos.px<184)));
                 if(recheck){components_clear();if(components_recheck()){componentCheckedUntil=osGetTime()+1500;menu_music_click();}}
                 if(!recheck){
+                if(componentSelected==6){
+                    unsigned platform=components_desktop_platform();int change=0;
+                    if(keys&(KEY_L|KEY_LEFT|KEY_UP))change=-1;
+                    else if(keys&(KEY_R|KEY_RIGHT|KEY_DOWN))change=1;
+                    int hit=(keys&KEY_TOUCH)?component_desktop_hit(pos.px,pos.py):-1;
+                    if(hit>=0)components_set_desktop_platform((unsigned)hit);
+                    else if(change)components_set_desktop_platform(component_desktop_step(platform,change));
+                }
                 if(!recheck&&componentSelected!=6&&((keys&KEY_L)||(footer&&pos.px>=12&&pos.px<60)))componentSelected=componentSelected<3?3:0;
                 if(componentSelected!=6&&(keys&KEY_R))componentSelected=componentSelected<3?3:0;
                 if(componentSelected!=6&&(keys&KEY_UP))componentSelected=componentSelected?componentSelected-1:5;

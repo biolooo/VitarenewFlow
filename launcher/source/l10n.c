@@ -7,6 +7,11 @@
 static bool english;
 typedef struct {const char *de,*en;} Translation;
 static const Translation translations[]={
+{"Desktop wird auf SD gespeichert","Saving Desktop to SD"},
+{"Windows, macOS oder Linux auf SD laden","Download Windows, macOS or Linux to SD"},
+{"Archiv dieser Plattform auf SD vorhanden. Am Computer entpacken.","Archive for this platform on SD. Extract on your computer."},
+{"Kein Archiv dieser Plattform auf der SD gefunden.","No archive for this platform found on SD."},
+{"Archiv auf SD gespeichert. Am Computer entpacken und Desktop-App öffnen.","Archive saved to SD. Extract on your computer and open Desktop."},
 {" - DS-Loader fehlt"," - DS loader missing"},
 {"- Automatische technische Fehlerdiagnose","- Automatic technical error diagnostics"},
 {"- Beschreibung vor dem Senden prüfen","- Review description before sending"},

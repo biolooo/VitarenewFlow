@@ -6,6 +6,7 @@ export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitARM/bin:/usr/bin:/bin
 VERSION=$(sed -n 's/^APP_DESCRIPTION[[:space:]]*:=[[:space:]]*Game Launcher - Version //p' launcher/Makefile)
 mkdir -p .test-build
 python3 scripts/generate-release-notes.py --root . --version "$VERSION" --check --sidecar .test-build/generated-notes.txt
+python3 scripts/generate-desktop-catalog.py --root . --check-embedded
 python3 check-fixture-source.py
 bash launcher/tests/run-backlog-ui.sh
 bash tests/backlog/run-host.sh
@@ -14,6 +15,7 @@ bash tests/update-notes/test.sh .test-build/generated-notes.txt "$VERSION"
 bash tests/report-transport/test.sh
 bash tests/ds-library/test.sh
 bash tests/rom-discovery/test.sh
+bash tests/desktop-downloads/test.sh
 bash tests/title-cache/test.sh
 make -C launcher -j2
 bash tests/component-runtime/test.sh
