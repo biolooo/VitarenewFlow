@@ -21,6 +21,19 @@ bool library_is_homebrew(uint64_t id,const char *product){
     for(unsigned i=0;i<sizeof(ids)/sizeof(ids[0]);++i)if(id==ids[i])return true;
     return product&&(!strncmp(product,"CTR-H-",6)||!strncmp(product,"CTR-HB-",7));
 }
+bool library_is_yanbf_forwarder(uint64_t id,const char *product){
+    /* Upstream generator reserves these Application IDs and embeds the DS
+       game code in exactly CTR-H-xxxx. Neither marker alone is sufficient. */
+    if(id<0x000400000FF40000ULL||id>0x000400000FF7FF00ULL||(id&0xff)||!product||strlen(product)!=10||memcmp(product,"CTR-H-",6))return false;
+    for(unsigned i=6;i<10;i++)if((unsigned char)product[i]<0x21||(unsigned char)product[i]>0x7e)return false;
+    return true;
+}
+unsigned library_title_view(int system,bool homebrew,bool dsForwarder){
+    return system==SYSTEM_3DS&&dsForwarder?VIEW_DS:library_view_for(system,homebrew);
+}
+int library_title_display_system(int system,bool dsForwarder){
+    return system==SYSTEM_3DS&&dsForwarder?SYSTEM_DS:system;
+}
 int library_file_system(const char *name){
     if(!name)return -1;
     const char *ext=strrchr(name,'.');

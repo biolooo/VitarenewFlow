@@ -14,10 +14,10 @@ static uint32_t checksum(const unsigned char *p,size_t n){
 static uint32_t get32(const unsigned char *p){return (uint32_t)p[0]|(uint32_t)p[1]<<8|(uint32_t)p[2]<<16|(uint32_t)p[3]<<24;}
 static void put32(unsigned char *p,uint32_t n){for(unsigned i=0;i<4;++i)p[i]=(unsigned char)(n>>(8*i));}
 static bool decode(TitleCacheEntry *entry,const unsigned char *record){
-    if(checksum(record,RECORD_SIZE-4)!=get32(record+RECORD_SIZE-4)||record[10]>1||record[11]>1||!record[12]||!memchr(record+12,0,160))return false;
+    if(checksum(record,RECORD_SIZE-4)!=get32(record+RECORD_SIZE-4)||record[10]>1||record[11]>3||((record[11]&2)&&!(record[11]&1))||!record[12]||!memchr(record+12,0,160))return false;
     entry->id=0;for(unsigned i=0;i<8;++i)entry->id|=(uint64_t)record[i]<<(8*i);
     if(!entry->id)return false;
-    entry->version=record[8]|(uint16_t)record[9]<<8;entry->medium=record[10];entry->homebrew=record[11]!=0;
+    entry->version=record[8]|(uint16_t)record[9]<<8;entry->medium=record[10];entry->homebrew=(record[11]&1)!=0;entry->dsForwarder=(record[11]&2)!=0;
     memcpy(entry->name,record+12,160);
     for(unsigned i=0;i<TITLE_CACHE_ICON_PIXELS;++i)entry->icon[i]=record[172+2*i]|(uint16_t)record[173+2*i]<<8;
     return true;
@@ -29,7 +29,7 @@ bool title_cache_read(const char *path,unsigned language,TitleCacheAccept accept
        of the 32-KiB application stack. Keep one bounded scratch on the heap. */
     unsigned char header[HEADER_SIZE],*record=malloc(RECORD_SIZE);
     if(!record){fclose(file);if(stats)*stats=result;return false;}
-    if(fread(header,1,sizeof(header),file)!=sizeof(header)||memcmp(header,"VFTCACHE",8)||get32(header+8)!=1||get32(header+12)!=language||get32(header+20)!=checksum(header,20))goto done;
+    if(fread(header,1,sizeof(header),file)!=sizeof(header)||memcmp(header,"VFTCACHE",8)||get32(header+8)!=TITLE_CACHE_SCHEMA||get32(header+12)!=language||get32(header+20)!=checksum(header,20))goto done;
     unsigned count=get32(header+16);if(count>TITLE_CACHE_LIMIT)goto done;
     if(fseek(file,0,SEEK_END))goto done;
     long size=ftell(file);if(size<0||(unsigned long)size!=HEADER_SIZE+(unsigned long)count*RECORD_SIZE||fseek(file,HEADER_SIZE,SEEK_SET))goto done;
@@ -59,15 +59,15 @@ bool title_cache_begin(TitleCacheWriter *writer,const char *path,unsigned langua
     snprintf(writer->previous,sizeof(writer->previous),"%s.previous",path);
     writer->expected=count;writer->file=fopen(writer->temporary,"wb");if(!writer->file)return false;
     unsigned char header[HEADER_SIZE]={0};memcpy(header,"VFTCACHE",8);
-    put32(header+8,1);put32(header+12,language);put32(header+16,count);put32(header+20,checksum(header,20));
+    put32(header+8,TITLE_CACHE_SCHEMA);put32(header+12,language);put32(header+16,count);put32(header+20,checksum(header,20));
     if(fwrite(header,1,sizeof(header),writer->file)!=sizeof(header)){title_cache_abort(writer);return false;}
     return true;
 }
 bool title_cache_append(TitleCacheWriter *writer,const TitleCacheEntry *entry){
-    if(!writer->file||writer->written>=writer->expected||!entry||!entry->id||entry->medium>1||!entry->name[0]||!memchr(entry->name,0,sizeof(entry->name)))return false;
+    if(!writer->file||writer->written>=writer->expected||!entry||!entry->id||entry->medium>1||(entry->dsForwarder&&!entry->homebrew)||!entry->name[0]||!memchr(entry->name,0,sizeof(entry->name)))return false;
     unsigned char record[RECORD_SIZE]={0};
     for(unsigned i=0;i<8;++i)record[i]=(unsigned char)(entry->id>>(8*i));
-    record[8]=(unsigned char)entry->version;record[9]=(unsigned char)(entry->version>>8);record[10]=entry->medium;record[11]=entry->homebrew;
+    record[8]=(unsigned char)entry->version;record[9]=(unsigned char)(entry->version>>8);record[10]=entry->medium;record[11]=(entry->homebrew?1u:0u)|(entry->dsForwarder?2u:0u);
     memcpy(record+12,entry->name,sizeof(entry->name));
     for(unsigned i=0;i<TITLE_CACHE_ICON_PIXELS;++i){record[172+2*i]=(unsigned char)entry->icon[i];record[173+2*i]=(unsigned char)(entry->icon[i]>>8);}
     put32(record+RECORD_SIZE-4,checksum(record,RECORD_SIZE-4));

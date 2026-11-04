@@ -17,6 +17,7 @@ bash tests/ds-library/test.sh
 bash tests/rom-discovery/test.sh
 bash tests/desktop-downloads/test.sh
 bash tests/title-cache/test.sh
+bash tests/yanbf-forwarders/test.sh
 make -C launcher -j2
 bash tests/component-runtime/test.sh
 bash tests/twl/test.sh

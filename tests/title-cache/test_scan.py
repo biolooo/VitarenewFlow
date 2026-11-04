@@ -11,6 +11,7 @@ stop=source.index('    Cartridge cart;',start)
 runtime=source[start:stop]+'}\n'
 # The rest of scan (CIA/ROM/DS/cartridge) is unchanged, outside this 3DS-cache test.
 game=source[source.index('#define MAX_GAMES '):source.index('static Game games[')]
+rom_path_macro=source[source.index('#define ROM_PATH_SLOTS '):].splitlines()[0]+'\n'
 prefix=r'''
 #define _POSIX_C_SOURCE 200809L
 #include "title_cache.h"
@@ -33,7 +34,7 @@ typedef struct {u64 titleID;u64 size;u16 version;} AM_TitleInfo;
 #define SYSTEM_3DS 0
 static bool failCacheAllocation;
 void *title_cache_test_malloc(size_t size){return failCacheAllocation?NULL:malloc(size);}
-static unsigned liveCount=300,nandCount,baseId,changedVersion;
+static unsigned liveCount=300,nandCount;static u64 baseId,changedVersion;
 static bool infoFails;
 static unsigned productReads,metadataReads,batchCalls,draws;
 static u64 now;
@@ -46,10 +47,11 @@ static void app_perf_log(const char *p){(void)p;}
 static Result AM_GetTitleCount(unsigned media,u32 *count){*count=media==MEDIATYPE_SD?liveCount:nandCount;return 0;}
 static Result AM_GetTitleList(u32 *read,unsigned media,u32 count,u64 *ids){(void)media;*read=count;for(unsigned i=0;i<count;++i)ids[i]=i+baseId+1;return 0;}
 static Result AM_GetTitleInfo(unsigned media,unsigned count,u64 *ids,AM_TitleInfo *info){(void)media;assert(count<=32);++batchCalls;if(infoFails)return -1;for(unsigned i=0;i<count;++i){info[i].titleID=ids[i];info[i].version=ids[i]==changedVersion?8:7;}return 0;}
-static Result AM_GetTitleProductCode(unsigned media,u64 id,char *product){(void)media;(void)id;strcpy(product,"CTR-P-X");++productReads;return 0;}
+static Result AM_GetTitleProductCode(unsigned media,u64 id,char *product){(void)media;(void)id;strcpy(product,id>=0x000400000FF40000ULL&&id<=0x000400000FF7FF00ULL?"CTR-H-ABCD":"CTR-P-X");++productReads;return 0;}
 static bool catalog_is_application_mock(u64 id){return id!=0;}
 #define catalog_is_application catalog_is_application_mock
-static bool library_is_homebrew(u64 id,const char *product){(void)id;return product&&!strcmp(product,"CTR-H-X");}
+bool library_is_homebrew(uint64_t id,const char *product);
+bool library_is_yanbf_forwarder(uint64_t id,const char *product);
 static bool library_cover_path(char *path,size_t capacity,int system,const char *key){(void)system;size_t length=strlen(key);if(length+7>capacity)return false;memmove(path+6,key,length+1);memcpy(path,"cover/",6);return true;}
 static u8 smdh[SMDH_SIZE];
 static Result metadata(u64 id,unsigned media){++metadataReads;now+=3;memset(smdh,0,sizeof(smdh));smdh[0]=id&255;smdh[1]=media;return 0;}
@@ -58,6 +60,7 @@ static void catalog_name_mock(char *name,size_t capacity,const u8 *data,unsigned
 '''
 state=r'''
 static Game games[MAX_GAMES];
+static u16 romPathSlots[ROM_PATH_SLOTS];
 static unsigned gameCount,visibleCount,selected,language=2;
 static bool amReady=true;
 static Result lastError;
@@ -95,15 +98,20 @@ int main(void){
  printf("PASS actual 1024-title warm scan: metadata/product/banner=0/0/0 frames=0 version_batches=32; new/removed/version/failure/refresh/medium/language/save cases\n");
  // Rescan aborts an in-progress write, then still reads the committed cache.
  counters();scan(true);now+=1001;titleCacheIdle(true);assert(titleCacheWriter.file);counters();scan(false);assert(!titleCacheWriter.file&&scanCacheHits==1024&&metadataReads==0);
+ // Installed YANBF retains technical 3DS/homebrew semantics in cold and warm caches.
+ liveCount=1;baseId=0x000400000FF40000ULL-1;changedVersion=0;counters();scan(false);
+ assert(gameCount==1&&games[0].dsForwarder&&games[0].homebrew&&games[0].system==SYSTEM_3DS&&metadataReads==1&&productReads==1);completeCache();
+ counters();scan(false);assert(scanCacheHits==1&&games[0].dsForwarder&&games[0].homebrew&&games[0].system==SYSTEM_3DS&&metadataReads==0&&productReads==0);
+ puts("PASS actual YANBF cold/warm scan: native title and homebrew/seed semantics retained; cached forwarder flag survives with zero product/metadata reads");
  titleCacheCancel();for(unsigned i=0;i<gameCount;++i)free(games[i].icon);
  return 0;
 }
 '''
 with tempfile.TemporaryDirectory(prefix='flow-scan-test-') as temporary:
-    folder=Path(temporary);test=folder/'test.c';test.write_text(prefix+game+state+runtime+tests)
+    folder=Path(temporary);test=folder/'test.c';test.write_text(prefix+game+rom_path_macro+state+runtime+tests)
     flags=[os.environ.get('CC','cc'),'-std=c11','-O2','-Wall','-Wextra','-Werror','-fsanitize=undefined','-I'+str(root/'launcher/source')]
     subprocess.run(flags+['-Dmalloc=title_cache_test_malloc','-c',str(root/'launcher/source/title_cache.c'),'-o',str(folder/'cache.o')],check=True)
-    subprocess.run(flags+[str(test),str(folder/'cache.o'),'-o',str(folder/'test')],check=True)
+    subprocess.run(flags+[str(test),str(folder/'cache.o'),str(root/'launcher/source/library_model.c'),'-o',str(folder/'test')],check=True)
     subprocess.run([str(folder/'test')],cwd=folder,check=True)
 # The settings handler must cancel the old pending save, not relabel old names.
 assert 'if(saved){titleCacheCancel();status=tr("Sprache gespeichert");language=' in source

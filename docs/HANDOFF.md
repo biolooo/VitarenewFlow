@@ -1,5 +1,33 @@
 # Flow — Einstieg für den Orchestrator
 
+## Spieleordner-Startzeit und YANBF — 0.12.42 vorbereitet · 04.11.2026
+
+Nutzerauftrag: langes „Finding games“ beim Konsolenstart optimieren und installierte
+YANBF-DS-Verknüpfungen richtig einordnen. Basis `af2e8d4`, aktuelle Remote-Refs
+abgeglichen; Main/YANBF und nativer Scanner getrennt delegiert. Technischer Stand
+lokal: nativer Verzeichnisiterator verwendet die bereits gelieferten Metadaten
+statt jede ROM-Datei für `lstat` zusätzlich zu öffnen; frische Suche, Wurzeln,
+Unterordner, Abbruch und Grenzen bleiben erhalten. Ein begrenzter 8-KiB-Pfadindex
+ersetzt die quadratische Duplikatsuche. Neue rein numerische `Startup ROM`-
+Messzeile trennt die ROM-Phase vom übrigen Start. Keine ROM-Inhalte eingelesen,
+keine reale SD benötigt oder verändert; keine gemessenen Konsolensekunden.
+
+Standard-YANBF wird nur durch die dokumentierte Kombination aus Application-ID-
+Bereich und passendem Produktcode erkannt. Separates Präsentationsflag für
+DS-Kategorie, Suche und Spielinfo; technischer 3DS-Titel, Homebrew-/Seed-Ausnahme
+und vorhandener ID-/Media-Startweg bleiben erhalten. Keine Zusammenlegung mit
+.nds-Dateien nach Namen. Titelcache-Schema v2 speichert das Flag; beim ersten
+.42-Start einmaliges erneutes Lesen nativer Metadaten, danach warme Treffer ohne
+zusätzliche Produktcodezugriffe. Der alte v1-Cache bleibt für die alte App erhalten.
+
+Gezielte Hosttests bestanden: aktuelle View-/Such-/Start-/Seedguards, positive und
+negative YANBF-Marker, Cache kalt/warm/alte Version/Korruption, begrenzter Pfadindex
+mit Kollisionen/Case/Originalpfaden/Reset/1536 sowie nativer Scanner-Metadatenweg.
+Synthetisch 846 ROM-Pfade: 39 vollständige Pfadvergleiche statt vorher 524943;
+das ist kein Hardware-Zeitbenchmark. Native Gesamtprüfung, Stack/BSS,
+Quellpaketreproduktion, Veröffentlichung und Konsolenabnahme noch offen.
+Keine Main-/Pages-Veröffentlichung aus diesem Entwicklungsauftrag abgeleitet.
+
 ## Emulatorordner und Desktopplattformen — 0.12.41 veröffentlicht · 03.11.2026
 
 Nutzerauftrag abgeschlossen, Root ausschließlich Orchestrator; Implementierung und

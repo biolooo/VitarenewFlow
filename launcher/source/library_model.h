@@ -11,6 +11,10 @@ unsigned library_view_for(int system,bool homebrew);
 unsigned library_view_system(unsigned view);
 unsigned library_legacy_view(unsigned system);
 bool library_is_homebrew(uint64_t id,const char *productCode);
+/* Installed YANBF titles retain native launch semantics, but belong in DS. */
+bool library_is_yanbf_forwarder(uint64_t id,const char *productCode);
+unsigned library_title_view(int system,bool homebrew,bool dsForwarder);
+int library_title_display_system(int system,bool dsForwarder);
 extern const char *library_system_names[SYSTEM_COUNT];
 extern const char *library_system_folders[SYSTEM_COUNT];
 int library_file_system(const char *name);

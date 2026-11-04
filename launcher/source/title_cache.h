@@ -4,12 +4,13 @@
 #include <stdint.h>
 #include <stdio.h>
 #define TITLE_CACHE_LIMIT 1024
+#define TITLE_CACHE_SCHEMA 2
 #define TITLE_CACHE_ICON_PIXELS (48*48)
 typedef struct {
     uint64_t id;
     uint16_t version;
     uint8_t medium;
-    bool homebrew;
+    bool homebrew,dsForwarder;
     char name[160];
     uint16_t icon[TITLE_CACHE_ICON_PIXELS];
 } TitleCacheEntry;

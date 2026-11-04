@@ -105,6 +105,7 @@ static const Translation translations[]={
 {"Cover nicht lesbar: PNG bis 512x512 verwenden","Cannot read cover: use PNG up to 512x512"},
 {"Cover-Datei","Cover file"},
 {"DS Download Play im HOME-Menü testen.","Test DS Download Play in HOME Menu."},
+{"DS HOME-Verknüpfung","DS HOME shortcut"},
 {"DS prüfen","Check DS"},
 {"DS-Dateipfad ist zu lang","DS file path is too long"},
 {"DS-Diagnose","DS diagnostics"},
