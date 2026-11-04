@@ -16,7 +16,12 @@ DIR *rom_test_opendir(const char *path){
  DIR *dir=opendir(path);if(failReadPath&&!strcmp(path,failReadPath))failReadDir=dir;return dir;
 }
 int rom_test_lstat(const char *path,struct stat *st){if(failStatPath&&!strcmp(path,failStatPath)){errno=EIO;return -1;}return lstat(path,st);}
-struct dirent *rom_test_readdir(DIR *dir){if(dir&&dir==failReadDir){failReadDir=NULL;errno=EIO;return NULL;}return readdir(dir);}
+struct dirent *rom_test_readdir(DIR *dir){if(dir&&dir==failReadDir){failReadDir=NULL;errno=EIO;return NULL;}struct dirent *entry=readdir(dir);
+ /* Exercise the preserved unknown-type fallback, not the fast DT_REG path. */
+#ifdef DT_UNKNOWN
+ if(entry&&failStatPath)entry->d_type=DT_UNKNOWN;
+#endif
+ return entry;}
 void *rom_test_calloc(size_t count,size_t size){return failAllocation?NULL:calloc(count,size);}
 static void directory(const char *p){assert(!mkdir(p,0700));}
 static void file(const char *p){FILE *f=fopen(p,"wb");assert(f);assert(!fclose(f));}

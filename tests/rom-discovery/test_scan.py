@@ -4,7 +4,9 @@ import os, subprocess, tempfile
 root=Path(__file__).resolve().parents[2]
 source=(root/'launcher/source/main.c').read_text()
 game=source[source.index('#define MAX_GAMES '):source.index('static Game games[')]
-callback=source[source.index('static bool romFound('):source.index('static bool dsScanContinue(')]
+hashes='#define ROM_PATH_SLOTS ' in source
+callback=source[source.index('#define ROM_PATH_SLOTS ' if hashes else 'static bool romFound('):source.index('static bool dsScanContinue(')]
+callback=('#define ROM_PATHS_BEGIN() romPathsBegin()\n' if hashes else '#define ROM_PATHS_BEGIN() ((void)0)\n')+callback
 prefix=r'''
 #include "rom_library.h"
 #include "library_model.h"
@@ -22,7 +24,7 @@ tests=r'''
 static bool proceed(void *unused){(void)unused;return true;}
 int main(void){
  gameCount=198;for(unsigned i=0;i<gameCount;i++){games[i].system=SYSTEM_3DS;games[i].id=i+1;}
- DsScan s;rom_library_scan(NULL,&s,romFound,proceed,NULL);
+ DsScan s;ROM_PATHS_BEGIN();rom_library_scan(NULL,&s,romFound,proceed,NULL);
  assert(MAX_GAMES==1536&&gameCount==1044&&!s.limited&&!s.cancelled);
  unsigned counts[SYSTEM_COUNT]={0};for(unsigned i=0;i<gameCount;i++){assert(!games[i].icon);counts[games[i].system]++;if(i>=198){assert(!strncmp(games[i].path,"sdmc:/",6));assert(strlen(games[i].path)<512);}}
  assert(counts[SYSTEM_3DS]==198&&counts[SYSTEM_DS]==131&&counts[SYSTEM_GBA]==234&&counts[SYSTEM_N64]==21&&counts[SYSTEM_SNES]==214&&counts[SYSTEM_NES]==222&&counts[SYSTEM_VB]==24);
@@ -32,7 +34,7 @@ int main(void){
  assert(!strcmp(games[before].path,"sdmc:/GBA/other/f000.gba"));assert(!strcmp(games[before].key,"f000.gba"));
  while(gameCount<MAX_GAMES){char path[80];snprintf(path,sizeof(path),"sdmc:/NES/added-%u.nes",gameCount);assert(romFound(path,NULL));}
  assert(!romFound("sdmc:/NES/overflow.nes",NULL)&&gameCount==1536);
- char tooLong[600];memset(tooLong,'x',sizeof(tooLong));strcpy(tooLong+sizeof(tooLong)-5,".gba");gameCount=198;assert(romFound(tooLong,NULL)&&gameCount==198);
+ char tooLong[600];memset(tooLong,'x',sizeof(tooLong));strcpy(tooLong+sizeof(tooLong)-5,".gba");gameCount=198;ROM_PATHS_BEGIN();assert(romFound(tooLong,NULL)&&gameCount==198);
  puts("PASS actual main ROM callback:198 installed+846 detected ROMs=1044, correct systems/original paths, basename cover contract, zero ROM icons, fullpath dedup,1536 ceiling");
  return 0;
 }
