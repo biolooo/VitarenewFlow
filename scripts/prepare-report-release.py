@@ -196,7 +196,7 @@ def source_archive(root, updates):
                 "launcher/source/desktop_catalog_generated.h", "launcher/source/desktop_catalog_manifest.json", "scripts/generate-desktop-catalog.py", "tests/desktop-downloads/test.sh", "tests/desktop-downloads/test.py",
                 "launcher/source/rom_library.c", "launcher/source/rom_library.h", "tests/rom-discovery/test.sh",
                 "tests/rom-discovery/test.c", "tests/rom-discovery/test_scan.py", "tests/rom-discovery/test_io.c",
-                "tests/rom-discovery/test_native.c", "tests/rom-discovery/mock/sys/dir.h",
+                "tests/rom-discovery/test_native.c",
                 "tests/yanbf-forwarders/test.sh", "tests/yanbf-forwarders/test.c", "tests/yanbf-forwarders/test_main.py",
                 "scripts/verify-stage.sh", "tests/error-report/test.sh", "tests/report-transport/test.sh",
                 "receiver/error-reports/server.py", "receiver/error-reports/test_server.py",
