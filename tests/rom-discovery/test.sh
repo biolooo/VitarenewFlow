@@ -8,7 +8,9 @@ cc -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE=200809L -std=c11 -O2 -Wall -Wextra -Werr
 cc -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE=200809L -std=c11 -O2 -Wall -Wextra -Werror -fsanitize=undefined -Ilauncher/source tests/rom-discovery/test_io.c .test-build/rom-discovery-io.o launcher/source/ds_library.c launcher/source/library_model.c -o .test-build/rom-discovery-io-test
 .test-build/rom-discovery-io-test
 
-# Compile the real __3DS__ branch against the public SDK iterator API shim.
-cc -D_DEFAULT_SOURCE -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE=200809L -D__3DS__ -std=c11 -O2 -Wall -Wextra -Werror -fsanitize=undefined -Itests/rom-discovery/mock -Ilauncher/source -Dlstat=rom_native_lstat -Dcalloc=rom_native_calloc -c launcher/source/rom_library.c -o .test-build/rom-discovery-native.o
-cc -D_DEFAULT_SOURCE -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE=200809L -std=c11 -O2 -Wall -Wextra -Werror -fsanitize=undefined -Itests/rom-discovery/mock -Ilauncher/source tests/rom-discovery/test_native.c .test-build/rom-discovery-native.o launcher/source/ds_library.c launcher/source/library_model.c -o .test-build/rom-discovery-native-test
+# Compile the actual native metadata path at the public SDK POSIX boundary.
+# Darwin exposes d_type without the newlib/Linux feature marker; supply only
+# that marker here. The real native build must obtain it from the SDK header.
+cc -D_DEFAULT_SOURCE -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE=200809L -D__3DS__ -D_DIRENT_HAVE_D_TYPE= -std=c11 -O2 -Wall -Wextra -Werror -fsanitize=undefined -Ilauncher/source -Dlstat=rom_native_lstat -Dcalloc=rom_native_calloc -Dopendir=rom_native_opendir -Dreaddir=rom_native_readdir -Dclosedir=rom_native_closedir -Dfopen=rom_native_fopen -Dopen=rom_native_open -c launcher/source/rom_library.c -o .test-build/rom-discovery-native.o
+cc -D_DEFAULT_SOURCE -D_DARWIN_C_SOURCE -D_POSIX_C_SOURCE=200809L -std=c11 -O2 -Wall -Wextra -Werror -fsanitize=undefined -Ilauncher/source tests/rom-discovery/test_native.c .test-build/rom-discovery-native.o launcher/source/ds_library.c launcher/source/library_model.c -o .test-build/rom-discovery-native-test
 .test-build/rom-discovery-native-test

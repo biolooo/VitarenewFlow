@@ -2,7 +2,6 @@
 #define _POSIX_C_SOURCE 200809L
 #include "rom_library.h"
 #include "library_model.h"
-#include <sys/dir.h>
 #include <assert.h>
 #include <dirent.h>
 #include <errno.h>
@@ -12,30 +11,30 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
-struct DIR_ITER {DIR *host;char path[DS_PATH_MAX];};
-static unsigned active,opens,closes,statCalls,fileStatCalls,visits,progressCalls,stopAt;
+typedef struct {DIR *host;char path[DS_PATH_MAX];} Handle;
+static Handle handles[16];
+static unsigned active,opens,closes,statCalls,fileStatCalls,fileOpenCalls,visits,progressCalls,stopAt,exhaustions;
 static bool allocationFailure,addedSeen,removedSeen;
 static const char *readFailure,*openFailure;
-DIR_ITER *diropen(const char *path){
+static Handle *handle(DIR *dir){for(unsigned i=0;i<active;i++)if(handles[i].host==dir)return &handles[i];assert(!"untracked directory");return NULL;}
+DIR *rom_native_opendir(const char *path){
  if(openFailure&&!strcmp(path,openFailure)){errno=EACCES;return NULL;}
  DIR *host=opendir(path);if(!host)return NULL;
- DIR_ITER *dir=malloc(sizeof(*dir));assert(dir);dir->host=host;assert(strlen(path)<sizeof(dir->path));strcpy(dir->path,path);active++;opens++;return dir;
+ assert(active<sizeof(handles)/sizeof(handles[0]));Handle *h=&handles[active++];h->host=host;assert(strlen(path)<sizeof(h->path));strcpy(h->path,path);opens++;return host;
 }
-int dirnext(DIR_ITER *dir,char *name,struct stat *metadata){
- if(readFailure&&!strcmp(dir->path,readFailure)){errno=EIO;return -1;}
- struct dirent *entry=readdir(dir->host);if(!entry){errno=ENOENT;return -1;}
- assert(strlen(entry->d_name)<=NAME_MAX);strcpy(name,entry->d_name);
- /* SDK fills only st_mode. Poison all other fields to catch accidental use. */
- memset(metadata,0xa5,sizeof(*metadata));
- switch(entry->d_type){
- case DT_REG:metadata->st_mode=S_IFREG;break;
- case DT_DIR:metadata->st_mode=S_IFDIR;break;
- case DT_LNK:metadata->st_mode=S_IFLNK;break;
- default:assert(!"synthetic filesystem must provide directory type");
- }
- return 0;
+struct dirent *rom_native_readdir(DIR *dir){
+ Handle *h=handle(dir);
+ if(readFailure&&!strcmp(h->path,readFailure)){errno=EIO;return NULL;}
+ struct dirent *entry=readdir(dir);
+ /* Public SDK readdir maps archive_dirnext's ENOENT to errno zero, while
+    exposing IFTODT(st_mode) in d_type. Host provides these same entry types. */
+ if(!entry){errno=0;exhaustions++;}
+ else assert(entry->d_type!=DT_UNKNOWN);
+ return entry;
 }
-int dirclose(DIR_ITER *dir){int rc=closedir(dir->host);free(dir);assert(active);active--;closes++;return rc;}
+int rom_native_closedir(DIR *dir){unsigned i=(unsigned)(handle(dir)-handles);int rc=closedir(dir);assert(active);handles[i]=handles[--active];closes++;return rc;}
+FILE *rom_native_fopen(const char *path,const char *mode){(void)path;(void)mode;fileOpenCalls++;errno=EACCES;return NULL;}
+int rom_native_open(const char *path,int flags,...){(void)path;(void)flags;fileOpenCalls++;errno=EACCES;return -1;}
 int rom_native_lstat(const char *path,struct stat *metadata){statCalls++;if(library_file_system(path)>=0)fileStatCalls++;return lstat(path,metadata);}
 void *rom_native_calloc(size_t count,size_t size){return allocationFailure?NULL:calloc(count,size);}
 static void directory(const char *path){assert(!mkdir(path,0700));}
@@ -44,8 +43,8 @@ static void files(const char *root,const char *extension,unsigned count){for(uns
 static bool visit(const char *path,void *unused){(void)unused;visits++;if(strstr(path,"added.gba"))addedSeen=true;if(strstr(path,"f000.gba"))removedSeen=true;return !stopAt||visits<stopAt;}
 static bool proceed(void *unused){(void)unused;return ++progressCalls<20;}
 static DsScan scan(const DsRoots *roots,DsContinue progress){
- DsScan result;assert(!active);opens=closes=statCalls=fileStatCalls=visits=progressCalls=0;addedSeen=removedSeen=false;
- rom_library_scan(roots,&result,visit,progress,NULL);assert(!active&&opens==closes);assert(!fileStatCalls);return result;
+ DsScan result;assert(!active);opens=closes=statCalls=fileStatCalls=fileOpenCalls=visits=progressCalls=exhaustions=0;addedSeen=removedSeen=false;
+ rom_library_scan(roots,&result,visit,progress,NULL);assert(!active&&opens==closes);assert(!fileStatCalls&&!fileOpenCalls);return result;
 }
 int main(void){
  char temp[]="/tmp/flow-native-dir-XXXXXX";assert(mkdtemp(temp));assert(!chdir(temp));directory("sdmc:");
@@ -56,8 +55,8 @@ int main(void){
  assert(!symlink("f000.gba","sdmc:/GBA/link.gba"));
  DsScan result=scan(NULL,NULL);RomScanStats stats=rom_library_last_stats();
  assert(result.files==846&&visits==846&&!result.limited&&!result.cancelled&&!result.missing);
- assert(stats.metadata_entries>=846&&!stats.stat_fallbacks&&!stats.root_checks&&!statCalls);
- printf("PASS native actual scanner: 846 live ROMs, %u iterator metadata entries, 0 per-file stat/open lookups, %u balanced directory handles, SDK ENOENT exhaustion complete\n",stats.metadata_entries,opens);
+ assert(stats.metadata_entries>=846&&!stats.stat_fallbacks&&!stats.root_checks&&!statCalls&&exhaustions==opens);
+ printf("PASS native actual scanner: 846 live ROMs, %u iterator metadata entries, 0 per-file stat/open lookups, %u balanced directory handles, SDK public EOF complete\n",stats.metadata_entries,opens);
  assert(!unlink("sdmc:/GBA/f000.gba"));file("sdmc:/GBA/added.gba");result=scan(NULL,NULL);
  assert(visits==846&&addedSeen&&!removedSeen&&!result.limited&&!statCalls);
  puts("PASS native live rescan: added/removed files reflected without cache or per-file stat");

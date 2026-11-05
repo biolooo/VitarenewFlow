@@ -3,7 +3,9 @@
 #include "library_model.h"
 #include <dirent.h>
 #ifdef __3DS__
-#include <sys/dir.h>
+#if !defined(_DIRENT_HAVE_D_TYPE) || !defined(DT_UNKNOWN) || !defined(DT_REG) || !defined(DT_DIR) || !defined(DT_LNK)
+#error "Native ROM discovery requires SDK readdir type metadata"
+#endif
 #endif
 #include <errno.h>
 #include <limits.h>
@@ -20,17 +22,8 @@
 #define MASK_OTHER 2u
 #define MASK_ALL (MASK_DS|MASK_OTHER)
 typedef struct {char path[DS_PATH_MAX];unsigned depth[2];} Seen;
-#ifdef __3DS__
-typedef DIR_ITER RomDir;
-#define rom_open diropen
-#define rom_close dirclose
-#else
-typedef DIR RomDir;
-#define rom_open opendir
-#define rom_close closedir
-#endif
 typedef struct {char name[NAME_MAX+1];mode_t mode;bool known;} RomEntry;
-typedef struct {RomDir *dir;char path[DS_PATH_MAX];unsigned depth,mask;} Frame;
+typedef struct {DIR *dir;char path[DS_PATH_MAX];unsigned depth,mask;} Frame;
 typedef struct {
  DsScan *result;DsVisit visit;DsContinue proceed;void *user;
  Seen seen[WALK_DIRS];unsigned count;Frame frames[WALK_DEPTH+1];unsigned active;bool stopped;RomEntry entry;RomScanStats stats;
@@ -46,19 +39,11 @@ static bool entry_budget(Walker *w){
  if(++w->result->entries>WALK_ENTRIES){w->result->limited=true;w->stopped=true;return false;}
  return progress(w);
 }
-/* The SDK iterator already returns file type with each batched directory entry.
-   In particular, archive_dirnext uses ENOENT to signal normal exhaustion. Never
-   turn that into an incomplete scan, or reopen every returned file via stat. */
-static RomEntry *next_entry(Walker *w,RomDir *dir){
+/* SDK public readdir reuses archive_dirnext's batched metadata, exposes st_mode
+   as d_type and normalizes the archive's ENOENT exhaustion to errno zero.
+   Never reopen known regular files just to discover their type again. */
+static RomEntry *next_entry(Walker *w,DIR *dir){
  RomEntry *entry=&w->entry;errno=0;
-#ifdef __3DS__
- struct stat metadata={0};
- if(dirnext(dir,entry->name,&metadata)<0){
-  if(errno&&errno!=ENOENT){w->result->missing++;w->result->limited=true;}
-  return NULL;
- }
- entry->name[NAME_MAX]=0;entry->mode=metadata.st_mode;entry->known=true;
-#else
  struct dirent *found=readdir(dir);
  if(!found){if(errno){w->result->missing++;w->result->limited=true;}return NULL;}
  size_t length=strnlen(found->d_name,sizeof(entry->name));
@@ -71,7 +56,6 @@ static RomEntry *next_entry(Walker *w,RomDir *dir){
   else if(found->d_type==DT_DIR)entry->mode=S_IFDIR;
   else if(found->d_type==DT_LNK)entry->mode=S_IFLNK;
  }
-#endif
 #endif
  if(entry->known)w->stats.metadata_entries++;
  return entry;
@@ -99,7 +83,7 @@ static unsigned mark(Walker *w,const char *path,unsigned depth,unsigned mask){
 static void push(Walker *w,const char *path,unsigned depth,unsigned mask,bool checked){
  mask=mark(w,path,depth,mask);if(!mask)return;
  if(!checked){w->stats.root_checks++;struct stat st;if(lstat(path,&st)||!S_ISDIR(st.st_mode)){w->result->missing++;w->result->limited=true;return;}}
- RomDir *dir=rom_open(path);if(!dir){w->result->missing++;w->result->limited=true;return;}
+ DIR *dir=opendir(path);if(!dir){w->result->missing++;w->result->limited=true;return;}
  Frame *f=&w->frames[w->active++];f->dir=dir;strcpy(f->path,path);f->depth=depth;f->mask=mask;w->result->directories++;
 }
 static void walk(Walker *w,const char *root,unsigned mask,bool checked){
@@ -107,7 +91,7 @@ static void walk(Walker *w,const char *root,unsigned mask,bool checked){
  push(w,root,0,mask,checked);
  while(w->active&&progress(w)){
   Frame *f=&w->frames[w->active-1];RomEntry *e=next_entry(w,f->dir);
-  if(!e){rom_close(f->dir);w->active--;continue;}
+  if(!e){closedir(f->dir);w->active--;continue;}
   if(!strcmp(e->name,".")||!strcmp(e->name,"..")){continue;}
   if(!entry_budget(w)){break;}
   if(e->name[0]=='.'){continue;}
@@ -121,7 +105,7 @@ static void walk(Walker *w,const char *root,unsigned mask,bool checked){
    w->result->files++;if(!w->visit(path,w->user)){w->result->limited=true;w->stopped=true;}
   }
  }
- while(w->active)rom_close(w->frames[--w->active].dir);
+ while(w->active)closedir(w->frames[--w->active].dir);
 }
 static bool root_name(const char *name){
  static const char *names[]={"roms","games","nds","ds","gba","gb","gbc","gameboy","game boy","game boy advance","gameboy advance","game boy color","n64","nintendo 64","nes","snes","super nintendo","vb","virtual boy","virtualboy"};
@@ -132,7 +116,7 @@ static bool root_name(const char *name){
    /_nds, /Nintendo 3DS or other top-level application/runtime trees. */
 static void emulator_roots(Walker *w,const char *apps){
  static const char *names[]={"DaedalusX64","mGBA","snes9x_3ds","virtuanes_3ds","red-viper"};
- RomDir *dir=rom_open(apps);if(!dir){w->result->missing++;w->result->limited=true;return;}RomEntry *e;
+ DIR *dir=opendir(apps);if(!dir){w->result->missing++;w->result->limited=true;return;}RomEntry *e;
  while(progress(w)&&(e=next_entry(w,dir))){
   if(!strcmp(e->name,".")||!strcmp(e->name,"..")){continue;}
   if(!entry_budget(w)){break;}
@@ -142,7 +126,7 @@ static void emulator_roots(Walker *w,const char *apps){
   char emulator[DS_PATH_MAX];
   if(!child_path(emulator,apps,e->name)){w->result->limited=true;continue;}
   if(!S_ISDIR(entry_mode(w,e,emulator)))continue;
-  RomDir *sub=rom_open(emulator);if(!sub){w->result->missing++;w->result->limited=true;continue;}RomEntry *folder;
+  DIR *sub=opendir(emulator);if(!sub){w->result->missing++;w->result->limited=true;continue;}RomEntry *folder;
   while(progress(w)&&(folder=next_entry(w,sub))){
    if(!strcmp(folder->name,".")||!strcmp(folder->name,"..")){continue;}
   if(!entry_budget(w)){break;}
@@ -153,8 +137,8 @@ static void emulator_roots(Walker *w,const char *apps){
    if(!mode)continue;
    if(!S_ISDIR(mode)){w->result->missing++;w->result->limited=true;continue;}
    walk(w,root,MASK_ALL,true);
-  }rom_close(sub);
- }rom_close(dir);
+  }closedir(sub);
+ }closedir(dir);
 }
 void rom_library_scan(const DsRoots *extraDsRoots,DsScan *result,DsVisit visit,DsContinue proceed,void *user){
  memset(&last_stats,0,sizeof(last_stats));memset(result,0,sizeof(*result));if(!visit){result->limited=true;return;}
@@ -162,7 +146,7 @@ void rom_library_scan(const DsRoots *extraDsRoots,DsScan *result,DsVisit visit,D
  if(extraDsRoots)for(unsigned i=0;i<extraDsRoots->count&&i<DS_ROOT_MAX&&progress(w);i++){
   char clean[DS_PATH_MAX];if(ds_root_normalize(clean,sizeof(clean),extraDsRoots->paths[i]))walk(w,clean,MASK_DS,false);else result->limited=true;
  }
- RomDir *dir=progress(w)?rom_open("sdmc:/"):NULL;
+ DIR *dir=progress(w)?opendir("sdmc:/"):NULL;
  if(!dir){if(!result->cancelled){result->missing++;result->limited=true;}}
  else{RomEntry *e;while(progress(w)&&(e=next_entry(w,dir))){
   if(!strcmp(e->name,".")||!strcmp(e->name,"..")){continue;}
@@ -173,6 +157,6 @@ void rom_library_scan(const DsRoots *extraDsRoots,DsScan *result,DsVisit visit,D
   if(!child_path(path,"sdmc:/",e->name)){result->limited=true;continue;}
   if(!S_ISDIR(entry_mode(w,e,path)))continue;
   if(!strcasecmp(e->name,"3ds"))emulator_roots(w,path);else walk(w,path,MASK_ALL,true);
- }rom_close(dir);}
+ }closedir(dir);}
  last_stats=w->stats;free(w);
 }
