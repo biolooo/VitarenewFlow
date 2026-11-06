@@ -1,0 +1,6 @@
+VFNOTES1
+version=0.12.42
+de=Weniger Dateizugriffe beim Einlesen großer Spieleordner.
+en=Fewer file accesses when scanning large game folders.
+de=Standard-YANBF-Verknüpfungen erscheinen bei Nintendo DS statt bei Homebrew.
+en=Standard YANBF shortcuts appear under Nintendo DS instead of Homebrew.

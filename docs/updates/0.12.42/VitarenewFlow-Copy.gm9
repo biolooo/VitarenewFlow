@@ -1,0 +1,84 @@
+# VitarenewFlow cartridge-copy assistant, independently authored.
+# SD output only. No NAND writes, save extraction, install, or source deletion.
+mkdir -o 0:/3ds
+mkdir -o 0:/3ds/3ds-library
+# Replace any old receipt BEFORE prompting or copying. Abort if SD is unwritable.
+dumptxt 0:/3ds/3ds-library/copy-result.txt "VF1 STARTED"
+ask "VitarenewFlow\nCopy the inserted cartridge to SD?\nKeep the cartridge inserted until finished."
+if find C:/*.nds CART
+    goto CopyDS
+end
+if find C:/*.3ds CART
+    goto Copy3DS
+end
+echo "No readable DS / 3DS cartridge found.\nNothing copied."
+goto Done
+
+@CopyDS
+ask "DS cartridge:\n$[CART]\nCopy and verify with SHA256?\nThe module save stays on the cartridge."
+strsplit NAME $[CART] "/"
+set FINAL "0:/roms/nds/$[NAME]"
+set PART "$[FINAL].part"
+if exist $[FINAL]
+    echo "Destination already exists:\n$[FINAL]\nNothing overwritten."
+    goto Done
+end
+if exist $[PART]
+    echo "An incomplete copy already exists:\n$[PART]\nInspect it on PC before retrying."
+    goto Done
+end
+mkdir -o 0:/roms
+mkdir -o 0:/roms/nds
+if not cp $[CART] $[PART]
+    echo "Copy cancelled or failed.\nAny .part file is not shown as a game."
+    goto Done
+end
+if not shaget $[CART] SOURCEHASH
+    echo "Cannot hash cartridge.\nCopy remains .part and is not accepted."
+    goto Done
+end
+if not sha $[PART] $[SOURCEHASH]
+    echo "SHA256 verification failed.\nCopy remains .part and is not accepted."
+    goto Done
+end
+if not mv $[PART] $[FINAL]
+    echo "Cannot commit verified copy.\nNothing reported as finished."
+    goto Done
+end
+dumptxt 0:/3ds/3ds-library/copy-result.txt "VF1 DS"
+echo "DS copy verified:\n$[FINAL]\nRestart VitarenewFlow to scan it.\nUse Checkpoint separately for saves."
+goto Done
+
+@Copy3DS
+ask "3DS cartridge:\n$[CART]\nBuild and verify a CIA for the Library?\nThis may take several minutes.\nThe module save stays on the cartridge."
+strsplit NAME $[CART] "/"
+strsplit -b BASE $[NAME] "."
+# GodMode9 uses this source basename for its output. Refuse every existing
+# matching CIA, including .tmp.cia, before its builder can replace anything.
+if find "$[GM9OUT]/$[BASE]*.cia" EXISTING
+    echo "Matching output already exists:\n$[EXISTING]\nMove it aside on PC before retrying.\nNothing overwritten."
+    goto Done
+end
+if not buildcia $[CART]
+    echo "CIA build cancelled or failed.\nNo game was installed."
+    goto Done
+end
+if not find "$[GM9OUT]/$[BASE]*.cia" OUTPUT
+    echo "Built CIA not found.\nInspect /gm9/out; nothing installed."
+    goto Done
+end
+if not verify $[OUTPUT]
+    echo "CIA verification failed.\nFile stays in /gm9/out, not in Library."
+    goto Done
+end
+mkdir -o 0:/cias
+findnot "0:/cias/VF_CART_??.cia" FINAL
+if not mv $[OUTPUT] $[FINAL]
+    echo "Cannot move verified CIA.\nIt remains in /gm9/out."
+    goto Done
+end
+dumptxt 0:/3ds/3ds-library/copy-result.txt "VF1 CIA"
+echo "CIA verified:\n$[FINAL]\nRestart VitarenewFlow.\nRemove cartridge to see the grey CIA.\nSelect it to install. Saves are separate."
+
+@Done
+echo "VitarenewFlow assistant finished.\nSTART: reboot. Hold B for Homebrew Menu\nif VitarenewFlow autoboot is enabled."
