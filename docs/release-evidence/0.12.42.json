@@ -1,0 +1,136 @@
+{
+  "version": "0.12.42",
+  "documented_date": "2026-11-06",
+  "timezone": "Europe/Berlin",
+  "basis_commit": "af2e8d459063f59a16e98426a057358ad9dbafae",
+  "release_commit": "fb95961f32c99914385edd86d2f109493b73dba0",
+  "workflow": {
+    "id": 42176948122,
+    "conclusion": "success",
+    "url": "https://github.com/biolooo/VitarenewFlow/actions/runs/42176948122"
+  },
+  "native_verification": {
+    "run_id": 42084035501,
+    "conclusion": "success",
+    "source_commit": "0603ff57cbe53108c0077e4babbd518d3228ef2f",
+    "local_evidence": ".test-build/ci-build-42084035501/checkout",
+    "source_hash_count": 129
+  },
+  "exact_source_zip_reproduction": {
+    "run_id": 42176340333,
+    "conclusion": "success",
+    "local_evidence": ".test-build/ci-reproduction-42176340333/source-0.12.42",
+    "result": "complete suite and byte-identical delivered 3DSX/SMDH from exact source ZIP",
+    "source_zip_sha256": "42e7f65d509683c05212d216fc2dd4fb68176fb82c20020c5084ee26e711e714"
+  },
+  "artifact_sha256": {
+    "FEATURES-DE.md": "0575a96e378159b530fded787b1e24e43551f48e3563a9b14deccab9ffef93df",
+    "README.md": "0575a96e378159b530fded787b1e24e43551f48e3563a9b14deccab9ffef93df",
+    "VitarenewFlow-Boot.3dsx": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277",
+    "VitarenewFlow-Copy.gm9": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530",
+    "VitarenewFlow-Shortcut.cia": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097",
+    "VitarenewFlow-source.zip": "42e7f65d509683c05212d216fc2dd4fb68176fb82c20020c5084ee26e711e714",
+    "VitarenewFlow.3dsx": "02b26982b9b001d2962d9aa4880ea727b6051c21ee694d25d0bd7f754edf2fcd",
+    "VitarenewFlow.smdh": "2a1067342b98435120c060f4617d6d53fed9b29c687219ce8f747786ba5c5175",
+    "notes.txt": "671328ec267c7d920e0d7f7382ad7b8a4ffac126c6249aaf3cb3e6d031350eff"
+  },
+  "public_verification": {
+    "version": "0.12.42",
+    "checked_at": "2026-11-06T06:52:50.234406+00:00",
+    "files": {
+      "0.12.42/FEATURES-DE.md": {
+        "size": 1077,
+        "sha256": "0575a96e378159b530fded787b1e24e43551f48e3563a9b14deccab9ffef93df"
+      },
+      "0.12.42/README.md": {
+        "size": 1077,
+        "sha256": "0575a96e378159b530fded787b1e24e43551f48e3563a9b14deccab9ffef93df"
+      },
+      "0.12.42/VitarenewFlow-Boot.3dsx": {
+        "size": 116260,
+        "sha256": "14d18b52fe4c55973f3664a34649a0ef6a5dda5440a2a408486a8684c29bf277"
+      },
+      "0.12.42/VitarenewFlow-Copy.gm9": {
+        "size": 3092,
+        "sha256": "c1495d3a1575c000f41828ced398088bda115784eb0a57fe0a3539d5c1cab530"
+      },
+      "0.12.42/VitarenewFlow-Shortcut.cia": {
+        "size": 164800,
+        "sha256": "d8e53523627d300aa6954ea3864af0e062bea8f4c03cab34ea1a78e0260ef097"
+      },
+      "0.12.42/VitarenewFlow-source.zip": {
+        "size": 2035555,
+        "sha256": "42e7f65d509683c05212d216fc2dd4fb68176fb82c20020c5084ee26e711e714"
+      },
+      "0.12.42/VitarenewFlow.3dsx": {
+        "size": 1647344,
+        "sha256": "02b26982b9b001d2962d9aa4880ea727b6051c21ee694d25d0bd7f754edf2fcd"
+      },
+      "0.12.42/VitarenewFlow.smdh": {
+        "size": 14016,
+        "sha256": "2a1067342b98435120c060f4617d6d53fed9b29c687219ce8f747786ba5c5175"
+      },
+      "0.12.42/notes.txt": {
+        "size": 297,
+        "sha256": "671328ec267c7d920e0d7f7382ad7b8a4ffac126c6249aaf3cb3e6d031350eff"
+      },
+      "0.12.42/SHA256.json": {
+        "size": 832,
+        "sha256": "7c4425478a4fac1a057f408860db10ae168654393a2a22f45ab665d05cf1255a"
+      },
+      "latest.txt": {
+        "size": 190,
+        "sha256": "55114cd869d87413afbc8981bbea60117a35d63c2147c432b392ca6238a610ce"
+      },
+      "VitarenewFlow.unistore": {
+        "size": 4324,
+        "sha256": "2bfb0f7b3ae04c4c8750533741f5ebea850466ed1098d61e1178ea34efe64a44"
+      },
+      "VitarenewFlow-info.json": {
+        "size": 516,
+        "sha256": "b936995b0e5400031ceb0d1955e1016f92d2030e542746eafde3c1feae26a70b"
+      },
+      "install.html": {
+        "size": 1779,
+        "sha256": "24cb95ff7518bd8ef42e07d5af29033a1d717fa121062292e49ac8d2511db088"
+      }
+    }
+  },
+  "public_url_count": 14,
+  "rom_scan": {
+    "api": "public SDK opendir/readdir/closedir, d_type from batched archive metadata; private raw-wrapper assumption corrected",
+    "native_metadata_compile_guard": true,
+    "native_mock_rom_files": 846,
+    "native_mock_metadata_entries": 876,
+    "native_mock_per_file_lstat": 0,
+    "native_mock_file_opens": 0,
+    "native_mock_balanced_directory_handles": 10,
+    "dedup_hash_bytes": 8192,
+    "synthetic_full_path_comparisons": 39,
+    "previous_synthetic_full_path_comparisons": 524943,
+    "live_add_remove_and_io_cancel_tests": "passed",
+    "console_elapsed_ms": null
+  },
+  "yanbf": {
+    "presentation_system": "Nintendo DS",
+    "technical_system": "3DS",
+    "homebrew": true,
+    "launch": "existing title ID/media route",
+    "title_cache_schema": 2,
+    "first_start": "one cold metadata refresh; warm reuse thereafter"
+  },
+  "native_static_checks": {
+    "bss_bytes": 3794008,
+    "main_frame_bytes": 10584,
+    "scan_frame_bytes": 5984,
+    "reader_frame_bytes": 4872,
+    "rom_scan_frame_bytes": 1688,
+    "rom_walk_frame_bytes": 648,
+    "limitation": "static compiler frames, no measured console stack peak"
+  },
+  "hardware_console_acceptance": false,
+  "hardware_start_seconds": null,
+  "actual_sd_access": false,
+  "previous_payloads": "0.12.41 and Desktop Windows 0.4.1 / macOS-Linux 0.4.2 unchanged",
+  "website_coordination": "not needed: internal corrections, unchanged menu and installation requirements"
+}

@@ -1,6 +1,8 @@
 # VitarenewFlow
 
-Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Desktop-Verwaltung für Windows, macOS und Linux. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.41 / Desktop Windows0.4.1, macOS/Linux0.4.2** (03.11.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
+Nintendo-3DS-Spielbibliothek mit Coverflow, Suche, DS-/Emulator-Startwegen und Desktop-Verwaltung für Windows, macOS und Linux. Entwicklung von VitaRenew. Öffentlicher Teststand: **Launcher0.12.42 / Desktop Windows0.4.1, macOS/Linux0.4.2** (06.11.2026), weiterhin ohne vollständige aktuelle Hardwareabnahme. Maßgeblich sind die aktuellen Releasekanäle und der Projektstatus.
+
+0.12.42 reduziert zusätzliche Dateizugriffe beim Einlesen von Spieleordnern und ordnet Standard-YANBF-Verknüpfungen bei Nintendo DS ein. Beim ersten .42-Start wird der Metadatencache einmal neu aufgebaut; echte Konsolenstartzeiten sind noch nicht gemessen. [Veröffentlichungsnachweis](docs/release-evidence/0.12.42.json).
 
 ## Installation und Teststatus
 

@@ -1,5 +1,22 @@
 # Entscheidungen und Quellen
 
+## Live-Metadaten und YANBF-Ansicht — 06.11.2026, 0.12.42
+
+Den öffentlichen SDK-Vertrag verwenden: `readdir` liefert `d_type` aus der bereits
+gebündelt gelesenen Verzeichnismetadatenstruktur. `diropen`/`dirnext` sind private
+Newlib-Wrapper; die ursprüngliche API-Annahme scheiterte am nativen Build und wurde
+korrigiert. Keine eigene FSDIR-Implementierung und kein ROM-Listen-Cache. Native
+Compileguards verlangen Typmetadaten; Host-`DT_UNKNOWN` behält den `lstat`-Fallback.
+Explizite DS-Wurzeln bleiben geprüft. Begrenzter 8-KiB-Pfadindex ersetzt lineare
+Duplikatsuche, numerische ROM-Phasenlogs ermöglichen spätere Hardwaremessung.
+
+YANBF-Präsentation von technischem Titel-/Starttyp trennen: DS-Ansicht bei weiterhin
+3DS/Homebrew und ID-/Media-Startweg, ohne namensbasierte ROM-Zusammenlegung.
+Cache v2 speichert das Präsentationsflag, erster Start liest Metadaten erneut.
+Native-/Quell-ZIP-Reproduktion und 14 öffentliche Byteprüfungen sind bestanden;
+Hardwarezeiten und Konsolenabnahme bleiben offen. Desktop und alte Releases bleiben
+unverändert. [Nachweis](release-evidence/0.12.42.json).
+
 ## Vorhandene Spieleordner und native Desktopplattformen — 03.11.2026
 
 Spiele dort erkennen, wo sie bereits liegen: positive Wurzelaliase und begrenzter

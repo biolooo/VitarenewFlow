@@ -1,6 +1,29 @@
 # Flow — Einstieg für den Orchestrator
 
-## Spieleordner-Startzeit und YANBF — 0.12.42 vorbereitet · 04.11.2026
+## Spieleordner-Startzeit und YANBF — 0.12.42 veröffentlicht · 06.11.2026
+
+Basis `af2e8d4`, Releasecommit `fb95961`; Implementierung und unabhängige Prüfung
+getrennt delegiert, Git-/Veröffentlichungskoordination zuletzt durch Root.
+Native CI `42084035501` und Repro-CI `42176340333` bestanden: vollständige Suite,
+129 Quellhashes und bytegleiche 3DSX/SMDH aus dem exakten Quell-ZIP.
+Pages `42176948122` zu diesem Release erfolgreich; alle 14 Launcher-URLs öffentlich
+bytegleich geprüft. [Nachweis](release-evidence/0.12.42.json). Update über
+Menü → Konsole & Start → Updates → Aktualisieren → Neu öffnen.
+
+Öffentliches SDK-`readdir` liefert `d_type` aus bereits gelesenen Metadaten;
+die frühere Annahme öffentlicher `diropen`/`dirnext`-Wrapper wurde beim SDK-Build
+korrigiert. Native Compileguards sichern den Metadatenvertrag. Synthetischer
+Native-Mock: 846 ROMs, keine zusätzlichen Datei-`lstat`/Öffnungen; der 8-KiB-
+Pfadindex benötigt 39 statt 524943 vollständige Pfadvergleiche. Frische Suche,
+Grenzen und Fehleranzeigen bleiben erhalten. Das sind keine Konsolensekunden.
+YANBF wird nur für die Ansicht als DS eingeordnet; technisch bleiben 3DS-Titel,
+`homebrew=true` und ID-/Media-Startweg erhalten. Cache v2 bedeutet beim ersten
+.42-Start einmalig kalte Metadaten, danach warme Wiederverwendung.
+Alte .41- und Desktoppakete unverändert. Keine echte SD abgefragt oder verändert;
+Konsolenabnahme und gemessene Startzeiten offen. Keine Websitefolge nötig:
+interne Korrekturen bei unverändertem Menü- und Installationsweg.
+
+## Historischer Vorbereitungsstand 0.12.42 · 04.11.2026
 
 Nutzerauftrag: langes „Finding games“ beim Konsolenstart optimieren und installierte
 YANBF-DS-Verknüpfungen richtig einordnen. Basis `af2e8d4`, aktuelle Remote-Refs
@@ -24,9 +47,9 @@ Gezielte Hosttests bestanden: aktuelle View-/Such-/Start-/Seedguards, positive u
 negative YANBF-Marker, Cache kalt/warm/alte Version/Korruption, begrenzter Pfadindex
 mit Kollisionen/Case/Originalpfaden/Reset/1536 sowie nativer Scanner-Metadatenweg.
 Synthetisch 846 ROM-Pfade: 39 vollständige Pfadvergleiche statt vorher 524943;
-das ist kein Hardware-Zeitbenchmark. Native Gesamtprüfung, Stack/BSS,
-Quellpaketreproduktion, Veröffentlichung und Konsolenabnahme noch offen.
-Keine Main-/Pages-Veröffentlichung aus diesem Entwicklungsauftrag abgeleitet.
+das ist kein Hardware-Zeitbenchmark. Zum damaligen Stand waren native Gesamtprüfung,
+Stack/BSS, Quellpaketreproduktion und Veröffentlichung noch offen; deren Abschluss
+ist oben dokumentiert. Die Konsolenabnahme bleibt offen.
 
 ## Emulatorordner und Desktopplattformen — 0.12.41 veröffentlicht · 03.11.2026
 
